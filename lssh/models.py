@@ -1,0 +1,1 @@
+#Definiering av de modeller som används. Tex användare, produkter och nyheter
