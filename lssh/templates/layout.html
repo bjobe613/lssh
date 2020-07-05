@@ -1,0 +1,25 @@
+<!-- Should contain navbar and other general features. The other views should extend this. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
+        <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+        <script type="text/javascript" src="/static/js/layout.js"></script>
+        <title>LSSh</title>
+        {% block more_head %} 
+            <!-- Filled with more parts of the head required on other views-->
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+        </header>
+        {% block content %}
+            <!--This is what is filled by the other templates when extending-->
+        {% endblock %}
+        <footer>
+        </footer>
+    </body>
+</html>
