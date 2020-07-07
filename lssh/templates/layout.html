@@ -15,6 +15,28 @@
     </head>
     <body>
         <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="{{ url_for('main.startup') }}">HOME</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('products.catalog') }}">SHOP</a>
+                    </li>
+                    <li>
+                        <a href="#">HAND IN</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.transport') }}">TRANSPORT</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.about_us') }}">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.faq') }}">HELP</a>
+                    </li>
+                </ul>
+            </nav>
         </header>
         {% block content %}
             <!--This is what is filled by the other templates when extending-->
