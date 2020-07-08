@@ -2,20 +2,20 @@ from flask import Blueprint, render_template
 
 # The database is accessed in this manner from blueprints
 from lssh.models import db #, other objects defined in models
-products = Blueprint('products', __name__, url_prefix = '/products')
+news = Blueprint('news', __name__, url_prefix = '/news')
 
 # Routes should be added here
 # Like this:
 """
- @products.route("/test")
+ @news.route("/test")
  def test_route():
      return "hej världen"
 """
 
-@products.route("/catalog")
+@news.route("/")
 def catalog():
-    return render_template('product_catalog.html')
+    return render_template('news.html')
 
-@products.route("/product/<int:x>")
+@news.route("/<int:x>")
 def product():
-    return render_template('product_single_view.html')
+    return render_template('news_single_view.html')
