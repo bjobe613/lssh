@@ -2,9 +2,43 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock more_head %}
-
+   
 {% block content %}
     <!--Where the html should be written-->
-    <p>INDEX</p>
+
+    <div class="container-fluid index-container">
+        <div class="row">
+          <div class="col-sm">
+            <h1>
+                Secondhand
+            </h1>
+            <h1>
+                by students
+            </h1>
+            <h1>
+                for students
+            </h1>
+          </div>
+          <div class="col-sm space">
+            space
+          </div>
+          <div class="col-sm space">
+            space
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <button class="btn btn-primary" type="submit">Button</button>
+            </div>
+            <div class="col-sm">
+              space
+            </div>
+            <div class="col-sm">
+              space
+            </div>
+          </div>
+    </div>
 {% endblock content %}

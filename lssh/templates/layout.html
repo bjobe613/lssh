@@ -1,47 +1,97 @@
 <!-- Should contain navbar and other general features. The other views should extend this. -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
-        <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
-        <script type="text/javascript" src="/static/js/layout.js"></script>
-        <title>LSSh</title>
-        {% block more_head %} 
-            <!-- Filled with more parts of the head required on other views-->
-        {% endblock %}
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ url_for('main.startup') }}">HOME</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('products.catalog') }}">SHOP</a>
-                    </li>
-                    <li>
-                        <a href="#">HAND IN</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('main.transport') }}">TRANSPORT</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('main.about_us') }}">ABOUT</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('main.faq') }}">HELP</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        {% block content %}
-            <!--This is what is filled by the other templates when extending-->
-        {% endblock %}
-        <footer>
-        </footer>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
+    <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <script type="text/javascript" src="/static/js/layout.js"></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>LSSh</title>
+    {% block more_head %}
+    <!-- Filled with more parts of the head required on other views-->
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="http://placehold.it/150x50?text=Logo" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.startup') }}">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('products.catalog') }}">SHOP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('main.faq') }}">HELP</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+<!--
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('main.startup') }}">HOME</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('products.catalog') }}">SHOP</a>
+                </li>
+                <li>
+                    <a href="#">HAND IN</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.transport') }}">TRANSPORT</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.about_us') }}">ABOUT</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.faq') }}">HELP</a>
+                </li>
+            </ul>
+        </nav>
+-->
+
+        
+    </header>
+    {% block content %}
+    <!--This is what is filled by the other templates when extending-->
+    {% endblock %}
+    <footer>
+    </footer>
+</body>
+
 </html>
