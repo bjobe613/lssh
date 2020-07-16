@@ -1,3 +1,26 @@
 .container-fluid .space {
     height: 6rem;
 }
+
+.space {
+    padding-top: 0vh;
+    display: none;
+}
+
+
+@media only screen and (min-width: 768px) {
+    /* For mobile phones: */
+    .space { 
+        padding-top: 25vh;
+        display: block;
+    }
+
+    .index-container {
+        background: url('../../pictures/indexpagebackground.png'); 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+  }
