@@ -1,5 +1,6 @@
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy, DateTime, func, Time
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 from lssh import app
 
 db = SQLAlchemy(app)
@@ -15,7 +16,7 @@ class Car(db.Model):
         return "<Car {}: {} {}>".format(self.id, self.make, self.model)
 """
 
-class Furniture(db.Model): #relations not made
+class Furniture(db.Model):
     articleNumber = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     price = db.Column(db.Integer, nullable = False)
@@ -28,20 +29,28 @@ class Furniture(db.Model): #relations not made
     depth = db.Column(db.Integer, nullable = True)
     archived = db.Column(db.Boolean, default = False)
     paymentMethod = db.Column(db.String, nullable = False)
+    pictures = db.relationship('FurniturePictures', backref = 'furniturePicture')
+    reservations = db.relationship('FurnitureReservation', backref = 'furnitureReservation')
+    seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
 
-class Pictures(db.Model): #for all pictures on the site, need to be decided in a meeting. 
+class FurniturePictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
+    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
 
 class FurnitureReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)
     liuID = db.Column(db.String(8), nullable = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
+    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
 
 class Seller(db.Model): # will be ralated to furniture
-    liuID = db.Column(db.String(8), primary_key = True)
+    sellerID = db.Column(db.Integer, primary_key = True)
+    liuID = db.Column(db.String(8), nullable = False)
     phone = db.Column(db.String, nullable = True)
     #other info for payment???
+    #maybe should have the payment method here? and use LSSh as seller if there is no one else?
+    furnitures = db.relationship('Furniture', backref = 'sellerOfFurniture')
 
 class Blacklist(db.Model):
     liuID = db.Column(db.String(8), primary_key = True)
@@ -54,6 +63,12 @@ class News(db.Model):
     date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
     title = db.Column(db.String, nullable = False)
     text = db.Column(db.Text, nullable = False)
+    pictures = db.relationship('NewsPictures', backref = 'news')
+
+class NewsPictures(db.Model): 
+    pictureID = db.Column(db.Integer, primary_key = True)
+    path = db.Column(db.String, nullable = False)
+    newsID = db.Column(db.DateTime, db.ForeignKey('news.date')) 
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
@@ -80,7 +95,29 @@ class HandInRequest(db.Model):
     condition = db.Column(db.Integer, nullable = False)
     picturePath = db.Column(db.String, nullable = True)
     donate = db.Column(db.Boolean, default = False)
-    price = db.Column(db.Integer, nullable = True)
+    price = db.Column(db.Integer, nullable = True) #should we make this a relation?
     category = db.Column(db.String, nullable = True)#should this be here??
 
-     
+'''class HIRequestPictures(db.Model): 
+    pictureID = db.Column(db.Integer, primary_key = True)
+    path = db.Column(db.String, nullable = False)
+    requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID')) 
+'''
+
+
+def resetDB():
+    db.drop_all()
+    db.create_all()
+    print("Reset database successfully")
+
+def createDB():
+
+    furn1 = Furniture(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
+    furn2 = Furniture(name = 'Bord', price = 800, category = 2, condition = 1, height = 150, width = 60, depth = 40, paymentMethod = "Cash")
+
+    furn1pic = FurniturePictures()
+
+    db.session.add_all([furn1, furn2])
+    db.session.commit()
+
+
