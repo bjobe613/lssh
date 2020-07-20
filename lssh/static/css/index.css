@@ -1,26 +1,152 @@
-.container-fluid .space {
-    height: 6rem;
-}
+
+/* For mobile and everything else*/
 
 .space {
-    padding-top: 0vh;
-    display: none;
+    padding-top: 15vh;
 }
+
+.space2 {
+    padding-top: 5vh;
+}
+
+
+.btn-green {
+    width: 80%;
+    background-color: rgb(19, 80, 64);
+    border-style: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+
+}
+
+.btn-green:hover {
+    background-color: rgb(31, 110, 89);
+}
+
+.index-container {
+    background: url('woolen-sweater-put-on-back-of-chair-4210854.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+#slogan-text {
+    font-size: 3.6rem;
+    color: rgb(115, 115, 115);
+}
+
+#slogan-text-bold {
+    font-size: 3.6rem;
+    font-weight: 500 !important;
+    color: rgb(19, 80, 64);
+}
+
+/* Video container */
+.video-container {
+    height: 100vh;
+    background-color: rgb(22, 22, 22);
+    
+}
+
+.arrow-row {
+    padding-bottom: 4rem;
+}
+
+.container-iframe {
+    position: relative;
+    overflow: hidden;
+    width: 70vw;
+    /*padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    height: 70vh;
+}
+
+.responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(227, 228, 231);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+  }
+
+  /* News container */
+
+  .news-container {
+    height: 100vh; 
+  }
+
+
+  /* How it works container*/
+  .works-container {
+    height: 100vh;
+  }
+
+  .works-heading {
+      padding-top: 5rem;
+  }
+
+  .works-hr{
+      padding-top: 1rem;
+  }
+
+  .row-space {
+      height: 10vh;
+  }
+
+  .green-bg {
+      background-color: rgb(19, 80, 64);
+  }
+
+  .works-icons {
+    background-color: rgb(19, 80, 64);
+    padding-bottom: 3rem;
+  }
+
+  /* Goal container */
+  .goal-container {
+      height: 100vh;
+  }
 
 
 @media only screen and (min-width: 768px) {
-    /* For mobile phones: */
+    /* For desktop */
     .space { 
         padding-top: 25vh;
         display: block;
     }
 
+    .row-slogan {
+        padding-top: 5vh;
+    }
+
+
     .index-container {
-        background: url('../../pictures/indexpagebackground.png'); 
+        background: url('indexpagebackground.png') no-repeat center center; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        height: 100vh;
     }
+
+    .arrow-down {
+        border-top: 20px solid rgb(243, 244, 246);
+    }
+
+   
     
   }
