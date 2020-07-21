@@ -24,7 +24,7 @@
 }
 
 .index-container {
-    background: url('woolen-sweater-put-on-back-of-chair-4210854.jpg') no-repeat center center; 
+    background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -43,10 +43,41 @@
     color: rgb(19, 80, 64);
 }
 
+.row-socialmedia {
+    padding-top: 25vh;
+}
+
+.fa-facebook {
+    background: #000000;
+    color: white;
+    padding-right: 0.3rem;
+    padding-left: 0.4rem;
+    padding-top: 0.3rem;
+}
+
+.fa-instagram {
+    font-size: 1.5rem;
+    color: black;
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.fa-linkedin {
+    background: #000000;
+    color: white;
+    margin-left: 1rem;
+    
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+  }
+  
+
 /* Video container */
 .video-container {
     height: 100vh;
-    background-color: rgb(22, 22, 22);
+   /* background-color: rgb(22, 22, 22);*/
+   background-color: white;
     
 }
 
@@ -135,7 +166,7 @@
 
 
     .index-container {
-        background: url('indexpagebackground.png') no-repeat center center; 
+        background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -144,7 +175,7 @@
     }
 
     .arrow-down {
-        border-top: 20px solid rgb(243, 244, 246);
+        border-top: 20px solid rgb(207, 207, 207);
     }
 
    
