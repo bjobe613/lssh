@@ -24,7 +24,8 @@
 }
 
 .index-container {
-    background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+    /*background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; */
+    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -166,7 +167,7 @@
 
 
     .index-container {
-        background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+        background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
