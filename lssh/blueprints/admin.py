@@ -18,3 +18,7 @@ def admin_news():
 @admin.route("/faq/")
 def admin_faq():
     return render_template('admin/faq.html')
+
+@admin.route("/login/")
+def admin_login():
+    return render_template('admin/login.html')
