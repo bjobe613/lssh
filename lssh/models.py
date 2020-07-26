@@ -33,6 +33,14 @@ class Furniture(db.Model):
     reservations = db.relationship('FurnitureReservation', backref = 'furnitureIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
 
+    def getSinglePictureName(self):
+        piclist = self.pictures
+        if len(piclist) >= 1:
+            pic = piclist[0].pictureName
+        else :
+            pic = "default.jpg"
+        return pic
+
 class FurniturePictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
