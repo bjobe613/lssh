@@ -1,0 +1,56 @@
+
+#catalog-wrapper {
+  background-color: rgb(250,250,250);
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 35px;
+}
+
+.product-card {
+  width: 340px;
+  height: 360px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: white;
+}
+
+.product-img {
+  width: 100%;
+}
+
+.product-card-text {
+  width: 80%;
+  margin:auto;
+  margin-top: 20px;
+}
+
+.h5-card {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.product-card-status {
+  color: lightgreen;
+  float: right;
+  margin-right: 10px;
+  margin-top: -18px;
+}
+
+.product-card-price {
+  margin-top: 40px
+}
+
+
+
+@media all and (max-width: 480px) {
+
+
+}
+
+@media all and (min-width: 481px) and (max-width: 1000px) {
+
+}
+
+@media all and (min-width: 1001px) {
+
+}

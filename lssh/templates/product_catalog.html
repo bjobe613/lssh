@@ -2,11 +2,69 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_catalog.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
-        Catalog
-    </p>
+    <h1>
+        Products
+    </h1>
+    <div id="filter-wrapper">
+      <h2>
+        Filter
+      </h2>
+      <ul>
+        <li>
+          placeholder1
+        </li>
+        <li>
+          placeholder2
+        </li>
+        <li>
+          placeholder3
+        </li>
+        <li>
+          placeholder4
+        </li>
+      </ul>
+    </div>
+    <div id="catalog-wrapper">
+      <div class="product-card">
+        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
+        <div class="product-card-text">
+          <h5 class="h5-card">
+            Title
+          </h5>
+          <p>
+            Short desc.
+          </p>
+          <p class="product-card-price">
+            339,00 SEK
+          </p>
+          <p class="product-card-status">
+            Status
+          </p>
+        </div>
+
+      </div>
+      <div class="product-card">
+        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
+        <div class="product-card-text">
+          <h5 class="h5-card">
+            Title
+          </h5>
+          <p>
+            Short desc.
+          </p>
+          <p class="product-card-price">
+            339,00 SEK
+          </p>
+          <p class="product-card-status">
+            Status
+          </p>
+        </div>
+
+      </div>
+    </div>
 {% endblock content %}
