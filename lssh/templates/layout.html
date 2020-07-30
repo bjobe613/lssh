@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <title>LSSh</title>
+    <title>LiU Student Secondhand | LSSh</title>
 
     <!-- Roboto font-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
@@ -30,12 +30,13 @@
 
 <body>
     <header>
-
+        
+    
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <nav class="navbar  navbar-expand-lg navbar-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="logo.png" alt="Logotype">
+                    <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}" id="logotype" alt="Logotypee">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +69,61 @@
     {% block content %}
     <!--This is what is filled by the other templates when extending-->
     {% endblock %}
-    <footer>
-    </footer>
+   
+        <!-- Footer -->
+    <footer class="page-footer">
+    <div class="container-fluid">
+        <div class="row pt-5 pb-3">
+            <div class="col-2"></div>
+            <div class="col-2">
+                <h4>ABOUT</h4>
+                <a class="a-grey" href=""> Our shop </a>
+                <br>
+                <a class="a-grey" href=""> Team behind </a>
+                <br>
+                <a class="a-grey" href=""> How it works </a>
+            </div>
+            <div class="col-2">
+                <h4>INFORMATION</h4>
+                <a class="a-grey" href=""> Cookies </a>
+                <br>
+                <a class="a-grey" href=""> Privacy </a>
+                <br>
+                <a class="a-grey" href=""> Policy </a>
+            </div>
+            <div class="col-2">
+                <h4>HELP</h4>
+                <a class="a-grey" href="">FAQ </a>
+                <br>
+                <a class="a-grey" href=""> Contact </a>
+        
+            </div>
+            <div class="col-2">
+                <h4>ADMIN</h4>
+                <a class="a-grey" href=""> Login worker </a>
+                <br>
+                <a class="a-grey" href=""> Login administrator </a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row justify-content-center align-items-center pt-3">
+            <div class="col text-center">
+                <img id="logotype-footer" src="{{ url_for('static', filename = '/pictures/Logga_klart_vita_linjer.png') }}" class="img-fluid image" alt="Responsive image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+  
+  
 </body>
 
 </html>

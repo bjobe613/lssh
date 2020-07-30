@@ -1,3 +1,19 @@
+/* General stuff */
+
+.p-white {
+    color: white;
+}
+
+.p-heading {
+    font-weight: 500;
+    padding-top: 1rem;
+}
+
+.p-head {
+    font-size: 2.2rem;
+}
+
+
 
 /* For mobile and everything else*/
 
@@ -11,7 +27,7 @@
 
 
 .btn-green {
-    width: 80%;
+    width: 70%;
     background-color: rgb(19, 80, 64);
     border-style: none;
     padding: 0.8rem;
@@ -19,27 +35,38 @@
 
 }
 
+.btn-white {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-style: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+
+}
+
+
+
 .btn-green:hover {
     background-color: rgb(31, 110, 89);
 }
 
 .index-container {
-    /*background: url('beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; */
     background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #slogan-text {
-    font-size: 3.6rem;
+    font-size: 3.2rem;
     color: rgb(115, 115, 115);
 }
 
 #slogan-text-bold {
-    font-size: 3.6rem;
+    font-size: 3.2rem;
     font-weight: 500 !important;
     color: rgb(19, 80, 64);
 }
@@ -72,89 +99,10 @@
     padding-left: 0.3rem;
     padding-top: 0.3rem;
   }
-  
 
-/* Video container */
-.video-container {
-    height: 100vh;
-   /* background-color: rgb(22, 22, 22);*/
-   background-color: white;
-    
-}
+/* Desktop media queries section 1 */
 
-.arrow-row {
-    padding-bottom: 4rem;
-}
-
-.container-iframe {
-    position: relative;
-    overflow: hidden;
-    width: 70vw;
-    /*padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-    height: 70vh;
-}
-
-.responsive-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid rgb(227, 228, 231);
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
-  }
-
-  /* News container */
-
-  .news-container {
-    height: 100vh; 
-  }
-
-
-  /* How it works container*/
-  .works-container {
-    height: 100vh;
-  }
-
-  .works-heading {
-      padding-top: 5rem;
-  }
-
-  .works-hr{
-      padding-top: 1rem;
-  }
-
-  .row-space {
-      height: 10vh;
-  }
-
-  .green-bg {
-      background-color: rgb(19, 80, 64);
-  }
-
-  .works-icons {
-    background-color: rgb(19, 80, 64);
-    padding-bottom: 3rem;
-  }
-
-  /* Goal container */
-  .goal-container {
-      height: 100vh;
-  }
-
-
-@media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     /* For desktop */
     .space { 
         padding-top: 25vh;
@@ -176,9 +124,240 @@
     }
 
     .arrow-down {
-        border-top: 20px solid rgb(207, 207, 207);
+        border-top: 20px solid rgb(146, 143, 143);
     }
 
    
     
   }
+
+
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(199, 200, 201);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+  }
+
+
+
+  /* News container */
+
+  .news-container {
+    min-height: 50vh; 
+  }
+
+  #carousel-picture {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+    
+  }
+
+
+  /* How it works container*/
+  .works-container {
+    min-height: 100vh;
+  }
+
+  .works-heading {
+      padding-top: 2.2rem;
+  }
+
+  .works-hr{
+      padding-top: 1rem;
+      
+  }
+
+  .row-space {
+      height: 10vh;
+  }
+
+  .green-bg {
+      background-color: rgb(19, 80, 64);
+  }
+
+  .works-icons {
+    background-color: rgb(19, 80, 64);
+    padding-bottom: 3rem;
+  }
+
+  .logo1 {
+      background-image: url(../pictures/mail_icon.png);
+      height: 100px;
+      width: 100px;
+  }
+
+  .white-hr {
+    width: 40%;
+    border: 1px solid white;
+  }
+
+  .white-hr-thin {
+    border: 0.2px solid white;
+    
+  }
+
+  .space-green {
+      height: 5rem;
+      background-color: rgb(19, 80, 64);
+  }
+
+  .p-text {
+      width: 70%;
+  }
+
+  .col-border {
+    border-right: 1px solid rgb(182, 182, 182);
+    height: 1rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Goal container */
+  .goal-container {
+      min-height: 100vh;
+  }
+
+  #h1-goal {
+      font-size: 2.3rem !important;
+  }
+
+  #goal-hr {
+    border: 1px solid rgb(199, 199, 199);
+    width: 15%;
+    
+  }
+
+  .img-1 {
+    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+  }
+
+  .img-2 {
+    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+  }
+
+  .space-goal {
+      padding-top: 10vh;
+  }
+
+  /* About container */
+
+  #green-hr {
+    border-top: 0.2rem solid #84E48C;
+    width: 4rem;
+    margin: 0px;
+    margin-bottom: 0.75rem;
+    
+  }
+
+  #h1-number {
+      color: #84E48C;
+      font-weight: 500 !important;
+      font-weight: 700;
+      
+  }
+
+  #learn-more-p {
+      margin-bottom: 0.2rem;
+  }
+
+ .about-container {
+    min-height: 100vh;
+ }
+
+ .about-row {
+     min-height: 60vh;
+     background-color: rgb(249, 249, 249);
+ }
+
+ .half-row {
+     height: 30vh
+ }
+
+ .picture-chair {
+    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   
+ }
+
+ .image:hover {
+    transition: 0.5s;
+    opacity: 0.5;
+    
+ }
+
+ /* Bottom left text */
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    padding-left: 1rem;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+
+ /* Collaboration container */
+
+ #collaboration-container {
+     min-height: 20vh;
+     padding-top: 20vh;
+     background-color: #EFEFF1;
+ }
+
+ /* Subscribe container */
+
+ #subscribe-container {
+     background-color: #EFEFF1;
+     min-height: 20vh;
+     
+ }
+
+ .subscribe-row {
+     padding-top: 30vh;
+ }
+
+ 
+
+ #subscribe {
+     width: 100%;
+ }
+
+ 
+.btn-green-2 {
+    background-color: rgb(19, 80, 64);
+    border-style: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.sign-up-btn {
+    background-color: rgb(19, 80, 64);
+}
+
+
+
+
