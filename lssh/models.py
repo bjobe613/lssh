@@ -33,16 +33,25 @@ class Furniture(db.Model):
     reservations = db.relationship('FurnitureReservation', backref = 'furnitureIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
 
-class FurniturePictures(db.Model): 
+
+    def getSinglePictureName(self):
+        piclist = self.pictures
+        if len(piclist) >= 1:
+            pic = piclist[0].pictureName
+        else :
+            pic = "default.jpg"
+        return pic
+
+class FurniturePictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
-    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
+    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber'))
 
 class FurnitureReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)
     liuID = db.Column(db.String(8), nullable = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
+    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber'))
 
 class Seller(db.Model): # will be ralated to furniture
     sellerID = db.Column(db.Integer, primary_key = True)
@@ -50,7 +59,7 @@ class Seller(db.Model): # will be ralated to furniture
     phone = db.Column(db.String(15), nullable = True)
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
-    furnitures = db.relationship('Furniture', backref = 'sellerOfFurniture') 
+    furnitures = db.relationship('Furniture', backref = 'sellerOfFurniture')
 
 class Blacklist(db.Model):
     #listID = db.Column(db.Integer, primary_key = True)
@@ -66,10 +75,10 @@ class News(db.Model):
     text = db.Column(db.Text, nullable = False)
     pictures = db.relationship('NewsPictures', backref = 'news')
 
-class NewsPictures(db.Model): 
+class NewsPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
-    newsID = db.Column(db.DateTime, db.ForeignKey('news.date')) 
+    newsID = db.Column(db.DateTime, db.ForeignKey('news.date'))
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
@@ -99,10 +108,10 @@ class HandInRequest(db.Model):
     price = db.Column(db.Integer, nullable = True) #should we make this a relation?
     category = db.Column(db.String, nullable = True)#should this be here??
 
-'''class HIRequestPictures(db.Model): 
+'''class HIRequestPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
-    requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID')) 
+    requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID'))
 '''
 
 
@@ -125,7 +134,7 @@ def fillTestDB():
     furn2res1 = FurnitureReservation(liuID = 'asdfg123', furnitureIDReservation = furn2)
     furn3res1 = FurnitureReservation(liuID = 'jkler678', furnitureIDReservation = furn3)
     furn3res2 = FurnitureReservation(liuID = 'qwert456', furnitureIDReservation = furn3)
-    
+
     seller1 = Seller(liuID = 'LSSH')
     seller1.furnitures.append(furn1)
     seller1.furnitures.append(furn2)

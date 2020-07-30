@@ -103,4 +103,15 @@
 
       </div>
     </div>
+    
+
+    {% for x in furnitures %}
+
+    <div>
+        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
+        <h3>Name: {{x.name}}</h3>
+        <p>Price: {{x.price}} SEK</p>
+    </div>
+
+    {% endfor %}
 {% endblock content %}
