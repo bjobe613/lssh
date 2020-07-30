@@ -1,4 +1,8 @@
 
+#filter-categories-wrapper {
+  margin-left: 20px;
+}
+
 #catalog-wrapper {
   background-color: rgb(250,250,250);
   width: 100%;

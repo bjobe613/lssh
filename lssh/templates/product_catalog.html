@@ -14,104 +14,76 @@
       <h2>
         Filter
       </h2>
-      <ul>
-        <li>
-          placeholder1
-        </li>
-        <li>
-          placeholder2
-        </li>
-        <li>
-          placeholder3
-        </li>
-        <li>
-          placeholder4
-        </li>
-      </ul>
+      <div id="filter-categories-wrapper">
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Category">
+            Category
+          </a>
+          <div class="collapse" id="collapse-Category">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Color">
+            Color
+          </a>
+          <div class="collapse" id="collapse-Color">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Condition">
+            Condition
+          </a>
+          <div class="collapse" id="collapse-Condition">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Payment">
+            Payment
+          </a>
+          <div class="collapse" id="collapse-Payment">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Availability">
+            Availability
+          </a>
+          <div class="collapse" id="collapse-Availability">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+      </div>
     </div>
     <div id="catalog-wrapper">
-      <div class="product-card">
-        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
-        <div class="product-card-text">
-          <h5 class="h5-card">
-            Title
-          </h5>
-          <p>
-            Short desc.
-          </p>
-          <p class="product-card-price">
-            339,00 SEK
-          </p>
-          <p class="product-card-status">
-            Status
-          </p>
-        </div>
-
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
-        <div class="product-card-text">
-          <h5 class="h5-card">
-            Title
-          </h5>
-          <p>
-            Short desc.
-          </p>
-          <p class="product-card-price">
-            339,00 SEK
-          </p>
-          <p class="product-card-status">
-            Status
-          </p>
-        </div>
-
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
-        <div class="product-card-text">
-          <h5 class="h5-card">
-            Title
-          </h5>
-          <p>
-            Short desc.
-          </p>
-          <p class="product-card-price">
-            339,00 SEK
-          </p>
-          <p class="product-card-status">
-            Status
-          </p>
-        </div>
-
-      </div>
-      <div class="product-card">
-        <img class="product-img" src="{{ url_for('static', filename = '/pictures/placeholder.png') }}" />
-        <div class="product-card-text">
-          <h5 class="h5-card">
-            Title
-          </h5>
-          <p>
-            Short desc.
-          </p>
-          <p class="product-card-price">
-            339,00 SEK
-          </p>
-          <p class="product-card-status">
-            Status
-          </p>
-        </div>
-
-      </div>
-    </div>
-    
-
     {% for x in furnitures %}
-
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
-    </div>
-
+      <div class="product-card">
+        <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+        <div class="product-card-text">
+          <h5 class="h5-card">
+            {{x.name}}
+          </h5>
+          <p>
+            Short desc.
+          </p>
+          <p class="product-card-price">
+            {{x.price}} SEK
+          </p>
+          <p class="product-card-status">
+            Status
+          </p>
+        </div>
+      </div>
     {% endfor %}
+    </div>
 {% endblock content %}

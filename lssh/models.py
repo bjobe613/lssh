@@ -5,6 +5,7 @@ from lssh import app
 
 db = SQLAlchemy(app)
 
+
 # Models can be defines here, like this:
 """
 class Car(db.Model):
@@ -158,3 +159,6 @@ def test():
     pic.pictureName = str(pic.pictureID) + ".jpg"
     db.session.commit()
 '''
+
+resetDB()
+fillTestDB()
