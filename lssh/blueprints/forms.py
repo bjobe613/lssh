@@ -29,7 +29,7 @@ class FilterForm(FlaskForm):
         category11 = BooleanField('Outdoor furniture', description = "Outdoor furniture")
         category12 = BooleanField('Miscellaneous', description = "Micellaneous")
         ###Colors###
-        color = SelectField('Color', choices = [(bl, black), (wh, white), (re, red), (br, brown)]) #might have to change this to boolean fields
+        color = SelectField('Color', choices = [('black'), ('white'), ('red'), ('brown')]) #might have to change this to boolean fields
         ###Condition###
 
         ###Payment###
@@ -37,6 +37,6 @@ class FilterForm(FlaskForm):
         ###Availability###
 
         ###Sort By###
-
+        sortby = SelectField('Sort by', choices = [('Most recent'), ('Less recent'), ('Most expensive'), ('Less expensive')])
         ###The sort button###
         sortButton = SubmitField('Sort')
