@@ -35,7 +35,7 @@ class Furniture(db.Model):
 
     def getSinglePictureName(self):
         piclist = self.pictures
-        if len(piclist) >= 1:
+        if len(piclist) >= 1: 
             pic = piclist[0].pictureName
         else :
             pic = "default.jpg"
