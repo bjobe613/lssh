@@ -68,11 +68,15 @@
     <div id="catalog-wrapper">
     {% for x in furnitures %}
       <div class="product-card">
-        <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+        <a href="product/{{x.articleNumber}}">
+          <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+        </a>
         <div class="product-card-text">
-          <h5 class="h5-card">
-            {{x.name}}
-          </h5>
+          <a href="product/{{x.articleNumber}}">
+            <h5 class="h5-card">
+              {{x.name}}
+            </h5>
+          </a>
           <p>
             Short desc.
           </p>
