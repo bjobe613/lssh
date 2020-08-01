@@ -94,7 +94,7 @@
               <div class="carousel-item active">
                 <img src="{{ url_for('static', filename = '/pictures/two-vases-on-table-842950 (1).jpg') }}" id="carousel-picture" alt="Los Angeles">
                 <div class="carousel-caption">
-                  <p>NEW IN</p>
+                  <p id="p-category-news">NEW IN</p>
                   <h2>Vases and towels</h2>
                   <button class="btn btn-primary btn-white" type="submit">READ MORE</button>
                 </div>
@@ -136,7 +136,7 @@
         <div class="col-sm-5"></div>
         <div class="col-sm-2">
           <div class="row">
-            <div class="col-sm-6 text-center col-border">
+            <div class="col-sm-6 text-center">
               <p class="p-white">SELLER</p>
             </div>
             <div class="col-sm-6">
@@ -149,15 +149,11 @@
       </div>
 
       <div class="row works-hr green-bg">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 pb-5">
           <hr class="white-hr-thin">
         </div>
-        <div class="col-sm-1"></div>
-      </div>
-
-      <div class="row space-green">
-
+        <div class="col-sm-2"></div>
       </div>
 
       <div class="row works-icons">
@@ -235,37 +231,30 @@
     </div>
 
     <div class="container-fluid goal-container">
+      
       <div class="row space-goal"></div>
 
       <div class="row pb-5">
         <div class="col-sm-2"></div>
         <div class="col-sm-4 h-100">
-          <a href="">
+          
             <img src="{{ url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg') }}" class="img-fluid image" alt="Responsive image">
-            <div class="bottom-left">
-              <h2>About</h2>
-            </div>
-          </a>
-   
+     
          
         </div>
         <div class="col-sm-4">
           <div class="row pb-2 h-50">
             
-            <a href="" class="col img-1 image">
+            <div class="col img-1 image">
               <!--<img src="{{ url_for('static', filename = '/pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') }}" class="img-fluid" alt="Responsive image">-->
-              <div class="bottom-left">
-                <h2>Shop</h2>
-              </div>
-            </a>
+              
+            </div>
           </div>
             
           <div class="row pt-2 h-50">
             <div class="col img-2 image">
               <!--<img src="{{ url_for('static', filename = '/pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') }}" class="img-fluid" alt="Responsive image">-->
-              <div class="bottom-left">
-                <h2>Contact</h2>
-              </div>
+           
             </div>
             
           </div>
@@ -273,30 +262,16 @@
         <div class="col-sm-2"></div>
       </div>
 
-      <div class="row space-goal"></div>
-
-      <div class="row pt-5 pb-5 mb-5">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8 text-center">
-          <h1 id="h1-goal">The purpose of LSSh is to create a flexible solution for secondhand sales through both a
-            website and easily accessible premises.
-          </h1>
-          <br>
-          <hr id="goal-hr">
-        </div>
-        <div class="col-sm-2"></div>
-      </div>
-
-      <div class="row space-goal"></div>
+      <div class="row space-goal pb-5"></div>
 
     </div>
 
-    <!--
+    
 
     <div class="container-fluid about-container">
       <div class="row about-row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-11">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-6 align-self-center">
               <p id="learn-more-p">LEARN MORE</p>
@@ -331,8 +306,28 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-2"></div>
       </div>
-    </div>-->
+    </div>
+
+    <div class="container-fluid" id="purpose-container">
+     
+      <div id="purpose-space" class="row"></div>
+
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center">
+          <h1 id="h1-goal">The purpose of LSSh is to create a flexible solution for secondhand sales through both a
+            website and easily accessible premises.
+          </h1>
+          <br>
+          <hr id="goal-hr">
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+
+      <div class="row space-goal"></div>
+    </div>
 
     <div class="container-fluid" id="subscribe-container">
       <div class="row subscribe-row">
@@ -347,23 +342,29 @@
       <div class="row">
         <div class="col-2"></div>
         <div class="col-6">
-          <form>
-            <input type="text" id="subscribe" name="username">
-          </form>
+          <div class="input-group input-group-sm mb-1">
+           
+            <input id="input-border-bottom" type="text" class="form-control" placeholder="Email adress..." aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          </div>
         </div>
-        <div class="col-2 pl-4 text-center sign-up-btn">
-          SIGN UP
-        </div>
+        <a href="" class="col-12 col-sm-2 text-center sign-up-btn my-auto">
+          <span>SIGN UP</span>
+        </a>
         <div class="col-2"></div>
       </div>
 
     </div>
 
     <div class="container-fluid" id="collaboration-container">
-      <div class="row pb-5">
+      <div class="row">
         <div class="col-12 text-center">
-          <h3>A collaboration between</h3>
-          
+          <h3>A collaboration with</h3>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <img src="{{ url_for('static', filename = '/pictures/navitas-black.png') }}" id="navitas-logo" class="img-fluid image" alt="Responsive image">
         </div>
       </div>
     </div>

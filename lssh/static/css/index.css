@@ -81,6 +81,13 @@
     padding-right: 0.3rem;
     padding-left: 0.4rem;
     padding-top: 0.3rem;
+    
+    
+}
+
+.fa-facebook:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .fa-instagram {
@@ -88,6 +95,12 @@
     color: black;
     margin-left: 1rem;
     font-weight: 500;
+    
+}
+
+.fa-instagram:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
 .fa-linkedin {
@@ -99,6 +112,11 @@
     padding-left: 0.3rem;
     padding-top: 0.3rem;
   }
+
+.fa-linkedin:hover {
+    text-decoration: none;
+    color: white;
+}
 
 /* Desktop media queries section 1 */
 
@@ -127,6 +145,21 @@
         border-top: 20px solid rgb(146, 143, 143);
     }
 
+    
+  .white-hr {
+    width: 40%;
+    /*border: 1px solid white;*/
+    border: none;
+    height: 1px;
+    background-color: white;
+  }
+
+  .white-hr-thin {
+    /*border: 0.2px solid white;*/
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.267);
+  }
    
     
   }
@@ -161,6 +194,10 @@
     
   }
 
+  #p-category-news {
+      margin-bottom: 0px;
+  }
+
 
   /* How it works container*/
   .works-container {
@@ -169,11 +206,6 @@
 
   .works-heading {
       padding-top: 2.2rem;
-  }
-
-  .works-hr{
-      padding-top: 1rem;
-      
   }
 
   .row-space {
@@ -195,15 +227,6 @@
       width: 100px;
   }
 
-  .white-hr {
-    width: 40%;
-    border: 1px solid white;
-  }
-
-  .white-hr-thin {
-    border: 0.2px solid white;
-    
-  }
 
   .space-green {
       height: 5rem;
@@ -279,7 +302,7 @@
   }
 
  .about-container {
-    min-height: 100vh;
+    min-height: 40vh;
  }
 
  .about-row {
@@ -300,36 +323,34 @@
    
  }
 
- .image:hover {
-    transition: 0.5s;
-    opacity: 0.5;
-    
+ /* Purpose container */ 
+
+#purpose-space {
+    min-height: 30vh;
+}
+
+ #purpose-container {
+     min-height: 80vh;
  }
 
- /* Bottom left text */
-.bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-    padding-left: 1rem;
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-  }
 
  /* Collaboration container */
 
  #collaboration-container {
      min-height: 20vh;
      padding-top: 20vh;
-     background-color: #EFEFF1;
+     background-color: rgb(249, 249, 249);
  }
+
+#navitas-logo {
+    height: 6rem;
+    width: auto;
+}
 
  /* Subscribe container */
 
  #subscribe-container {
-     background-color: #EFEFF1;
+     background-color: rgb(249, 249, 249);
      min-height: 20vh;
      
  }
@@ -356,8 +377,37 @@
 
 .sign-up-btn {
     background-color: rgb(19, 80, 64);
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    color: white;
+    border-radius: 0.1rem;
+}
+
+.sign-up-btn:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 90%;
 }
 
 
+#input-border-bottom {
+    background-color: rgba(255, 255, 255, 0); 
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    outline: none;
+    box-shadow:none !important;
+    border-radius: 0;
+    font-size: 1rem;
+    
+    
+}
+
+#input-border-bottom:focus {
+   
+        border-color: rgba(19, 80, 64, 0.438);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+      
+}
 
 
