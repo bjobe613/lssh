@@ -2,19 +2,60 @@
 
 {% block more_head %}
     <!--Additional head-->
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_single_view.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
     <p>
-        product single
+        products / {{furniture.category}} / {{furniture.name}}
     </p>
-    <div>
+    <h1>
+      {{furniture.name}}
+    </h1>
+    <p>
+      <b>Price:</b> {{furniture.price}} SEK
+    </p>
+    <p id="product-status">
+      Status
+    </p>
+    <!--Swiper slidewhow-->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
         {% for x in furniture.pictures %}
-        <img src="{{url_for('static', filename='pictures/' + x.pictureName)}}" width="200" height="200">
+          <div class="swiper-slide">
+            <img src="{{url_for('static', filename='pictures/' + x.pictureName)}}" width="200" height="200">
+          </div>
         {% endfor %}
-        <h3>Name: {{furniture.name}}</h3>
-        <p>Price: {{furniture.price}} SEK</p>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
-    
+    <div id="product-info-wrapper">
+      <p>
+        <b>Color:</b> YET TO BE ADDED
+      </p>
+      <p>
+        <b>Condition:</b> {{furniture.condition}}
+      </p>
+      <p>
+        <b>Payment method:</b> {{furniture.paymentMethod}}
+      </p>
+      <p>
+        <b>Added:</b> {{furniture.pubDate}}
+      </p>
+      <p>
+        <b>Measurements:</b> H: {{furniture.height}}, W: {{furniture.width}}, D: {{furniture.depth}}
+      </p>
+
+    </div>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.js" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/product_single_view.js') }} " type="text/javascript"></script>
 {% endblock content %}
