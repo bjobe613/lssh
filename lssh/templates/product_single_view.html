@@ -9,50 +9,86 @@
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
+    <p id="navigation-history">
         products / {{furniture.category}} / {{furniture.name}}
     </p>
-    <h1>
-      {{furniture.name}}
-    </h1>
-    <p>
-      <b>Price:</b> {{furniture.price}} SEK
-    </p>
-    <p id="product-status">
-      Status
-    </p>
-    <!--Swiper slidewhow-->
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        {% for x in furniture.pictures %}
-          <div class="swiper-slide">
-            <img src="{{url_for('static', filename='pictures/' + x.pictureName)}}" width="200" height="200">
-          </div>
-        {% endfor %}
+    <div id="product-wrapper">
+      <!--MOBILE VERSION-->
+      <div id="product-header-container" class="mobile">
+        <h1>
+          {{furniture.name}}
+        </h1>
+        <div class="spacing-line">
+        </div>
+        <p>
+          <b>Price:</b> {{furniture.price}} SEK
+        </p>
+        <p class="product-status">
+          Status
+        </p>
       </div>
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
-      <!-- Add Arrows -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-    <div id="product-info-wrapper">
-      <p>
-        <b>Color:</b> YET TO BE ADDED
-      </p>
-      <p>
-        <b>Condition:</b> {{furniture.condition}}
-      </p>
-      <p>
-        <b>Payment method:</b> {{furniture.paymentMethod}}
-      </p>
-      <p>
-        <b>Added:</b> {{furniture.pubDate}}
-      </p>
-      <p>
-        <b>Measurements:</b> H: {{furniture.height}}, W: {{furniture.width}}, D: {{furniture.depth}}
-      </p>
+      <!--Swiper slidewhow-->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for x in furniture.pictures %}
+            <div class="swiper-slide">
+              <img class="img-fluid" src="{{url_for('static', filename='pictures/' + x.pictureName)}}">
+            </div>
+          {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-black"></div>
+        <div class="swiper-button-prev swiper-button-black"></div>
+      </div>
+      <div id="product-info-wrapper">
+        <!--DESKTOP-->
+        <div class="desktop">
+          <h1>
+            {{furniture.name}}
+          </h1>
+          <div class="spacing-line">
+          </div>
+          <p class="product-status">
+            Status
+          </p>
+          <p>
+            <b>Price:</b> {{furniture.price}} SEK
+          </p>
 
+        </div>
+        <p>
+          <b>Color:</b> YET TO BE ADDED
+        </p>
+        <p>
+          <b>Condition:</b> {{furniture.condition}}
+        </p>
+        <p>
+          <b>Payment method:</b> {{furniture.paymentMethod}}
+        </p>
+        <p>
+          <b>Added:</b> {{furniture.pubDate}}
+        </p>
+        <p>
+          <b>Measurements:</b> H: {{furniture.height}}, W: {{furniture.width}}, D: {{furniture.depth}}
+        </p>
+
+        <input type="button" value="Reserve">
+      </div>
+    </div>
+    <div id="uncertain-container">
+      <h2>
+        Is something uncertain?
+      </h2>
+      <div class="spacing-line">
+      </div>
+      <p>
+        Please send us an email at
+        <a><b>
+          email@email.com
+        </b></a>
+      </p>
     </div>
 
 

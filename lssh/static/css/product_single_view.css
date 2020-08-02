@@ -1,8 +1,14 @@
-#product-status {
-  color: lightgreen;
-  float: right;
-  margin-top: -40px;
-  margin-right: 20px
+#product-header-container {
+  width: 80%;
+  margin: auto;
+}
+
+.spacing-line {
+  width: 100%;
+  height: 5px;
+  background-color: lightgreen;
+  margin-top: -5px;
+  margin-bottom: 10px;
 }
 
 #product-info-wrapper {
@@ -11,13 +17,6 @@
 }
 
 /*Sldieshow*/
-.swiper-container {
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -38,10 +37,66 @@
   align-items: center;
 }
 
-@media all and (max-width: 576px) {
+#uncertain-container {
+  margin-top: 200px;
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
+  display: block;
 }
 
-@media all and (min-width: 576px) and (max-width: 992px) {
+@media all and (max-width: 576px) {
+  #navigation-history {
+    margin-left: 10%;
+  }
+
+  .desktop {
+    display: none;
+    position: absolute;
+  }
+
+  .swiper-container {
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-status {
+    color: lightgreen;
+    float: right;
+    margin-top: -40px;
+    margin-right: 20px
+  }
+}
+
+@media all and (min-width: 576px) {
+  #navigation-history {
+    margin-left: 3%;
+  }
+
+  .mobile {
+    display: none;
+    position: absolute;
+  }
+
+  .product-status {
+    color: lightgreen;
+  }
+
+  .swiper-container {
+    width: 45%;
+    height: 100%;
+    margin-left: 3%;
+    display: inline-block;
+  }
+
+  #product-info-wrapper {
+    width: 45%;
+    margin-right: 3%;
+    float: right;
+    display: inline-block;
+  }
 }
 
 @media all and (min-width: 992px) {
