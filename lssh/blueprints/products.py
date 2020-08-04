@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
-from lssh.blueprints.forms import FilterForm
+#from lssh.blueprints.forms import FilterForm
 
 # The database is accessed in this manner from blueprints
-from lssh.models import db, Furniture, FurniturePictures  #, other objects defined in models
+from lssh.models import db, Product, ProductPictures  #, other objects defined in models
 products = Blueprint('products', __name__, url_prefix = '/products')
 
 # Routes should be added here
@@ -15,13 +15,10 @@ products = Blueprint('products', __name__, url_prefix = '/products')
 
 @products.route("/catalog", methods=['GET', 'POST'])
 def catalog():
-    furn = Furniture.query.filter(Furniture.archived == False).all()
-    form = FilterForm()
-    if form.sortButton.data:
-        print('filter')
-    return render_template('product_catalog.html', furnitures = furn, filterform = form)
+    prod = Product.query.filter(Product.status == "Available" or Product.status == "Reserved").all()
+    return render_template('product_catalog.html', products = prod)
 
 @products.route("/product/<int:x>", methods=['GET'])
 def product(x):
-    furn = Furniture.query.filter(Furniture.articleNumber == x).first()
-    return render_template('product_single_view.html', furniture = furn)
+    prod = Product.query.filter(Product.articleNumber == x).first()
+    return render_template('product_single_view.html', product = prod)

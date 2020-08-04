@@ -3,7 +3,7 @@ from flask_wtf.file import FileField, FileAllowed #will be used later to submit 
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
-class FilterForm(FlaskForm):
+'''class FilterForm(FlaskForm):
         ###Categories and Types###
         category1 = BooleanField('Chairs', description = "Chairs") 
         category2 = BooleanField('Armchairs', description = "Armchairs") 
@@ -40,3 +40,5 @@ class FilterForm(FlaskForm):
         sortby = SelectField('Sort by', choices = [('Most recent'), ('Less recent'), ('Most expensive'), ('Less expensive')])
         ###The sort button###
         sortButton = SubmitField('Sort')
+        '''
+        
