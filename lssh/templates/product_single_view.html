@@ -9,4 +9,12 @@
     <p>
         product single
     </p>
+    <div>
+        {% for x in furniture.pictures %}
+        <img src="{{url_for('static', filename='pictures/' + x.pictureName)}}" width="200" height="200">
+        {% endfor %}
+        <h3>Name: {{furniture.name}}</h3>
+        <p>Price: {{furniture.price}} SEK</p>
+    </div>
+    
 {% endblock content %}
