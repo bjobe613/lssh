@@ -15,7 +15,7 @@ products = Blueprint('products', __name__, url_prefix = '/products')
 
 @products.route("/catalog", methods=['GET', 'POST'])
 def catalog():
-    prod = Product.query.filter(Product.status == "Available" or Product.status == "Reserved").all()
+    prod = Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()
     return render_template('product_catalog.html', products = prod)
 
 @products.route("/product/<int:x>", methods=['GET'])

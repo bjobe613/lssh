@@ -20,7 +20,7 @@ class Product(db.Model):
     articleNumber = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     price = db.Column(db.Integer, nullable = False)
-    pubDate = db.Column(db.DateTime.date,server_default = func.now())
+    pubDate = db.Column(db.DateTime,server_default = func.now())
     category = db.Column(db.Integer, nullable = False, default = 0)
     subcategory = db.Column(db.Integer, nullable = True, default = 0)
     color = db.Column(db.String, default = "None")
