@@ -43,6 +43,6 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
         '''
 
 class SubscribeToMailForm(FlaskForm):
-        email = StringField('Email', validators=[DataRequired()])
+        email = StringField('Email', validators=[Email(), DataRequired()])
         submitButton = SubmitField('Subscribe')
         
