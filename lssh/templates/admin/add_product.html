@@ -3,6 +3,7 @@
 
 {% block more_head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_product.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_product.js') }}"></script>
 {% endblock more_head %}
 
 {% block content %}
@@ -15,45 +16,11 @@
               <input type="text" class="form-control" id="add-product-title" placeholder="Title">
             </div>
             <div class="border picture-area">
-                <label for="add-product-pictures">Pictures</label>
-            <input type="file" class="form-control-file" id="add-product-pictures" multiple="true" accept="image/png, image/jpeg">
+                <label for="add-product-picture-picker">Pictures</label>
+            <input type="file" class="form-control-file" id="add-product-picture-picker" multiple="true" accept="image/png, image/jpeg">
             <label for="add-product-picture-viewer">Chosen pictures</label>
             <div class="card-deck add-product-card-holder" id="add-product-picture-viewer">
-                <div class="card add-product-card">
-                    <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
-                    <div class="card-body">
-                        <h5>Placeholder.png</h5>
-                    </div>
-                    <div class="card-footer add-product-card-footer">
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-times"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="card add-product-card">
-                    <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
-                    <div class="card-body">
-                        <h5>Placeholder.png</h5>
-                    </div>
-                    <div class="card-footer add-product-card-footer">
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-times"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <div class="card add-product-card">
-                    <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
-                    <div class="card-body">
-                        <h5>Placeholder.png</h5>
-                    </div>
-                    <div class="card-footer add-product-card-footer">
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-times"></i></button>
-                        <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-right"></i></button>
-                    </div>
-                </div>
+                
             </div>
 
             </div>
@@ -88,3 +55,19 @@
         </form>
     </div>
 {% endblock content %}
+
+{% block templates %}
+    <template id="empty-files-card">
+        <div class="card add-product-card">
+            <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
+            <div class="card-body">
+                <h5>No pictures chosen</h5>
+            </div>
+            <div class="card-footer add-product-card-footer">
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-left"></i></button>
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-times"></i></button>
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </template>
+{% endblock templates %}
