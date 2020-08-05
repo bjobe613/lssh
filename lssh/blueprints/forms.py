@@ -41,4 +41,8 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
         ###The sort button###
         sortButton = SubmitField('Sort')
         '''
+
+class SubscribeToMailForm(FlaskForm):
+        email = StringField('Email', validators=[DataRequired()])
+        submitButton = SubmitField('Subscribe')
         

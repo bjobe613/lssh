@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template
-#from lssh.blueprints.forms import FilterForm
 
 # The database is accessed in this manner from blueprints
 from lssh.models import db, Product, ProductPictures  #, other objects defined in models

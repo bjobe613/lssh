@@ -37,16 +37,20 @@ class Product(db.Model):
 
     def getSinglePictureName(self):
         piclist = self.pictures
-        if len(piclist) >= 1: 
-            pic = piclist[0].pictureName
-        else :
+        if not piclist:
             pic = "default.jpg"
+        else :
+            pic = piclist[0].pictureName
         return pic
 
 class ProductPictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
     productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber')) 
+
+    def renamePictureAsID(self):
+        self.pictureName = str(self.pictureID) + '.jpg'
+        db.session.commit()
 
 class ProductReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)
@@ -68,7 +72,7 @@ class Blacklist(db.Model):
     numOfOffences = db.Column(db.Integer, default = 1)
 
 class Newsletter(db.Model):
-    liuID = db.Column(db.String(8), primary_key = True)
+    email = db.Column(db.String, primary_key = True)
 
 class News(db.Model): #has to be reworked into files, not a model. 
     date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
@@ -144,12 +148,14 @@ def fillTestDB():
 
     bl1 = Blacklist(liuID = 'uiojk890')
 
-    nl1 = Newsletter(liuID = 'tyuvb456')
+    nl1 = Newsletter(email = 'tyuvb456@student.liu.se')
 
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
                         prod3res1, prod3res2, seller1, seller2, bl1, nl1])
     db.session.commit()
+
+    prod1pic2.renamePictureAsID()
 
     print("Filled the database")
 
