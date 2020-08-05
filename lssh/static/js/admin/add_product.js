@@ -1,27 +1,33 @@
+/* Used for storing files outside of the file list. Is updated each time the file selector is used. */
+var fileList = [];
+
 $('document').ready(function(){
     document.getElementById("add-product-picture-viewer").innerHTML = document.getElementById("empty-files-card").innerHTML;
 
     const input = document.getElementById("add-product-picture-picker");
 
-    input.addEventListener('change', updateImageViewer);
+    input.addEventListener('change', function(){
+        fileList = fileList.concat(Array.from(document.getElementById("add-product-picture-picker").files));
+        document.getElementById("add-product-picture-picker").value = "";
+        updateImageViewer();
+
+    });
 })
 
 function updateImageViewer() {
     const viewer = document.getElementById("add-product-picture-viewer");
-    const input = document.getElementById("add-product-picture-picker");
-    const files = input.files;
-    if (files.length == 0) {
+
+    if (fileList.length == 0) {
         document.getElementById("add-product-picture-picker").innerHTML = document.getElementById("empty-files-card").innerHTML;
     } else {
         viewer.innerHTML = "";
-        for(var i = 0; i<files.length; ++i) {
-            viewer.innerHTML += generateImageCard(files.item(i));
+        for(var i = 0; i<fileList.length; ++i) {
+            viewer.innerHTML += generateImageCard(fileList[i]);
         }
     }
 }
 
 function generateImageCard(file) {
-
     var cardHtml = `
     <div class="card add-product-card">
         <img class="card-img-top add-product-card-img" src="${URL.createObjectURL(file)}">
@@ -36,4 +42,16 @@ function generateImageCard(file) {
     </div>
     `;
     return cardHtml;
+}
+
+function moveFileUp(index) {
+
+}
+
+function moveFileDown(index) {
+
+}
+
+function removeFile(index) {
+
 }
