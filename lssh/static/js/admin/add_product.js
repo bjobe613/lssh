@@ -22,12 +22,12 @@ function updateImageViewer() {
     } else {
         viewer.innerHTML = "";
         for(var i = 0; i<fileList.length; ++i) {
-            viewer.innerHTML += generateImageCard(fileList[i]);
+            viewer.innerHTML += generateImageCard(fileList[i], i);
         }
     }
 }
 
-function generateImageCard(file) {
+function generateImageCard(file, index) {
     var cardHtml = `
     <div class="card add-product-card">
         <img class="card-img-top add-product-card-img" src="${URL.createObjectURL(file)}">
@@ -35,9 +35,9 @@ function generateImageCard(file) {
             <h5>${file.name}</h5>
         </div>
         <div class="card-footer add-product-card-footer">
-            <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-left"></i></button>
-            <button class="btn btn-light add-product-card-button"><i class="fa fa-times"></i></button>
-            <button class="btn btn-light add-product-card-button"><i class="fa fa-arrow-right"></i></button>
+            <button class="btn btn-light add-product-card-button" onClick="moveFileDown(${index}); updateImageViewer();" type="button"><i class="fa fa-arrow-left"></i></button>
+            <button class="btn btn-light add-product-card-button" onClick="removeFile(${index}); updateImageViewer();" type="button"><i class="fa fa-times"></i></button>
+            <button class="btn btn-light add-product-card-button" onClick="moveFileUp(${index}); updateImageViewer();" type="button"><i class="fa fa-arrow-right"></i></button>
         </div>
     </div>
     `;
@@ -45,13 +45,23 @@ function generateImageCard(file) {
 }
 
 function moveFileUp(index) {
-
+    if(index >= 0 && index < fileList.length) {
+        var temp = fileList[index + 1];
+        fileList[index+1] = fileList[index];
+        fileList[index] = temp;
+    }
 }
 
 function moveFileDown(index) {
-
+    if(index > 0 && index <= fileList.length) {
+        var temp = fileList[index - 1];
+        fileList[index - 1] = fileList[index];
+        fileList[index] = temp;
+    }
 }
 
 function removeFile(index) {
-
+    if(index >= 0 && index <= fileList.length) {
+        fileList.splice(index, index)
+    }
 }
