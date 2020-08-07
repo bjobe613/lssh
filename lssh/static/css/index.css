@@ -19,14 +19,14 @@
 
 .btn-green {
     width: 70%;
-    background-color: rgb(19, 80, 64);
+    background-color: #09433A;
     border-style: none;
     padding: 0.5rem;
     font-size: 1rem;
 }
 
 .btn-green:active {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433A;
     border-style: none;
 }
 
@@ -62,13 +62,23 @@
     padding-top: 5vh;
 }
 
+.shifted-index {
+    background-color: #E6E7E9;  
+    display: inline-flex;
+    margin: 0px;
+    padding: 0;
+ 
+}
+
 .index-container {
-    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
+    margin-top: 5rem;
+    background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 90vh;
+    
 }
 
 #slogan-text {
@@ -79,7 +89,7 @@
 #slogan-text-bold {
     font-size: 3.2rem;
     font-weight: 500 !important;
-    color: rgb(19, 80, 64);
+    color: #09433A;
 }
 
 .row-socialmedia {
@@ -140,7 +150,7 @@
         padding-top: 5vh;
     }
     .index-container {
-        background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
+        background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -220,11 +230,11 @@
 }
 
 .green-bg {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433A;
 }
 
 .works-icons {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433A;
     padding-bottom: 3rem;
 }
 
@@ -236,7 +246,7 @@
 
 .space-green {
     height: 5rem;
-    background-color: rgb(19, 80, 64);
+    background-color: #09433A;
 }
 
 .p-text {
