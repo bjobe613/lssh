@@ -9,4 +9,31 @@
     <p>
         Catalog
     </p>
+    <form method= "POST">
+
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+        {% for field in filterform %}
+        <div>
+            {{ field}}
+            {{ field.label}}
+        </div> 
+        {% endfor %}
+    
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    </form>
+    {% for x in products %}
+    
+    <div>
+        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
+        <h3>Name: {{x.name}}</h3>
+        <p>Price: {{x.price}} SEK</p>
+    </div>
+
+    {% endfor %}
 {% endblock content %}

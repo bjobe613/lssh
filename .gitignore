@@ -1,5 +1,5 @@
 # Project specific files
-*.db
+database.db
 .vscode/
 *~
 
@@ -138,3 +138,8 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+lssh/database.db
+lssh/static/pictures/2.jpg
+lssh/static/pictures/3.jpg
+lssh/static/pictures/default.jpg
+lssh/database.db
