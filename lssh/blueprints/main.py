@@ -1,11 +1,20 @@
 from flask import Blueprint, render_template
-from lssh.models import db
+from lssh.models import db, Newsletter
+from lssh.blueprints.forms import SubscribeToMailForm 
 
 main = Blueprint('main', __name__, url_prefix = '/')
 
-@main.route("/")
+@main.route("/", methods = ['GET', 'POST'])
 def startup():
-    return render_template('index.html')
+    form = SubscribeToMailForm() 
+    if form.validate_on_submit():
+        exist = Newsletter.query.filter(Newsletter.email == form.email.data).first()
+        if not exist:
+            sub = Newsletter(email = form.email.data)
+            db.session.add(sub)
+            db.session.commit()
+
+    return render_template('index.html', emailSubForm = form)
 
 #@main.route("/home")
 #def home():
