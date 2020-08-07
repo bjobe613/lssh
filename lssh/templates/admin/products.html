@@ -34,6 +34,9 @@
                 </div>
             </div>
             <div class="col-md-9">
+                {% if optional_table_header %}
+                <h1>{{optional_table_header}}</h1>
+                {% endif %}
                 <div class="row border-bottom adm-prod-table-head">
                     <div class="col-2 adm-prod-tablecell adm-prod-imgcol"><h2><i class="fa fa-picture-o" aria-hidden="true"></i></h2></div>
                     <div class="col-2 adm-prod-tablecell"><h2>Name</h2></div>
@@ -79,3 +82,7 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/products.js') }}"></script>
+{% endblock scripts %}

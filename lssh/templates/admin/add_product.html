@@ -3,7 +3,6 @@
 
 {% block more_head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_product.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_product.js') }}"></script>
 {% endblock more_head %}
 
 {% block content %}
@@ -71,3 +70,7 @@
         </div>
     </template>
 {% endblock templates %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_product.js') }}"></script>
+{% endblock scripts %}
