@@ -30,9 +30,18 @@
     width: 70%;
     background-color: rgb(19, 80, 64);
     border-style: none;
-    padding: 0.8rem;
+    padding: 0.5rem;
     font-size: 1rem;
+}
 
+.btn-green:active {
+    background-color: rgb(19, 80, 64);
+    border-style: none;
+}
+
+.btn-green:focus {
+    background-color: rgb(19, 80, 64);
+    border-style: none;
 }
 
 .btn-white {
@@ -42,10 +51,7 @@
     border-style: none;
     padding: 0.8rem;
     font-size: 1rem;
-
 }
-
-
 
 .btn-green:hover {
     background-color: rgb(31, 110, 89);
@@ -200,6 +206,11 @@
 
 
   /* How it works container*/
+
+  .works-button {
+    cursor: pointer;
+  }
+
   .works-container {
     min-height: 100vh;
   }
@@ -241,6 +252,20 @@
     border-right: 1px solid rgb(182, 182, 182);
     height: 1rem;
     margin-top: 0.2rem;
+  }
+
+  #works-buyer {
+    display: none;
+  }
+
+  .works-button-activated {
+      color: white !important; 
+      font-weight: 500 !important;
+  }
+
+  .fluid-no-margin {
+      padding: 0;
+      margin: 0;
   }
 
   /* Goal container */

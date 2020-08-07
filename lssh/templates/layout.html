@@ -8,7 +8,7 @@
     <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
     <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
-    <script type="text/javascript" src="/static/js/layout.js"></script>
+    
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -33,7 +33,7 @@
         
     
         <!-- Navigation -->
-        <nav class="navbar  navbar-expand-lg navbar-light fixed-top">
+        <nav id="navbar" class="navbar  navbar-expand-lg navbar-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}" id="logotype" alt="Logotypee">
@@ -44,19 +44,19 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
+                        <li class="nav-item layout-mobile-center">
                             <a class="nav-link" href="{{ url_for('main.startup') }}">HOME</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item layout-mobile-center">
                             <a class="nav-link" href="{{ url_for('products.catalog') }}">SHOP</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item layout-mobile-center">
                             <a class="nav-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item layout-mobile-center">
                             <a class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item layout-mobile-center">
                             <a class="nav-link" href="{{ url_for('main.faq') }}">HELP</a>
                         </li>
 
@@ -74,8 +74,8 @@
     <footer class="page-footer">
     <div class="container-fluid">
         <div class="row pt-5 pb-3">
-            <div class="col-2"></div>
-            <div class="col-2">
+            <div class="col-md-2 col-sm-12 "></div>
+            <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                 <h4>ABOUT</h4>
                 <a class="a-grey" href=""> Our shop </a>
                 <br>
@@ -83,7 +83,7 @@
                 <br>
                 <a class="a-grey" href=""> How it works </a>
             </div>
-            <div class="col-2">
+            <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                 <h4>INFORMATION</h4>
                 <a class="a-grey" href=""> Cookies </a>
                 <br>
@@ -91,20 +91,20 @@
                 <br>
                 <a class="a-grey" href=""> Policy </a>
             </div>
-            <div class="col-2">
+            <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                 <h4>HELP</h4>
                 <a class="a-grey" href="">FAQ </a>
                 <br>
                 <a class="a-grey" href=""> Contact </a>
         
             </div>
-            <div class="col-2">
+            <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                 <h4>ADMIN</h4>
                 <a class="a-grey" href=""> Login worker </a>
                 <br>
                 <a class="a-grey" href=""> Login administrator </a>
             </div>
-            <div class="col-2"></div>
+            <div class="col-md-2 col-sm-12"></div>
         </div>
 
         <div class="row justify-content-center align-items-center pt-3">
@@ -125,5 +125,7 @@
   
   
 </body>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/layout.js') }}"></script>
 
 </html>
