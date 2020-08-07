@@ -19,6 +19,29 @@ def admin_products():
     
     return render_template('admin/products.html', categories=cat, products=products)
 
+@admin.route("/products/search/<int:articleNumber>/")
+def admin_products_search(articleNumber):
+    products = Product.query.filter_by(articleNumber=articleNumber)
+
+    cat = []
+
+    for prod in products:
+        if cat.count(prod.category) == 0:
+            cat.append({"name": prod.category})
+
+    return render_template('admin/products.html', categories=cat, products=products, optional_table_header="Search results for: {0}".format(articleNumber))
+
+@admin.route("/products/category/<string:category>/")
+def admin_products_category(category):
+    products = Product.query.filter_by(category=category)
+
+    cat = []
+
+    for prod in products:
+        if cat.count(prod.category) == 0:
+            cat.append({"name": prod.category})
+
+    return render_template('admin/products.html', categories=cat, products=products, optional_table_header="Filtered by category: {0}".format(category))
 
 @admin.route("/products/add")
 def admin_add_product():
