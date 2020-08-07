@@ -16,33 +16,47 @@ class Car(db.Model):
         return "<Car {}: {} {}>".format(self.id, self.make, self.model)
 """
 
-class Furniture(db.Model):
+class Product(db.Model):
     articleNumber = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     price = db.Column(db.Integer, nullable = False)
-    pubDate = db.Column(db.DateTime(timezone = True),server_default = func.now())
+    pubDate = db.Column(db.DateTime,server_default = func.now())
     category = db.Column(db.Integer, nullable = False, default = 0)
     subcategory = db.Column(db.Integer, nullable = True, default = 0)
+    color = db.Column(db.String, default = "None")
     condition = db.Column(db.Integer, nullable = False)
     height = db.Column(db.Integer, nullable = True)
     width = db.Column( db.Integer, nullable = True)
     depth = db.Column(db.Integer, nullable = True)
-    archived = db.Column(db.Boolean, default = False)
+    status = db.Column(db.String, default = "Available")
+    comment = db.Column(db.Text)
     paymentMethod = db.Column(db.String, nullable = False)
-    pictures = db.relationship('FurniturePictures', backref = 'furnitureIDPicture')
-    reservations = db.relationship('FurnitureReservation', backref = 'furnitureIDReservation')
+    pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
+    reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
 
-class FurniturePictures(db.Model): 
+    def getSinglePictureName(self):
+        piclist = self.pictures
+        if not piclist:
+            pic = "default.jpg"
+        else :
+            pic = piclist[0].pictureName
+        return pic
+
+class ProductPictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
-    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
+    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber')) 
 
-class FurnitureReservation(db.Model):
+    def renamePictureAsID(self):
+        self.pictureName = str(self.pictureID) + '.jpg'
+        db.session.commit()
+
+class ProductReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)
     liuID = db.Column(db.String(8), nullable = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    furnitureID = db.Column(db.Integer, db.ForeignKey('furniture.articleNumber')) 
+    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber')) 
 
 class Seller(db.Model): # will be ralated to furniture
     sellerID = db.Column(db.Integer, primary_key = True)
@@ -50,7 +64,7 @@ class Seller(db.Model): # will be ralated to furniture
     phone = db.Column(db.String(15), nullable = True)
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
-    furnitures = db.relationship('Furniture', backref = 'sellerOfFurniture') 
+    products = db.relationship('Product', backref = 'sellerOfProduct') 
 
 class Blacklist(db.Model):
     #listID = db.Column(db.Integer, primary_key = True)
@@ -58,9 +72,9 @@ class Blacklist(db.Model):
     numOfOffences = db.Column(db.Integer, default = 1)
 
 class Newsletter(db.Model):
-    liuID = db.Column(db.String(8), primary_key = True)
+    email = db.Column(db.String, primary_key = True)
 
-class News(db.Model):
+class News(db.Model): #has to be reworked into files, not a model. 
     date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
     title = db.Column(db.String, nullable = False)
     text = db.Column(db.Text, nullable = False)
@@ -113,33 +127,35 @@ def resetDB():
 
 def fillTestDB():
 
-    furn1 = Furniture(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
-    furn2 = Furniture(name = 'Bord', price = 800, category = 2, condition = 1, height = 150, width = 60, depth = 40, paymentMethod = "Cash")
-    furn3 = Furniture(name = 'Soffa', price = 1200, category = 3, condition = 3, height = 70, width = 200, depth = 60, paymentMethod = "Swish eller Revolut")
+    prod1 = Product(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
+    prod2 = Product(name = 'Bord', price = 800, category = 2, condition = 1, height = 150, width = 60, depth = 40, paymentMethod = "Cash")
+    prod3 = Product(name = 'Soffa', price = 1200, category = 3, condition = 3, height = 70, width = 200, depth = 60, paymentMethod = "Swish eller Revolut")
 
-    furn1pic1 = FurniturePictures(furnitureIDPicture = furn1)
-    furn1pic2 = FurniturePictures(furnitureIDPicture = furn1)
-    furn2pic1 = FurniturePictures(furnitureIDPicture = furn2)
+    prod1pic1 = ProductPictures(productIDPicture = prod1)
+    prod1pic2 = ProductPictures(productIDPicture = prod1)
+    prod2pic1 = ProductPictures(productIDPicture = prod2)
 
-    furn1res1 = FurnitureReservation(liuID = "asdfg123", furnitureIDReservation = furn1)
-    furn2res1 = FurnitureReservation(liuID = 'asdfg123', furnitureIDReservation = furn2)
-    furn3res1 = FurnitureReservation(liuID = 'jkler678', furnitureIDReservation = furn3)
-    furn3res2 = FurnitureReservation(liuID = 'qwert456', furnitureIDReservation = furn3)
+    prod1res1 = ProductReservation(liuID = "asdfg123", productIDReservation = prod1)
+    prod2res1 = ProductReservation(liuID = 'asdfg123', productIDReservation = prod2)
+    prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
+    prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
     
     seller1 = Seller(liuID = 'LSSH')
-    seller1.furnitures.append(furn1)
-    seller1.furnitures.append(furn2)
+    seller1.products.append(prod1)
+    seller1.products.append(prod2)
     seller2 = Seller(liuID = 'qwert123')
-    seller2.furnitures.append(furn3)
+    seller2.products.append(prod3)
 
     bl1 = Blacklist(liuID = 'uiojk890')
 
-    nl1 = Newsletter(liuID = 'tyuvb456')
+    nl1 = Newsletter(email = 'tyuvb456@student.liu.se')
 
 
-    db.session.add_all([furn1, furn2, furn3, furn1pic1, furn1pic2, furn2pic1, furn1res1, furn2res1,
-                        furn3res1, furn3res2, seller1, seller2, bl1, nl1])
+    db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1])
     db.session.commit()
+
+    prod1pic2.renamePictureAsID()
 
     print("Filled the database")
 

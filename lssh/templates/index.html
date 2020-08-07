@@ -7,4 +7,12 @@
 {% block content %}
     <!--Where the html should be written-->
     <p>INDEX</p>
+    <form method="POST">
+        {% for field in emailSubForm %}
+        <div>
+            {{ field }}
+        </div> 
+        {% endfor %}
+    </form>
+    
 {% endblock content %}
