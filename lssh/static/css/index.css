@@ -1,4 +1,8 @@
-/* General stuff */
+/* 
+    Regular CSS rules
+    -----------------------
+    General
+*/
 
 .p-white {
     color: white;
@@ -12,19 +16,6 @@
 .p-head {
     font-size: 2.2rem;
 }
-
-
-
-/* For mobile and everything else*/
-
-.space {
-    padding-top: 15vh;
-}
-
-.space2 {
-    padding-top: 5vh;
-}
-
 
 .btn-green {
     width: 70%;
@@ -57,8 +48,22 @@
     background-color: rgb(31, 110, 89);
 }
 
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 1 - "Slogan" 
+*/
+
+.space {
+    padding-top: 15vh;
+}
+
+.space2 {
+    padding-top: 5vh;
+}
+
 .index-container {
-    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -87,8 +92,6 @@
     padding-right: 0.3rem;
     padding-left: 0.4rem;
     padding-top: 0.3rem;
-    
-    
 }
 
 .fa-facebook:hover {
@@ -101,7 +104,6 @@
     color: black;
     margin-left: 1rem;
     font-weight: 500;
-    
 }
 
 .fa-instagram:hover {
@@ -113,284 +115,287 @@
     background: #000000;
     color: white;
     margin-left: 1rem;
-    
     padding-right: 0.3rem;
     padding-left: 0.3rem;
     padding-top: 0.3rem;
-  }
+}
 
 .fa-linkedin:hover {
     text-decoration: none;
     color: white;
 }
 
-/* Desktop media queries section 1 */
+/* 
+    Desktop Media Queries
+    -----------------------
+    Section 1 - "Slogan"
+*/
 
-  @media only screen and (min-width: 768px) {
-    /* For desktop */
-    .space { 
+@media only screen and (min-width: 768px) {
+    .space {
         padding-top: 25vh;
         display: block;
     }
-
     .row-slogan {
         padding-top: 5vh;
     }
-
-
     .index-container {
-        background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+        background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
         height: 100vh;
     }
-
     .arrow-down {
         border-top: 20px solid rgb(146, 143, 143);
     }
+    .white-hr {
+        width: 40%;
+        border: none;
+        height: 1px;
+        background-color: white;
+    }
+    .white-hr-thin {
+        border: none;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.267);
+    }
+}
 
-    
-  .white-hr {
-    width: 40%;
-    /*border: 1px solid white;*/
-    border: none;
-    height: 1px;
-    background-color: white;
-  }
-
-  .white-hr-thin {
-    /*border: 0.2px solid white;*/
-    border: none;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.267);
-  }
-   
-    
-  }
-
-
-  .arrow-down {
-    width: 0; 
-    height: 0; 
+.arrow-down {
+    width: 0;
+    height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     border-top: 20px solid rgb(199, 200, 201);
     transform: translateX(-50%);
     position: absolute;
     left: 50%;
-  }
+}
 
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 2 - "News" 
+*/
 
+.news-container {
+    min-height: 50vh;
+}
 
-  /* News container */
-
-  .news-container {
-    min-height: 50vh; 
-  }
-
-  #carousel-picture {
+#carousel-picture {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: auto;
     width: 100%;
-    
-  }
+}
 
-  #p-category-news {
-      margin-bottom: 0px;
-  }
+#p-category-news {
+    margin-bottom: 0px;
+}
 
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 3 - "How it works" 
+*/
 
-  /* How it works container*/
-
-  .works-button {
+.works-button {
     cursor: pointer;
-  }
+}
 
-  .works-container {
+.works-container {
     min-height: 100vh;
-  }
+}
 
-  .works-heading {
-      padding-top: 2.2rem;
-  }
+.works-heading {
+    padding-top: 2.2rem;
+}
 
-  .row-space {
-      height: 10vh;
-  }
+.row-space {
+    height: 10vh;
+}
 
-  .green-bg {
-      background-color: rgb(19, 80, 64);
-  }
+.green-bg {
+    background-color: rgb(19, 80, 64);
+}
 
-  .works-icons {
+.works-icons {
     background-color: rgb(19, 80, 64);
     padding-bottom: 3rem;
-  }
+}
 
-  .logo1 {
-      background-image: url(../pictures/mail_icon.png);
-      height: 100px;
-      width: 100px;
-  }
+.logo1 {
+    background-image: url(../pictures/mail_icon.png);
+    height: 100px;
+    width: 100px;
+}
 
+.space-green {
+    height: 5rem;
+    background-color: rgb(19, 80, 64);
+}
 
-  .space-green {
-      height: 5rem;
-      background-color: rgb(19, 80, 64);
-  }
+.p-text {
+    width: 70%;
+}
 
-  .p-text {
-      width: 70%;
-  }
-
-  .col-border {
+.col-border {
     border-right: 1px solid rgb(182, 182, 182);
     height: 1rem;
     margin-top: 0.2rem;
-  }
+}
 
-  #works-buyer {
+#works-buyer {
     display: none;
-  }
+}
 
-  .works-button-activated {
-      color: white !important; 
-      font-weight: 500 !important;
-  }
+.works-button-activated {
+    color: white !important;
+    font-weight: 500 !important;
+}
 
-  .fluid-no-margin {
-      padding: 0;
-      margin: 0;
-  }
+.fluid-no-margin {
+    padding: 0;
+    margin: 0;
+}
 
-  /* Goal container */
-  .goal-container {
-      min-height: 100vh;
-  }
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 4 - "Goal" 
+*/
 
-  #h1-goal {
-      font-size: 2.3rem !important;
-  }
+.goal-container {
+    min-height: 100vh;
+}
 
-  #goal-hr {
+#h1-goal {
+    font-size: 2.3rem !important;
+}
+
+#goal-hr {
     border: 1px solid rgb(199, 199, 199);
     width: 15%;
-    
-  }
+}
 
-  .img-1 {
-    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center; 
+.img-1 {
+    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
-  }
+}
 
-  .img-2 {
-    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center; 
+.img-2 {
+    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
-  }
+}
 
-  .space-goal {
-      padding-top: 10vh;
-  }
+.space-goal {
+    padding-top: 10vh;
+}
 
-  /* About container */
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 5 - "About, fun facts" 
+*/
 
-  #green-hr {
+#green-hr {
     border-top: 0.2rem solid #84E48C;
     width: 4rem;
     margin: 0px;
     margin-bottom: 0.75rem;
-    
-  }
+}
 
-  #h1-number {
-      color: #84E48C;
-      font-weight: 500 !important;
-      font-weight: 700;
-      
-  }
+#h1-number {
+    color: #84E48C;
+    font-weight: 500 !important;
+    font-weight: 700;
+}
 
-  #learn-more-p {
-      margin-bottom: 0.2rem;
-  }
+#learn-more-p {
+    margin-bottom: 0.2rem;
+}
 
- .about-container {
+.about-container {
     min-height: 40vh;
- }
+}
 
- .about-row {
-     min-height: 60vh;
-     background-color: rgb(249, 249, 249);
- }
+.about-row {
+    min-height: 60vh;
+    background-color: rgb(249, 249, 249);
+}
 
- .half-row {
-     height: 30vh
- }
+.half-row {
+    height: 30vh
+}
 
- .picture-chair {
-    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center; 
+.picture-chair {
+    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-   
- }
+}
 
- /* Purpose container */ 
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 6 - "Purpose" 
+*/
 
 #purpose-space {
     min-height: 30vh;
 }
 
- #purpose-container {
-     min-height: 80vh;
- }
+#purpose-container {
+    min-height: 80vh;
+}
 
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 7 - "Collaboration" 
+*/
 
- /* Collaboration container */
-
- #collaboration-container {
-     min-height: 20vh;
-     padding-top: 20vh;
-     background-color: rgb(249, 249, 249);
- }
+#collaboration-container {
+    min-height: 20vh;
+    padding-top: 20vh;
+    background-color: rgb(249, 249, 249);
+}
 
 #navitas-logo {
     height: 6rem;
     width: auto;
 }
 
- /* Subscribe container */
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 8 - "Subscribe" 
+*/
 
- #subscribe-container {
-     background-color: rgb(249, 249, 249);
-     min-height: 20vh;
-     
- }
+#subscribe-container {
+    background-color: rgb(249, 249, 249);
+    min-height: 20vh;
+}
 
- .subscribe-row {
-     padding-top: 30vh;
- }
+.subscribe-row {
+    padding-top: 30vh;
+}
 
- 
+#subscribe {
+    width: 100%;
+}
 
- #subscribe {
-     width: 100%;
- }
-
- 
 .btn-green-2 {
     background-color: rgb(19, 80, 64);
     border-style: none;
@@ -414,25 +419,18 @@
     opacity: 90%;
 }
 
-
 #input-border-bottom {
-    background-color: rgba(255, 255, 255, 0); 
+    background-color: rgba(255, 255, 255, 0);
     border-right: 0;
     border-left: 0;
     border-top: 0;
     outline: none;
-    box-shadow:none !important;
+    box-shadow: none !important;
     border-radius: 0;
     font-size: 1rem;
-    
-    
 }
 
 #input-border-bottom:focus {
-   
-        border-color: rgba(19, 80, 64, 0.438);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
-      
+    border-color: rgba(19, 80, 64, 0.438);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }
-
-

@@ -1,3 +1,7 @@
+html {
+    overflow-x: hidden; 
+}
+
 h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 300 !important;
@@ -42,10 +46,6 @@ p {
 
 .page-footer {
     background-color: #161616;
-}
-
-html {
-    overflow-x: hidden; 
 }
 
 .a-grey {
