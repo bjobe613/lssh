@@ -27,7 +27,7 @@
                     <h2>Categories</h2>
                     <ul>
                     {% for category in categories %}
-                        <li><a href="#">{{ category.name|e }}</a></li>
+                        <li><a href="{{ url_for('admin.admin_products_category', category=category.name|e) }}">{{ category.name|e }}</a></li>
                     {% endfor %}
                     </ul>
                     <a class="btn btn-success" href="{{ url_for('admin.admin_add_product') }}">Add product</a>
