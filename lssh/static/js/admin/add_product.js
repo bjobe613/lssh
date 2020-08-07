@@ -1,4 +1,8 @@
-/* Used for storing files outside of the file list. Is updated each time the file selector is used. */
+/**
+ * A large improvement would be to encapsulate everything related to the picture selector in a separate class.
+ */
+
+// Used for storing files outside of the file list. Is updated each time the file selector is used.
 var fileList = [];
 
 $('document').ready(function(){
@@ -14,11 +18,14 @@ $('document').ready(function(){
     });
 })
 
+/**
+ * Updates the image viewer
+ */
 function updateImageViewer() {
     const viewer = document.getElementById("add-product-picture-viewer");
 
     if (fileList.length == 0) {
-        document.getElementById("add-product-picture-picker").innerHTML = document.getElementById("empty-files-card").innerHTML;
+        viewer.innerHTML = document.getElementById("empty-files-card").innerHTML;
     } else {
         viewer.innerHTML = "";
         for(var i = 0; i<fileList.length; ++i) {
@@ -27,6 +34,13 @@ function updateImageViewer() {
     }
 }
 
+/**
+ * Generates a card for insertion in the DOM.
+ * 
+ * TODO: Escape HTML from variables for safety.
+ * @param {file} file 
+ * @param {number} index 
+ */
 function generateImageCard(file, index) {
     var cardHtml = `
     <div class="card add-product-card">
@@ -44,24 +58,36 @@ function generateImageCard(file, index) {
     return cardHtml;
 }
 
+/**
+ * Moves the specified element in fileList up
+ * @param {Number} index 
+ */
 function moveFileUp(index) {
-    if(index >= 0 && index < fileList.length) {
+    if(index >= 0 && index < fileList.length-1) {
         var temp = fileList[index + 1];
         fileList[index+1] = fileList[index];
         fileList[index] = temp;
     }
 }
 
+/**
+ * Moves the specified element in fileList down
+ * @param {Number} index 
+ */
 function moveFileDown(index) {
-    if(index > 0 && index <= fileList.length) {
+    if(index > 0 && index < fileList.length) {
         var temp = fileList[index - 1];
         fileList[index - 1] = fileList[index];
         fileList[index] = temp;
     }
 }
 
+/**
+ * Removes the specified element in fileList
+ * @param {Number} index 
+ */
 function removeFile(index) {
-    if(index >= 0 && index <= fileList.length) {
-        fileList.splice(index, index)
+    if(index >= 0 && index < fileList.length) {
+        fileList.splice(index, 1)
     }
 }
