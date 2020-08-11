@@ -3,14 +3,14 @@
 {% block more_head %}
     <!--Additional head-->
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='swiper/swiper-bundle.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_single_view.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
     <p id="navigation-history">
-        products / {{furniture.category}} / {{furniture.name}}
+        <a href="/products/catalog">Shop</a> / <a href="#">{{furniture.category}}</a> / <a href="/products/product/{{furniture.articleNumber}}">{{furniture.name}}</a>
     </p>
     <div id="product-wrapper">
       <!--MOBILE VERSION-->
@@ -92,6 +92,6 @@
     </div>
 
 
-<script src="https://unpkg.com/swiper/swiper-bundle.js" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='swiper/swiper-bundle.js') }}" type="text/javascript"></script>
 <script src="{{ url_for('static', filename='js/product_single_view.js') }} " type="text/javascript"></script>
 {% endblock content %}
