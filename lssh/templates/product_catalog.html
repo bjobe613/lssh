@@ -7,52 +7,34 @@
 
 {% block content %}
     <!--Where the html should be written-->
-    <h1>
-        Products
-    </h1>
-    <div id="filter-wrapper">
-      <h2>
-        Filter
-      </h2>
-      <div id="filter-categories-wrapper">
-        <div class="category">
-          <a data-toggle="collapse" href="#collapse-Category">
-            Category
-          </a>
-          <div class="collapse" id="collapse-Category">
-            <p>test<p>
-              <!--List filter options-->
-          </div>
-        </div>
+    <p>
+        Catalog
+    </p>
+    <form method= "POST">
 
-        <div class="category">
-          <a data-toggle="collapse" href="#collapse-Color">
-            Color
-          </a>
-          <div class="collapse" id="collapse-Color">
-            <p>test<p>
-              <!--List filter options-->
-          </div>
+    <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+        {% for field in filterform %}
+        <div>
+            {{ field}}
+            {{ field.label}}
         </div>
-        <div class="category">
-          <a data-toggle="collapse" href="#collapse-Condition">
-            Condition
-          </a>
-          <div class="collapse" id="collapse-Condition">
-            <p>test<p>
-              <!--List filter options-->
-          </div>
-        </div>
+        {% endfor %}
 
-        <div class="category">
-          <a data-toggle="collapse" href="#collapse-Payment">
-            Payment
-          </a>
-          <div class="collapse" id="collapse-Payment">
-            <p>test<p>
-              <!--List filter options-->
-          </div>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
         </div>
+      </div>
+    </form>
+    {% for x in products %}
+
+    <div>
+        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
+        <h3>Name: {{x.name}}</h3>
+        <p>Price: {{x.price}} SEK</p>
+    </div>
 
         <div class="category">
           <a data-toggle="collapse" href="#collapse-Availability">
