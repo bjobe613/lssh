@@ -1,3 +1,13 @@
+.spacing-line {
+  width: 100%;
+  max-width: 440px;
+  height: 5px;
+  background-color: lightgreen;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+/*Product*/
 #product-header-container {
   width: 80%;
   margin: auto;
@@ -9,14 +19,6 @@
   margin: auto;
 }
 
-.spacing-line {
-  width: 100%;
-  max-width: 440px;
-  height: 5px;
-  background-color: lightgreen;
-  margin-top: -5px;
-  margin-bottom: 10px;
-}
 
 #product-info-wrapper {
   width: 80%;
@@ -44,6 +46,7 @@
   align-items: center;
 }
 
+/*Uncertain section*/
 #uncertain-container {
   margin-top: 200px;
   width: 100%;
