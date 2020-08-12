@@ -25,6 +25,28 @@
           <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>
+<<<<<<< HEAD
+=======
+        </div>
+      </div>
+    </form>
+    {% for x in products %}
+
+    <div>
+        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
+        <h3>Name: {{x.name}}</h3>
+        <p>Price: {{x.price}} SEK</p>
+    </div>
+
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-Availability">
+            Availability
+          </a>
+          <div class="collapse" id="collapse-Availability">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+>>>>>>> 20bf295267d529f8d5eccc0265a5c242117a7bb6
         </div>
       </div>
     </form>
