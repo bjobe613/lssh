@@ -1,10 +1,473 @@
 {% extends "layout.html" %}
 
 {% block more_head %}
-    <!--Additional head-->
+<!--Additional head-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock more_head %}
 
 {% block content %}
-    <!--Where the html should be written-->
-    <p>INDEX</p>
+<!--Where the html should be written-->
+
+<div class="container-fluid shifted-index">
+
+
+<div class="container-fluid index-container">
+
+  <div class="row space">
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 text-md-left text-center">
+      <h1 id="slogan-text">
+        Secondhand
+      </h1>
+      <h1 id="slogan-text-bold">
+        by students
+      </h1>
+      <h1 id="slogan-text">
+        for students.
+      </h1>
+    </div>
+    <div class="col-sm-7 space2"> </div>
+  </div>
+
+  <div class="row row-slogan">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 text-md-left text-center">
+      <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
+    </div>
+
+    <div class="col-sm-7"></div>
+  </div>
+
+  <div class="row row-socialmedia">
+    
+    <div class="col-sm-5 ml-4 text-md-left text-center">
+      <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
+      <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+    </div>
+    <div class="col-sm-7"></div>
+  </div>
+</div>
+</div>
+
+<!-- News container -->
+<div class="container-fluid news-container">
+  <!-- Arrow
+      <div class="row arrow-row justify-content-center">
+        <div class="col-sm-1 mx-auto">
+          <div class="arrow-down"></div>
+        </div>
+      </div>-->
+
+  <div class="row row-space"></div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2">
+      <p>LATEST NEWS</p>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-2 text-right">
+      <p>VIEW ALL</p>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+  <div class="row pb-2">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <hr>
+    </div>
+    <div class="col-2"></div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+
+      <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ url_for('static', filename = '/pictures/two-vases-on-table-842950 (1).jpg') }}"
+              id="carousel-picture" alt="Los Angeles">
+            <div class="carousel-caption">
+              <p id="p-category-news">NEW IN</p>
+              <h2>Vases and towels</h2>
+              <button class="btn btn-success btn-white" type="submit">READ MORE</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+<div class="row row-space pb-5"></div>
+
+
+<!-- How it works container -->
+<div class="container-fluid works-container">
+  <div class="row row-space"></div>
+
+  <div class="row works-heading green-bg">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 text-center">
+      <p class="p-head p-white">How it works</p>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+
+  <div class="row green-bg">
+
+    <div class="col-sm-5"></div>
+    <div class="col-sm-2">
+      <div class="row">
+        <div class="col-6 text-right">
+          <a id="works-seller-button" class="p-white works-button-activated works-button">SELLER</a>
+        </div>
+        <div class="col-6">
+          <a id="works-buyer-button" class="p-white text-start works-button">BUYER</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-5"></div>
+  </div>
+
+  <div class="row works-hr green-bg">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 pb-5">
+      <hr class="white-hr-thin">
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div id="works-seller" class="container-fluid fluid-no-margin">
+    <div class="row works-icons">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">SEND A REQUEST</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white">Contact us with this form</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">AGREE TO A PRICE</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-text">We will consider your suggested price and decide if it is reasonable.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">LEAVE FURNITURE AT OUR SHOP</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-text">Contact us with this form</p>
+              </div>
+            </div>
+
+            <div class="row space-green"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
+
+
+  <div id="works-buyer" class="container-fluid fluid-no-margin">
+    <div class="row works-icons">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">FIND AN ITEM YOU LIKE</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit rem illum eligendi
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">PAY WITH SWISH OR CARD</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-text">We will consider your suggested price and decide if it is reasonable.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo1"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">VISIT OUR SHOP</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-text">Contact us with this form</p>
+              </div>
+            </div>
+
+            <div class="row space-green"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+<div class="container-fluid goal-container">
+
+  <div class="row space-goal"></div>
+
+  <div class="row pb-5">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4 h-100">
+
+      <img src="{{ url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg') }}"
+        class="img-fluid image" alt="Responsive image">
+
+
+    </div>
+    <div class="col-sm-4">
+      <div class="row pb-2 h-50">
+
+        <div class="col img-1 image">
+          <!--<img src="{{ url_for('static', filename = '/pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') }}" class="img-fluid" alt="Responsive image">-->
+        </div>
+      </div>
+
+      <div class="row pt-2 h-50">
+        <div class="col img-2 image">
+          <!--<img src="{{ url_for('static', filename = '/pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') }}" class="img-fluid" alt="Responsive image">-->
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div class="row space-goal pb-5"></div>
+
+</div>
+
+
+
+<div class="container-fluid about-container">
+  <div class="row about-row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-6 align-self-center">
+          <p id="learn-more-p">LEARN MORE</p>
+          <h1 id="h1-number">ABOUT US</h1>
+          <hr id="green-hr">
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="row half-row align-items-center">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 mx-auto">
+              <h1 id="h1-number">167</h1>
+              <hr id="green-hr">
+              <p>The total number of items sold in our shop</p>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <div class="row half-row picture-chair"></div>
+
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="row half-row picture-chair"></div>
+          <div class="row half-row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 align-self-center">
+              <h1 id="h1-number">320</h1>
+              <hr id="green-hr">
+              <p>The total number of items stored in our shop</p>
+            </div>
+            <div class="col-sm-1"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+<div class="container-fluid" id="purpose-container">
+
+  <div id="purpose-space" class="row"></div>
+
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 text-center">
+      <h1 id="h1-goal">The purpose of LSSh is to create a flexible solution for secondhand sales through both a
+        website and easily accessible premises.
+      </h1>
+      <br>
+      <hr id="goal-hr">
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div class="row space-goal"></div>
+</div>
+
+<div class="container-fluid" id="subscribe-container">
+  <div class="row subscribe-row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <h1> Get updates</h1>
+      <p> Sign up to our subscription list to get updates on upcoming news, events and much more!</p>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+      <div class="input-group input-group-sm mb-1">
+
+        <input id="input-border-bottom" type="text" class="form-control" placeholder="Email adress..."
+          aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-2 text-center">
+      <button class="btn btn-success btn-green" type="submit">SIGN UP</button>
+    </div>
+
+    <div class="col-2"></div>
+  </div>
+
+</div>
+
+<div class="container-fluid" id="collaboration-container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3>A collaboration with</h3>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <img src="{{ url_for('static', filename = '/pictures/navitas-black.png') }}" id="navitas-logo"
+        class="img-fluid image" alt="Responsive image">
+    </div>
+  </div>
+</div>
+
+  <!--Where the html should be written-->
+  <p>INDEX</p>
+  <form method="POST">
+      {% for field in emailSubForm %}
+      <div>
+          {{ field }}
+      </div> 
+      {% endfor %}
+  </form>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+  
+    
 {% endblock content %}
