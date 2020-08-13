@@ -11,6 +11,7 @@ products = Blueprint('products', __name__, url_prefix = '/products')
  @products.route("/test")
  def test_route():
      return "hej världen"
+     
 """
 
 @products.route("/catalog", methods=['GET', 'POST'])
