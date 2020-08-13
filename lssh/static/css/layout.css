@@ -17,9 +17,8 @@ h2 {
 
 h3 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 300 !important;
-    font-style: italic;
-    color: rgb(125, 125, 125);
+    font-weight: 500 !important;
+    color: rgb(0, 0, 0);
 }
 
 h4 {
@@ -28,29 +27,57 @@ h4 {
     font-size: 1rem !important;
 }
 
+h5 {
+    color: white;
+    font-size: 1.1rem !important;
+}
+
+h6 {
+    color: rgb(190, 190, 190);
+    font-weight: 300 !important;
+    font-size: 1.1rem !important;
+}
+
+
+
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+   
+}
+
+.a-link {
+    color: grey;
+}
+
+.a-link:hover {
+    color: rgb(73, 73, 73);
+    text-decoration: none;
+}
+
+.a-link-white {
+    color: rgb(206, 206, 206);
+}
+
+.a-link-white:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 #logotype {
-    height: 5rem;
-    width: 5rem;
-    
+    height: 4.5rem;
+    width: 4.5rem;   
 }
 
+
 #logotype-footer {
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     opacity: 20%;
 }
 
 .page-footer {
     background-color: #161616;
-}
-
-.a-grey {
-    color: #807d7d;
 }
 
 .footer-copyright {
@@ -62,4 +89,10 @@ p {
     transition: background-color 200ms linear;
 }
 
+
+@media only screen and (max-width: 768px) {
+    .navbar-desktop-active {
+        display: none;
+    }
+}
 

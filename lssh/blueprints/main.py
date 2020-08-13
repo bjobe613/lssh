@@ -7,14 +7,24 @@ main = Blueprint('main', __name__, url_prefix = '/')
 @main.route("/", methods = ['GET', 'POST'])
 def startup():
     form = SubscribeToMailForm() 
-    if form.validate_on_submit():
+
+    if form.is_submitted():
+        print('submitted')
+
+    if form.validate():
+        print('valid')
+
+    print(form.errors)
+    
+    if form.validate_on_submit(): 
         exist = Newsletter.query.filter(Newsletter.email == form.email.data).first()
         if not exist:
             sub = Newsletter(email = form.email.data)
             db.session.add(sub)
             db.session.commit()
-
+ 
     return render_template('index.html', emailSubForm = form)
+    
 
 #@main.route("/home")
 #def home():
@@ -39,3 +49,7 @@ def faq():
 @main.route("/transport")
 def transport():
     return render_template('transport.html')
+
+@main.route("/hand_in")
+def hand_in():
+    return render_template('hand_in.html')

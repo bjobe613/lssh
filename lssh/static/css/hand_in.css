@@ -1,0 +1,47 @@
+#about-us-container {
+    min-height: 4vh;
+    background-color: #09433A;
+    margin-top: 5rem;
+}
+
+#about-us-container2 {
+    min-height: 92vh;
+}
+
+#img-hand-in {
+    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.btn-white {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    color: #09433A;
+    font-weight: 500;
+    border-style: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+#about-us-container3 {
+    min-height: 55vh;
+    background-color: #09433A;
+    
+}
+
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(255, 255, 255);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+   
+}
+

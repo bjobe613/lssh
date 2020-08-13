@@ -2,11 +2,55 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hand_in.css') }}">
 {% endblock more_head %}
 
 {% block content %}
-    <!--Where the html should be written-->
-    <p>
-        hand in
-    </p>
+      <!--Where the html should be written-->
+      <div id="about-us-container" class="container-fluid">
+        <div class="row">
+            <div class="col-7"></div>
+            <div class="col-1 text-center">
+                <div class="arrow-down"></div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    <div id="about-us-container3" class="container-fluid">
+        <div class="row pt-5">
+
+            <div class="col-2"></div>
+            <div class="col-sm-3 col-12 pb-3">
+                <h4>MAKE A</h4>
+                <h2>Hand in request</h2>
+                <br>
+                <h5>Do you have something you want to sell or donate?</h5>
+                <h6>Give your furniture a new home by handing them in to LiU Student Secondhand! You can either sell or donate furniture.</h6>
+                <br>
+                <br><br><br>
+                <button class="btn btn-success btn-white" type="submit">HAND IN NOW</button>
+            </div>
+
+            <div class="col-1 h-100"></div>
+            <div id="img-hand-in" class="col-sm-4 col-12"></div>
+            
+        </div>
+    </div>
+
+    <div id="about-us-container2" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-12 col-sm-8 mt-5 pt-5">
+                <h1>How does it work?</h1>
+                <br>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro,
+                tempore incidunt dolorum repudiandae aliquam perspiciatis odio ipsum sequi corrupti enim dignissimos adipisci vel. 
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro.</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro,
+                    tempore incidunt dolorum repudiandae aliquam perspiciatis odio ipsum sequi corrupti enim dignissimos adipisci vel.</p>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
 {% endblock content %}
