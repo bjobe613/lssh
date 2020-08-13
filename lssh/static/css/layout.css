@@ -1,0 +1,65 @@
+html {
+    overflow-x: hidden; 
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300 !important;
+    color: rgb(125, 125, 125);
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500 !important;
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem !important;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300 !important;
+    font-style: italic;
+    color: rgb(125, 125, 125);
+}
+
+h4 {
+    font-weight: 300 !important;
+    color: rgb(255, 255, 255);
+    font-size: 1rem !important;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+#logotype {
+    height: 5rem;
+    width: 5rem;
+    
+}
+
+#logotype-footer {
+    height: 5rem;
+    width: 5rem;
+    opacity: 20%;
+}
+
+.page-footer {
+    background-color: #161616;
+}
+
+.a-grey {
+    color: #807d7d;
+}
+
+.footer-copyright {
+    color: rgb(63, 63, 63);
+}
+
+#navbar.scrolled {
+    background-color: rgb(255, 255, 255) !important;
+    transition: background-color 200ms linear;
+}
+
+
