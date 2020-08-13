@@ -75,35 +75,38 @@
       </div>
     </form>
     <div id="catalog-wrapper">
-    {% for prodRow in products | batch(3) %}
-    <div class="row">
-      {% for x in prodRow %}
-        <div class="col-md">
-          <div class="product-card">
-            <a href="product/{{x.articleNumber}}">
-              <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
-            </a>
-            <div class="product-card-text">
+    
+    <div class="row row-wrapper">
+      {% for prodRow in products | batch(4) %}
+        {% for x in prodRow %}
+          <div class="col-md-4 col-xl-3">
+            <div class="product-card">
               <a href="product/{{x.articleNumber}}">
-                <h5 class="h5-card">
-                  {{x.name}}
-                </h5>
+                <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
               </a>
-              <p>
-                Short desc.
-              </p>
-              <p class="product-card-price">
-                {{x.price}} SEK
-              </p>
-              <p class="product-card-status">
-                Status
-              </p>
+              <div class="product-card-text">
+                <a href="product/{{x.articleNumber}}">
+                  <h5 class="h5-card">
+                    {{x.name}}
+                  </h5>
+                </a>
+                <p>
+                  Short desc.
+                </p>
+                <p class="product-card-price">
+                  {{x.price}} SEK
+                </p>
+                <p class="product-card-status">
+                  Status
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
-      </div>
+        {% endfor %}
+      
+      
     {% endfor %}
+  </div>
     </div>
     </div>
 {% endblock content %}

@@ -10,6 +10,11 @@
   padding-bottom: 35px;
 }
 
+.row-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
 .product-card {
   max-width: 400px;
   height: auto;
@@ -24,6 +29,8 @@
 .product-img {
   width: 100%;
   height: auto;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .product-card-text {
