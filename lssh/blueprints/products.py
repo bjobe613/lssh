@@ -25,11 +25,26 @@ def product(x):
 
 @products.route("/add/", methods=['POST'])
 def add_product():
-    prod = Product(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
-    db.session.add(prod)
-    db.session.commit()
+    print(request.form)
+    if(request.form.get("name") and 
+       request.form.get("price") and 
+       request.form.get("condition") and 
+       request.form.get("category") and 
+       request.form.get("paymentMethod") and 
+       request.form.get("description")):
+        prod = Product(name = request.form.get("name"), 
+                       price = int(request.form.get("price")), 
+                       condition = int(request.form.get("condition")), 
+                       paymentMethod = request.form.get("paymentMethod"))
+        db.session.add(prod)
+        db.session.commit()
 
-    for file in request.files.getlist("file"):
-        prod.addPicture(file)
+        for file in request.files.getlist("file"):
+            prod.addPicture(file)
 
-    return "{'response': 'ok'}"
+        return "{'response': 'ok'}"
+    else:
+        return "{'response': 'ej ok'}"
+       
+
+    

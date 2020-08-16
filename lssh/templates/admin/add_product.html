@@ -12,19 +12,19 @@
             <h1>Add product</h1>
             <div class="form-group">
               <label for="add-product-title">Title</label>
-              <input type="text" class="form-control" id="add-product-title" placeholder="Title">
+              <input type="text" class="form-control" id="add-product-title" name="name" placeholder="Title">
             </div>
             <div class="row">
                 <div class="form-group col">
                     <label for="add-product-price">Price</label>
-                    <input type="Number" class="form-control" id="add-product-price" placeholder="100">
+                    <input type="Number" class="form-control" id="add-product-price" name="price" placeholder="100">
                 </div>
                 <div class="form-group col">
                     <label for="add-product-condition">Condition</label>
-                    <select class="form-control" id="add-product-condition">
-                        <option>Good</option>
-                        <option>Okay</option>
-                        <option>Bad</option>
+                    <select class="form-control" id="add-product-condition" name="condition">
+                        <option value="1">Good</option>
+                        <option value="2">Okay</option>
+                        <option value="3">Bad</option>
                     </select>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
               <label for="add-product-category">Category</label>
-              <select class="form-control" id="add-product-category">
+              <select class="form-control" id="add-product-category" name="category">
                 {% for category in categories %}
                 <option>{{ category.name|e }}</option>
                 {% endfor %}
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="add-product-payment">Payment method</label>
-                <select class="form-control" id="add-product-payment">
+                <select class="form-control" id="add-product-payment" name="paymentMethod">
                   <option>Swish</option>
                   <option>Revolut</option>
                   <option>Swish & Revolut</option>
@@ -55,7 +55,7 @@
               </div>
             <div class="form-group">
               <label for="add-product-description">Description</label>
-              <textarea class="form-control" id="add-product-description" rows="5"></textarea>
+              <textarea class="form-control" id="add-product-description" name="description" rows="5"></textarea>
             </div>
             <div class="row">
                 <div class="col">

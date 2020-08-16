@@ -102,9 +102,14 @@ function removeFile(index) {
 function submitProductForm() {
     var form = document.getElementById("add-product-form")
     var data = new FormData(form);
+
     fileList.forEach((file) => {
         data.append('file', file);
     })
+
+    for (var pair of data.entries()) {
+        console.log(pair[0]+ ', ' + pair[1]); 
+    }
 
     var request = new XMLHttpRequest();
 
