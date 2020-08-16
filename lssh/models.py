@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
 
+import os
+
 db = SQLAlchemy(app)
 
 # Models can be defines here, like this:
@@ -42,6 +44,14 @@ class Product(db.Model):
         else :
             pic = piclist[0].pictureName
         return pic
+
+    def addPicture(self, picture):
+        pic = ProductPictures(productID = self.articleNumber)
+        db.session.add(pic)
+        db.session.commit()
+
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', str(pic.pictureID) + '.jpg'))
+        pic.renamePictureAsID()
 
 class ProductPictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)

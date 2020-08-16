@@ -16,8 +16,12 @@ $('document').ready(function(){
         updateImageViewer();
 
     });
-})
 
+    document.getElementById("add-product-form").addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitProductForm();
+    });
+})
 /**
  * Updates the image viewer
  */
@@ -90,4 +94,20 @@ function removeFile(index) {
     if(index >= 0 && index < fileList.length) {
         fileList.splice(index, 1)
     }
+}
+
+/**
+ * Used for submiting the form
+ */
+function submitProductForm() {
+    var form = document.getElementById("add-product-form")
+    var data = new FormData(form);
+    fileList.forEach((file) => {
+        data.append('file', file);
+    })
+
+    var request = new XMLHttpRequest();
+
+    request.open("POST", "/products/add/");
+    request.send(data);
 }

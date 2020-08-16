@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+import os
 
 # The database is accessed in this manner from blueprints
 from lssh.models import db, Product, ProductPictures  #, other objects defined in models
@@ -21,3 +22,14 @@ def catalog():
 def product(x):
     prod = Product.query.filter(Product.articleNumber == x).first()
     return render_template('product_single_view.html', product = prod)
+
+@products.route("/add/", methods=['POST'])
+def add_product():
+    prod = Product(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
+    db.session.add(prod)
+    db.session.commit()
+
+    for file in request.files.getlist("file"):
+        prod.addPicture(file)
+
+    return "{'response': 'ok'}"
