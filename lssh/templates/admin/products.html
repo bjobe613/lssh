@@ -35,7 +35,10 @@
             </div>
             <div class="col-md-9">
                 {% if optional_table_header %}
-                <h1>{{optional_table_header}}</h1>
+                <div class="row">
+                    <h1 class="col-auto">{{optional_table_header}}</h1>
+                    <a class="col-auto" href="{{ url_for('admin.admin_products') }}"><h1><i class="fa fa-times" aria-hidden="true"></i></h1></a>
+                </div>
                 {% endif %}
                 <div class="row border-bottom adm-prod-table-head">
                     <div class="col-2 adm-prod-tablecell adm-prod-imgcol"><h2><i class="fa fa-picture-o" aria-hidden="true"></i></h2></div>
@@ -67,10 +70,10 @@
                         <div class="col-md-4">
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></button>
+                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-credit-card"></i></button>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-pencil"></i></button>
                                 </div>
                             </div>
                         </div>
