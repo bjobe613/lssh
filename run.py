@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 #Kod för att köra igång systemet.
 
 from lssh import app
