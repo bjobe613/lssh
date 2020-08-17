@@ -101,18 +101,26 @@ function removeFile(index) {
  */
 function submitProductForm() {
     var form = document.getElementById("add-product-form")
-    var data = new FormData(form);
+    var formData = new FormData(form);
 
     fileList.forEach((file) => {
-        data.append('file', file);
+        formData.append('file', file);
     })
-
-    for (var pair of data.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
-
-    var request = new XMLHttpRequest();
-
-    request.open("POST", "/products/add/");
-    request.send(data);
+    
+    $.ajax({
+        url: '/products/add/',
+        type: 'POST',
+        data: formData,
+        dataType: 'json',
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            console.log("Success")
+            console.log(response)
+        },
+        error: function(response) {
+            console.log("Error")
+            console.log(response)
+        }
+    })
 }

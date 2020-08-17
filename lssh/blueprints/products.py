@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, make_response
 import os
 
 # The database is accessed in this manner from blueprints
@@ -30,8 +30,7 @@ def add_product():
        request.form.get("price") and 
        request.form.get("condition") and 
        request.form.get("category") and 
-       request.form.get("paymentMethod") and 
-       request.form.get("description")):
+       request.form.get("paymentMethod")):
         prod = Product(name = request.form.get("name"), 
                        price = int(request.form.get("price")), 
                        condition = int(request.form.get("condition")), 
@@ -42,9 +41,6 @@ def add_product():
         for file in request.files.getlist("file"):
             prod.addPicture(file)
 
-        return "{'response': 'ok'}"
+        return {"msg": "ok"}, 200
     else:
-        return "{'response': 'ej ok'}"
-       
-
-    
+        return {'msg': 'ej ok'}, 400
