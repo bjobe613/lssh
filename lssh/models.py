@@ -44,6 +44,12 @@ class Product(db.Model):
             pic = piclist[0].pictureName
         return pic
 
+#This serialize is urrently fitted for filter
+    def serialize(self):
+        return dict(articleNumber=self.articleNumber, name=self.name, price=self.price, pubDate=self.pubDate,
+        category=self.category, subcategory=self.subcategory, color=self.color, condition=self.condition,
+        status=self.status, paymentMethod=self.paymentMethod)
+
 class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")

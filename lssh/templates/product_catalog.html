@@ -10,50 +10,84 @@
     <p>
         Catalog
     </p>
-    <form method= "POST">
-
-    <div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-        {% for field in filterform %}
-        <div>
-            {{ field}}
-            {{ field.label}}
+    <div id="filter-wrapper">
+      <h2>
+        Filter
+      </h2>
+      <div id="filter-categories-wrapper">
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-category">
+            Category
+          </a>
+          <div class="collapse" id="collapse-category">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
         </div>
-        {% endfor %}
-
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-      </div>
-    </form>
-    {% for x in products %}
-
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
-    </div>
 
         <div class="category">
-          <a data-toggle="collapse" href="#collapse-Availability">
-            Availability
+          <a data-toggle="collapse" href="#collapse-color">
+            Color
           </a>
-          <div class="collapse" id="collapse-Availability">
+          <div class="collapse" id="collapse-color">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-condition">
+            Condition
+          </a>
+          <div class="collapse" id="collapse-condition">
+            <p>test<p>
+              <!--List filter options-->
+          </div>
+        </div>
+
+        <div class="category">
+          <a data-toggle="collapse" href="#collapse-payment">
+            Payment
+          </a>
+          <div class="collapse" id="collapse-payment">
             <p>test<p>
               <!--List filter options-->
           </div>
         </div>
       </div>
-    </form>
-    {% for x in products %}
-
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
     </div>
+    <div id="catalog-container">
+      <div id="catalog-wrapper">
+      {% for prodRow in products | batch(3) %}
+        <div class="row">
+          {% for x in prodRow %}
+          <div class="col-sm">
+            <div class="product-card">
+              <a href="product/{{x.articleNumber}}">
+                <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+              </a>
+              <div class="product-card-text">
+                <a href="product/{{x.articleNumber}}">
+                  <h5 class="h5-card">
+                    {{x.name}}
+                  </h5>
+                </a>
+                <p>
+                  Short desc.
+                </p>
+                <p class="product-card-price">
+                  {{x.price}} SEK
+                </p>
+                <p class="product-card-status">
+                  Status
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/product_catalog.js') }}"></script>
 
-    {% endfor %}
 {% endblock content %}
