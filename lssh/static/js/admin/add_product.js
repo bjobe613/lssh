@@ -115,12 +115,10 @@ function submitProductForm() {
         processData: false,
         contentType: false,
         success: function(response) {
-            console.log("Success")
-            console.log(response)
+            location.href = "/admin/products"
         },
         error: function(response) {
-            console.log("Error")
-            console.log(response)
+            alert("Something went wrong");
         }
     })
 }

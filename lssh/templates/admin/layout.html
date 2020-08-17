@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
-        <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
 
-        <!--Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--Following comes a reset.css file that reduces browser inconsistencies. Read more at: https://meyerweb.com/eric/tools/css/reset/ -->
+  <link rel="stylesheet" type="text/css" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
 
-        <!--Font Awesome-->
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
 
+  <!--Font Awesome-->
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <title>LSSh admin</title>
-        {% block more_head %} 
-            <!-- Filled with more parts of the head required on other views-->
-        {% endblock %}
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #88ab7b;">
-            <a class="navbar-brand" href="{{ url_for('admin.admin_home') }}">lssh admin</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item
+  <title>LSSh admin</title>
+  {% block more_head %}
+  <!-- Filled with more parts of the head required on other views-->
+  {% endblock %}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #88ab7b;">
+    <a class="navbar-brand" href="{{ url_for('admin.admin_home') }}">lssh admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item
                 {% if navbar_active_home %}
                  active
                 {% endif %}">
-                  <a class="nav-link" href="{{ url_for('admin.admin_home') }}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item
+          <a class="nav-link" href="{{ url_for('admin.admin_home') }}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item
                 {% if navbar_active_products %}
                  active
                 {% endif %}">
-                  <a class="nav-link" href="{{ url_for('admin.admin_products') }}">Products</a>
-                </li>
-                <li class="nav-item
+          <a class="nav-link" href="{{ url_for('admin.admin_products') }}">Products</a>
+        </li>
+        <li class="nav-item
                 {% if navbar_active_news %}
                  active
                 {% endif %}">
-                  <a class="nav-link" href="{{ url_for('admin.admin_news') }}">News</a>
-                </li>
-                <li class="nav-item
+          <a class="nav-link" href="{{ url_for('admin.admin_news') }}">News</a>
+        </li>
+        <li class="nav-item
                 {% if navbar_active_faq %}
                  active
                 {% endif %}">
-                  <a class="nav-link" href="{{ url_for('admin.admin_faq') }}">Faq</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        {% block content %}
-            <!--This is what is filled by the other templates when extending-->
-        {% endblock %}
-        <footer>
-        </footer>
+          <a class="nav-link" href="{{ url_for('admin.admin_faq') }}">Faq</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% block content %}
+  <!--This is what is filled by the other templates when extending-->
+  {% endblock %}
+  <footer>
+  </footer>
 
-        {% block templates %}
-          <!-- This is where html templates should be placed-->
-        {% endblock %}
+  {% block templates %}
+  <!-- This is where html templates should be placed-->
+  {% endblock %}
 
-        {% block scripts %}
+  {% block scripts %}
 
-        {% endblock %}
-    </body>
+  {% endblock %}
+  <script src="{{ url_for('static', filename='js/admin/alert.js') }}"></script>
+
+</body>
+
 </html>
