@@ -6,32 +6,31 @@
 #catalog-container {
   background-color: rgb(250,250,250);
   width: 100%;
-  padding-top: 5px;
+  padding-top: 30px;
   padding-bottom: 35px;
 }
 
-#catalog-wrapper {
+.row-wrapper {
   width: 80%;
   margin: auto;
-  text-align: center;
 }
 
 .product-card {
-  width: 400px;
+  max-width: 400px;
   height: auto;
-  margin-top: 30px;
-  background-color: white;
+  display: block;
   text-align: left;
-  padding-bottom: 5px;
-}
-
-.col-sm {
-  text-align: center !important;
+  margin: auto;
+  background-color: white;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .product-img {
   width: 100%;
   height: auto;
+  max-width: 400px;
+  max-height: 400px;
 }
 
 .product-card-text {

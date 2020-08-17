@@ -1,0 +1,446 @@
+/* 
+    Regular CSS rules
+    -----------------------
+    General
+*/
+
+.p-white {
+    color: white;
+}
+
+.p-heading {
+    font-weight: 500;
+    padding-top: 1rem;
+}
+
+.p-head {
+    font-size: 2.2rem;
+}
+
+.btn-green {
+    width: 70%;
+    background-color: #09433A;
+    border-style: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-green:active {
+    background-color: #09433A;
+    border-style: none;
+}
+
+.btn-green:focus {
+    background-color: rgb(19, 80, 64);
+    border-style: none;
+}
+
+.btn-white {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-style: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.btn-green:hover {
+    background-color: rgb(31, 110, 89);
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 1 - "Slogan" 
+*/
+
+.space {
+    padding-top: 15vh;
+}
+
+.space2 {
+    padding-top: 5vh;
+}
+
+.shifted-index {
+    background-color: #E6E7E9;  
+    display: inline-flex;
+    margin: 0px;
+    padding: 0;
+ 
+}
+
+.index-container {
+    margin-top: 5rem;
+    background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 90vh;
+    
+}
+
+#slogan-text {
+    font-size: 3.2rem;
+    color: rgb(115, 115, 115);
+}
+
+#slogan-text-bold {
+    font-size: 3.2rem;
+    font-weight: 500 !important;
+    color: #09433A;
+}
+
+.row-socialmedia {
+    padding-top: 25vh;
+}
+
+.fa-facebook {
+    background: #000000;
+    color: white;
+    padding-right: 0.3rem;
+    padding-left: 0.4rem;
+    padding-top: 0.3rem;
+}
+
+.fa-facebook:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.fa-instagram {
+    font-size: 1.5rem;
+    color: black;
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.fa-instagram:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.fa-linkedin {
+    background: #000000;
+    color: white;
+    margin-left: 1rem;
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+}
+
+.fa-linkedin:hover {
+    text-decoration: none;
+    color: white;
+}
+
+/* 
+    Desktop Media Queries
+    -----------------------
+    Section 1 - "Slogan"
+*/
+
+@media only screen and (min-width: 768px) {
+    .space {
+        padding-top: 25vh;
+        display: block;
+    }
+    .row-slogan {
+        padding-top: 5vh;
+    }
+    .index-container {
+        background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 100vh;
+    }
+    .arrow-down {
+        border-top: 20px solid rgb(146, 143, 143);
+    }
+    .white-hr {
+        width: 40%;
+        border: none;
+        height: 1px;
+        background-color: white;
+    }
+    .white-hr-thin {
+        border: none;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.267);
+    }
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(199, 200, 201);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 2 - "News" 
+*/
+
+.news-container {
+    min-height: 50vh;
+}
+
+#carousel-picture {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: auto;
+    width: 100%;
+}
+
+#p-category-news {
+    margin-bottom: 0px;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 3 - "How it works" 
+*/
+
+.works-button {
+    cursor: pointer;
+}
+
+.works-container {
+    min-height: 100vh;
+}
+
+.works-heading {
+    padding-top: 2.2rem;
+}
+
+.row-space {
+    height: 10vh;
+}
+
+.green-bg {
+    background-color: #09433A;
+}
+
+.works-icons {
+    background-color: #09433A;
+    padding-bottom: 3rem;
+}
+
+.logo1 {
+    background-image: url(../pictures/mail_icon.png);
+    height: 100px;
+    width: 100px;
+}
+
+.space-green {
+    height: 5rem;
+    background-color: #09433A;
+}
+
+.p-text {
+    width: 70%;
+}
+
+.col-border {
+    border-right: 1px solid rgb(182, 182, 182);
+    height: 1rem;
+    margin-top: 0.2rem;
+}
+
+#works-buyer {
+    display: none;
+}
+
+.works-button-activated {
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.fluid-no-margin {
+    padding: 0;
+    margin: 0;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 4 - "Goal" 
+*/
+
+.goal-container {
+    min-height: 100vh;
+}
+
+#h1-goal {
+    font-size: 2.3rem !important;
+}
+
+#goal-hr {
+    border: 1px solid rgb(199, 199, 199);
+    width: 15%;
+}
+
+.img-1 {
+    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.img-2 {
+    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.space-goal {
+    padding-top: 10vh;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 5 - "About, fun facts" 
+*/
+
+#green-hr {
+    border-top: 0.2rem solid #84E48C;
+    width: 4rem;
+    margin: 0px;
+    margin-bottom: 0.75rem;
+}
+
+#h1-number {
+    color: #84E48C;
+    font-weight: 500 !important;
+    font-weight: 700;
+}
+
+#learn-more-p {
+    margin-bottom: 0.2rem;
+}
+
+.about-container {
+    min-height: 40vh;
+}
+
+.about-row {
+    min-height: 60vh;
+    background-color: rgb(249, 249, 249);
+}
+
+.half-row {
+    height: 30vh
+}
+
+.picture-chair {
+    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 6 - "Purpose" 
+*/
+
+#purpose-space {
+    min-height: 30vh;
+}
+
+#purpose-container {
+    min-height: 80vh;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 7 - "Collaboration" 
+*/
+
+#collaboration-container {
+    min-height: 20vh;
+    padding-top: 20vh;
+    background-color: rgb(249, 249, 249);
+}
+
+#navitas-logo {
+    height: 6rem;
+    width: auto;
+}
+
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 8 - "Subscribe" 
+*/
+
+#subscribe-container {
+    background-color: rgb(249, 249, 249);
+    min-height: 20vh;
+}
+
+.subscribe-row {
+    padding-top: 30vh;
+}
+
+#subscribe {
+    width: 100%;
+}
+
+.btn-green-2 {
+    background-color: rgb(19, 80, 64);
+    border-style: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.sign-up-btn {
+    background-color: rgb(19, 80, 64);
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    color: white;
+    border-radius: 0.1rem;
+}
+
+.sign-up-btn:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 90%;
+}
+
+#input-border-bottom {
+    background-color: rgba(255, 255, 255, 0);
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 0;
+    font-size: 1rem;
+}
+
+#input-border-bottom:focus {
+    border-color: rgba(19, 80, 64, 0.438);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
