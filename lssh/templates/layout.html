@@ -41,7 +41,6 @@
 <body>
     <header>
 
-        <!-- Navigation -->
             <div id="navbar" class="container-fluid navbar-desktop-active fixed-top">
                 <div class="row align-items-center h-100">
 
@@ -56,6 +55,7 @@
                   
                     <div class="col-md-1 col-2 text-center">
                         <a class="a-link" href="{{ url_for('main.hand_in') }}">HAND IN</a>
+                       
                     </div>
 
                     <div class="col-md-1 col-2 text-center">
@@ -69,18 +69,43 @@
                     <div class="col-md-1 col-2 text-center">
                         <a id="about-link" class="a-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
                     </div>
+
                     <div id="help-link-col" class="col-md-1 col-2 text-center">
                         <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
                     </div>
                  
                 </div>
+
             </div>
+
+            <div id="about-us-container" class="container-fluid subnav-content fixed-top">
+                <div class="row">
+                    <div class="col-11"></div>
+                    <div class="col-1 text-center">
+                        <div class="arrow-down-sub"></div>
+                    </div>
+                </div>
+            
+                <div class="row mt-4 pb-4 pt-2">
+                    <div class="col-10"></div>
+                    <div class="col-1 text-center">
+                        <a class="a-link-white" href="{{ url_for('main.contact') }}">Contact</a>
+                    </div>
+                    <div class="col-1 text-center">
+                        <a class="a-link-white" href="">FAQ</a>
+                    </div>
+                </div>
+            </div> 
+
+
+        <!--
 
         <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top d-md-none">
             <div class="container-fluid">
-     
+
                 <a class="navbar-brand" href="{{ url_for('main.startup') }}">
-                    <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}" id="logotype" alt="Logotype">
+                    <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}"
+                        id="logotype" alt="Logotype">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -97,7 +122,7 @@
                         <li class="nav-item layout-mobile-center pr-3">
                             <a class="nav-link" href="{{ url_for('products.catalog') }}">SHOP</a>
                         </li>
-                   
+
                         <li class="nav-item layout-mobile-center pr-3">
                             <a id="about-link" class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
                         </li>
@@ -106,9 +131,9 @@
                         </li>
 
                     </ul>
-                
-            </div>
-        </nav>
+
+                </div>
+        </nav>-->
 
 
 
@@ -117,6 +142,10 @@
     </header>
     {% block content %}
     <!--This is what is filled by the other templates when extending-->
+
+    
+
+
     {% endblock %}
 
     <!-- Footer -->
@@ -126,11 +155,9 @@
                 <div class="col-md-2 col-sm-12 "></div>
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4>ABOUT</h4>
-                    <a class="a-link" href=""> Our shop </a>
+                    <a class="a-link" href="{{ url_for('main.about_us') }}"> About us </a>
                     <br>
-                    <a class="a-link" href=""> Team behind </a>
-                    <br>
-                    <a class="a-link" href=""> How it works </a>
+                    <a class="a-link" href="{{ url_for('main.find_us') }}"> Find us </a>
                 </div>
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4>INFORMATION</h4>
@@ -148,10 +175,8 @@
 
                 </div>
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
-                    <h4>ADMIN</h4>
-                    <a class="a-link" href=""> Login worker </a>
-                    <br>
-                    <a class="a-link" href=""> Login administrator </a>
+                    <h4>ADMIN & WORKER</h4>
+                    <a class="a-link" href=""> Login</a>
                 </div>
                 <div class="col-md-2 col-sm-12"></div>
             </div>

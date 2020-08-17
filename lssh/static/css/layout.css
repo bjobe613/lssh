@@ -89,10 +89,69 @@ p {
     transition: background-color 200ms linear;
 }
 
+#navbar {
+    height: 5rem;
+}
+
+
+
 
 @media only screen and (max-width: 768px) {
     .navbar-desktop-active {
         display: none;
     }
+}
+
+
+/* Subnav */ 
+
+/*
+#help-link-col {
+    height: 5rem;
+}
+*/
+
+#help-link {
+    width: 100%;
+}
+.subnav-content {
+    display: none;
+    position: absolute;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(255, 255, 255);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+#about-us-container {
+    min-height: 4vh;
+    background-color: #09433A;
+}
+
+.inline {
+    display: inline-block;
+    color: white;
+}
+
+#test-link {
+    position: relative;
+    margin-left: -3.8rem;
+}
+
+#contact-sublink {
+    position: relative;
+    margin-left: -0.4rem;
+    
+}
+
+.subnav {
+    background-color: #09433A;
 }
 
