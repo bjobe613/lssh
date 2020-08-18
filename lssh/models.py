@@ -167,5 +167,3 @@ def test():
     db.session.commit()
 '''
 
-resetDB()
-fillTestDB()

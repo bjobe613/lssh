@@ -1,6 +1,4 @@
 
-
-
     //Scroll navbar
 $(document).scroll(function () {
     var $nav = $("#navbar");
@@ -12,14 +10,9 @@ if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
 }
 
-
-
-
-
 if (window.location.href.indexOf("about") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
 } 
-
 
 if (window.location.href.indexOf("help") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
