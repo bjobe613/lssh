@@ -166,6 +166,3 @@ def test():
     pic.pictureName = str(pic.pictureID) + ".jpg"
     db.session.commit()
 '''
-
-resetDB()
-fillTestDB()
