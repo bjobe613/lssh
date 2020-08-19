@@ -7,6 +7,7 @@ import os
 
 db = SQLAlchemy(app)
 
+
 # Models can be defines here, like this:
 """
 class Car(db.Model):
@@ -56,7 +57,7 @@ class Product(db.Model):
 class ProductPictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
-    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber')) 
+    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
 
     def renamePictureAsID(self):
         self.pictureName = str(self.pictureID) + '.jpg'
@@ -66,7 +67,7 @@ class ProductReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)
     liuID = db.Column(db.String(8), nullable = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber')) 
+    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
 
 class Seller(db.Model): # will be ralated to furniture
     sellerID = db.Column(db.Integer, primary_key = True)
@@ -74,7 +75,7 @@ class Seller(db.Model): # will be ralated to furniture
     phone = db.Column(db.String(15), nullable = True)
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
-    products = db.relationship('Product', backref = 'sellerOfProduct') 
+    products = db.relationship('Product', backref = 'sellerOfProduct')
 
 class Blacklist(db.Model):
     #listID = db.Column(db.Integer, primary_key = True)
@@ -84,16 +85,16 @@ class Blacklist(db.Model):
 class Newsletter(db.Model):
     email = db.Column(db.String, primary_key = True)
 
-class News(db.Model): #has to be reworked into files, not a model. 
+class News(db.Model): #has to be reworked into files, not a model.
     date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
     title = db.Column(db.String, nullable = False)
     text = db.Column(db.Text, nullable = False)
     pictures = db.relationship('NewsPictures', backref = 'news')
 
-class NewsPictures(db.Model): 
+class NewsPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
-    newsID = db.Column(db.DateTime, db.ForeignKey('news.date')) 
+    newsID = db.Column(db.DateTime, db.ForeignKey('news.date'))
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
@@ -123,10 +124,10 @@ class HandInRequest(db.Model):
     price = db.Column(db.Integer, nullable = True) #should we make this a relation?
     category = db.Column(db.String, nullable = True)#should this be here??
 
-'''class HIRequestPictures(db.Model): 
+'''class HIRequestPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
-    requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID')) 
+    requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID'))
 '''
 
 
@@ -149,7 +150,7 @@ def fillTestDB():
     prod2res1 = ProductReservation(liuID = 'asdfg123', productIDReservation = prod2)
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
-    
+
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)
     seller1.products.append(prod2)

@@ -2,19 +2,96 @@
 
 {% block more_head %}
     <!--Additional head-->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='swiper/swiper-bundle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_single_view.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
-        product single
+    <p id="navigation-history">
+        <a href="/products/catalog">Shop</a> / <a href="#">{{product.category}}</a> / <a href="/products/product/{{product.articleNumber}}">{{product.name}}</a>
     </p>
-    <div>
-        {% for x in product.pictures %}
-        <img src="{{url_for('static', filename='pictures/' + x.pictureName)}}" width="200" height="200">
-        {% endfor %}
-        <h3>Name: {{product.name}}</h3>
-        <p>Price: {{product.price}} SEK</p>
+    <div id="product-wrapper">
+      <!--MOBILE VERSION-->
+      <div id="product-header-container" class="mobile">
+        <h1>
+          {{product.name}}
+        </h1>
+        <div class="spacing-line">
+        </div>
+        <p>
+          <b>Price:</b> {{product.price}} SEK
+        </p>
+        <p class="product-status">
+          Status
+        </p>
+      </div>
+      <!--Swiper slidewhow-->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for x in product.pictures %}
+            <div class="swiper-slide">
+              <img class="img-fluid" src="{{url_for('static', filename='pictures/' + x.pictureName)}}">
+            </div>
+          {% endfor %}
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-black"></div>
+        <div class="swiper-button-prev swiper-button-black"></div>
+      </div>
+      <div id="product-info-wrapper">
+        <!--DESKTOP-->
+        <div class="desktop">
+          <h1>
+            {{product.name}}
+          </h1>
+          <div class="spacing-line">
+          </div>
+          <p class="product-status">
+            Status
+          </p>
+          <p>
+            <b>Price:</b> {{product.price}} SEK
+          </p>
+
+        </div>
+        <p>
+          <b>Color:</b> {{product.color}}
+        </p>
+        <p>
+          <b>Condition:</b> {{product.condition}}
+        </p>
+        <p>
+          <b>Payment method:</b> {{product.paymentMethod}}
+        </p>
+        <p>
+          <b>Added:</b> {{product.pubDate}}
+        </p>
+        <p>
+          <b>Measurements:</b> H: {{product.height}}, W: {{product.width}}, D: {{product.depth}}
+        </p>
+
+        <input type="button" value="Reserve">
+      </div>
     </div>
-    
+    <div id="uncertain-container">
+      <h2>
+        Is something uncertain?
+      </h2>
+      <div class="spacing-line">
+      </div>
+      <p>
+        Please send us an email at
+        <a><b>
+          email@email.com
+        </b></a>
+      </p>
+    </div>
+
+
+<script src="{{ url_for('static', filename='swiper/swiper-bundle.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/product_single_view.js') }} " type="text/javascript"></script>
 {% endblock content %}

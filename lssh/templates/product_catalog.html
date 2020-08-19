@@ -2,6 +2,7 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_catalog.css') }}">
 {% endblock more_head %}
 
 {% block content %}
@@ -18,22 +19,44 @@
         <div>
             {{ field}}
             {{ field.label}}
-        </div> 
+        </div>
         {% endfor %}
-    
+
           <a href="#">Link 1</a>
           <a href="#">Link 2</a>
           <a href="#">Link 3</a>
         </div>
       </div>
     </form>
-    {% for x in products %}
-    
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
-    </div>
-
-    {% endfor %}
+    <div id="catalog-wrapper">
+      <div class="row row-wrapper">
+        {% for prodRow in products | batch(4) %}
+          {% for x in prodRow %}
+            <div class="col-md-4 col-xl-3">
+              <div class="product-card">
+                <a href="product/{{x.articleNumber}}">
+                  <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+                </a>
+                <div class="product-card-text">
+                  <a href="product/{{x.articleNumber}}">
+                    <h5 class="h5-card">
+                      {{x.name}}
+                    </h5>
+                  </a>
+                  <p>
+                    Short desc.
+                  </p>
+                  <p class="product-card-price">
+                    {{x.price}} SEK
+                  </p>
+                  <p class="product-card-status">
+                    Status
+                  </p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
 {% endblock content %}
