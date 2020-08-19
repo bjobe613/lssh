@@ -1,0 +1,19 @@
+.inline {
+    display: inline-block;
+    color: white;
+}
+
+#test-link {
+    position: relative;
+    margin-left: -3.8rem;
+}
+
+#contact-sublink {
+    position: relative;
+    margin-left: -0.4rem;
+    
+}
+
+.subnav {
+    background-color: #09433A;
+}
