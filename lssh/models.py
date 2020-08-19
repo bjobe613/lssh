@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
 
+import os
+
 db = SQLAlchemy(app)
 
 
@@ -44,7 +46,15 @@ class Product(db.Model):
             pic = piclist[0].pictureName
         return pic
 
-class ProductPictures(db.Model):
+    def addPicture(self, picture):
+        pic = ProductPictures(productID = self.articleNumber)
+        db.session.add(pic)
+        db.session.commit()
+
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', str(pic.pictureID) + '.jpg'))
+        pic.renamePictureAsID()
+
+class ProductPictures(db.Model): 
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
     productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
@@ -166,4 +176,3 @@ def test():
     pic.pictureName = str(pic.pictureID) + ".jpg"
     db.session.commit()
 '''
-
