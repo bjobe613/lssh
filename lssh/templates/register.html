@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block more_head %}
+    <!--Additional head-->
+{% endblock more_head %}
+
+{% block content %}
+    <!--Where the html should be written-->
+    
+    <form method="POST" class="form-signin">
+        
+        <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>        
+        <div>{{adminRegisterForm.csrf_token}}</div>
+        <div>{{adminRegisterForm.userName(placeholder="Username")}}</div>
+        <div>{{adminRegisterForm.authorizationLevel(placeholder="Level")}}</div>
+        <div>{{adminRegisterForm.password(placeholder="Password")}}</div>
+        <div>{{adminRegisterForm.confirmPassword(placeholder="Confirm Password")}}</div>
+        <div>{{adminRegisterForm.registerButton(placeholder="Register")}}</div>
+        
+    </form>
+    
+{% endblock content %}

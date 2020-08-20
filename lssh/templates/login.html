@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block more_head %}
+    <!--Additional head-->
+{% endblock more_head %}
+
+{% block content %}
+    <!--Where the html should be written-->
+    
+    <form method="POST" class="form-signin">
+
+        
+        <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>        
+        <div>{{adminLoginForm.csrf_token}}</div>
+        <div>{{adminLoginForm.userName(placeholder="Username")}}</div>
+        <div>{{adminLoginForm.password(placeholder="Password")}}</div>
+        <div>{{adminLoginForm.loginButton(placeholder="Login")}}</div>
+        
+    </form>
+    
+{% endblock content %}

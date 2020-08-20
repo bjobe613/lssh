@@ -1,10 +1,13 @@
 from flask import Flask
+from flask_bcrypt import Bcrypt
+#from flask_login import LoginManager
 
 app = Flask(__name__, static_folder = 'static', static_url_path = '/')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'FHSGAJH48242T58GRTJ853FBIQVJ4B5IQU5H9G58G'
-
+bcrypt = Bcrypt(app)
+#login_manager = LoginManager(app)#might remove
 # Imports blueprints from blueprint package
 from lssh.blueprints import products, users, main, news
 

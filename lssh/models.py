@@ -89,7 +89,7 @@ class NewsPictures(db.Model):
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
     passwordHash = db.Column(db.String, nullable = False)
-    authorization = db.Column(db.Integer, default = 1)
+    authorization = db.Column(db.Integer, default = 1) 
 
 class OpeningHours(db.Model):
     day = db.Column(db.String, primary_key = True)
