@@ -19,7 +19,7 @@
 
 .btn-green {
     width: 70%;
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
     border-style: none;
     padding: 0.5rem;
     font-size: 1rem;
@@ -240,11 +240,11 @@
 }
 
 .green-bg {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .works-icons {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
     padding-bottom: 3rem;
 }
 
@@ -256,7 +256,7 @@
 
 .space-green {
     height: 5rem;
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .p-text {

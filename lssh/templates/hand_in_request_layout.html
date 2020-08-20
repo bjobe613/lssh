@@ -20,12 +20,112 @@
 
 
     <div id="hand-in-req-container" class="container-fluid bg-grey">
-        <div class="row">
+        <div class="row pt-md-0 pt-5">
             <div class="col-2"></div>
-            <div class="col-3">
-                <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/pexels-pixabay-279618.jpg') }}" alt="Furniture">
+            <div class="col-3 col-md-3 d-md-block d-none">
+                
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/pexels-pixabay-279618.jpg') }}" alt="Furniture">
+                    </div>
+                </div>
+
+                
+                <div class="container-fluid">
+                    <div class="row white-bg rounded pt-3 mt-4">
+                        <div class="col-2">
+                            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/icons8-bicycle-basket-64.png') }}" alt="Furniture">
+                        </div>
+                        <div class="col-10">
+                            <h3 class="h3-handin">NEED HELP WITH TRANSPORT?</h3>
+                            <p>We offer free rental of a bike cart and tricyle! More info</p>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
             </div>
-            <div class="col-5"></div>
+            <div class="col-md-5 col-8 pl-5">
+                <div class="row">
+                    <div id="handin-step-1" class="col-4 rounded-left not-selected-step">
+                        <p class="p-handin">STEP 1</p>
+                        <h3 id="handin-step-1-h3"class="h3-handin">Seller</h3>
+                    </div>
+                    <div  id="handin-step-2" class="col-4 not-selected-step">
+                        <p class="p-handin">STEP 2</p>
+                        <h3 id="handin-step-2-h3" class="h3-handin">Item/s</h3>
+                    </div>
+                    <div  id="handin-step-3" class="col-4 rounded-right not-selected-step">
+                        <p class="p-handin">STEP 3</p>
+                        <h3 id="handin-step-3-h3" class="h3-handin">Finish</h3>
+                    </div>
+                </div>
+
+       
+
+                <div class="row pt-4">
+                    <div id="hand-in-req-form" class="col">
+<!--
+                        <h3>Information about seller</h3>
+
+                        <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Email address</label>
+                              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Write email here...">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleFormControlSelect1">Number of items to hand in</label>
+                              <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                              </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-green">Submit</button>
+                          </form>-->
+
+                          <h3>Information about item/s</h3>
+
+                          <form>
+                            <div class="form-group">
+                              <label for="exampleFormControlInput1">Type of item</label>
+                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write type here... (E.g. Sofa)">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="exampleFormControlSelect1">Condition of item</label>
+                              <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Very good</option>
+                                <option>Good</option>
+                                <option>Fair</option>
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Do you want to sell or donate the item?</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>Sell item</option>
+                                  <option>Donate</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Additional information (Optional)</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write information here... (E.g. Scratches">
+                            </div>
+
+
+
+                            <button type="submit" class="btn btn-primary btn-green">Submit</button>
+                          </form>
+
+                    </div>
+                    
+                </div>
+            </div>
             <div class="col-2"></div>
         </div>
     </div>

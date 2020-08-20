@@ -2,6 +2,13 @@ html {
     overflow-x: hidden; 
 }
 
+/* Global variables */
+:root {
+    --main-bg-color: #09433A;
+
+
+  }
+
 h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 300 !important;
@@ -158,15 +165,48 @@ p {
     background-color: #09433A;
 }
 
-
-
 /* Layout hand in req */
 
 #hand-in-req-container {
-    height: 80vh;
+    min-height: 100vh;
     
 }
 
 .bg-grey {
     background-color: #F9F9F9;
+}
+
+.text-white {
+    color: white;
+}
+
+.h3-handin {
+    font-size: 1.2rem;
+}
+
+.p-handin {
+
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.selected-step {
+    background-color: #A5C9C5;
+    color: white !important;
+}
+
+.not-selected-step {
+    background-color: #EAEBED;
+}
+
+.rounded-left {
+    border-radius: 2rem 0rem 0rem 2rem !important;
+}
+
+.rounded-right {
+    border-radius: 0rem 2rem 2rem 0rem !important;
+}
+
+.white-bg {
+    background-color: white;
 }

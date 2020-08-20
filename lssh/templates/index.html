@@ -36,7 +36,10 @@
     <div class="row row-slogan pb-5">
       <div class="col-sm-1"></div>
       <div class="col-sm-4 text-md-left text-center">
-        <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
+        <form action="{{ url_for('products.catalog') }}">
+          <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
+        </form>
+        
       </div>
 
       <div class="col-sm-7"></div>
@@ -111,6 +114,7 @@
     <div class="col-sm-2"></div>
   </div>
 
+<!-- LATEST ITEM (No logic only frontend example)
 
   <div class="row pt-5 mt-5">
     <div class="col-2"></div>
@@ -151,7 +155,7 @@
       <p>VIEW ITEM</p>
     </div>
     <div class="col-2"></div>
-  </div>
+  </div>-->
 
 </div>
 
@@ -511,7 +515,7 @@
         <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username"
           aria-describedby="basic-addon2">
         <div class="input-group-append">
-          <button id="input-border-button" class="btn btn-outline-secondary" type="button"><i
+          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i
               class="material-icons">email</i></button>
         </div>
       </div> 

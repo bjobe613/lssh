@@ -50,6 +50,10 @@ def transport():
 def hand_in():
     return render_template('hand_in.html')
 
-@main.route("/hand_in/hand_in_request")
-def hand_in_request():
-    return render_template('hand_in_request_step1.html')
+@main.route("/hand_in/hand_in_request/step1")
+def hand_in_request1():
+    return render_template('hand_in_request_layout.html')
+
+@main.route("/hand_in/hand_in_request/step2")
+def hand_in_request2():
+    return render_template('hand_in_request_layout.html')

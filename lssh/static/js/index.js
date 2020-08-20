@@ -15,11 +15,10 @@ $("#works-seller-button").click(function () {
   $("#works-seller").show();
 });
 
-
-
-$("#input-border-button").click(function () {
-  subscribeNewsLetter(email);
-});
+function subscribeButton() {
+  email = $('#input-border-bottom').val();
+  subscribeNewsLetter(email)
+} 
 
 // Event listener on enter button for input for subscribe
 var inputSubscribe = document.getElementById("input-border-bottom");
