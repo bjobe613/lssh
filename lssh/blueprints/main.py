@@ -49,3 +49,7 @@ def transport():
 @main.route("/hand_in")
 def hand_in():
     return render_template('hand_in.html')
+
+@main.route("/hand_in/hand_in_request")
+def hand_in_request():
+    return render_template('hand_in_request_step1.html')

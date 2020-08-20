@@ -158,3 +158,15 @@ p {
     background-color: #09433A;
 }
 
+
+
+/* Layout hand in req */
+
+#hand-in-req-container {
+    height: 80vh;
+    
+}
+
+.bg-grey {
+    background-color: #F9F9F9;
+}
