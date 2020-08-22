@@ -1,5 +1,6 @@
 html {
     overflow-x: hidden; 
+   
 }
 
 /* Global variables */
@@ -60,6 +61,16 @@ p {
 .a-link:hover {
     color: rgb(73, 73, 73);
     text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-heading {
+        font-size: 1.2rem !important;
+    }
+
+    .a-link {
+        font-size: 1.2rem !important;
+    }
 }
 
 .a-active {
@@ -221,6 +232,10 @@ p {
     background-color: white;
 }
 
+.grey-bg {
+    background-color: #F9F9F9;
+}
+
 
 /* FAQ subnav */
 
@@ -235,5 +250,33 @@ p {
 .height-help {
     height: 15rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .height-help {
+        height: 10rem;
+    }
+
+    #heading-help {
+        margin-top: 5rem;
+    }
+}
+
+/* About us CSS */
+
+#story-header-img {
+    height: 60vh;
+    background: url('../pictures/pexels-bongkarn-thanyakij-3787752.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.half-white-bg {
+    background: linear-gradient(to left, #F9F9F9 50%, #0000ff00 50%);
+}
+
+
+
 
 

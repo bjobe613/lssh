@@ -2,3 +2,21 @@
 #container-fill {
     min-height: 80vh;
 }
+
+#col-behind {
+    margin-left: -3rem;
+    z-index: 1;
+}
+
+#col-front {
+    z-index: 2;
+}
+
+.shift-text {
+    margin-left: 3rem;
+}
+
+#input-contact{
+    padding-left: 3rem;
+
+}
