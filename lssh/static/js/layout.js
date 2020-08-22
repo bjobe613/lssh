@@ -92,7 +92,17 @@ if (window.location.href.indexOf("step2") > -1) {
 }
 
 
+if (window.location.href.indexOf("contact") > -1) {
+    $( "#contact-button" ).addClass( "active-help" );
+    $( "#contact-button" ).removeClass( "border-help" );
+} 
+
+
+
 if (window.location.href.indexOf("faq") > -1) {
+
+    $( "#faq-button" ).addClass( "active-help" );
+    $( "#faq-button" ).removeClass( "border-help" );
 
     title = 'GENERAL INFORMATION';
     var cardId;
@@ -114,8 +124,8 @@ if (window.location.href.indexOf("faq") > -1) {
 
     var faqCards = [faqCard1, faqCard2, faqCard3];
 
-    accordionTitle = '<h3 class="pb-3">' + title + '</h3>';
-    $("#accordion-col").append(accordionTitle);
+    /*accordionTitle = '<h3 class="pb-3">' + title + '</h3>';
+    $("#accordion-col").append(accordionTitle);*/
 
     for (cardId = 0; cardId < faqCards.length; cardId++) {
 

@@ -62,6 +62,16 @@ p {
     text-decoration: none;
 }
 
+.a-active {
+    background-color: var(--main-bg-color);
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 25px;
+    color: white;
+}
+
 .a-link-white {
     color: rgb(206, 206, 206);
 }
@@ -211,5 +221,19 @@ p {
     background-color: white;
 }
 
+
+/* FAQ subnav */
+
+.active-help {
+    background-color: #0B5045;
+}
+
+.border-help {
+    border: 1px solid #0D6052;
+}
+
+.height-help {
+    height: 15rem;
+}
 
 
