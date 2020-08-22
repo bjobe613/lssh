@@ -57,3 +57,7 @@ def hand_in_request1():
 @main.route("/hand_in/hand_in_request/step2")
 def hand_in_request2():
     return render_template('hand_in_request_layout.html')
+
+@main.route("/admin_login")
+def admin_login():
+    return render_template('admin_login.html')
