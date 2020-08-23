@@ -95,6 +95,13 @@ if (window.location.href.indexOf("step2") > -1) {
 if (window.location.href.indexOf("contact") > -1) {
     $( "#contact-button" ).addClass( "active-help" );
     $( "#contact-button" ).removeClass( "border-help" );
+
+
+    /* img subnav */
+    $( "#contact-btn" ).addClass( "a-link-white-active" );
+    $( "#contact-btn" ).addClass( "white-toggle " );
+    $( "#contact-btn" ).removeClass( "a-link-white" );
+    $( "#contact-btn" ).removeClass( "transparent-toggle" );
 } 
 
 
@@ -103,6 +110,16 @@ if (window.location.href.indexOf("faq") > -1) {
 
     $( "#faq-button" ).addClass( "active-help" );
     $( "#faq-button" ).removeClass( "border-help" );
+
+    /* img subnav */
+    $( "#faq-btn" ).addClass( "a-link-white-active" );
+    $( "#faq-btn" ).addClass( "white-toggle " );
+    $( "#faq-btn" ).removeClass( "a-link-white" );
+    $( "#faq-btn" ).removeClass( "transparent-toggle" );
+
+ 
+
+
 
     title = 'GENERAL INFORMATION';
     var cardId;

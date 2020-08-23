@@ -32,13 +32,35 @@
 
             <div id="heading-help" class="row pt-5 pb-5">
                 <div class="col-2"></div>
-                <div class="col-8">
-                    <h4>QUESTIONS?</h4>
-                    <h2>We're here to help</h2>
+                <div class="col-12 col-md-3 text-md-left text-center">
+                    <h4 >QUESTIONS?</h4>
+                    <h2 class="pb-5">We're here to help</h2>
+
+                    <a id="faq-btn" href="{{ url_for('main.faq') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
+                        <div class="col">FAQ</div>
+                    </a>
+
+                    <a id="contact-btn" href="{{ url_for('main.contact') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
+                        <div class="col">Contact us</div>
+                    </a>
+
+                    <a id="find-btn" href="{{ url_for('main.find_us') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-5 ">
+                        <div class="col">Find us</div>
+                    </a>
                    
+                   
+                </div>
+
+                <div class="col-1"></div>
+
+                <div class="col-4 d-none d-md-block">
+                    <img id="contact-img" class="img-fluid" src="{{ url_for('static', filename = '/pictures/Project group frame.png') }}" alt="Furniture">
                 </div>
                 <div class="col-2"></div>
             </div>
+
+
+            <!-- Icons subnav
 
             <div class="row pb-5">
                 <div class="col-2"></div>
@@ -75,7 +97,7 @@
                     
                 </div>
                 <div class="col-2"></div>
-            </div>
+            </div>-->
 
         </div>
 

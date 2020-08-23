@@ -92,6 +92,11 @@ p {
     text-decoration: none;
 }
 
+.a-link-white-active:hover {
+    color: var(--main-bg-color);
+    text-decoration: none;
+}
+
 #logotype {
     height: 4.5rem;
     width: 4.5rem;   
@@ -260,6 +265,35 @@ p {
         margin-top: 5rem;
     }
 }
+
+/* FAQ new subnav image */
+
+.white-toggle {
+    width: 87.5%;
+    background-color: white;
+    color: var(--main-bg-color);
+}
+
+
+.transparent-toggle {
+    width: 87.5%;
+    border: 1px solid #ffffff49;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+    .white-toggle {
+        width: 100%;
+    }
+
+    .transparent-toggle {
+        width: 100%;
+    }
+
+   
+}
+
+
 
 /* About us CSS */
 
