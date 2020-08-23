@@ -57,7 +57,7 @@
         <div class="row">
           {% for x in prodRow %}
           <div class="col-sm">
-            <div class="product-card">
+            <div class="product-card" id="product-card-{{x.articleNumber}}">
               <a href="product/{{x.articleNumber}}">
                 <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
               </a>

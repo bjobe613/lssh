@@ -3,6 +3,10 @@
   margin-left: 20px;
 }
 
+.filter-categories-label {
+  display: block;
+}
+
 #catalog-container {
   background-color: rgb(250,250,250);
   width: 100%;
