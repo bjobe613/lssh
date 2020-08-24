@@ -57,13 +57,11 @@
                         <a class="navbar-brand" href="{{ url_for('main.startup') }}">
                             <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}" id="logotype" alt="Logotype">
                         </a>
-                    </div> 
-
-                    <div class="col-md-6 text-center"> </div>
-
-                    <div class="col-md-1 col-2 text-center">
-                        <a class="a-link" href="{{ url_for('main.hand_in') }}">HAND IN</a>
                     </div>
+
+                 
+
+                    <div class="col-md-5 text-center"> </div>
 
                     <div class="col-md-1 col-2 text-center">
                         <a class="a-link" href="{{ url_for('products.catalog') }}">SHOP</a>
@@ -73,6 +71,16 @@
                         <a class="a-link" href="">NEWS</a>
                     </div>
 
+                    
+
+                    <div class="col-md-1 col-2 text-center">
+                        <a class="a-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
+                    </div>
+
+                    <div class="col-md-1 col-2 text-center">
+                        <a class="a-link" href="{{ url_for('main.hand_in') }}">HAND IN</a>
+                    </div>
+
                     <div class="col-md-1 col-2 text-center">
                         <a id="about-link" class="a-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
                     </div>
@@ -80,11 +88,15 @@
                     <div id="help-link-col" class="col-md-1 col-2 text-center">
                         <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
                     </div>
+
+                   
+               
                  
                 </div>
 
             </div>
 
+            <!--
             <div id="about-us-container" class="container-fluid subnav-content fixed-top">
                 <div class="row">
                     <div class="col-11"></div>
@@ -102,7 +114,7 @@
                         <a class="a-link-white" href="">FAQ</a>
                     </div>
                 </div>
-            </div> 
+            </div> -->
 
 
         
@@ -160,8 +172,7 @@
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4 class="footer-heading">ABOUT</h4>
                     <a class="a-link" href="{{ url_for('main.about_us') }}"> About us </a>
-                    <br>
-                    <a class="a-link" href="{{ url_for('main.find_us') }}"> Find us </a>
+                   
                 </div>
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4 class="footer-heading">INFORMATION</h4>
@@ -172,6 +183,8 @@
                     <a class="a-link" href="{{ url_for('main.faq') }}">FAQ </a>
                     <br>
                     <a class="a-link" href="{{ url_for('main.contact') }}"> Contact </a>
+                    <br>
+                    <a class="a-link" href="{{ url_for('main.find_us') }}"> Find us </a>
 
                 </div>
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">

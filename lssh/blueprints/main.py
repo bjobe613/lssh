@@ -30,7 +30,7 @@ def startup():
 def about_us():
     return render_template('about_us.html')
 
-@main.route("/about/find_us")
+@main.route("/help/find_us")
 def find_us():
     return render_template('find_us.html')
 

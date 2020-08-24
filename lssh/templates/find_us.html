@@ -1,17 +1,70 @@
-{% extends "about_layout.html" %}
+{% extends "help_layout.html" %}
 
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/find_us.css') }}">
 {% endblock more_head %}
 
-{% block about_content %}
+{% block help_content %}
     <!--Where the html should be written-->
     <div id="container-fill" class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <p> fill out</p>
+        <div class="row pt-md-5 mt-5 mb-5 pb-5">
+            <div class="col-xl-5 offset-xl-2 col-12 pb-4">
+                <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/29826_50065.jpg') }}" alt="Furniture">
+            </div>
+            <div class="col-xl-3 col-10 offset-1 offset-xl-0">
+                <h3 class="pb-3">LOCATION</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit, illum perspiciatis,
+                     quis autem maxime accusantium mollitia suscipit laboriosam blanditiis deserunt iste incidunt repudiandae,
+                      nihil earum. Dolor sunt debitis mollitia eos!</p>
             </div>
         </div>
+
+        <div class="row pt-5 mt-5 pb-5 mb-5">
+            
+            <div class="col-xl-3 offset-xl-2 offset-1 col-10">
+                <h3 class="pb-3">MAP</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit, illum perspiciatis,
+                     quis autem maxime accusantium mollitia suscipit laboriosam blanditiis deserunt iste incidunt repudiandae,
+                      nihil earum. Dolor sunt debitis mollitia eos!</p>
+            </div>
+            <div class="col-xl-5 col-12 order-first order-xl-last pb-4">
+                <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+            </div>
+        </div>
+
+
+        <!-- EASIEST WAY TO FIND OUR SHOP EXTRA FUNCTION IF TIME
+
+        <div class="row pb-5">
+            <div class="col-3 offset-2">
+                <p>EASIEST WAY TO FIND OUR SHOP</p>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
+
+        
+        <div class="row pb-5 mb-5">
+                <div class="col-8 offset-2">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Go to entrance 19 in the A-building at Linköping University</p>
+                        </div>
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Take the first stairs to the left that goes down</p>
+                        </div>
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Welcome to our shop!</p>
+                        </div>
+                    </div>
+                </div>
+        </div> -->
+
+
     </div>
-{% endblock about_content %}
+{% endblock help_content %}

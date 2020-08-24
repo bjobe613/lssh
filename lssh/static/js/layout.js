@@ -104,6 +104,14 @@ if (window.location.href.indexOf("contact") > -1) {
     $( "#contact-btn" ).removeClass( "transparent-toggle" );
 } 
 
+if (window.location.href.indexOf("find_us") > -1) {
+    /* img subnav */
+    $( "#find-btn" ).addClass( "a-link-white-active" );
+    $( "#find-btn" ).addClass( "white-toggle " );
+    $( "#find-btn" ).removeClass( "a-link-white" );
+    $( "#find-btn" ).removeClass( "transparent-toggle" );
+} 
+
 
 
 if (window.location.href.indexOf("faq") > -1) {
