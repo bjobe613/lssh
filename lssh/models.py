@@ -86,9 +86,12 @@ class Newsletter(db.Model):
     email = db.Column(db.String, primary_key = True)
 
 class News(db.Model): #has to be reworked into files, not a model.
-    date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
+    published = db.Column(db.Boolean, nullable=False, default = False)
+    date = db.Column(db.DateTime(timezone = True), server_default = func.now())
     title = db.Column(db.String, nullable = False)
-    text = db.Column(db.Text, nullable = False)
+    ingress = db.Column(db.String, nullable = False)
+    text = db.Column(db.JSON, nullable = False)
     pictures = db.relationship('NewsPictures', backref = 'news')
 
 class NewsPictures(db.Model):
@@ -151,6 +154,13 @@ def fillTestDB():
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
 
+    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+    news2 = News(title = "En nyhet2", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+    news3 = News(title = "En nyhet3", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+    news4 = News(title = "En nyhet4", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"}, published = True)
+    news5 = News(title = "En nyhet5", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+    news6 = News(title = "En nyhet6", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)
     seller1.products.append(prod2)
@@ -163,7 +173,7 @@ def fillTestDB():
 
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1])
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1, news2, news3, news4, news5, news6])
     db.session.commit()
 
     prod1pic2.renamePictureAsID()

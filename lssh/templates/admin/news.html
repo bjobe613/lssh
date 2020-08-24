@@ -2,8 +2,28 @@
 {% set navbar_active_news = True %}
 
 {% block more_head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/news.css') }}">
 {% endblock more_head %}
 
 {% block content %}
-    <p>News</p>
+<h1>News</h1>
+<a class="btn btn-primary" href="{{ url_for('admin.admin_add_news') }}">Add news</a>
+<div class="card-holder">
+    {% for news in all_news %}
+    <div class="lssh-card">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title lssh-card-title">{{ news.title }}</h5>
+                <p class="card-text lssh-card-ingress">{{ news.ingress }}</p>
+                <a href="#" class="btn btn-primary">View</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                {% if not news.published %}
+                <a href="#" class="btn btn-primary">Publish</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

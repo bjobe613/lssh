@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from lssh.models import db, Product
+from lssh.models import db, Product, News
 
 admin = Blueprint('admin', __name__, url_prefix = '/admin')
 
@@ -60,7 +60,8 @@ def admin_add_news():
     
 @admin.route("/news/")
 def admin_news():
-    return render_template('admin/news.html')
+    all_news = News.query.all()
+    return render_template('admin/news.html', all_news=all_news)
 
 @admin.route("/faq/")
 def admin_faq():
