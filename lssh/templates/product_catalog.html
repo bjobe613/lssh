@@ -19,7 +19,7 @@
           <a data-toggle="collapse" href="#collapse-category">
             Category
           </a>
-          <div class="collapse" id="collapse-category">
+          <div class="collapse filter-options-wrapper" id="collapse-category">
               <!--List filter options-->
           </div>
         </div>
@@ -28,7 +28,7 @@
           <a data-toggle="collapse" href="#collapse-color">
             Color
           </a>
-          <div class="collapse" id="collapse-color">
+          <div class="collapse filter-options-wrapper" id="collapse-color">
               <!--List filter options-->
           </div>
         </div>
@@ -36,55 +36,49 @@
           <a data-toggle="collapse" href="#collapse-condition">
             Condition
           </a>
-          <div class="collapse" id="collapse-condition">
+          <div class="collapse filter-options-wrapper" id="collapse-condition">
               <!--List filter options-->
           </div>
         </div>
-
         <div class="category">
           <a data-toggle="collapse" href="#collapse-paymentMethod">
             Payment
           </a>
-          <div class="collapse" id="collapse-paymentMethod">
+          <div class="collapse filter-options-wrapper" id="collapse-paymentMethod">
               <!--List filter options-->
           </div>
         </div>
       </div>
-    </div>
-    <div id="catalog-container">
-      <div id="catalog-wrapper">
-      {% for prodRow in products | batch(3) %}
-        <div class="row">
-          {% for x in prodRow %}
-          <div class="col-sm">
-            <div class="product-card" id="product-card-{{x.articleNumber}}">
-              <a href="product/{{x.articleNumber}}">
-                <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
-              </a>
-              <div class="product-card-text">
+    <div id="catalog-wrapper">
+      <div class="row row-wrapper">
+        {% for x in products %}
+
+            <div class="col-md-4 col-xl-3">
+              <div class="product-card" id="product-card-{{x.articleNumber}}">
                 <a href="product/{{x.articleNumber}}">
-                  <h5 class="h5-card">
-                    {{x.name}}
-                  </h5>
+                  <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
                 </a>
-                <p>
-                  Short desc.
-                </p>
-                <p class="product-card-price">
-                  {{x.price}} SEK
-                </p>
-                <p class="product-card-status">
-                  Status
-                </p>
+                <div class="product-card-text">
+                  <a href="product/{{x.articleNumber}}">
+                    <h5 class="h5-card">
+                      {{x.name}}
+                    </h5>
+                  </a>
+                  <p>
+                    Short desc.
+                  </p>
+                  <p class="product-card-price">
+                    {{x.price}} SEK
+                  </p>
+                  <p class="product-card-status">
+                    Status
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          {% endfor %}
+        {% endfor %}
         </div>
-      {% endfor %}
       </div>
-    </div>
-
 {% endblock content %}
 
 

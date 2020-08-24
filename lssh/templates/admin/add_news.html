@@ -1,0 +1,25 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_news = True %}
+{% block more_head %}
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_news.css') }}">
+{% endblock more_head %}
+
+{% block content %}
+<div class="container">
+    <!-- Create the editor container -->
+    <div id="editor">
+    </div>
+</div>
+{% endblock content %}
+
+{% block templates %}
+{% endblock templates %}
+
+{% block scripts %}
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_news.js') }}"></script>
+{% endblock scripts %}

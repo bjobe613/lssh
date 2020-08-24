@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
 
+import os
+
 db = SQLAlchemy(app)
 
 
@@ -44,11 +46,19 @@ class Product(db.Model):
             pic = piclist[0].pictureName
         return pic
 
-#This serialize is urrently fitted for filter
+    #This serialize is urrently fitted for filter
     def serialize(self):
         return dict(articleNumber=self.articleNumber, name=self.name, price=self.price, pubDate=self.pubDate,
         category=self.category, subcategory=self.subcategory, color=self.color, condition=self.condition,
         status=self.status, paymentMethod=self.paymentMethod)
+
+    def addPicture(self, picture):
+        pic = ProductPictures(productID = self.articleNumber)
+        db.session.add(pic)
+        db.session.commit()
+
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', str(pic.pictureID) + '.jpg'))
+        pic.renamePictureAsID()
 
 class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
@@ -166,12 +176,15 @@ def fillTestDB():
 
     print("Filled the database")
 
+
+resetDB()
+fillTestDB()
+
+
+
 '''
 def test():
     pic = FurniturePictures.query.filter_by(pictureID = 1).first()
     pic.pictureName = str(pic.pictureID) + ".jpg"
     db.session.commit()
 '''
-
-resetDB()
-fillTestDB()
