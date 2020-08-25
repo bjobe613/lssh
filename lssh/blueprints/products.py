@@ -25,7 +25,6 @@ def product(x):
 
 @products.route("/add/", methods=['POST'])
 def add_product():
-    print(request.form)
     if(request.form.get("name") and 
        request.form.get("price") and 
        request.form.get("condition") and 
