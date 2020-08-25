@@ -1,3 +1,5 @@
+var editor;
+
 var documentHasCanged = true;
 
 function callOnDocumentChange() {
@@ -9,21 +11,11 @@ function callOnDocumentChange() {
 
 }
 
-function saveDocument() {
-    documentHasCanged = false;
-    $('#close-button').addClass('btn-secondary')
-    $('#close-button').removeClass('btn-warning')
-    $('#close-button').html('Close')
 
-}
 $(document).ready(function () {
     $('#news-header').change(callOnDocumentChange);
     $('#news-ingress').change(callOnDocumentChange);
-    $('#save-button').click(function (e) {
-        e.preventDefault();
-        saveDocument();
 
-    })
 
     //Creation of the editor
     var quillOptions = {
@@ -38,10 +30,11 @@ $(document).ready(function () {
         placeholder: 'Write the news article here...',
         theme: 'snow'
     };
-    var editor = new Quill('#editor', quillOptions);
+    editor = new Quill('#editor', quillOptions);
 
     //Adding event listeners to editor
     editor.on('text-change', function (delta, oldDelta, source) {
         callOnDocumentChange();
+        console.log(editor.getContents())
     });
 })
