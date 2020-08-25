@@ -54,6 +54,16 @@ def admin_add_product():
 
     return render_template('admin/add_product.html', categories=cat)
 
+@admin.route("/news/edit/<int:id>")
+def admin_edit_news(id):
+    news = News.query.get_or_404(id)
+    return render_template('admin/edit_news.html')
+
+@admin.route("/news/view/<int:id>")
+def admin_view_news(id):
+    news = News.query.get_or_404(id)
+    return render_template('admin/view_news.html')
+    
 @admin.route("/news/add")
 def admin_add_news():
     return render_template('admin/add_news.html')

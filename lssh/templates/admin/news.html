@@ -12,15 +12,24 @@
     {% for news in all_news %}
     <div class="lssh-card">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title lssh-card-title">{{ news.title }}</h5>
                 <p class="card-text lssh-card-ingress">{{ news.ingress }}</p>
-                <a href="#" class="btn btn-primary">View</a>
-                <a href="#" class="btn btn-primary">Edit</a>
-                {% if not news.published %}
-                <a href="#" class="btn btn-primary">Publish</a>
+
+                {% if news.published %}
+                <div class="alert alert-success" role="alert">
+                    Published
+                </div>
+                {% else %}
+                <div class="alert alert-secondary" role="alert">
+                    Draft
+                </div>
                 {% endif %}
+                <div class="btn-group">
+                    <a href="{{ url_for('admin.admin_view_news', id = news.id) }}" class="btn btn-secondary">View</a>
+                    <a href="{{ url_for('admin.admin_edit_news', id = news.id) }}" class="btn btn-info">Edit</a>
+                    <a href="#" class="btn btn-success {% if news.published %}disabled{% endif %}">Publish</a>
+                </div>
             </div>
         </div>
     </div>
