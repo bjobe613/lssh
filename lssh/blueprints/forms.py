@@ -11,6 +11,6 @@ class AdminLoginForm(FlaskForm):
 class AdminRegisterForm(FlaskForm):
         userName = StringField('Username', validators=[DataRequired()])
         authorizationLevel = IntegerField('AuthorizationLevel', validators=[DataRequired()])
-        password = StringField('Password', validators=[DataRequired()])
-        confirmPassword = StringField('Confirm Password', validators=[DataRequired(), EqualTo(password)])  #check that the EqualTo syntax is correct 
+        password = StringField('Password', validators=[DataRequired(), EqualTo('confirmPassword', message='Password must match')])
+        confirmPassword = StringField('Confirm Password', validators=[DataRequired()]) 
         registerButton = SubmitField('Register')
