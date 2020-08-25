@@ -6,8 +6,6 @@ $(document).ready(function () {
         var form = document.getElementById("add-news-form")
         var formData = new FormData(form);
 
-        console.log(formData)
-
         $.ajax({
             url: '/news/',
             type: 'POST',

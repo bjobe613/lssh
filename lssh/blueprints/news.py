@@ -23,32 +23,48 @@ def catalog():
            request.form.get("ingress") and
            request.form.get("article")):
             article = json.loads(request.form.get("article"))
+            
             news = News(title=request.form.get("title"),
                         ingress=request.form.get("ingress"),
                         text=article)
             news.escape_html()
-        db.session.add(news)
-        db.session.commit()
+            db.session.add(news)
+            db.session.commit()
 
-        return {
-            "msg": "ok",
-            "id": news.id
-        }, 200
-    else:
-        return {'msg': 'not ok'}, 400
+            return {
+                "msg": "ok",
+                "id": news.id
+            }, 200
+        else:
+            return {'msg': 'not ok'}, 400
 
 
-@news.route("/<int:x>")
+@news.route("/<int:x>/")
 def product():
     return render_template('news_single_view.html')
 
 
-@news.route("/<int:id>", methods=["GET", "PUT", "DELETE"])
+@news.route("/api/<int:id>", methods=["GET", "PUT", "DELETE"])
 def single_prod(id):
     if request.method == "GET":
         news = News.query.get_or_404(id)
-
+        return news.serialize()
     elif request.method == "PUT":
-        pass
+        news = News.query.get_or_404(id)
+
+        if request.form.get("title"):
+            news.title = request.form.get("title")
+
+        if request.form.get("ingress"):
+            news.ingress = request.form.get("ingress")
+
+        if request.form.get("article"):
+            news.text = json.loads(request.form.get("article"))
+
+        news.escape_html()
+        db.session.commit()
+        return news.serialize()
     elif request.method == "DELETE":
         pass
+        return ""
+    return ""

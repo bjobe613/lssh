@@ -65,7 +65,7 @@ def admin_add_product():
 @admin.route("/news/edit/<int:id>")
 def admin_edit_news(id):
     news = News.query.get_or_404(id)
-    return render_template('admin/edit_news.html')
+    return render_template('admin/edit_news.html', news_id=id)
 
 
 @admin.route("/news/view/<int:id>")

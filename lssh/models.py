@@ -103,7 +103,8 @@ class News(db.Model): #has to be reworked into files, not a model.
         self.ingress = html.escape(self.ingress)
 
         for obj in self.text["ops"]:
-            obj["insert"] = html.escape(obj["insert"])
+            if type(obj["insert"]) is str:
+                obj["insert"] = html.escape(obj["insert"])
 
         db.session.commit()
 
@@ -114,6 +115,15 @@ class News(db.Model): #has to be reworked into files, not a model.
         article_html += quill_parser.render(self.text["ops"])
 
         return article_html
+
+    def serialize(self):
+        return  {
+            "id": self.id,
+            "published": self.published,
+            "title": self.title,
+            "ingress": self.ingress,
+            "text": self.text
+        }
         
 
 class NewsPictures(db.Model):

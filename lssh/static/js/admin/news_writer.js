@@ -1,5 +1,4 @@
 var editor;
-
 var documentHasCanged = true;
 
 function callOnDocumentChange() {
@@ -35,6 +34,5 @@ $(document).ready(function () {
     //Adding event listeners to editor
     editor.on('text-change', function (delta, oldDelta, source) {
         callOnDocumentChange();
-        console.log(editor.getContents())
     });
 })
