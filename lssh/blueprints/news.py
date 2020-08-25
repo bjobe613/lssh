@@ -23,7 +23,7 @@ def catalog():
            request.form.get("ingress") and
            request.form.get("article")):
             article = json.loads(request.form.get("article"))
-            
+
             news = News(title=request.form.get("title"),
                         ingress=request.form.get("ingress"),
                         text=article)
@@ -65,6 +65,11 @@ def single_prod(id):
         db.session.commit()
         return news.serialize()
     elif request.method == "DELETE":
-        pass
-        return ""
+        news = News.query.get_or_404(id)
+        if news.published:
+            return {"msg" : "cant delete published articles"}
+        else:
+            db.session.delete(news)
+            db.session.commit()
+            return news.serialize()
     return ""
