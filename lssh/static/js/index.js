@@ -37,7 +37,7 @@ function subscribeNewsLetter(email) {
 
 
   $.ajax({
-    url: serverUrl + '/',
+    url: serverUrl + '/subscribe',
     type: 'POST',
     contentType: "application/json",
     data: JSON.stringify(email),
