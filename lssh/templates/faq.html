@@ -2,11 +2,16 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/faq.css') }}">
 {% endblock more_head %}
 
-{% block content %}
-    <!--Where the html should be written-->
-    <p>
-        faq
-    </p>
-{% endblock content %}
+{% block help_content %}
+
+    <div id="container-fill" class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p>FAQ</p>
+            </div>
+        </div>
+    </div>
+{% endblock help_content %}

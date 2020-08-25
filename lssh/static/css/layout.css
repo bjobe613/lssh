@@ -17,9 +17,8 @@ h2 {
 
 h3 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 300 !important;
-    font-style: italic;
-    color: rgb(125, 125, 125);
+    font-weight: 500 !important;
+    color: rgb(0, 0, 0);
 }
 
 h4 {
@@ -28,29 +27,57 @@ h4 {
     font-size: 1rem !important;
 }
 
+h5 {
+    color: white;
+    font-size: 1.1rem !important;
+}
+
+h6 {
+    color: rgb(190, 190, 190);
+    font-weight: 300 !important;
+    font-size: 1.1rem !important;
+}
+
+
+
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+   
+}
+
+.a-link {
+    color: grey;
+}
+
+.a-link:hover {
+    color: rgb(73, 73, 73);
+    text-decoration: none;
+}
+
+.a-link-white {
+    color: rgb(206, 206, 206);
+}
+
+.a-link-white:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 #logotype {
-    height: 5rem;
-    width: 5rem;
-    
+    height: 4.5rem;
+    width: 4.5rem;   
 }
 
+
 #logotype-footer {
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     opacity: 20%;
 }
 
 .page-footer {
     background-color: #161616;
-}
-
-.a-grey {
-    color: #807d7d;
 }
 
 .footer-copyright {
@@ -62,4 +89,84 @@ p {
     transition: background-color 200ms linear;
 }
 
+#navbar {
+    height: 5rem;
+}
 
+#navbar-mobile {
+    background-color: white;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .navbar-desktop-active {
+        display: none;
+    }
+}
+
+
+/* Subnav */ 
+
+/*
+#help-link-col {
+    height: 5rem;
+}
+*/
+
+#help-link {
+    width: 100%;
+}
+.subnav-content {
+    display: none;
+    position: absolute;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(255, 255, 255);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+#about-us-container {
+    min-height: 4vh;
+    background-color: #09433A;
+}
+
+.inline {
+    display: inline-block;
+    color: white;
+}
+
+#test-link {
+    position: relative;
+    margin-left: -3.8rem;
+}
+
+#contact-sublink {
+    position: relative;
+    margin-left: -0.4rem;
+    
+}
+
+.subnav {
+    background-color: #09433A;
+}
+
+
+
+/* Layout hand in req */
+
+#hand-in-req-container {
+    height: 80vh;
+    
+}
+
+.bg-grey {
+    background-color: #F9F9F9;
+}
