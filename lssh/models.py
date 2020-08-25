@@ -3,7 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
 
+from delta import html as quill_parser
+
+
 import os
+import html
 
 db = SQLAlchemy(app)
 
@@ -94,6 +98,24 @@ class News(db.Model): #has to be reworked into files, not a model.
     text = db.Column(db.JSON, nullable = False)
     pictures = db.relationship('NewsPictures', backref = 'news')
 
+    def escape_html(self):
+        self.title = html.escape(self.title)
+        self.ingress = html.escape(self.ingress)
+
+        for obj in self.text:
+            obj["insert"] = html.escape(obj["insert"])
+
+        db.session.commit()
+
+    def get_article_as_html(self):
+        article_html = ""
+        article_html += "<h1>" + self.title + "</h1>\n"
+        article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
+        article_html += quill_parser.render(self.text)
+
+        return article_html
+        
+
 class NewsPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
@@ -154,12 +176,12 @@ def fillTestDB():
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
 
-    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
-    news2 = News(title = "En nyhet2", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
-    news3 = News(title = "En nyhet3", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
-    news4 = News(title = "En nyhet4", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"}, published = True)
-    news5 = News(title = "En nyhet5", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
-    news6 = News(title = "En nyhet6", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"test": "test"})
+    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är <div> brödtexten"}])   
+    news2 = News(title = "En nyhet2", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
+    news3 = News(title = "En nyhet3", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
+    news4 = News(title = "En nyhet4", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}], published = True)
+    news5 = News(title = "En nyhet5", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
+    news6 = News(title = "En nyhet6", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
 
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)

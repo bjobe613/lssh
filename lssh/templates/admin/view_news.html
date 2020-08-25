@@ -2,9 +2,11 @@
 
 
 {% block news_sidebar_content %}
-<h1> Hello</h1>
+<h1>Viewing article</h1>
+<a class="btn btn-warning btn-block" href="{{ url_for('admin.admin_edit_news', id=news_id) }}">Edit article</a>
+<a class="btn btn-secondary btn-block" href="{{ url_for('admin.admin_news') }}">Close</a>
 {% endblock news_sidebar_content %}
 
 {% block news_main_content %}
-<h1> Hello!! </h1>
+<div class="news-article">{{ article|safe }}</div>
 {% endblock news_main_content %}
