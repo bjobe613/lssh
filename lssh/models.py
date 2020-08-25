@@ -102,7 +102,7 @@ class News(db.Model): #has to be reworked into files, not a model.
         self.title = html.escape(self.title)
         self.ingress = html.escape(self.ingress)
 
-        for obj in self.text:
+        for obj in self.text["ops"]:
             obj["insert"] = html.escape(obj["insert"])
 
         db.session.commit()
@@ -111,7 +111,7 @@ class News(db.Model): #has to be reworked into files, not a model.
         article_html = ""
         article_html += "<h1>" + self.title + "</h1>\n"
         article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
-        article_html += quill_parser.render(self.text)
+        article_html += quill_parser.render(self.text["ops"])
 
         return article_html
         

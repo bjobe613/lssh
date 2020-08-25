@@ -25,7 +25,7 @@ def catalog():
             article = json.loads(request.form.get("article"))
             news = News(title=request.form.get("title"),
                         ingress=request.form.get("ingress"),
-                        text=article["ops"])
+                        text=article)
             news.escape_html()
         db.session.add(news)
         db.session.commit()
@@ -35,7 +35,7 @@ def catalog():
             "id": news.id
         }, 200
     else:
-        return {'msg': 'ej ok'}, 400
+        return {'msg': 'not ok'}, 400
 
 
 @news.route("/<int:x>")
@@ -44,9 +44,10 @@ def product():
 
 
 @news.route("/<int:id>", methods=["GET", "PUT", "DELETE"])
-def single_prod():
+def single_prod(id):
     if request.method == "GET":
-        pass
+        news = News.query.get_or_404(id)
+
     elif request.method == "PUT":
         pass
     elif request.method == "DELETE":
