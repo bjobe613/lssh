@@ -10,12 +10,14 @@
     <form method="POST" class="form-signin">
 
         
-        <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>        
-        <div>{{adminLoginForm.csrf_token}}</div>
-        <div>{{adminLoginForm.userName(placeholder="Username")}}</div>
-        <div>{{adminLoginForm.password(placeholder="Password")}}</div>
-        <div>{{adminLoginForm.loginButton(placeholder="Login")}}</div>
+        <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>   
+        <div><input id="login-form-username"></div> 
+        <div><input id="login-form-password"></div> 
+        <div><button id="login-form-button" onclicl="login()"></div>   
+        
         
     </form>
     
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin_handler.js') }}"></script>
+
 {% endblock content %}
