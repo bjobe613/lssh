@@ -186,12 +186,7 @@ def fillTestDB():
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
 
-    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är <div> brödtexten"}])   
-    news2 = News(title = "En nyhet2", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
-    news3 = News(title = "En nyhet3", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
-    news4 = News(title = "En nyhet4", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}], published = True)
-    news5 = News(title = "En nyhet5", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
-    news6 = News(title = "En nyhet6", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = [{"insert" : "Detta är brödtexten"}])
+    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"ops" : [{"insert" : "Detta är <div> brödtexten"}]})   
 
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)
@@ -205,7 +200,7 @@ def fillTestDB():
 
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1, news2, news3, news4, news5, news6])
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.commit()
 
     prod1pic2.renamePictureAsID()
