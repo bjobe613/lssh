@@ -1,4 +1,5 @@
 
+
     //Scroll navbar
 $(document).scroll(function () {
     var $nav = $("#navbar");
@@ -125,9 +126,6 @@ if (window.location.href.indexOf("faq") > -1) {
     $( "#faq-btn" ).removeClass( "a-link-white" );
     $( "#faq-btn" ).removeClass( "transparent-toggle" );
 
- 
-
-
 
     title = 'GENERAL INFORMATION';
     var cardId;
@@ -147,7 +145,15 @@ if (window.location.href.indexOf("faq") > -1) {
         cardBody: "Ipsum lorem3... ",
     };
 
-    var faqCards = [faqCard1, faqCard2, faqCard3];
+    var faqCard4 = {
+        cardHeader: "Where are you located?",
+        cardBody: "Ipsum lorem3... ",
+    };
+
+
+    
+
+    var faqCards = [faqCard1, faqCard2, faqCard3, faqCard4];
 
     /*accordionTitle = '<h3 class="pb-3">' + title + '</h3>';
     $("#accordion-col").append(accordionTitle);*/

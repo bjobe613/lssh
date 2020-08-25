@@ -87,6 +87,14 @@ p {
 }
 
 
+.a-how-it-works {
+    color: #49a193;
+}
+
+.a-how-it-works:hover {
+    color: #3c867a;
+    text-decoration: none;
+}
 
 .a-link-white {
     color: rgb(206, 206, 206);
@@ -120,6 +128,7 @@ p {
 
 .footer-copyright {
     color: rgb(109, 109, 109);
+    margin-bottom: 0;
 }
 
 #navbar.scrolled {
