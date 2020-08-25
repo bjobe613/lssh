@@ -61,13 +61,19 @@ def single_prod(id):
         if request.form.get("article"):
             news.text = json.loads(request.form.get("article"))
 
+        if request.form.get("published"):
+            if request.form.get("published") == "true":
+                news.published = True
+            elif request.form.get("published") == "false":
+                news.published = False
+
         news.escape_html()
         db.session.commit()
         return news.serialize()
     elif request.method == "DELETE":
         news = News.query.get_or_404(id)
         if news.published:
-            return {"msg" : "cant delete published articles"}
+            return {"msg": "cant delete published articles"}
         else:
             db.session.delete(news)
             db.session.commit()
