@@ -2,11 +2,32 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/help_layout.css') }}">
 {% endblock more_head %}
 
 {% block content %}
-    <!--Where the html should be written-->
-    <p>
-        help layout
-    </p>
+    <!--Where the html for the help_layout should be written-->
+ 
+        <!--Where the html should be written-->
+        <div id="about-us-container" class="container-fluid">
+            <div class="row">
+                <div class="col-11"></div>
+                <div class="col-1 text-center">
+                    <div class="arrow-down"></div>
+                </div>
+            </div>
+    
+            <div class="row mt-4 pb-4 pt-2">
+                <div class="col-10"></div>
+                <div class="col-1 text-center">
+                    <a class="a-link-white" href="{{ url_for('main.contact') }}">Contact</a>
+                </div>
+                <div class="col-1 text-center">
+                    <a class="a-link-white" href="{{ url_for('main.faq') }}">FAQ</a>
+                </div>
+            </div>
+        </div>
+    {% block help_content %}
+
+    {% endblock help_content %}
 {% endblock content %}
