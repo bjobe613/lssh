@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+
+{% block more_head %}
+    <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hand_in_request_layout.css') }}">
+
+    <title>LSSh | Make a hand in request</title>
+
+{% endblock more_head %}
+
+{% block content %}
+    <!--Where the html should be written-->
+    
+    <div class="container-fluid pt-3 pb-3 bg-grey">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <p><a class="a-how-it-works" href="{{ url_for('main.hand_in') }}">Hand in</a> > Hand in request</p>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+
+    <div id="hand-in-req-container" class="container-fluid bg-grey">
+        <div class="row pt-md-0 pt-5">
+            <div class="col-2"></div>
+            <div class="col-3 col-md-3 d-md-block d-none">
+                
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/pexels-pixabay-279618.jpg') }}" alt="Furniture">
+                    </div>
+                </div>
+
+                
+                <div class="container-fluid">
+                    <div class="row white-bg rounded pt-3 mt-4">
+                        <div class="col-2">
+                            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/icons8-bicycle-basket-64.png') }}" alt="Furniture">
+                        </div>
+                        <div class="col-10">
+                            <h3 class="h3-handin">NEED HELP WITH TRANSPORT?</h3>
+                            <p>We offer free rental of a bike cart and tricyle! <a target="_blank" class="a-how-it-works" href="{{ url_for('main.transport') }}">More info</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+            </div>
+            <div class="col-md-5 col-8 pl-5">
+                <div class="row">
+                    <div id="handin-step-1" class="col-4 rounded-left selected-step">
+                        <p class="p-handin">STEP 1</p>
+                        <h5>Seller</h5>
+                    </div>
+                    <div  id="handin-step-2" class="col-4 not-selected-step">
+                        <p class="p-handin">STEP 2</p>
+                        <h5>Item/s</h5>
+                    </div>
+                    <div  id="handin-step-3" class="col-4 rounded-right not-selected-step">
+                        <p class="p-handin">STEP 3</p>
+                        <h5>Receipt</h5>
+                    </div>
+                </div>
+
+       
+
+                <div class="row pt-4">
+                    <div class="col">
+
+                        <div id="step1">
+                            <h3>Information about seller</h3>
+
+                            <form action="#" onsubmit="hideForm();return false">
+                                <div class="form-group">
+                                  <label for="exampleFormControlInput1">Email address</label>
+                                  <input type="email" class="form-control" id="handin-email-input" placeholder="Write email here...">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Number of items to hand in</label>
+                                  <select class="form-control" id="handin-number-items">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                  </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-green">Submit</button>
+                              </form>
+                        </div>
+
+                        <div id="step2">
+
+                        </div>
+
+                        <div id="step3" class="text-center">
+
+                        </div>
+
+                       
+
+                          <!--
+
+                          <div id="hand-in-req-form-2">
+                            <h3>Information about items/s</h3>
+
+                            <form action="#" onsubmit="hideForm();return false">
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Type of item</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write type here... (E.g. Sofa)">
+                              </div>
+  
+                              <div class="form-group">
+                                <label for="exampleFormControlSelect1">Condition of item</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>Very good</option>
+                                  <option>Good</option>
+                                  <option>Fair</option>
+                                </select>
+                              </div>
+  
+                              <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Do you want to sell or donate the item?</label>
+                                  <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Sell item</option>
+                                    <option>Donate</option>
+                                  </select>
+                              </div>
+  
+                              <div class="form-group">
+                                  <label for="exampleFormControlInput1">Additional information (Optional)</label>
+                                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write information here... (E.g. Scratches">
+                              </div>
+  
+  
+  
+                              <button type="submit" class="btn btn-primary btn-green">Submit</button>
+                            </form>
+
+                            </div>-->
+
+                         
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/hand_in_request.js') }}"></script>
+{% endblock content %}
