@@ -40,8 +40,8 @@ function subscribeNewsLetter(email) {
 
 
   $.ajax({
-    url: serverUrl + '/',
-    type: 'POST', 
+    url: serverUrl + '/subscribe',
+    type: 'POST',
     contentType: "application/json",
     data: JSON.stringify(email),
     success: function (res) { 

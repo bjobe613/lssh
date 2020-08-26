@@ -7,11 +7,17 @@ main = Blueprint('main', __name__, url_prefix = '/')
 '''this is the regular expression used to khnow if what is sent is an email:'''
 emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
-
-
-
-@main.route("/", methods = ['GET', 'POST'])
+@main.route("/")
 def startup():
+    return render_template('index.html')
+    
+#@main.route("/home")
+#def home():
+#    return render_template('index.html')
+
+@main.route("/subscribe", methods = ['POST'])
+def subscribe():
+
     if request.method == 'POST':
         
         email = request.get_json()
@@ -25,12 +31,6 @@ def startup():
                 return Response(status= 201)
         return Response(status=406)
 
-    elif request.method == 'GET':
-        return render_template('index.html')
-    
-#@main.route("/home")
-#def home():
-#    return render_template('index.html')
 
 @main.route("/about/about_us")
 def about_us():
