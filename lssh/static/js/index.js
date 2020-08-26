@@ -16,9 +16,13 @@ $("#works-seller-button").click(function () {
 });
 
 function subscribeButton() {
+  
   email = $('#input-border-bottom').val();
-  subscribeNewsLetter(email)
+  subscribeNewsLetter(email);
 } 
+
+
+
 
 // Event listener on enter button for input for subscribe
 var inputSubscribe = document.getElementById("input-border-bottom");
@@ -37,7 +41,7 @@ function subscribeNewsLetter(email) {
 
   $.ajax({
     url: serverUrl + '/',
-    type: 'POST',
+    type: 'POST', 
     contentType: "application/json",
     data: JSON.stringify(email),
     success: function (res) { 

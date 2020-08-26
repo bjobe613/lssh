@@ -3,6 +3,8 @@
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/hand_in.css') }}">
+
+    <title>LSSh | Hand in items to sell or donate!</title>
 {% endblock more_head %}
 
 {% block content %}
@@ -25,11 +27,11 @@
                 <h4>MAKE A</h4>
                 <h2>Hand in request</h2>
                 <br>
-                <h5>Do you have something you want to sell or donate?</h5>
+                <h5 class="text-white">Do you have something you want to sell or donate?</h5>
                 <h6>Give your furniture a new home by handing them in to LiU Student Secondhand! You can either sell or donate furniture.</h6>
                 <br>
                 <br><br><br>
-                <form action="{{ url_for('main.hand_in_request1') }}">
+                <form action="{{ url_for('main.hand_in_request') }}">
                     <button class="btn btn-success btn-white" type="submit">HAND IN NOW</button>
                 </form>
                 
@@ -41,18 +43,44 @@
         </div>
     </div>
 
-    <div id="about-us-container2" class="container-fluid">
+    <div id="about-us-container2" class="container-fluid" >
         <div class="row pb-5">
             <div class="col-8 offset-2 col-sm-8 mt-5 pt-5">
-                <h1>How does it work?</h1>
+                <h3>HOW DOES IT WORK?</h3>
                 <br>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro,
-                tempore incidunt dolorum repudiandae aliquam perspiciatis odio ipsum sequi corrupti enim dignissimos adipisci vel. 
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro.</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae quidem sunt saepe error obcaecati non porro,
-                    tempore incidunt dolorum repudiandae aliquam perspiciatis odio ipsum sequi corrupti enim dignissimos adipisci vel.</p>
+                <p>Send us a hand in request by filling out the form with the information we need, You will later recieve a reply by email on
+                     whether we can accept your items, or we might have some additional questions about the items.
+                     <br><br>
+                     We then decide on a time for hand in when you can bring it to the shop and will add it to our 
+                     inventory, ready to be bought by other students! If the item is not sold we will reduce the price 
+                     as described further down.
+                </p>
+                
             </div>
             <div class="col-sm-2"></div>
         </div>
+
+        <div class="row pb-5">
+            <div class="col-8 offset-2 col-sm-8">
+                <h3>PRICE REDUCTION</h3>
+                <p>Because of limited space in our shop and to not have items staying for too long, we have a price reducing policy
+                    which is explained below.</p>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-8 col-12 offset-md-2">
+                        <img src="{{ url_for('static', filename = '/pictures/pricereducing.png') }}" class="img-fluid image" alt="Responsive image">
+                    </div>
+                </div>
+
+                
+
+               
+               
+                
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
     </div>
 {% endblock content %}

@@ -1,6 +1,6 @@
 
 
-    //Scroll navbar
+//Scroll navbar
 $(document).scroll(function () {
     var $nav = $("#navbar");
     $nav.toggleClass('scrolled', $(this).scrollTop() > 0);
@@ -30,7 +30,7 @@ if (window.location.href.indexOf("products") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
 } 
 
-
+/*
 if (window.location.href.indexOf("step1") > -1) {
 
     $( "#handin-step-1" ).removeClass( "not-selected-step" );
@@ -54,14 +54,21 @@ if (window.location.href.indexOf("step1") > -1) {
         + '<option>5</option>'
         + '</select>'
         + '</div>'
-        + '<button type="submit" class="btn btn-primary btn-green">Submit</button>'
+        + '<button type="submit" onclick="toStep2()" class="btn btn-primary btn-green">Submit</button>'
         + '</form>'
 
 
       $("#hand-in-req-form").html(step1);
 
-}
+} */
 
+
+    
+
+
+
+
+/*
 if (window.location.href.indexOf("step2") > -1) {
 
     $( "#handin-step-2" ).removeClass( "not-selected-step" );
@@ -90,7 +97,7 @@ if (window.location.href.indexOf("step2") > -1) {
         + '<button type="submit" class="btn btn-primary btn-green">Submit</button>'
         + '</form>'
     
-}
+}*/
 
 
 if (window.location.href.indexOf("contact") > -1) {

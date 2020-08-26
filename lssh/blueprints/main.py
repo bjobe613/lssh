@@ -1,15 +1,21 @@
 from flask import Blueprint, render_template, request, jsonify, Response
 from lssh.models import db, Newsletter 
+
 import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
 '''this is the regular expression used to khnow if what is sent is an email:'''
 emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
+
+
+
 @main.route("/", methods = ['GET', 'POST'])
 def startup():
     if request.method == 'POST':
-        email = request.get_json() 
+        
+        email = request.get_json()
+        print(email)
         if (re.search(emailregex, email)):
             exist = Newsletter.query.filter(Newsletter.email == email).first()
             if not exist:
@@ -50,13 +56,22 @@ def transport():
 def hand_in():
     return render_template('hand_in.html')
 
-@main.route("/hand_in/hand_in_request/step1")
-def hand_in_request1():
-    return render_template('hand_in_request_layout.html')
+@main.route("/hand_in/hand_in_request", methods = ['GET', 'POST'])
+def hand_in_request():
 
-@main.route("/hand_in/hand_in_request/step2")
-def hand_in_request2():
-    return render_template('hand_in_request_layout.html')
+    if request.method == 'POST':
+
+        req_data = request.get_json()
+        email = req_data["email"]
+
+        if (re.search(emailregex, email)):
+            print("du postade")
+            return Response(status= 201)
+
+        return Response(status=406)
+
+    elif request.method == 'GET':
+        return render_template('hand_in_request.html')
 
 @main.route("/admin_login")
 def admin_login():

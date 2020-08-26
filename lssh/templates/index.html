@@ -3,6 +3,9 @@
 {% block more_head %}
 <!--Additional head-->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+<title>LSSh | Secondhand by students for students</title>
+
 {% endblock more_head %}
 
 {% block content %}
@@ -514,9 +517,11 @@
        <div class="input-group mb-3">
         <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username"
           aria-describedby="basic-addon2">
+         
         <div class="input-group-append">
           <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i
               class="material-icons">email</i></button>
+
         </div>
       </div> 
 
