@@ -37,6 +37,9 @@ $(document).ready(function () {
         type: 'GET',
         dataType: 'json',
         success: function (response) {
+            if (response.imgpath) {
+                $("#picture-holder").html('<img class="img-fluid" src="/pictures/' + response.imgpath + '">')
+            }
             $("#news-header").val(response.title)
             $("#news-ingress").val(response.ingress)
             editor.setContents(response.text)

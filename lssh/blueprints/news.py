@@ -30,7 +30,11 @@ def catalog():
             news.escape_html()
             db.session.add(news)
             db.session.commit()
-
+            
+            if 'news-picture' in request.files:
+                file = request.files['news-picture']
+                if file.filename != '':
+                    news.add_picture(request.files.get("news-picture"))
             return {
                 "msg": "ok",
                 "id": news.id
@@ -60,6 +64,11 @@ def single_prod(id):
 
         if request.form.get("article"):
             news.text = json.loads(request.form.get("article"))
+
+        if 'news-picture' in request.files:
+                file = request.files['news-picture']
+                if file.filename != '':
+                    news.add_picture(request.files.get("news-picture"))
 
         if request.form.get("published"):
             if request.form.get("published") == "true":

@@ -2,12 +2,12 @@
     height: 500px;
 }
 
-#picture-placeholder {
-    height:100px;
+#picture-holder {
     width:100%;
     background-color: lightblue;
     border: 1px blue dotted;
     text-align: center;
+    padding: 2rem;
 }
 
 #news-form-container {

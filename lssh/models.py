@@ -89,6 +89,17 @@ class Blacklist(db.Model):
 class Newsletter(db.Model):
     email = db.Column(db.String, primary_key = True)
 
+class Newspicture(db.Model):
+    pictureID = db.Column(db.Integer, primary_key = True)
+    path = db.Column(db.String, nullable = False, default = "default.jpg")
+    articles = db.relationship('News', backref = 'News.id')
+
+
+    def savePicture(self, picture):
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', 'news-' + str(self.pictureID) + '.jpg'))
+        self.path = 'news-' + str(self.pictureID) + '.jpg'
+        db.session.commit()
+
 class News(db.Model): #has to be reworked into files, not a model.
     id = db.Column(db.Integer, primary_key = True)
     published = db.Column(db.Boolean, nullable=False, default = False)
@@ -96,7 +107,7 @@ class News(db.Model): #has to be reworked into files, not a model.
     title = db.Column(db.String, nullable = False)
     ingress = db.Column(db.String, nullable = False)
     text = db.Column(db.JSON, nullable = False)
-    pictures = db.relationship('NewsPictures', backref = 'news')
+    titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
 
     def escape_html(self):
         self.title = html.escape(self.title)
@@ -108,8 +119,21 @@ class News(db.Model): #has to be reworked into files, not a model.
 
         db.session.commit()
 
+    def add_picture(self, picture):
+        titlePicture = Newspicture()
+        db.session.add(titlePicture)
+        db.session.commit()
+        
+        self.titlePicture = titlePicture.pictureID
+        titlePicture.savePicture(picture)
+
     def get_article_as_html(self):
         article_html = ""
+        if self.titlePicture:
+            print("Hade bild")
+            article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
+        else:
+            print("Hade inte bild")
         article_html += "<h1>" + self.title + "</h1>\n"
         article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
         article_html += quill_parser.render(self.text["ops"])
@@ -117,19 +141,19 @@ class News(db.Model): #has to be reworked into files, not a model.
         return article_html
 
     def serialize(self):
-        return  {
+        returnDict =  {
             "id": self.id,
             "published": self.published,
             "title": self.title,
             "ingress": self.ingress,
             "text": self.text
         }
+        if self.titlePicture:
+            returnDict.update({"imgpath": Newspicture.query.get(self.titlePicture).path})
+
+        return returnDict
         
 
-class NewsPictures(db.Model):
-    pictureID = db.Column(db.Integer, primary_key = True)
-    path = db.Column(db.String, nullable = False)
-    newsID = db.Column(db.DateTime, db.ForeignKey('news.date'))
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)

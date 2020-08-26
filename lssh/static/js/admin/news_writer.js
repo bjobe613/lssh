@@ -15,6 +15,13 @@ $(document).ready(function () {
     $('#news-header').change(callOnDocumentChange);
     $('#news-ingress').change(callOnDocumentChange);
 
+    const input = document.getElementById("add-product-picture-picker");
+
+    $('#news-picture').change(function() {
+        console.log("AAAA")
+        file = document.getElementById('news-picture').files[0];
+        $("#picture-holder").html('<img class="img-fluid" src="' + URL.createObjectURL(file) + '">')
+    })
 
     //Creation of the editor
     var quillOptions = {

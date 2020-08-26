@@ -8,10 +8,11 @@
 
 {% block news_main_content %}
 <form id="add-news-form">
-    <div id='picture-placeholder'>
-        Placeholder for picture
+    <label for='picture-holder'>Chosen picture</label>
+    <div id='picture-holder'>
+        No picture chosen
     </div>
-    <button class='btn btn-primary'>Add heading picture</button>
+    <input type="file" id="news-picture" name="news-picture" accept="input/jpg">
     <div class='form-group'>
         <label for='news-header'>Title</label>
         <input class='form-control' name="title" id='news-header'>
