@@ -3,7 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
 
+from delta import html as quill_parser
+
+
 import os
+import html
 
 db = SQLAlchemy(app)
 
@@ -85,16 +89,71 @@ class Blacklist(db.Model):
 class Newsletter(db.Model):
     email = db.Column(db.String, primary_key = True)
 
-class News(db.Model): #has to be reworked into files, not a model.
-    date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
-    title = db.Column(db.String, nullable = False)
-    text = db.Column(db.Text, nullable = False)
-    pictures = db.relationship('NewsPictures', backref = 'news')
-
-class NewsPictures(db.Model):
+class Newspicture(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
-    path = db.Column(db.String, nullable = False)
-    newsID = db.Column(db.DateTime, db.ForeignKey('news.date'))
+    path = db.Column(db.String, nullable = False, default = "default.jpg")
+    articles = db.relationship('News', backref = 'News.id')
+
+
+    def savePicture(self, picture):
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', 'news-' + str(self.pictureID) + '.jpg'))
+        self.path = 'news-' + str(self.pictureID) + '.jpg'
+        db.session.commit()
+
+class News(db.Model): #has to be reworked into files, not a model.
+    id = db.Column(db.Integer, primary_key = True)
+    published = db.Column(db.Boolean, nullable=False, default = False)
+    date = db.Column(db.DateTime(timezone = True), server_default = func.now())
+    title = db.Column(db.String, nullable = False)
+    ingress = db.Column(db.String, nullable = False)
+    text = db.Column(db.JSON, nullable = False)
+    titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
+
+    def escape_html(self):
+        self.title = html.escape(self.title)
+        self.ingress = html.escape(self.ingress)
+
+        for obj in self.text["ops"]:
+            if type(obj["insert"]) is str:
+                obj["insert"] = html.escape(obj["insert"])
+
+        db.session.commit()
+
+    def add_picture(self, picture):
+        titlePicture = Newspicture()
+        db.session.add(titlePicture)
+        db.session.commit()
+        
+        self.titlePicture = titlePicture.pictureID
+        titlePicture.savePicture(picture)
+
+    def get_article_as_html(self):
+        article_html = ""
+        if self.titlePicture:
+            print("Hade bild")
+            article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
+        else:
+            print("Hade inte bild")
+        article_html += "<h1>" + self.title + "</h1>\n"
+        article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
+        article_html += quill_parser.render(self.text["ops"])
+
+        return article_html
+
+    def serialize(self):
+        returnDict =  {
+            "id": self.id,
+            "published": self.published,
+            "title": self.title,
+            "ingress": self.ingress,
+            "text": self.text
+        }
+        if self.titlePicture:
+            returnDict.update({"imgpath": Newspicture.query.get(self.titlePicture).path})
+
+        return returnDict
+        
+
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
@@ -151,6 +210,8 @@ def fillTestDB():
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
 
+    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"ops" : [{"insert" : "Detta är <div> brödtexten"}]})   
+
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)
     seller1.products.append(prod2)
@@ -163,7 +224,7 @@ def fillTestDB():
 
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1])
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.commit()
 
     prod1pic2.renamePictureAsID()

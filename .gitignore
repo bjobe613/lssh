@@ -2,6 +2,7 @@
 database.db
 .vscode/
 *~
+lssh/static/pictures
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
