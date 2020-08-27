@@ -3,6 +3,7 @@
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/help_layout.css') }}">
+    
 {% endblock more_head %}
 
 {% block content %}
@@ -34,8 +35,11 @@
                 <div class="col-2"></div>
                 <div class="col-12 col-md-3 text-md-left text-center">
                     <h4 >QUESTIONS?</h4>
-                    <h2 class="pb-5">We're here to help</h2>
-
+                    <h2>We're here to help</h2>
+                    <br>
+                    
+                    <h6>Use the buttons below to use our FAQ or contact us!</h6>
+                    <br>
                     <a id="faq-btn" href="{{ url_for('main.faq') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
                         <div class="col">FAQ</div>
                     </a>
