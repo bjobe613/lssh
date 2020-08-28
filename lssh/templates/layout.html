@@ -16,13 +16,8 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!--    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-        -->
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -31,8 +26,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-        
-        
+
+
 
     <!-- Roboto font-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
@@ -52,79 +47,45 @@
 <body>
     <header>
 
+        <div id="navbar" class="container-fluid navbar-desktop-active">
+            <div class="row align-items-center h-100">
 
-            <div id="navbar" class="container-fluid navbar-desktop-active">
-                <div class="row align-items-center h-100">
+                <div class="col-md-1 offset-1">
+                    <a class="navbar-brand" href="{{ url_for('main.startup') }}">
+                        <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}"
+                            id="logotype" alt="Logotype">
+                    </a>
+                </div>
 
-                    <div class="col-md-1 offset-1">
-                        <a class="navbar-brand" href="{{ url_for('main.startup') }}">
-                            <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}" id="logotype" alt="Logotype">
-                        </a>
-                    </div>
-
-                 
-
-                    <div class="col-md-4 text-center"> </div>
-
-                  
-                    <!-- When news is done uncomment this 
+                <!-- When news is done uncomment this 
 
                     <div class="col-md-1 col-2 text-center">
                         <a class="a-link" href="">NEWS</a>
                     </div> -->
 
-                    <div class="col-md-1 col-2 text-center">
-                        <a class="a-link" href="{{ url_for('products.catalog') }}">SHOP</a>
-                    </div>
+                <div class="col-md-1 col-2 offset-md-4 text-center">
+                    <a class="a-link" href="{{ url_for('products.catalog') }}">SHOP</a>
+                </div>
 
-                    <div class="col-md-1 col-2 text-center">
-                        <a class="a-link" href="{{ url_for('main.hand_in') }}">HAND IN</a>
-                    </div>
+                <div class="col-md-1 col-2 text-center">
+                    <a class="a-link" href="{{ url_for('main.hand_in') }}">HAND IN</a>
+                </div>
 
-                    <div class="col-md-1 col-2 text-center">
-                        <a class="a-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
-                    </div>
+                <div class="col-md-1 col-2 text-center">
+                    <a class="a-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
+                </div>
 
-                  
+                <div class="col-md-1 col-2 text-center">
+                    <a id="about-link" class="a-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
+                </div>
 
-                    <div class="col-md-1 col-2 text-center">
-                        <a id="about-link" class="a-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
-                    </div>
-
-                    <div id="help-link-col" class="col-md-1 col-2 text-center">
-                        <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
-                    </div>
-                    
-
-                   
-               
-                 
+                <div id="help-link-col" class="col-md-1 col-2 text-center">
+                    <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
                 </div>
 
             </div>
+        </div>
 
-            <!--
-            <div id="about-us-container" class="container-fluid subnav-content fixed-top">
-                <div class="row">
-                    <div class="col-11"></div>
-                    <div class="col-1 text-center">
-                        <div class="arrow-down-sub"></div>
-                    </div>
-                </div>
-            
-                <div class="row mt-4 pb-4 pt-2">
-                    <div class="col-10"></div>
-                    <div class="col-1 text-center">
-                        <a class="a-link-white" href="{{ url_for('main.contact') }}">Contact</a>
-                    </div>
-                    <div class="col-1 text-center">
-                        <a class="a-link-white" href="">FAQ</a>
-                    </div>
-                </div>
-            </div> -->
-
-
-        
 
         <nav id="navbar-mobile" class="navbar navbar-expand-lg navbar-light fixed-top d-lg-none">
             <div class="container-fluid">
@@ -166,7 +127,7 @@
     {% block content %}
     <!--This is what is filled by the other templates when extending-->
 
-    
+
 
 
     {% endblock %}
@@ -177,7 +138,7 @@
             <div class="row pt-5 pb-3">
                 <div class="col-md-2 col-sm-12 "></div>
 
-   
+
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4 class="footer-heading">HELP</h4>
                     <a class="a-link" href="{{ url_for('main.faq') }}">FAQ </a>
@@ -201,11 +162,11 @@
                     <h4 class="footer-heading">OPENING HOURS</h4>
                     <p class="footer-copyright">Wed: 12:15-13:00</p>
                     <p class="footer-copyright">Sun: 12:15-13:00</p>
-                 
+
                 </div>
 
 
-             
+
             </div>
 
             <div class="row justify-content-center align-items-center pt-3">
@@ -215,26 +176,28 @@
                         class="img-fluid image" alt="Responsive image">
                 </div>
             </div>
-      
 
-        <!-- Copyright -->
 
-        <div class="row pb-3">
-            <div class="col-8 offset-2 text-md-left text-center">
-                <a class="a-link footer-heading" target="_blank" href="{{ url_for('static', filename = 'Policy LiU Student Secondhand_200330 (1).pdf') }}"> Read our policy here ></a>
+            <!-- Copyright -->
 
-                
+            <div class="row pb-3">
+                <div class="col-8 offset-2 text-md-left text-center">
+                    <a class="a-link footer-heading" target="_blank"
+                        href="{{ url_for('static', filename = 'Policy LiU Student Secondhand_200330 (1).pdf') }}"> Read
+                        our policy here ></a>
+
+
+                </div>
+
             </div>
-            
-        </div>
 
-        <div class="row pb-3">
-            <div class="col-md-4 offset-md-2 text-md-left text-center">
-                <p class="footer-copyright">© 2020 Copyright: LiU Student Secondhand</p>
+            <div class="row pb-3">
+                <div class="col-md-4 offset-md-2 text-md-left text-center">
+                    <p class="footer-copyright">© 2020 Copyright: LiU Student Secondhand</p>
+                </div>
             </div>
-        </div>
-     
-      
+
+
 
         </div>
         <!-- Copyright -->

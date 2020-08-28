@@ -15,6 +15,7 @@ function hideForm() {
         data: JSON.stringify(data),
         success: function (res) {
 
+            $("#error-div").html("");
             $("#step1").hide();
             $("#handin-step-1").removeClass("selected-step");
             $("#handin-step-1").addClass("not-selected-step");
@@ -69,7 +70,7 @@ function hideForm() {
 
         },
         error: function (error) {
-            alert("Någonting fel");
+            $("#error-div").html("<b>Oh oh!</b> Email is incorrectly filled in");
         }
 
     });

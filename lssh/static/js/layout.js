@@ -13,6 +13,13 @@ if ( window.history.replaceState ) {
 
 if (window.location.href.indexOf("about") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
+    $("#about-us-link").addClass("a-link-white-active");
+  
+} 
+
+
+if (window.location.href.indexOf("find_us") > -1) {
+    $("#find-link").addClass("a-link-white-active");
 } 
 
 
@@ -22,9 +29,6 @@ if (window.location.href.indexOf("admin_login") > -1) {
 
 if (window.location.href.indexOf("help") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
-
-
-    
 } 
 
 if (window.location.href.indexOf("hand_in") > -1) {
@@ -117,13 +121,6 @@ if (window.location.href.indexOf("contact") > -1) {
     $( "#contact-btn" ).removeClass( "transparent-toggle" );
 } 
 
-if (window.location.href.indexOf("find_us") > -1) {
-    /* img subnav */
-    $( "#find-btn" ).addClass( "a-link-white-active" );
-    $( "#find-btn" ).addClass( "white-toggle " );
-    $( "#find-btn" ).removeClass( "a-link-white" );
-    $( "#find-btn" ).removeClass( "transparent-toggle" );
-} 
 
 
 
