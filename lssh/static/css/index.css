@@ -26,13 +26,17 @@
 }
 
 .btn-green:active {
-    background-color: #09433A;
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-green:focus {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-white {
@@ -45,7 +49,7 @@
 }
 
 .btn-green:hover {
-    background-color: rgb(31, 110, 89);
+    background-color: #09433ac2;
 }
 
 /* 

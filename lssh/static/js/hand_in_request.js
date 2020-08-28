@@ -62,7 +62,9 @@ function hideForm() {
                 $("#step2").append(step2);
             }
 
-            $("#step2").append('<button type="submit" onclick="checkHandIn()" class="btn btn-primary btn-green mb-5">Submit</button>');
+            $("#step2").append('<button onclick="checkHandIn()" class="green-btn float-right mt-2 mb-5" type="submit">SUBMIT</button>');
+
+            
 
 
         },
@@ -112,8 +114,9 @@ function checkHandIn() {
 
     if (errorCounter == 0) {
         submitHandIn();
+        $("#error-div").hide();
     } else {
-        $("#step2").append("Något fel. Fixa");
+        $("#error-div").html("<b>Woops!</b> The hand in request was not filled in correctly");
     }
 
 }

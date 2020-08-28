@@ -6,9 +6,10 @@ html {
 /* Global variables */
 :root {
     --main-bg-color: #09433A;
-
-
+    --bg-color-white: #ffffff;
   }
+
+
 
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -52,6 +53,58 @@ p {
     font-weight: 300;
    
 }
+
+/* Styling for buttons */
+.green-btn {
+    background-color: var(--main-bg-color);
+    border: none;
+    color: white;
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+}
+
+.green-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.green-btn:focus {
+    outline:none;
+}
+
+.white-btn {
+    background-color: var(--bg-color-white);
+    border: none;
+    color: var(--main-bg-color);
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+}
+
+.white-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.white-btn:focus {
+    outline:none;
+}
+
+
+
 
 
 .a-link:hover {
