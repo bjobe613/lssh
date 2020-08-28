@@ -2,6 +2,8 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
+from werkzeug.utils import secure_filename
+
 
 from delta import html as quill_parser
 
@@ -55,16 +57,19 @@ class Product(db.Model):
         db.session.add(pic)
         db.session.commit()
 
-        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', str(pic.pictureID) + '.jpg'))
-        pic.renamePictureAsID()
+        safeName = secure_filename(picture.filename)
+        fileEnding = safeName.rsplit('.')[len(safeName.rsplit('.')) - 1]
+        fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
+        pic.renameReference(fileName)
 
-class ProductPictures(db.Model): 
+class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
     productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
 
-    def renamePictureAsID(self):
-        self.pictureName = str(self.pictureID) + '.jpg'
+    def renameReference(self, fileName):
+        self.pictureName = fileName
         db.session.commit()
 
 class ProductReservation(db.Model):
@@ -96,8 +101,11 @@ class Newspicture(db.Model):
 
 
     def savePicture(self, picture):
-        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', 'news-' + str(self.pictureID) + '.jpg'))
-        self.path = 'news-' + str(self.pictureID) + '.jpg'
+        safeName = secure_filename(picture.filename)
+        fileEnding = safeName.rsplit('.')[len(safeName.rsplit('.')) - 1]
+        fileName = 'news-' + str(self.pictureID) + '.' + fileEnding
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
+        self.path = fileName
         db.session.commit()
 
 class News(db.Model): #has to be reworked into files, not a model.
@@ -226,8 +234,6 @@ def fillTestDB():
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
                         prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.commit()
-
-    prod1pic2.renamePictureAsID()
 
     print("Filled the database")
 
