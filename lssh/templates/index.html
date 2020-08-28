@@ -79,7 +79,9 @@
             for students.
           </h1>
 
-          <button class="btn btn-success btn-green mt-4 ml-4" type="submit">EXPLORE OUR SHOP</button>
+          <form action="{{ url_for('products.catalog') }}">
+            <button class="btn btn-success btn-green ml-4 mt-4" type="submit">EXPLORE OUR SHOP</button>
+          </form>
         </div>
       </div>
 

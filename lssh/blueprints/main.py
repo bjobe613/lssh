@@ -11,8 +11,6 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 def startup():
 
     prodCount = Product.query.filter(Product.articleNumber).count()
-    print(prodCount)
-
     return render_template('index.html', productCount = prodCount)
     
 #@main.route("/home")
