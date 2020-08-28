@@ -19,7 +19,7 @@
 
 .btn-green {
     width: 70%;
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
     border-style: none;
     padding: 0.5rem;
     font-size: 1rem;
@@ -78,6 +78,7 @@
     -o-background-size: cover;
     background-size: cover;
     min-height: 90vh;
+    
     
 }
 
@@ -240,11 +241,11 @@
 }
 
 .green-bg {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .works-icons {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
     padding-bottom: 3rem;
 }
 
@@ -254,9 +255,42 @@
     width: 100px;
 }
 
+.logo2 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-handshake-heart-100\ \(2\).png);
+}
+
+.logo3 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-three-seater-sofa-100.png);
+}
+
+
+.logo4 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-furniture-100.png);
+}
+
+.logo5 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-yard-sale-100.png);
+}
+
+.logo6 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-transaction-approved-100.png);
+}
+
+
+
 .space-green {
     height: 5rem;
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .p-text {
@@ -360,6 +394,14 @@
 
 .picture-chair {
     background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.picture-vase {
+    background: url('../pictures/pexels-bongkarn-thanyakij-3787752.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

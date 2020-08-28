@@ -3,6 +3,9 @@
 {% block more_head %}
 <!--Additional head-->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+
+<title>LSSh | Secondhand by students for students</title>
+
 {% endblock more_head %}
 
 {% block content %}
@@ -36,7 +39,10 @@
     <div class="row row-slogan pb-5">
       <div class="col-sm-1"></div>
       <div class="col-sm-4 text-md-left text-center">
-        <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
+        <form action="{{ url_for('products.catalog') }}">
+          <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
+        </form>
+        
       </div>
 
       <div class="col-sm-7"></div>
@@ -111,6 +117,7 @@
     <div class="col-sm-2"></div>
   </div>
 
+<!-- LATEST ITEM (No logic only frontend example)
 
   <div class="row pt-5 mt-5">
     <div class="col-2"></div>
@@ -151,7 +158,7 @@
       <p>VIEW ITEM</p>
     </div>
     <div class="col-2"></div>
-  </div>
+  </div>-->
 
 </div>
 
@@ -216,14 +223,14 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white">Contact us with this form</p>
+              <div class="col-8 offset-2 d-flex justify-content-center text-center">
+                <p class="p-white"> <a target="_blank" class="a-how-it-works" href="{{ url_for('main.hand_in') }}">Make a hand in request</a> with details about the items you want to sell or donate</p>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="row justify-content-center align-items-center">
-              <div class="div logo1"></div>
+              <div class="div logo2"></div>
             </div>
             <div class="row ">
               <div class="col-sm d-flex justify-content-center text-center">
@@ -243,7 +250,7 @@
           </div>
           <div class="col-sm-4">
             <div class="row justify-content-center align-items-center">
-              <div class="div logo1"></div>
+              <div class="div logo3"></div>
             </div>
             <div class="row ">
               <div class="col-sm d-flex justify-content-center text-center">
@@ -257,7 +264,7 @@
             </div>
             <div class="row">
               <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">Contact us with this form</p>
+                <p class="p-white p-text">You can hand your items in during our opening hours!</p>
               </div>
             </div>
 
@@ -277,7 +284,7 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="row justify-content-center align-items-center">
-              <div class="div logo1"></div>
+              <div class="div logo4"></div>
             </div>
             <div class="row ">
               <div class="col-sm d-flex justify-content-center text-center">
@@ -290,35 +297,15 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit rem illum eligendi
+              <div class="col-8 offset-2 d-flex justify-content-center text-center">
+                <p class="p-white"><a class="a-how-it-works" target="_blank" href="{{ url_for('products.catalog') }}">Explore our shop</a> and find the perfect furnitures just for you!
                 </p>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="row justify-content-center align-items-center">
-              <div class="div logo1"></div>
-            </div>
-            <div class="row ">
-              <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-heading">PAY WITH SWISH OR CARD</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm d-flex justify-content-center">
-                <hr class="white-hr">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">We will consider your suggested price and decide if it is reasonable.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="row justify-content-center align-items-center">
-              <div class="div logo1"></div>
+              <div class="div logo5"></div>
             </div>
             <div class="row ">
               <div class="col-sm d-flex justify-content-center text-center">
@@ -332,7 +319,27 @@
             </div>
             <div class="row">
               <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">Contact us with this form</p>
+                <p class="p-white p-text">Browse all our furnitures in person or purchase an item you found on our website</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="row justify-content-center align-items-center">
+              <div class="div logo6"></div>
+            </div>
+            <div class="row ">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-heading">PAY FOR YOUR ITEM/S</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center">
+                <hr class="white-hr">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm d-flex justify-content-center text-center">
+                <p class="p-white p-text">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut. <a target="_blank" class="a-how-it-works" href="">More info here</a></p>
               </div>
             </div>
 
@@ -428,7 +435,7 @@
 
         </div>
         <div class="col-md-3 col-6">
-          <div class="row half-row picture-chair"></div>
+          <div class="row half-row picture-vase"></div>
           <div class="row half-row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10 align-self-center">
@@ -510,9 +517,11 @@
        <div class="input-group mb-3">
         <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username"
           aria-describedby="basic-addon2">
+         
         <div class="input-group-append">
-          <button id="input-border-button" class="btn btn-outline-secondary" type="button"><i
+          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i
               class="material-icons">email</i></button>
+
         </div>
       </div> 
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, Response
 from lssh.models import db, Newsletter 
+
 import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
@@ -9,16 +10,14 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 @main.route("/")
 def startup():
     return render_template('index.html')
-    
-#@main.route("/home")
-#def home():
-#    return render_template('index.html')
 
 @main.route("/subscribe", methods = ['POST'])
 def subscribe():
 
     if request.method == 'POST':
-        email = request.get_json() 
+        
+        email = request.get_json()
+        print(email)
         if (re.search(emailregex, email)):
             exist = Newsletter.query.filter(Newsletter.email == email).first()
             if not exist:
@@ -33,7 +32,7 @@ def subscribe():
 def about_us():
     return render_template('about_us.html')
 
-@main.route("/about/find_us")
+@main.route("/help/find_us")
 def find_us():
     return render_template('find_us.html')
 
@@ -53,6 +52,23 @@ def transport():
 def hand_in():
     return render_template('hand_in.html')
 
-@main.route("/hand_in/hand_in_request")
+@main.route("/hand_in/hand_in_request", methods = ['GET', 'POST'])
 def hand_in_request():
-    return render_template('hand_in_request_step1.html')
+
+    if request.method == 'POST':
+
+        req_data = request.get_json()
+        email = req_data["email"]
+
+        if (re.search(emailregex, email)):
+            print("du postade")
+            return Response(status= 201)
+
+        return Response(status=406)
+
+    elif request.method == 'GET':
+        return render_template('hand_in_request.html')
+
+@main.route("/admin_login")
+def admin_login():
+    return render_template('admin_login.html')

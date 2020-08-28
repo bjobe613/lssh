@@ -3,15 +3,46 @@
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/faq.css') }}">
+    <title>LSSh | Frequently Asked Questions (FAQ)</title>
 {% endblock more_head %}
 
 {% block help_content %}
 
     <div id="container-fill" class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <p>FAQ</p>
+
+        <div class="row pt-4">
+            <div class="col-2"></div>
+
+            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
+                <a class="a-link a-active" href="">General information</a>
             </div>
+            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
+                <a class="a-link" href="">Opening hours</a>
+            </div>
+            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
+                <a class="a-link" href="">Price & Payment</a>
+            </div>
+            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
+                <a class="a-link" href="">Transportation</a>
+            </div>
+            
+            <div class="col-2"></div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2 col-sm-12"></div>
+
+            
+            <div id="accordion-col" class="col-md-8 col-sm-12 pt-5">
+                
+                
+
+            </div>
+            <div class="col-md-2 col-sm-12"></div>
+               
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/faq.js') }}"></script>
 {% endblock help_content %}

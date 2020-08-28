@@ -3,14 +3,50 @@
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/contact.css') }}">
+    <title>LSSh | Contact us!</title>
 {% endblock more_head %}
 
 {% block help_content %}
     <!--Where the html should be written-->
-    <div id="container-fill" class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <p> Contact</p>
+    <div id="container-fill" class="container-fluid pt-3">
+
+
+
+        <div class="row pt-5">
+            
+            <div id="col-front" class="col-md-4 offset-md-2 col-12">
+               <!-- <img id="contact-img-phone" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/pexels-cottonbro-4065906.jpg') }}" alt="Furniture">-->
+               <div class="h-75" id="contact-img-phone"></div>
+            </div>
+            <div id="col-behind" class="col-12 col-md-4">
+                <h1 class="shift-text pb-3 ">Send us a message!</h1>
+
+                <form>
+                    <div class="form-group pb-2">
+                      <input type="email" class="form-control" id="input-contact" placeholder="Write name here...">
+                    </div>
+
+                    <div class="form-group pb-2">
+                        <input type="email" class="form-control" id="input-contact" placeholder="Write email here...">
+                    </div>
+                    
+                    
+                    <div class="form-group pb-2">
+                      <textarea class="form-control" id="input-contact" placeholder="What is on your mind?" rows="9"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                  </form>
+
+            </div>
+            
+        </div>
+
+        <div class="row pt-4">
+            <div class="col-8 offset-2 pt-4 pb-5 text-center">
+                <hr>
+                <p class="pt-3"> Or send us an email</p>
+                <h3>lssh@navitas.se</h3>
             </div>
         </div>
     </div>

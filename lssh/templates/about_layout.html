@@ -6,25 +6,56 @@
 
 {% block content %}
     <!--Where the html should be written-->
+
     <div id="about-us-container" class="container-fluid">
         <div class="row">
             <div class="col-10"></div>
             <div class="col-1 text-center d-none d-md-block">
                 <div class="arrow-down"></div>
             </div>
-            <div class="col-1"></div>
+           
         </div>
 
         <div class="row mt-4 pb-4 pt-2">
             <div class="col-md-10"></div>
-            <div class="col-md-1 col-sm-6 text-center">
-                <a class="a-link-white" href="{{ url_for('main.about_us') }}">About us</a>
+            <div class="col-md-1 text-center">
+                <a class="a-link-white" href="{{ url_for('main.about_us') }}"> About us</a>
             </div>
             <div class="col-md-1 col-sm-6 text-center">
-                <a class="a-link-white" href="{{ url_for('main.find_us') }}">Find us</a>
+                <a class="a-link-white" href="{{ url_for('main.find_us') }}"> Find us</a>
+            </div>
+            <div class="col-md-1 col-sm-6 text-center">
+               
             </div>
         </div>
     </div>
+
+    <!--
+    <div id="story-header-img" class="container-fluid">
+        <div class="row align-items-end h-75">
+            <div class="col-2"></div>
+            <div class="col-8 pb-5">
+                <h4>EST. 2019</h4>
+                <h2>Our story</h2>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row h-25">
+            <div class="col-1"></div>
+            <div class="col-1 half-white-bg"></div>
+            <div class="col-8 grey-bg pt-5">
+                <h3>"The purpose of LSSh is to create a flexible solution for secondhand sales
+                    through both a website and easily accessible premises."
+                </h3>
+            </div>
+            <div class="col-2 grey-bg"></div>
+        </div>
+    </div>-->
+
+   
+
+
+
     {% block about_content %}
     {% endblock about_content %}
 {% endblock content %}
