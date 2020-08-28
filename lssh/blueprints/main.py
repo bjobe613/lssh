@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, Response
 from lssh.models import db, Newsletter, Product
 
-import smtplib, ssl, re
+import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
 '''this is the regular expression used to khnow if what is sent is an email:'''
@@ -82,24 +82,3 @@ def hand_in_request():
 def admin_login():
     return render_template('admin_login.html')
 
-
-# Not working with gmail?
-
-def mail(email, name, message, subject):
-
-  port = 587  # For starttls
-  smtp_server = "smtp.gmail.com"
-  sender_email = "testsson828@gmail.com"
-  receiver_email = email
-  password = "qkjgnpbpnohjtoxp"
-  mess =str("Subject:"+name + ", "+ email +", " +subject +
-  "\n \n"  +
-  message)
-  print(mess)
-  context = ssl.create_default_context()
-  with smtplib.SMTP(smtp_server, port) as server:
-      server.ehlo()  # Can be omitted
-      server.starttls(context=context)
-      server.ehlo()  # Can be omitted
-      server.login(sender_email, password)
-      server.sendmail(sender_email, receiver_email, mess.encode("utf8"))
