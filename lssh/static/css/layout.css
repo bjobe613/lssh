@@ -138,7 +138,7 @@ p {
 /* NAVBAR */
 
 #navbar {
-    height: 5rem;
+    height: 10vh;
 }
 
 #navbar-mobile {
@@ -161,7 +161,7 @@ p {
 
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     .navbar-desktop-active {
         display: none;
     }
@@ -189,7 +189,7 @@ p {
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 20px solid rgb(255, 255, 255);
+    border-top: 15px solid rgb(255, 255, 255);
     transform: translateX(-50%);
     position: absolute;
     left: 50%;
@@ -338,8 +338,5 @@ p {
 .half-white-bg {
     background: linear-gradient(to left, #F9F9F9 50%, #0000ff00 50%);
 }
-
-
-
 
 

@@ -15,6 +15,11 @@ if (window.location.href.indexOf("about") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
 } 
 
+
+if (window.location.href.indexOf("admin_login") > -1) {
+    $( "#navbar" ).addClass( "fixed-top" );
+} 
+
 if (window.location.href.indexOf("help") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
 

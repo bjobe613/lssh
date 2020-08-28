@@ -18,6 +18,7 @@ def catalog():
     prod = Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()
     return render_template('product_catalog.html', products = prod)
 
+
 @products.route("/product/<int:x>", methods=['GET'])
 def product(x):
     prod = Product.query.filter(Product.articleNumber == x).first()
