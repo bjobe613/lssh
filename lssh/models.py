@@ -235,8 +235,6 @@ def fillTestDB():
                         prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.commit()
 
-    prod1pic2.renamePictureAsID()
-
     print("Filled the database")
 
 '''
