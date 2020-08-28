@@ -10,10 +10,6 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 @main.route("/")
 def startup():
     return render_template('index.html')
-    
-#@main.route("/home")
-#def home():
-#    return render_template('index.html')
 
 @main.route("/subscribe", methods = ['POST'])
 def subscribe():
