@@ -15,6 +15,7 @@ function hideForm() {
         data: JSON.stringify(data),
         success: function (res) {
 
+            $("#error-div").html("");
             $("#step1").hide();
             $("#handin-step-1").removeClass("selected-step");
             $("#handin-step-1").addClass("not-selected-step");
@@ -62,12 +63,14 @@ function hideForm() {
                 $("#step2").append(step2);
             }
 
-            $("#step2").append('<button type="submit" onclick="checkHandIn()" class="btn btn-primary btn-green mb-5">Submit</button>');
+            $("#step2").append('<button onclick="checkHandIn()" class="green-btn float-right mt-2 mb-5" type="submit">SUBMIT</button>');
+
+            
 
 
         },
         error: function (error) {
-            alert("Någonting fel");
+            $("#error-div").html("<b>Oh oh!</b> Email is incorrectly filled in");
         }
 
     });
@@ -112,8 +115,9 @@ function checkHandIn() {
 
     if (errorCounter == 0) {
         submitHandIn();
+        $("#error-div").hide();
     } else {
-        $("#step2").append("Något fel. Fixa");
+        $("#error-div").html("<b>Woops!</b> The hand in request was not filled in correctly");
     }
 
 }
@@ -177,4 +181,8 @@ function submitHandIn() {
 
     }
 
+}
+
+function countItems() {
+    
 }

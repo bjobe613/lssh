@@ -11,6 +11,8 @@
 {% block content %}
 <!--Where the html should be written-->
 
+<!-- OLD INDEX CONTAINER FIRST 
+
 <div class="container-fluid shifted-index">
 
 
@@ -58,64 +60,106 @@
       <div class="col-sm-7"></div>
     </div>
   </div>
+</div> -->
+
+<div class="container-fluid">
+
+  <div class="row row-middle">
+    <div class="col-10 offset-1 col-middle">
+
+      <div class="row h-100 align-items-center text-lg-left text-center">
+        <div class="col-lg-4  col-12 offset-lg-8">
+          <h1 class="pl-4" id="slogan-text">
+            Secondhand
+          </h1>
+          <h1 class="pl-4" id="slogan-text-bold">
+            by students
+          </h1>
+          <h1 class="pl-4" id="slogan-text">
+            for students.
+          </h1>
+
+          <form action="{{ url_for('products.catalog') }}">
+            <button class="green-btn w-75 ml-4 mt-5" type="submit">EXPLORE OUR SHOP</button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="row row-bottom">
+    <div class="col-10 offset-1">
+      <br>
+      <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
+      <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
+      <a href="#" class="fa fa-linkedin"></a>
+    </div>
+  </div>
 </div>
 
-<!-- News container -->
+
 <div class="container-fluid news-container">
 
-  <div class="row pt-5 mt-5">
-    <div class="col-2"></div>
-    <div class="col-2">
+  <div class="row pt-5">
+    <div class="col-5 offset-1">
       <p>LATEST NEWS</p>
     </div>
-    <div class="col-4"></div>
-    <div class="col-2 text-right">
+    <div class="col-5 text-right">
       <p>VIEW ALL</p>
     </div>
-    <div class="col-2"></div>
   </div>
 
   <div class="row pb-2">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-10 offset-1">
       <hr>
     </div>
-    <div class="col-2"></div>
-
   </div>
 
+
   <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-
-      <div id="demo" class="carousel slide" data-ride="carousel">
-
-        <!-- The slideshow -->
+    <div class="col-10 offset-1">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{{ url_for('static', filename = '/pictures/two-vases-on-table-842950 (1).jpg') }}"
-              id="carousel-picture" alt="Los Angeles">
+            <img src="{{ url_for('static', filename = '/pictures/pexels-bongkarn-thanyakij-3787752.jpg') }}"
+              class="d-block w-100" alt="...">
             <div class="carousel-caption">
               <p id="p-category-news">NEW IN</p>
               <h2>Vases and towels</h2>
-              <button class="btn btn-success btn-white" type="submit">READ MORE</button>
+              <button class="white-btn w-50" type="submit">READ MORE</button>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="{{ url_for('static', filename = '/pictures/pexels-bongkarn-thanyakij-3787752.jpg') }}"
+              class="d-block w-100" alt="...">
+            <div class="carousel-caption">
+              <p id="p-category-news">NEW IN</p>
+              <h2>Vases and towels</h2>
+              <button class="white-btn w-50" type="submit">READ MORE</button>
             </div>
           </div>
 
         </div>
-
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
         </a>
-
       </div>
     </div>
-    <div class="col-sm-2"></div>
   </div>
+</div>
+
+
+
 
 <!-- LATEST ITEM (No logic only frontend example)
 
@@ -160,15 +204,16 @@
     <div class="col-2"></div>
   </div>-->
 
-</div>
-
-
-<div class="row row-space pb-5"></div>
 
 
 <!-- How it works container -->
-<div class="container-fluid works-container">
+<div class="container-fluid works-container mt-5">
+
+
+
   <div class="row row-space"></div>
+
+
 
   <div class="row green-bg pt-5">
     <div class="col-sm-1"></div>
@@ -224,7 +269,8 @@
             </div>
             <div class="row">
               <div class="col-8 offset-2 d-flex justify-content-center text-center">
-                <p class="p-white"> <a target="_blank" class="a-how-it-works" href="{{ url_for('main.hand_in') }}">Make a hand in request</a> with details about the items you want to sell or donate</p>
+                <p class="p-white"> <a target="_blank" class="a-how-it-works" href="{{ url_for('main.hand_in') }}">Make
+                    a hand in request</a> with details about the items you want to sell or donate</p>
               </div>
             </div>
           </div>
@@ -298,7 +344,9 @@
             </div>
             <div class="row">
               <div class="col-8 offset-2 d-flex justify-content-center text-center">
-                <p class="p-white"><a class="a-how-it-works" target="_blank" href="{{ url_for('products.catalog') }}">Explore our shop</a> and find the perfect furnitures just for you!
+                <p class="p-white"><a class="a-how-it-works" target="_blank"
+                    href="{{ url_for('products.catalog') }}">Explore our shop</a> and find the perfect furnitures just
+                  for you!
                 </p>
               </div>
             </div>
@@ -319,7 +367,8 @@
             </div>
             <div class="row">
               <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">Browse all our furnitures in person or purchase an item you found on our website</p>
+                <p class="p-white p-text">Browse all our furnitures in person or purchase an item you found on our
+                  website</p>
               </div>
             </div>
           </div>
@@ -339,7 +388,8 @@
             </div>
             <div class="row">
               <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut. <a target="_blank" class="a-how-it-works" href="">More info here</a></p>
+                <p class="p-white p-text">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut.
+                  <a target="_blank" class="a-how-it-works" href="">More info here</a></p>
               </div>
             </div>
 
@@ -426,6 +476,8 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-10 mx-auto">
               <h1 id="h1-number">167</h1>
+
+              <p></p>
               <hr id="green-hr">
               <p>The total number of items sold in our shop</p>
             </div>
@@ -439,7 +491,7 @@
           <div class="row half-row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10 align-self-center">
-              <h1 id="h1-number">320</h1>
+              <h1 id="h1-number">{{productCount}}</h1>
               <hr id="green-hr">
               <p>The total number of items stored in our shop</p>
             </div>
@@ -453,77 +505,23 @@
   </div>
 </div>
 
-<!-- OLD SUBSCRIBE
-<div class="container-fluid" id="subscribe-container">
-  <div class="row subscribe-row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <h1> Get updates</h1>
-      <p> Sign up to our subscription list to get updates on upcoming news, events and much more!</p>
-    </div>
-    <div class="col-2"></div>
-  </div>
 
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-6">
-      <div class="input-group input-group-sm mb-1">
-
-        <input id="input-border-bottom" type="text" class="form-control" placeholder="Email adress..."
-          aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-      </div>
-    </div>
-
-    <div class="col-12 col-sm-2 text-center">
-      <button class="btn btn-success btn-green" type="submit">SIGN UP</button>
-    </div>
-
-    <div class="col-2"></div>
-  </div>
-
-</div>
-
-<div class="container-fluid" id="collaboration-container">
-  <div class="row">
-    <div class="col-12 text-center">
-      <h3>A collaboration with</h3>
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <img src="{{ url_for('static', filename = '/pictures/navitas-black.png') }}" id="navitas-logo"
-        class="img-fluid image" alt="Responsive image">
-    </div>
-  </div>
-</div>-->
-
+<!-- Subscribe to our newsletter-->
 <div class="container-fluid">
-
   <div id="subscribe-space" class="row"></div>
-
   <div id="subscribe-row" class="row pb-5">
-    <div class="col-md-3"></div>
-    <div class="col-md-6 text-center">
+
+    <div class="col-md-6 offset-3 text-center">
       <h3>STAY UPDATED</h3>
       <p>Sign up to our subscription list to get updates on upcoming events, campaigns and more!</p>
 
-      <!--<div class="input-group input-group-sm mb-1">
+      <div class="input-group mb-3">
+        <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
 
-        <input id="input-border-bottom" type="text" class="form-control" placeholder="Email adress..."
-          aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-      </div>-->
-
-       <div class="input-group mb-3">
-        <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username"
-          aria-describedby="basic-addon2">
-         
         <div class="input-group-append">
-          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i
-              class="material-icons">email</i></button>
-
+          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i class="material-icons">email</i></button>
         </div>
-      </div> 
+      </div>
 
     </div>
     <div class="col-md-3"></div>
@@ -531,10 +529,8 @@
 </div>
 
 
-
-
+<!-- Scripts that are used on the page-->
 <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
-
-
+<script src="{{ url_for('static', filename='swiper/swiper-bundle.js') }}" type="text/javascript"></script>
 
 {% endblock content %}

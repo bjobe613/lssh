@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Newsletter 
+from lssh.models import db, Newsletter, Product
 
 import re
 
@@ -9,15 +9,22 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
 @main.route("/")
 def startup():
-    return render_template('index.html')
+
+    prodCount = Product.query.filter(Product.articleNumber).count()
+    return render_template('index.html', productCount = prodCount)
+    
+#@main.route("/home")
+#def home():
+#    return render_template('index.html')
 
 @main.route("/subscribe", methods = ['POST'])
 def subscribe():
 
     if request.method == 'POST':
-        
+
+      
         email = request.get_json()
-        print(email)
+     
         if (re.search(emailregex, email)):
             exist = Newsletter.query.filter(Newsletter.email == email).first()
             if not exist:
@@ -26,6 +33,8 @@ def subscribe():
                 db.session.commit()
                 return Response(status= 201)
         return Response(status=406)
+
+    
 
 
 @main.route("/about/about_us")
@@ -72,3 +81,4 @@ def hand_in_request():
 @main.route("/admin_login")
 def admin_login():
     return render_template('admin_login.html')
+

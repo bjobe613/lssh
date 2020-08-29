@@ -18,7 +18,7 @@
 }
 
 .btn-green {
-    width: 70%;
+    width: 80%;
     background-color: var(--main-bg-color);
     border-style: none;
     padding: 0.5rem;
@@ -26,13 +26,17 @@
 }
 
 .btn-green:active {
-    background-color: #09433A;
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-green:focus {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-white {
@@ -45,7 +49,7 @@
 }
 
 .btn-green:hover {
-    background-color: rgb(31, 110, 89);
+    background-color: #09433ac2;
 }
 
 /* 
@@ -53,6 +57,32 @@
     -----------------------
     Section 1 - "Slogan" 
 */
+
+.row-top {
+    height: 10vh;
+}
+
+.row-middle-news {
+    height: 60vh;
+}
+
+.row-middle {
+    height: 80vh;
+}
+
+
+.col-middle {
+    
+    background: url('../pictures/liana-mikah-8tJxjQWTyNA-unsplash.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.row-bottom {
+    height: 10vh;
+}
 
 .space {
     padding-top: 15vh;
@@ -80,17 +110,29 @@
     min-height: 90vh;
     
     
+    
 }
 
 #slogan-text {
     font-size: 3.2rem;
     color: rgb(115, 115, 115);
+
+    -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
+
 }
 
 #slogan-text-bold {
     font-size: 3.2rem;
     font-weight: 500 !important;
     color: #09433A;
+
+    -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
 }
 
 .row-socialmedia {
@@ -142,7 +184,7 @@
     Section 1 - "Slogan"
 */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 992px) {
     .space {
         padding-top: 25vh;
         display: block;
@@ -150,46 +192,45 @@
     .row-slogan {
         padding-top: 5vh;
     }
-    .index-container {
-        background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    .col-middle {
+        background: url('../pictures/mobileindex.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 100vh;
+     
     }
-    .arrow-down {
-        border-top: 20px solid rgb(146, 143, 143);
+
+    #slogan-text {
+        font-size: 2.5rem;
     }
-    .white-hr {
-        width: 40%;
-        border: none;
-        height: 1px;
-        background-color: white;
+
+    #slogan-text-bold {
+        font-size: 2.5rem;
     }
-    .white-hr-thin {
-        border: none;
-        height: 1px;
-        background-color: rgba(255, 255, 255, 0.267);
-    }
+   
 }
 
-.arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid rgb(199, 200, 201);
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
+.white-hr {
+    width: 40%;
+    border: none;
+    height: 1px;
+    background-color: white;
 }
+.white-hr-thin {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.267);
+}
+
+
 
 /* 
     Regular CSS rules
     -----------------------
     Section 2 - "News" 
 */
+
 
 .news-container {
     min-height: 50vh;
