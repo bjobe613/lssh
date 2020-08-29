@@ -173,12 +173,24 @@ class OpeningHours(db.Model):
     openingTime = db.Column(db.Time, nullable = False)
     closingTime = db.Column(db.Time, nullable = False)
 
-class FAQ(db.Model):
-    faqID = db.Column(db.Integer, primary_key = True)
-    show = db.Column(db.Boolean, default = False) #or should it be true??
-    headline = db.Column(db.String, nullable = False)
-    question = db.Column(db.Text, nullable = False)
-    answer = db.Column(db.Text, nullable = False)
+class Categoryfaq(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
+    questions = db.relationship("Question")
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    questionTitle = db.Column(db.Text, nullable = False)
+    questionAnswer = db.Column(db.Text, nullable = False)
+    categoryID = db.Column(db.Integer, db.ForeignKey('categoryfaq.id'))
+
+
+#class FAQQuestion(db.Model):
+#    faqID = db.Column(db.Integer, primary_key = True)
+#    show = db.Column(db.Boolean, default = False) #or should it be true??
+#    headline = db.Column(db.String, nullable = False)
+#    question = db.Column(db.Text, nullable = False)
+#    answer = db.Column(db.Text, nullable = False)
 
 class HandInRequest(db.Model):
     requestID = db.Column(db.Integer, primary_key = True)

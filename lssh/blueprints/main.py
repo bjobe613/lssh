@@ -40,8 +40,11 @@ def find_us():
 def contact():
     return render_template('contact.html')
 
-@main.route("/help/faq")
+@main.route("/help/faq", methods = ['GET'])
 def faq():
+
+
+    
     return render_template('faq.html')
 
 @main.route("/transport")
