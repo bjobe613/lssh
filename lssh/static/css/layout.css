@@ -85,6 +85,10 @@ p {
     color: white;
 }
 
+.a-active:hover {
+    color: white;
+}
+
 
 .a-how-it-works {
     color: #49a193;
