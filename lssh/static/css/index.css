@@ -18,21 +18,25 @@
 }
 
 .btn-green {
-    width: 70%;
-    background-color: #09433A;
+    width: 80%;
+    background-color: var(--main-bg-color);
     border-style: none;
     padding: 0.5rem;
     font-size: 1rem;
 }
 
 .btn-green:active {
-    background-color: #09433A;
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-green:focus {
-    background-color: rgb(19, 80, 64);
+    background-color: #09433a8f;
     border-style: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-white {
@@ -45,7 +49,7 @@
 }
 
 .btn-green:hover {
-    background-color: rgb(31, 110, 89);
+    background-color: #09433ac2;
 }
 
 /* 
@@ -53,6 +57,32 @@
     -----------------------
     Section 1 - "Slogan" 
 */
+
+.row-top {
+    height: 10vh;
+}
+
+.row-middle-news {
+    height: 60vh;
+}
+
+.row-middle {
+    height: 80vh;
+}
+
+
+.col-middle {
+    
+    background: url('../pictures/liana-mikah-8tJxjQWTyNA-unsplash.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.row-bottom {
+    height: 10vh;
+}
 
 .space {
     padding-top: 15vh;
@@ -71,7 +101,7 @@
 }
 
 .index-container {
-    margin-top: 5rem;
+    
     background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -79,17 +109,30 @@
     background-size: cover;
     min-height: 90vh;
     
+    
+    
 }
 
 #slogan-text {
     font-size: 3.2rem;
     color: rgb(115, 115, 115);
+
+    -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
+
 }
 
 #slogan-text-bold {
     font-size: 3.2rem;
     font-weight: 500 !important;
     color: #09433A;
+
+    -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
 }
 
 .row-socialmedia {
@@ -141,7 +184,7 @@
     Section 1 - "Slogan"
 */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 992px) {
     .space {
         padding-top: 25vh;
         display: block;
@@ -149,46 +192,45 @@
     .row-slogan {
         padding-top: 5vh;
     }
-    .index-container {
-        background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    .col-middle {
+        background: url('../pictures/mobileindex.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 100vh;
+     
     }
-    .arrow-down {
-        border-top: 20px solid rgb(146, 143, 143);
+
+    #slogan-text {
+        font-size: 2.5rem;
     }
-    .white-hr {
-        width: 40%;
-        border: none;
-        height: 1px;
-        background-color: white;
+
+    #slogan-text-bold {
+        font-size: 2.5rem;
     }
-    .white-hr-thin {
-        border: none;
-        height: 1px;
-        background-color: rgba(255, 255, 255, 0.267);
-    }
+   
 }
 
-.arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid rgb(199, 200, 201);
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
+.white-hr {
+    width: 40%;
+    border: none;
+    height: 1px;
+    background-color: white;
 }
+.white-hr-thin {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.267);
+}
+
+
 
 /* 
     Regular CSS rules
     -----------------------
     Section 2 - "News" 
 */
+
 
 .news-container {
     min-height: 50vh;
@@ -207,6 +249,17 @@
     margin-bottom: 0px;
 }
 
+#latest-products-img1 {
+    background: url('../pictures/chair_product.png') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    height: 20rem;
+    width: 10rem;
+    background-color: rgb(247, 247, 247);
+}
+
 /* 
     Regular CSS rules
     -----------------------
@@ -215,26 +268,25 @@
 
 .works-button {
     cursor: pointer;
+    color: rgb(155, 155, 155) !important;
+   
 }
 
 .works-container {
     min-height: 100vh;
 }
 
-.works-heading {
-    padding-top: 2.2rem;
-}
 
 .row-space {
     height: 10vh;
 }
 
 .green-bg {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .works-icons {
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
     padding-bottom: 3rem;
 }
 
@@ -244,9 +296,42 @@
     width: 100px;
 }
 
+.logo2 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-handshake-heart-100\ \(2\).png);
+}
+
+.logo3 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-three-seater-sofa-100.png);
+}
+
+
+.logo4 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-furniture-100.png);
+}
+
+.logo5 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-yard-sale-100.png);
+}
+
+.logo6 {
+    height: 100px;
+    width: 100px;
+    background-image: url(../pictures/icons8-transaction-approved-100.png);
+}
+
+
+
 .space-green {
     height: 5rem;
-    background-color: #09433A;
+    background-color: var(--main-bg-color);
 }
 
 .p-text {
@@ -356,6 +441,14 @@
     background-size: cover;
 }
 
+.picture-vase {
+    background: url('../pictures/pexels-bongkarn-thanyakij-3787752.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 /* 
     Regular CSS rules
     -----------------------
@@ -392,6 +485,10 @@
     -----------------------
     Section 8 - "Subscribe" 
 */
+
+#subscribe-space {
+    padding-top: 20vh;
+}
 
 #subscribe-container {
     background-color: rgb(249, 249, 249);
@@ -438,9 +535,27 @@
     box-shadow: none !important;
     border-radius: 0;
     font-size: 1rem;
+    
+}
+
+#input-border-button {
+    
+    padding-top: 0;
+    padding-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-radius: 0;
+    color: black;
+    border-color: rgb(214, 214, 214);
+}
+
+#input-border-button:hover {
+    background-color: white;
+    color: grey;
 }
 
 #input-border-bottom:focus {
-    border-color: rgba(19, 80, 64, 0.438);
+    border-color: rgb(214, 214, 214);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }

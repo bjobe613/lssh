@@ -2,8 +2,14 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from lssh import app
+from werkzeug.utils import secure_filename
+
+
+from delta import html as quill_parser
+
 
 import os
+import html
 
 db = SQLAlchemy(app)
 
@@ -57,16 +63,19 @@ class Product(db.Model):
         db.session.add(pic)
         db.session.commit()
 
-        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', str(pic.pictureID) + '.jpg'))
-        pic.renamePictureAsID()
+        safeName = secure_filename(picture.filename)
+        fileEnding = safeName.rsplit('.')[len(safeName.rsplit('.')) - 1]
+        fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
+        pic.renameReference(fileName)
 
 class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
     productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
 
-    def renamePictureAsID(self):
-        self.pictureName = str(self.pictureID) + '.jpg'
+    def renameReference(self, fileName):
+        self.pictureName = fileName
         db.session.commit()
 
 class ProductReservation(db.Model):
@@ -91,16 +100,74 @@ class Blacklist(db.Model):
 class Newsletter(db.Model):
     email = db.Column(db.String, primary_key = True)
 
-class News(db.Model): #has to be reworked into files, not a model.
-    date = db.Column(db.DateTime(timezone = True), server_default = func.now(), primary_key = True)
-    title = db.Column(db.String, nullable = False)
-    text = db.Column(db.Text, nullable = False)
-    pictures = db.relationship('NewsPictures', backref = 'news')
-
-class NewsPictures(db.Model):
+class Newspicture(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
-    path = db.Column(db.String, nullable = False)
-    newsID = db.Column(db.DateTime, db.ForeignKey('news.date'))
+    path = db.Column(db.String, nullable = False, default = "default.jpg")
+    articles = db.relationship('News', backref = 'News.id')
+
+
+    def savePicture(self, picture):
+        safeName = secure_filename(picture.filename)
+        fileEnding = safeName.rsplit('.')[len(safeName.rsplit('.')) - 1]
+        fileName = 'news-' + str(self.pictureID) + '.' + fileEnding
+        picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
+        self.path = fileName
+        db.session.commit()
+
+class News(db.Model): #has to be reworked into files, not a model.
+    id = db.Column(db.Integer, primary_key = True)
+    published = db.Column(db.Boolean, nullable=False, default = False)
+    date = db.Column(db.DateTime(timezone = True), server_default = func.now())
+    title = db.Column(db.String, nullable = False)
+    ingress = db.Column(db.String, nullable = False)
+    text = db.Column(db.JSON, nullable = False)
+    titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
+
+    def escape_html(self):
+        self.title = html.escape(self.title)
+        self.ingress = html.escape(self.ingress)
+
+        for obj in self.text["ops"]:
+            if type(obj["insert"]) is str:
+                obj["insert"] = html.escape(obj["insert"])
+
+        db.session.commit()
+
+    def add_picture(self, picture):
+        titlePicture = Newspicture()
+        db.session.add(titlePicture)
+        db.session.commit()
+        
+        self.titlePicture = titlePicture.pictureID
+        titlePicture.savePicture(picture)
+
+    def get_article_as_html(self):
+        article_html = ""
+        if self.titlePicture:
+            print("Hade bild")
+            article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
+        else:
+            print("Hade inte bild")
+        article_html += "<h1>" + self.title + "</h1>\n"
+        article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
+        article_html += quill_parser.render(self.text["ops"])
+
+        return article_html
+
+    def serialize(self):
+        returnDict =  {
+            "id": self.id,
+            "published": self.published,
+            "title": self.title,
+            "ingress": self.ingress,
+            "text": self.text
+        }
+        if self.titlePicture:
+            returnDict.update({"imgpath": Newspicture.query.get(self.titlePicture).path})
+
+        return returnDict
+        
+
 
 class Admin(db.Model):
     name = db.Column(db.String, primary_key = True)
@@ -157,6 +224,8 @@ def fillTestDB():
     prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
     prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
 
+    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"ops" : [{"insert" : "Detta är <div> brödtexten"}]})   
+
     seller1 = Seller(liuID = 'LSSH')
     seller1.products.append(prod1)
     seller1.products.append(prod2)
@@ -169,10 +238,8 @@ def fillTestDB():
 
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1])
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.commit()
-
-    prod1pic2.renamePictureAsID()
 
     print("Filled the database")
 

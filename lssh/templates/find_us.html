@@ -2,11 +2,68 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/find_us.css') }}">
+    <title>LSSh | Find us</title>
 {% endblock more_head %}
 
-{% block content %}
+{% block about_content %}
     <!--Where the html should be written-->
-    <p>
-        find_us
-    </p>
-{% endblock content %}
+    <div id="container-fill" class="container-fluid">
+        <div class="row pt-md-5 mt-5 mb-5 pb-5">
+            <div class="col-xl-5 offset-xl-2 col-12 pb-4">
+                <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/29826_50065.jpg') }}" alt="Furniture">
+            </div>
+            <div class="col-xl-3 col-10 offset-1 offset-xl-0">
+                <h3 class="pb-3">LOCATION</h3>
+                <p>As a student association at Linköping University, we are located at Campus Valla in Linköping. Our premises are
+                    located in the A-building. </p>
+            </div>
+        </div>
+
+        <div class="row pt-5 mt-5 pb-5 mb-5">
+            
+            <div class="col-xl-3 offset-xl-2 offset-1 col-10">
+                <h3 class="pb-3">FIND US</h3>
+                <p>Easiest way to find our premises is to go inside the A-building at entrance 19. After you take the first stairs down and there is our entrance to the shop! <br><br>
+                    Welcome inside!</p>
+            </div>
+            <div class="col-xl-5 col-12 order-first order-xl-last pb-4">
+                <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+            </div>
+        </div>
+
+
+        <!-- EASIEST WAY TO FIND OUR SHOP EXTRA FUNCTION IF TIME
+
+        <div class="row pb-5">
+            <div class="col-3 offset-2">
+                <p>EASIEST WAY TO FIND OUR SHOP</p>
+            </div>
+            <div class="col-5">
+                <hr>
+            </div>
+        </div>
+
+        
+        <div class="row pb-5 mb-5">
+                <div class="col-8 offset-2">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Go to entrance 19 in the A-building at Linköping University</p>
+                        </div>
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Take the first stairs to the left that goes down</p>
+                        </div>
+                        <div class="col-4">
+                            <img id="contact-img" class="img-fluid rounded" src="{{ url_for('static', filename = '/pictures/maps.png') }}" alt="Furniture">
+                            <p>Welcome to our shop!</p>
+                        </div>
+                    </div>
+                </div>
+        </div> -->
+
+
+    </div>
+{% endblock about_content %}

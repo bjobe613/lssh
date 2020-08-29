@@ -1,13 +1,24 @@
-var quillOptions = {
-    modules: {
-        toolbar: [
-            [{header: [1, 2, false]}],
-            ['bold', 'italic', 'underline'],
-            ['image', 'link']
+$(document).ready(function () {
+    $("#save-button").click(function () {
+        var article = document.querySelector('input[name=article]');
+        article.value = JSON.stringify(editor.getContents());
 
-        ]
-    },
-    placeholder: 'Write the news article here...',
-    theme: 'snow'
-};
-var editor = new Quill('#editor', quillOptions);
+        var form = document.getElementById("add-news-form")
+        var formData = new FormData(form);
+
+        $.ajax({
+            url: '/news/',
+            type: 'POST',
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                location.href = "/admin/news/edit/" + response.id
+            },
+            error: function (response) {
+                alert("Something went wrong, couldn't save document");
+            }
+        })
+    })
+})

@@ -1,0 +1,40 @@
+{% extends "admin/news_article.html" %}
+{% block news_sidebar_content %}
+<button class='btn btn-block btn-primary' id='save-button' href='#'>Save</button>
+<a href="{{ url_for('admin.admin_news') }}" class='btn btn-block btn-secondary' id='close-button' href='#'>Close</a>
+<label for='close-button'>This will un-claim the document</label>
+
+{% endblock news_sidebar_content %}
+
+{% block news_main_content %}
+<form id="add-news-form">
+    <label for='picture-holder'>Chosen picture</label>
+    <div id='picture-holder'>
+        No picture chosen
+    </div>
+    <input type="file" id="news-picture" name="news-picture" accept="input/jpg input/png">
+    <div class='form-group'>
+        <label for='news-header'>Title</label>
+        <input class='form-control' name="title" id='news-header'>
+    </div>
+
+    <div class='form-group'>
+        <label for='news-ingress'>Ingress</label>
+        <textarea class='form-control' id='news-ingress' name="ingress" rows='5'></textarea>
+    </div>
+    <div class='form-group'>
+        <label for="editor">Article</label>
+        <input name="article" type="hidden">
+        <div id="editor">
+        </div>
+    </div>
+</form>
+<div id="id-holder" style="display: none;">{{ news_id }}</div>
+{% endblock news_main_content %}
+
+{% block scripts %}
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/news_writer.js') }}"></script>
+{% endblock scripts %}
