@@ -176,13 +176,14 @@ class OpeningHours(db.Model):
 class Categoryfaq(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
-    questions = db.relationship("Question")
+    questions = db.relationship("Question", back_populates="categoryfaq")
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     questionTitle = db.Column(db.Text, nullable = False)
     questionAnswer = db.Column(db.Text, nullable = False)
     categoryID = db.Column(db.Integer, db.ForeignKey('categoryfaq.id'))
+    categoryfaq = db.relationship("Categoryfaq", backref="question")
 
 
 #class FAQQuestion(db.Model):
