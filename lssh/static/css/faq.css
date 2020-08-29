@@ -20,7 +20,7 @@
     padding-right: 1rem;
 }
 
-#faq-question-heading {
+.faq-question-heading {
     font-size: 1.5rem;
     width: 100%;
     text-align: start;
@@ -30,13 +30,19 @@
     text-decoration: none; 
 }
 
-#faq-question-heading:focus {
+.faq-question-heading:hover {
+    box-shadow: none!important;
+    text-decoration: none;
+    color: black;
+}
+
+.faq-question-heading:focus {
     border-style: none;
     box-shadow: none!important;
     text-decoration: none; 
 }
 
-#faq-question-heading:active {
+.faq-question-heading:active {
     border-style: none;
     box-shadow: none!important;
     text-decoration: none; 

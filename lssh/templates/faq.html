@@ -10,6 +10,7 @@
 
     <div id="container-fill" class="container-fluid pt-3">
 
+        <!-- OLD Categories
         <div class="row pt-4">
             <div class="col-2"></div>
 
@@ -27,18 +28,63 @@
             </div>
             
             <div class="col-2"></div>
-        </div>
+        </div> -->
 
 
         <div class="row">
             <div class="col-md-2 col-sm-12"></div>
 
+            <div class="col-md-8 col-sm-12 pt-5">
+
+                <ul>
+                    {% for Category in faqcategories%}
+
+                    <li class="d-inline">
+                        <a class="a-link mb-4 mr-4" id="faq-a-{{ loop.index }}" href="/help/faq/{{ loop.index }}">{{ Category.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <div id="accordion">
+                    {% for Question in faqquestions%}
+                    <div class="card">
+                        <div class="card-header" id="heading{{ Question.id }}">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link faq-question-heading" data-toggle="collapse" data-target="#collapse{{ Question.id }}" aria-expanded="true" aria-controls="collapse{{ Question.id }}">
+                            <i id="faq-angledown" class="fa fa-angle-down"></i>{{ Question.questionTitle }}  
+                                  
+                            </button>
+                          </h5>
+                        </div>
+                    
+                        <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion">
+                          <div class="card-body">
+                            {{ Question.questionAnswer }}
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    {% endfor %}
+
+                    
+
+                    
+                  </div>
+
+
+
+            </div>
+
+
+
+            <!--
             
             <div id="accordion-col" class="col-md-8 col-sm-12 pt-5">
                 
-                
+            </div> -->
 
-            </div>
             <div class="col-md-2 col-sm-12"></div>
                
         </div>
