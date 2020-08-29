@@ -14,6 +14,8 @@ let prodListGlob = [];
 
 let activeCategories = [];
 
+let possibleCategories = ['category', 'color', 'condition', 'paymentMethod'];
+
 function listFilters(typeOfCategory) {
   $.ajax({
     url: "/products/products_content",
@@ -31,7 +33,7 @@ function listFilters(typeOfCategory) {
         attrID = replaceSpaces(filter);
         if(possibleConn[filter] == typeOfCategory) {
           $('#collapse-'+typeOfCategory).append('<label class="filter-categories-label">'+
-          filter+'<input type="checkbox" onchange="updateFilter('+'&apos;'+filter+'&apos;'+')" id="'+replaceSpaces(typeOfCategory)+'-'+attrID+'"></label>');        
+          filter+'<input class="filter-checkbox" type="checkbox" onchange="updateFilter('+'&apos;'+filter+'&apos;'+')" id="'+replaceSpaces(typeOfCategory)+'-'+attrID+'"></label>');        
         }
       }
     },
@@ -59,6 +61,18 @@ function updateFilter(filter) {
   }
   calculateActiveCategories();
   updateVisualCatalog();
+  updateVisualActivatedFilters();
+}
+
+function updateVisualActivatedFilters() {
+  
+  for(cat of possibleCategories) {
+    if(activeCategories.includes(cat)) {
+      document.getElementById('line-'+cat).style = 'background-color:lightgreen;'
+    } else {
+      document.getElementById('line-'+cat).style = 'background-color:rgb(240,240,240);'
+    }
+  }
 }
 
 function calculateActiveCategories() {
