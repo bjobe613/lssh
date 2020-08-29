@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Newsletter, Question, Categoryfaq
+from lssh.models import db, Product, Newsletter, Question, Categoryfaq
 
 import re
 

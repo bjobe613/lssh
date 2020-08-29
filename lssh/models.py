@@ -178,12 +178,26 @@ class Categoryfaq(db.Model):
     name = db.Column(db.String, nullable = False)
     questions = db.relationship("Question", back_populates="categoryfaq")
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
+
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     questionTitle = db.Column(db.Text, nullable = False)
     questionAnswer = db.Column(db.Text, nullable = False)
     categoryID = db.Column(db.Integer, db.ForeignKey('categoryfaq.id'))
     categoryfaq = db.relationship("Categoryfaq", backref="question")
+
+    def serialize(self):
+        return {
+            "id" : self.id,
+            "questionTitle" : self.questionTitle,
+            "questionAnswer" : self.questionAnswer,
+            "categoryID" : self.categoryID,
+        }
 
 
 #class FAQQuestion(db.Model):
@@ -243,9 +257,34 @@ def fillTestDB():
 
     nl1 = Newsletter(email = 'tyuvb456@student.liu.se')
 
+    cat0 = Categoryfaq(name = "Generellt")
+    cat1 = Categoryfaq(name = "Sälja")
+    cat2 = Categoryfaq(name = "Köpa")
+    cat3 = Categoryfaq(name = "Leverans")
+    qCat = [cat0, cat1, cat2, cat3]
+
+    q0 = Question(questionTitle = "TestGenerellt0", questionAnswer = "Ett svar", categoryfaq=cat0)
+    q1 = Question(questionTitle = "TestGenerellt1", questionAnswer = "Ett svar", categoryfaq=cat0)
+    q2 = Question(questionTitle = "TestGenerellt2", questionAnswer = "Ett svar", categoryfaq=cat0)
+    q3 = Question(questionTitle = "TestGenerellt3", questionAnswer = "Ett svar", categoryfaq=cat0)
+ 
+    q4 = Question(questionTitle = "TestSälja0", questionAnswer = "Ett svar", categoryfaq=cat1)
+    q5 = Question(questionTitle = "TestSälja1", questionAnswer = "Ett svar", categoryfaq=cat1)
+    q6 = Question(questionTitle = "TestSälja2", questionAnswer = "Ett svar", categoryfaq=cat1)
+  
+    q7 = Question(questionTitle = "TestKöpa0", questionAnswer = "Ett svar", categoryfaq=cat2)
+    q8 = Question(questionTitle = "TestKöpa1", questionAnswer = "Ett svar", categoryfaq=cat2)
+    q9 = Question(questionTitle = "TestKöpa2", questionAnswer = "Ett svar", categoryfaq=cat2)
+   
+    q10 = Question(questionTitle = "TestLeverans0", questionAnswer = "Ett svar", categoryfaq=cat3)
+    q11 = Question(questionTitle = "TestLeverans1", questionAnswer = "Ett svar", categoryfaq=cat3)
+    questions = [q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11]
+
 
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
                         prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
+    db.session.add_all(qCat)
+    db.session.add_all(questions)
     db.session.commit()
 
     print("Filled the database")
