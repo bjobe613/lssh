@@ -13,17 +13,17 @@
   margin: auto;
 }
 
-#product-wrapper {
+/*#product-wrapper {
   width: 100%;
   max-width: 1100px;
   margin: auto;
-}
+}*/
 
 
-#product-info-wrapper {
+/*#product-info-wrapper {
   width: 80%;
   margin: auto;
-}
+}*/
 
 /*Sldieshow*/
 .swiper-slide {
@@ -46,19 +46,113 @@
   align-items: center;
 }
 
-/*Uncertain section*/
-#uncertain-container {
-  margin-top: 200px;
-  width: 100%;
-  padding-left: 20%;
-  padding-right: 20%;
-  display: block;
+#h1-title {
+  margin-top: 30px;
 }
 
-@media all and (max-width: 576px) {
-  #navigation-history {
-    margin-left: 10%;
-  }
+/* 
+    Regular CSS rules
+    -----------------------
+    Section 3 - "How it works" 
+*/
+
+.works-button {
+  cursor: pointer;
+  color: rgb(155, 155, 155) !important;
+}
+
+.works-container {
+  min-height: 100vh;
+}
+
+
+.row-space {
+  height: 10vh;
+}
+
+.green-bg {
+  background-color: var(--main-bg-color);
+}
+
+.works-icons {
+  background-color: var(--main-bg-color);
+  padding-bottom: 3rem;
+}
+
+.logo1 {
+  background-image: url(../pictures/mail_icon.png);
+  height: 100px;
+  width: 100px;
+}
+
+.logo2 {
+  height: 100px;
+  width: 100px;
+  background-image: url(../pictures/icons8-handshake-heart-100\ \(2\).png);
+}
+
+.logo3 {
+  height: 100px;
+  width: 100px;
+  background-image: url(../pictures/icons8-three-seater-sofa-100.png);
+}
+
+
+.logo4 {
+  height: 100px;
+  width: 100px;
+  background-image: url(../pictures/icons8-furniture-100.png);
+}
+
+.logo5 {
+  height: 100px;
+  width: 100px;
+  background-image: url(../pictures/icons8-yard-sale-100.png);
+}
+
+.logo6 {
+  height: 100px;
+  width: 100px;
+  background-image: url(../pictures/icons8-transaction-approved-100.png);
+}
+
+
+
+.space-green {
+  height: 5rem;
+  background-color: var(--main-bg-color);
+}
+
+.p-text {
+  width: 70%;
+}
+
+.col-border {
+  border-right: 1px solid rgb(182, 182, 182);
+  height: 1rem;
+  margin-top: 0.2rem;
+}
+
+#works-buyer {
+  display: none;
+}
+
+.works-button-activated {
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+.fluid-no-margin {
+  padding: 0;
+  margin: 0;
+}
+
+/*Uncertain section*/
+#uncertain-container {
+  margin-bottom: 200px;
+}
+
+@media all and (max-width: 768px) {
 
   .desktop {
     display: none;
@@ -71,13 +165,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-    max-width: 400px;
-  }
-
-  #product-wrapper {
-    width: 80%;
-    max-width: 1100px;
-    margin: auto;
+    max-width: 800px;
   }
 
   .product-status {
@@ -88,10 +176,7 @@
   }
 }
 
-@media all and (min-width: 576px) {
-  #navigation-history {
-    margin-left: 3%;
-  }
+@media all and (min-width: 768px) {
 
   .mobile {
     display: none;
@@ -102,13 +187,13 @@
     color: lightgreen;
   }
 
-  .swiper-container {
+  /*.swiper-container {
     width: 45%;
     height: 100%;
     margin-left: 3%;
     display: inline-block;
     margin-bottom: 10px;
-    max-width: 400px;
+    max-width: 800px;
     text-align: right;
   }
 
@@ -117,7 +202,7 @@
     margin-right: 3%;
     float: right;
     display: inline-block;
-  }
+  }*/
 }
 
 @media all and (min-width: 992px) {
