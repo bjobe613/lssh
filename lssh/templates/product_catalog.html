@@ -53,7 +53,7 @@
       <div class="row row-wrapper">
         {% for x in products %}
 
-            <div class="col-md-4 col-xl-3">
+            <div class="col-md-4 col-xl-3 product-card-hs" id="product-card-hs-{{x.articleNumber}}">
               <div class="product-card" id="product-card-{{x.articleNumber}}">
                 <a href="product/{{x.articleNumber}}">
                   <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />

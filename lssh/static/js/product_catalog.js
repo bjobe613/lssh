@@ -31,7 +31,8 @@ function listFilters(typeOfCategory) {
         attrID = replaceSpaces(filter);
         if(possibleConn[filter] == typeOfCategory) {
           $('#collapse-'+typeOfCategory).append('<label class="filter-categories-label">'+
-          filter+'<input type="checkbox" onchange="updateFilter('+'&apos;'+filter+'&apos;'+')" id="'+replaceSpaces(typeOfCategory)+'-'+attrID+'"></label>');        }
+          filter+'<input type="checkbox" onchange="updateFilter('+'&apos;'+filter+'&apos;'+')" id="'+replaceSpaces(typeOfCategory)+'-'+attrID+'"></label>');        
+        }
       }
     },
     error:function() {
@@ -56,65 +57,45 @@ function updateFilter(filter) {
     checkedConn[filter] = possibleConn[filter];
     checkedFilters.push(filter);
   }
-  //calculateActiveCategories();
+  calculateActiveCategories();
   updateVisualCatalog();
 }
-/*
+
 function calculateActiveCategories() {
   activeCategories = [];
   for (var key in checkedConn) {
     if(!activeCategories.includes(checkedConn[key]) && checkedConn[key]) {
-      //console.log(checkedConn[key]);
-      //console.log(checkedConn[key]);
       activeCategories.push(checkedConn[key])
     }
   }
-  console.log(activeCategories);
-}*/
+}
 
 function updateVisualCatalog() {
   if(checkedFilters.length > 0) {
     for(prod of prodListGlob){
       //Try at new solution
-      /*difCat = 0;
+      var difCat = 0;
       for(cat of activeCategories) {
         for(filt of checkedFilters) {
-          if(checkedConn[filt]=cat && prod[checkedConn[filt]] == filt) {
-            difcat++;
+          if(checkedConn[filt]==cat && prod[checkedConn[filt]] == filt) {
+            difCat++;
             break;
           }
         }
       }
 
       if(difCat < activeCategories.length) {
-        document.getElementById('product-card-'+prod['articleNumber']).style = "display:none;position:absolute;";
+        document.getElementById('product-card-hs-'+prod['articleNumber']).classList.add('d-none');
+        //document.getElementById('product-card-hs-'+prod['articleNumber']).style = "display:none;position:absolute;";
       } else {
-        document.getElementById('product-card-'+prod['articleNumber']).style = "display:block;position:relative;";
-      }*/
-
-      //Current not working solution
-      filteredShow = false;
-      //console.log(checkedFilters);
-      for(f of checkedFilters) {
-        //console.log(prod);
-        //console.log(f);
-        if(prod[checkedConn[f]] == f) {
-
-          filteredShow = true;
-          //console.log(prod['articleNumber']+'show');
-          document.getElementById('product-card-'+prod['articleNumber']).style = "display:block;position:relative;";
-          break;
-        }
-      }
-
-      if(!filteredShow) {
-        //console.log(prod['articleNumber']+'hide');
-        document.getElementById('product-card-'+prod['articleNumber']).style = "display:none;position:absolute;";
+        document.getElementById('product-card-hs-'+prod['articleNumber']).classList.remove('d-none');
+        
+        //document.getElementById('product-card-hs-'+prod['articleNumber']).style = "display:block;position:relative;";
       }
     }
   } else {
-    for (let el of document.getElementsByClassName('product-card')){
-      el.style = "display:block;position:relative;";
+    for(prod of prodListGlob) {
+      document.getElementById('product-card-hs-'+prod['articleNumber']).classList.remove('d-none');
     }
   }
 }
