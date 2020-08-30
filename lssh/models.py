@@ -126,6 +126,10 @@ class News(db.Model): #has to be reworked into files, not a model.
 
             url= Newspicture.query.get(self.titlePicture).path
 
+           # url_html = "url_for('static', filename = '/pictures/" + url + "')"
+
+           # url_html = "url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg')"
+
             print(url)
         else:
             print("Hade inte bild")

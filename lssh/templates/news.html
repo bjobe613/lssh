@@ -26,22 +26,24 @@
             <div id="news-row" class="row">
                 <div class="col-8 offset-2">
 
-                    <div class="row h-100">
+                    <div class="row h-100 pb-5 mb-5">
 
                     {% for News in newsarticles %}
 
                         {% if not loop.index is divisibleby 2 %}
-                        <div class="col-5">
+                        <div class="col-12 col-lg-5 pb-lg-0 pb-5">
                           <!--  <div id="image-news"></div>-->
 
-                          
-
+                        <script>
+                            console.log("{{ News.get_img_url() }}");
+                        </script>
+        
                             <img id="image-news" src="{{ url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg') }}" class="img-fluid" alt="Responsive image">
 
                             <div id="text-img-news" class="row">
-                                <div class="col-8 offset-4 bg-white">
-                                    <h3 class="pt-3">{{ News.get_img_url() }}</h3>
-                                    <p class="pt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, esse nisi ratione ipsum facilis debitis animi magnam ut eaque quasi deleniti iure ex.</p>
+                                <div class="col-lg-8 offset-lg-4 offset-2 col-10 bg-white">
+                                    <h3 class="pt-3">{{ News.title }}</h3>
+                                    <p class="pt-3">{{ News.ingress }}</p>
                                 
                                 </div>
                             </div>
@@ -55,12 +57,12 @@
                             console.log("{{ loop.index }}");
                         </script>
 
-                        <div class="col-5 offset-2 pt-5 mt-5">
+                        <div class="col-lg-5 col-12 offset-lg-2 pt-lg-5 mt-lg-5 pb-5 pb-lg-0">
                             <div class="image-news-right"></div>
                             <div id="text-img-news" class="row">
-                                <div class="col-8 offset-4 bg-white">
+                                <div class="col-lg-8 offset-lg-4 offset-2 col-10 bg-white">
                                     <h3 class="pt-3">{{ News.title }}</h3>
-                                    <p class="pt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, esse nisi ratione ipsum facilis debitis animi magnam ut eaque quasi deleniti iure ex.</p>
+                                    <p class="pt-3">{{ News.ingress }}</p>
                                 
                                 </div>
                             </div>
