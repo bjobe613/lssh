@@ -2,11 +2,83 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/news.css') }}">
+    <title>LSSh | See all our latest news</title>
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
-        news
-    </p>
+    <div id="news-container" class="container-fluid">
+        <div id="title-row" class="row mb-5">
+            <div class="col-8 offset-2 pt-5">
+                <h3 class="pb-3">News & updates</h3>
+                
+                <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+
+            </div>
+        </div>
+
+
+       
+        
+            <div id="news-row" class="row">
+                <div class="col-8 offset-2">
+
+                    <div class="row h-100">
+
+                    {% for News in newsarticles %}
+
+                        {% if not loop.index is divisibleby 2 %}
+                        <div class="col-5">
+                          <!--  <div id="image-news"></div>-->
+
+                          
+
+                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg') }}" class="img-fluid" alt="Responsive image">
+
+                            <div id="text-img-news" class="row">
+                                <div class="col-8 offset-4 bg-white">
+                                    <h3 class="pt-3">{{ News.get_img_url() }}</h3>
+                                    <p class="pt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, esse nisi ratione ipsum facilis debitis animi magnam ut eaque quasi deleniti iure ex.</p>
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                       
+
+                        {% elif loop.index is divisibleby 2 %}
+
+                        <script>
+                            console.log("{{ loop.index }}");
+                        </script>
+
+                        <div class="col-5 offset-2 pt-5 mt-5">
+                            <div class="image-news-right"></div>
+                            <div id="text-img-news" class="row">
+                                <div class="col-8 offset-4 bg-white">
+                                    <h3 class="pt-3">{{ News.title }}</h3>
+                                    <p class="pt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, esse nisi ratione ipsum facilis debitis animi magnam ut eaque quasi deleniti iure ex.</p>
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+           
+       
+     
+
+        
+ 
+
+
+
+    </div>
 {% endblock content %}

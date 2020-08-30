@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Newsletter, Product
+from lssh.models import db, Newsletter, Product, News
 
 import re
 
@@ -60,6 +60,17 @@ def transport():
 @main.route("/hand_in")
 def hand_in():
     return render_template('hand_in.html')
+
+
+@main.route("/news")
+def news():
+
+    news = News.query.all()
+
+    print(news[1].serialize())
+
+    return render_template('news.html', newsarticles = news)
+
 
 @main.route("/hand_in/hand_in_request", methods = ['GET', 'POST'])
 def hand_in_request():

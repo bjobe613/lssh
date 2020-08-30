@@ -117,6 +117,21 @@ class News(db.Model): #has to be reworked into files, not a model.
     text = db.Column(db.JSON, nullable = False)
     titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
 
+    def get_img_url(self):
+
+        url = ""
+
+        if self.titlePicture:
+            print("Hade bild")
+
+            url= Newspicture.query.get(self.titlePicture).path
+
+            print(url)
+        else:
+            print("Hade inte bild")
+     
+        return url
+
     def escape_html(self):
         self.title = html.escape(self.title)
         self.ingress = html.escape(self.ingress)
