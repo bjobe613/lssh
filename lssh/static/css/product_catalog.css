@@ -1,7 +1,37 @@
+.spacing-line {
+  width: 100%;
+  max-width: 440px;
+  height: 5px;
+  background-color: rgb(240,240,240);
+  margin-top: 5px;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
 
 #filter-categories-wrapper {
   margin-left: 20px;
 }
+
+
+.filter-categories-label {
+  display: block;
+}
+
+.category-collapse-a {
+  color: black;
+}
+
+.category-collapse-a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.filter-checkbox {
+  float: right;
+  margin-top: 5px;
+}
+
 
 #catalog-wrapper {
   background-color: rgb(250,250,250);
@@ -55,19 +85,53 @@
   margin-top: 40px
 }
 
-
-
 @media all and (max-width: 768px) {
   .product-card {
     width: 100%;
     height: auto;
     padding-bottom: 20px;
   }
+  .category {
+    display: block;
+    width: 30%;
+  }
+  .category-inner-wrapper {
+    width: 50%;
+  }
 }
 
 @media all and (min-width: 769px) and (max-width: 1200px) {
+  .category {
+    display: inline-block;
+    width: 100px;
+  }
 
+  .filter-options-wrapper {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-top: none;
+    width: 90%;
+  }
+
+  
 }
 
 @media all and (min-width: 1201px) {
+  .category {
+    display: inline-block;
+    width: 100px;
+  }
+
+  .filter-options-wrapper {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-top: none;
+    width: 90%;
+  }
 }
