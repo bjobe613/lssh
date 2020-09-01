@@ -38,11 +38,7 @@ if (window.location.href.indexOf("products") > -1) {
 }
 
 if (window.location.href.indexOf("contact") > -1) {
-    /* img subnav */
-    $("#contact-btn").addClass("a-link-white-active");
-    $("#contact-btn").addClass("white-toggle ");
-    $("#contact-btn").removeClass("a-link-white");
-    $("#contact-btn").removeClass("transparent-toggle");
+    $("#contact-link").addClass("a-link-white-active");
 }
 
 
@@ -50,10 +46,7 @@ if (window.location.href.indexOf("contact") > -1) {
 
 if (window.location.href.indexOf("faq") > -1) {
     /* img subnav */
-    $("#faq-btn").addClass("a-link-white-active");
-    $("#faq-btn").addClass("white-toggle ");
-    $("#faq-btn").removeClass("a-link-white");
-    $("#faq-btn").removeClass("transparent-toggle");
+    $("#faq-link").addClass("a-link-white-active");
 }
 
 
