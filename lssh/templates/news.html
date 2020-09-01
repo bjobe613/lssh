@@ -32,41 +32,34 @@
 
                         {% if not loop.index is divisibleby 2 %}
                         <div class="col-12 col-lg-5 pb-lg-0 pb-5">
-                          <!--  <div id="image-news"></div>-->
-
-                        <script>
-                            console.log("{{ News.get_img_url() }}");
-                        </script>
-        
-                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
-
+                            <a href="news/{{ News.id }}">
+                                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+                            </a>
                             <div id="text-img-news" class="row">
                                 <div class="offset-2 col-10 bg-white pb-3">
                                     <h3 class="pt-3">{{ News.title }}</h3>
                                     <p class="pt-3">{{ News.ingress }}</p>
-                                 
-                                    <a href="news/{{ News.id }}">Read more</a>
+                                    <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
                                 
                                 </div>
                             </div>
+                           
                         </div>
 
                        
 
                         {% elif loop.index is divisibleby 2 %}
 
-                        <script>
-                            console.log("{{ loop.index }}");
-                        </script>
 
                         <div class="col-lg-5 col-12 offset-lg-2 pt-lg-5 mt-lg-5 pb-5 pb-lg-0">
-                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+                            <a href="news/{{ News.id }}">
+                                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+                            </a>
                             <div id="text-img-news" class="row">
                                 <div class="offset-2 col-10 bg-white pb-3">
                                     <h3 class="pt-3">{{ News.title }}</h3>
                                     <p class="pt-3">{{ News.ingress }}</p>
-                                   
-                                    <a href="news/{{ News.id }}">Read more</a>
+                                    <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
                                 
                                 </div>
                             </div>

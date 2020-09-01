@@ -19,25 +19,23 @@
         <div class="row h-100">
             <div class="col-1 offset-1 bg-white col-shift-white"></div>
             <div id="article-html-col" class="col-8 pt-5 bg-white col-shift-white">
-                <h3 class="pt-3">{{ single_article.title }}</h3>
+                <h1 class="pt-3">{{ single_article.title }}</h1>
                 <p>{{ single_article.date }}</p>
-                <p class="pt-5"><b>{{ single_article.ingress }}</b></p>
+                <p class="pt-2 pb-5"><b>{{ single_article.ingress }}</b></p>
+
+
+                <div class="news-article">{{ article|safe }}</div>
 
 
 
 
-
-
-
-                <div id="share-wrapper">
+                <div class="pb-5" id="share-wrapper">
                   <p>
                     Share article
                   </p>
                   <!--Facebook share button-->
                   <div class="fb-share-button" data-href="" data-layout="button" data-size="large">
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-                      Dela
-                    </a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a>
                   </div>
                 </div>
             </div>

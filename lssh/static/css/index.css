@@ -206,6 +206,14 @@ user-select: none; /* Standard */
     width: 100%;
 }
 
+#image-news {
+    object-fit: cover;
+    height: 70vh;
+    display:block;
+    width: 100%;
+    
+}
+
 #p-category-news {
     margin-bottom: 0px;
 }

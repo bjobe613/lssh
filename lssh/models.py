@@ -161,6 +161,11 @@ class News(db.Model): #has to be reworked into files, not a model.
         print(article_html)
         return article_html
 
+    def get_article_as_html_user(self):
+        article_html = ""
+        article_html += quill_parser.render(self.text["ops"])
+        return article_html
+
     def serialize(self):
         returnDict =  {
             "id": self.id,
