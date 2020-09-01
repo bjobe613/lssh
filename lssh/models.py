@@ -88,11 +88,10 @@ class Product(db.Model):
             price=self.price, 
             pubDate=self.pubDate,
             category=self.category.name,
-            subcategory=self.subcategory,
             color=self.color,
             condition=self.condition.name,
             status=self.status,
-            paymentMethod=self.paymentMethod.name
+            payment_method=self.payment_method.name
         )
 
     def addPicture(self, picture):

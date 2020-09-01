@@ -118,7 +118,8 @@ function submitProductForm() {
             location.href = "/admin/products"
         },
         error: function(response) {
-            alert("Something went wrong");
+            console.log(response)
+            alert("Something went wrong, message from server: " + response.responseJSON.msg);
         }
     })
 }
