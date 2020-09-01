@@ -3,6 +3,7 @@ html {
    
 }
 
+
 /* Global variables */
 :root {
     --main-bg-color: #09433A;
@@ -52,6 +53,15 @@ p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
    
+}
+
+
+.height-before-nav {
+    height: 6rem;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
 }
 
 /* Styling for buttons */
@@ -200,6 +210,7 @@ p {
 
 #navbar {
     height: 10vh;
+    background-color:transparent !important;
 }
 
 #navbar-mobile {
@@ -400,7 +411,7 @@ p {
 }
 
 .fa-instagram {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     color: black;
     margin-left: 1rem;
     font-weight: 500;

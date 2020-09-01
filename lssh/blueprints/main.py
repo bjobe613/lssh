@@ -64,12 +64,14 @@ def hand_in():
 
 @main.route("/news")
 def news():
-
     news = News.query.all()
-
-    print(news[1].serialize())
-
     return render_template('news.html', newsarticles = news)
+
+@main.route("/news/<int:x>", methods=['GET'])
+def news_single(x):
+
+    news_article = News.query.filter(News.id == x).first()
+    return render_template('news_single_view.html', single_article = news_article)
 
 
 @main.route("/hand_in/hand_in_request", methods = ['GET', 'POST'])

@@ -123,14 +123,7 @@ class News(db.Model): #has to be reworked into files, not a model.
 
         if self.titlePicture:
             print("Hade bild")
-
             url= Newspicture.query.get(self.titlePicture).path
-
-           # url_html = "url_for('static', filename = '/pictures/" + url + "')"
-
-           # url_html = "url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg')"
-
-            print(url)
         else:
             print("Hade inte bild")
      
@@ -162,9 +155,10 @@ class News(db.Model): #has to be reworked into files, not a model.
         else:
             print("Hade inte bild")
         article_html += "<h1>" + self.title + "</h1>\n"
-        article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
+        article_html += "<p class='ingress'>" + self.ingress + "</p>\n"
         article_html += quill_parser.render(self.text["ops"])
 
+        print(article_html)
         return article_html
 
     def serialize(self):

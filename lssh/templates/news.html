@@ -11,7 +11,7 @@
     <div id="news-container" class="container-fluid">
         <div id="title-row" class="row mb-5">
             <div class="col-8 offset-2 pt-5">
-                <h3 class="pb-3">News & updates</h3>
+                <h1 class="pb-3">News & updates</h1>
                 
                 <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
                 <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
@@ -24,7 +24,7 @@
        
         
             <div id="news-row" class="row">
-                <div class="col-8 offset-2">
+                <div class="col-lg-8 offset-lg-2 col-10 offset-1">
 
                     <div class="row h-100 pb-5 mb-5">
 
@@ -38,12 +38,14 @@
                             console.log("{{ News.get_img_url() }}");
                         </script>
         
-                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/white-vase-with-decorative-leaves-on-shelf-4207780.jpg') }}" class="img-fluid" alt="Responsive image">
+                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
 
                             <div id="text-img-news" class="row">
-                                <div class="col-lg-8 offset-lg-4 offset-2 col-10 bg-white">
+                                <div class="offset-2 col-10 bg-white pb-3">
                                     <h3 class="pt-3">{{ News.title }}</h3>
                                     <p class="pt-3">{{ News.ingress }}</p>
+                                 
+                                    <a href="news/{{ News.id }}">Read more</a>
                                 
                                 </div>
                             </div>
@@ -58,11 +60,13 @@
                         </script>
 
                         <div class="col-lg-5 col-12 offset-lg-2 pt-lg-5 mt-lg-5 pb-5 pb-lg-0">
-                            <div class="image-news-right"></div>
+                            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
                             <div id="text-img-news" class="row">
-                                <div class="col-lg-8 offset-lg-4 offset-2 col-10 bg-white">
+                                <div class="offset-2 col-10 bg-white pb-3">
                                     <h3 class="pt-3">{{ News.title }}</h3>
                                     <p class="pt-3">{{ News.ingress }}</p>
+                                   
+                                    <a href="news/{{ News.id }}">Read more</a>
                                 
                                 </div>
                             </div>

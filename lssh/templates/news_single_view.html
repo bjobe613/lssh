@@ -2,11 +2,38 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/news_single.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
-        news single
-    </p>
+<!--
+    <div id="top-gradient">
+        <br>
+    </div> -->
+    <img id="image-header" src="{{ url_for('static', filename = '/pictures/' + single_article.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+
+    <div class="container-fluid bg-grey h-100">
+        <div class="row h-100">
+            <div class="col-1 offset-1 bg-white col-shift-white"></div>
+            <div id="article-html-col" class="col-8 pt-5 bg-white col-shift-white">
+                <h3 class="pt-3">{{ single_article.title }}</h3>
+                <p>{{ single_article.date }}</p>
+                <p class="pt-5"><b>{{ single_article.ingress }}</b></p>
+
+
+              
+
+            
+                
+                
+               
+                
+                
+            </div>
+            <div class="col-2 bg-white col-shift-white"></div>
+        </div>
+    </div>
+
+
 {% endblock content %}

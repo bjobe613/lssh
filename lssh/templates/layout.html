@@ -47,10 +47,12 @@
 <body>
     <header>
 
-        <div id="navbar" class="container-fluid navbar-desktop-active">
-            <div class="row align-items-center h-100">
+      
 
-                <div class="col-md-1 offset-1">
+        <div id="navbar" class="container-fluid navbar-desktop-active bg-transparent position-absolute">
+            <div class="row bg-transparent align-items-center h-100">
+
+                <div class="col-md-1 bg-transparent offset-1">
                     <a class="navbar-brand" href="{{ url_for('main.startup') }}">
                         <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}"
                             id="logotype" alt="Logotype">
@@ -82,6 +84,10 @@
                 </div>
 
             </div>
+        </div>
+
+        <div class="height-before-nav">
+            <br>
         </div>
 
 
