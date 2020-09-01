@@ -52,6 +52,12 @@ class Product(db.Model):
             pic = piclist[0].pictureName
         return pic
 
+    #This serialize is urrently fitted for filter
+    def serialize(self):
+        return dict(articleNumber=self.articleNumber, name=self.name, price=self.price, pubDate=self.pubDate,
+        category=self.category, subcategory=self.subcategory, color=self.color, condition=self.condition,
+        status=self.status, paymentMethod=self.paymentMethod)
+
     def addPicture(self, picture):
         pic = ProductPictures(productID = self.articleNumber)
         db.session.add(pic)
@@ -254,6 +260,12 @@ def fillTestDB():
     db.session.commit()
 
     print("Filled the database")
+
+
+resetDB()
+fillTestDB()
+
+
 
 '''
 def test():
