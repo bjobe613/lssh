@@ -13,25 +13,28 @@
 
       
         <div id="about-us-container" class="container-fluid">
-            <div class="row pb-4">
+            <div class="row">
                 <div class="col-10"></div>
                 <div class="col-1 text-center">
                     <div class="arrow-down"></div>
                 </div>
             </div>
     
-            <!-- OLD SUBNAV
-            <div class="row mt-4 pb-4 pt-2">
-                <div class="col-10"></div>
-                <div class="col-1 text-center">
-                    <a class="a-link-white" href="{{ url_for('main.contact') }}">Contact</a>
-                </div>
-                <div class="col-1 text-center">
-                    <a class="a-link-white" href="{{ url_for('main.faq') }}">FAQ</a>
-                </div>
-            </div>-->
             
-
+            <div class="row mt-4 pb-4 pt-2">
+     
+                <div class="col-md-1 offset-9 text-center">
+                    <a id="faq-link" class="a-link-white" href="{{ url_for('main.faq') }}"> FAQ</a>
+                </div>
+                <div class="col-md-1 col-sm-6 text-center">
+                    <a id="contact-link" class="a-link-white" href="{{ url_for('main.contact') }}"> Contact </a>
+                </div>
+                <div class="col-md-1 col-sm-6 text-center">
+                   
+                </div>
+            </div>
+            
+            <!--
             <div id="heading-help" class="row pt-5 pb-5">
                 <div class="col-2"></div>
                 <div class="col-12 col-md-3 text-md-left text-center">
@@ -60,7 +63,7 @@
                     <img id="contact-img" class="img-fluid" src="{{ url_for('static', filename = '/pictures/Project group frame.png') }}" alt="Furniture">
                 </div>
                 <div class="col-2"></div>
-            </div>
+            </div>-->
 
         </div>
 
