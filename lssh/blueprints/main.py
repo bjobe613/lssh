@@ -43,8 +43,10 @@ def contact():
 @main.route("/help/faq/<int:x>", methods = ['GET'])
 def faq(x):
     x_minus_1 = x - 1
-    categories = Categoryfaq.query.filter(Categoryfaq.id).all()
+    categories = Categoryfaq.query.all()
+
     questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
+   
  
     return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
