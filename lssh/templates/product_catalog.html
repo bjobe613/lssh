@@ -3,57 +3,99 @@
 {% block more_head %}
     <!--Additional head-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/product_catalog.css') }}">
+    <title>LSSh | Browse all our items</title>
 {% endblock more_head %}
 
 {% block content %}
-    <!--Where the html should be written-->
-    <p>
-        Catalog
-    </p>
-    <form method= "POST">
-
-    <div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-        {% for field in filterform %}
-        <div>
-            {{ field}}
-            {{ field.label}}
+    <div class="col-10 offset-1" id="filter-wrapper">
+      <h2>
+        Filter
+      </h2>
+      <div class="row" id="filter-categories-wrapper">
+        <div class="category col-12 col-md-2">
+          <div class="category-inner-wrapper">
+            <a class="category-collapse-a" data-toggle="collapse" href="#collapse-category">
+              Category
+            </a>
+            <div id="line-category" class="spacing-line">
+            </div>
+            <div class="collapse filter-options-wrapper" id="collapse-category">
+                <!--List filter options-->
+            </div>
+          </div>
         </div>
-        {% endfor %}
-
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+        <div class="category col-12 col-md-2">
+          <div class="category-inner-wrapper">
+            <a  class="category-collapse-a" data-toggle="collapse" href="#collapse-color">
+              Color
+            </a>
+            <div id="line-color" class="spacing-line">
+            </div>
+            <div class="collapse filter-options-wrapper" id="collapse-color">
+                <!--List filter options-->
+            </div>
+          </div>
         </div>
-      </div>
-    </form>
-    {% for x in products %}
-
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
-    </div>
-
-        <div class="category">
-          <a data-toggle="collapse" href="#collapse-Availability">
-            Availability
-          </a>
-          <div class="collapse" id="collapse-Availability">
-            <p>test<p>
-              <!--List filter options-->
+        <div class="category col-12 col-md-2">
+          <div class="category-inner-wrapper">
+            <a  class="category-collapse-a" data-toggle="collapse" href="#collapse-condition">
+              Condition
+            </a>
+            <div id="line-condition" class="spacing-line">
+            </div>
+            <div class="collapse filter-options-wrapper" id="collapse-condition">
+                <!--List filter options-->
+            </div>
+          </div>
+        </div>
+        <div class="category col-12 col-md-2">
+          <div class="category-inner-wrapper">
+            <a  class="category-collapse-a" data-toggle="collapse" href="#collapse-paymentMethod">
+              Payment
+            </a>
+            <div id="line-paymentMethod" class="spacing-line">
+            </div>
+            <div class="collapse filter-options-wrapper" id="collapse-paymentMethod">
+                <!--List filter options-->
+            </div>
           </div>
         </div>
       </div>
-    </form>
-    {% for x in products %}
-
-    <div>
-        <img src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" width="200" height="200">
-        <h3>Name: {{x.name}}</h3>
-        <p>Price: {{x.price}} SEK</p>
     </div>
+    <div id="catalog-wrapper" class="col-12">
+      <div class="row row-wrapper">
+        {% for x in products %}
 
-    {% endfor %}
+            <div class="col-md-4 col-xl-3 product-card-hs" id="product-card-hs-{{x.articleNumber}}">
+              <div class="product-card" id="product-card-{{x.articleNumber}}">
+                <a href="product/{{x.articleNumber}}">
+                  <img class="product-img" src="{{url_for('static', filename='pictures/' + x.getSinglePictureName())}}" />
+                </a>
+                <div class="product-card-text">
+                  <a href="product/{{x.articleNumber}}">
+                    <h5 class="h5-card">
+                      {{x.name}}
+                    </h5>
+                  </a>
+                  <p>
+                    Short desc.
+                  </p>
+                  <p class="product-card-price">
+                    {{x.price}} SEK
+                  </p>
+                  <p class="product-card-status">
+                    Status
+                  </p>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+        </div>
+      </div>
 {% endblock content %}
+
+
+{% block more_script %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/product_catalog.js') }}"></script>
+
+{% endblock more_script %}

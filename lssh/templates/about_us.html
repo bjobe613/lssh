@@ -2,11 +2,45 @@
 
 {% block more_head %}
     <!--Additional head-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/about_us.css') }}">
+<title>LSSh | About us</title>
 {% endblock more_head %}
 
-{% block content %}
+{% block about_content %}
     <!--Where the html should be written-->
-    <p>
-        About_us
-    </p>
-{% endblock content %}
+   
+
+    <div id="container-about" class="container-fluid">
+
+        <div class="row pt-5 pb-5 mb-5">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <h3 class="pb-4">SECOND HAND MADE EASY</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus expedita repellat consequuntur eveniet.
+                     Dicta qui nostrum provident, ipsum, quam eius obcaecati fuga dolorem amet quisquam tenetur tempore velit 
+                     perspiciatis iusto. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus expedita repellat consequuntur eveniet.
+                     Dicta qui nostrum provident, ipsum, quam eius obcaecati fuga dolorem amet quisquam tenetur tempore velit 
+                     perspiciatis iusto</p>
+            </div>
+          
+            <div class="col-2"></div>
+            
+        </div>
+
+        <div class="row pb-5 mb-5">
+            <div class="col-2"></div>
+            <div class="col-4">
+                <h3 class="pb-4">OUR AMBITION</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus expedita repellat consequuntur eveniet.
+                     Dicta qui nostrum provident, ipsum, quam eius obcaecati fuga dolorem amet quisquam tenetur tempore velit 
+                     perspiciatis iusto.</p>
+            </div>
+            <div class="col-4">
+                <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/two-vases-on-table-842950 (1).jpg') }}" alt="Furniture">
+            </div>
+            <div class="col-2"></div>
+            
+        </div>
+    </div>
+
+{% endblock about_content %}

@@ -1,0 +1,30 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_news = True %}
+{% block more_head %}
+<!-- Include Quill stylesheet -->
+<link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_news.css') }}">
+{% endblock more_head %}
+
+{% block content %}
+<div id='news-form-container' class='container-fluid'>
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="adm-prod-sidebar">
+                {% block news_sidebar_content %}
+                {% endblock news_sidebar_content %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            {% block news_main_content %}
+            {% endblock news_main_content %}
+        </div>
+    </div>
+
+
+</div>
+{% endblock content %}
+
+{% block templates %}
+{% endblock templates %}
+

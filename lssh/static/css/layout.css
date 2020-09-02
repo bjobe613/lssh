@@ -1,6 +1,15 @@
 html {
     overflow-x: hidden; 
+   
 }
+
+/* Global variables */
+:root {
+    --main-bg-color: #09433A;
+    --bg-color-white: #ffffff;
+  }
+
+
 
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -17,9 +26,8 @@ h2 {
 
 h3 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 300 !important;
-    font-style: italic;
-    color: rgb(125, 125, 125);
+    font-weight: 500 !important;
+    color: rgb(0, 0, 0);
 }
 
 h4 {
@@ -28,38 +36,371 @@ h4 {
     font-size: 1rem !important;
 }
 
+h5 {
+    font-size: 1.2rem !important;
+}
+
+h6 {
+    color: rgb(190, 190, 190);
+    font-weight: 300 !important;
+    font-size: 1.1rem !important;
+}
+
+
+
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 
-#logotype {
-    height: 5rem;
-    width: 5rem;
-    
+.p-white {
+    color: white;
 }
 
+/* Styling for buttons */
+.green-btn {
+    background-color: var(--main-bg-color);
+    border: none;
+    color: white;
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+}
+
+.green-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.green-btn:focus {
+    outline:none;
+}
+
+.white-btn {
+    background-color: var(--bg-color-white);
+    border: none;
+    color: var(--main-bg-color);
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+}
+
+.white-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.white-btn:focus {
+    outline:none;
+}
+
+
+
+
+
+.a-link:hover {
+    color: rgb(73, 73, 73);
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-heading {
+        font-size: 1.2rem !important;
+    }
+
+    .a-link {
+        font-size: 1.2rem !important;
+    }
+}
+
+.a-link {
+    color: grey;
+    font-size: 1rem !important;
+}
+
+
+
+.a-active {
+    background-color: var(--main-bg-color);
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    border-radius: 25px;
+    color: white;
+}
+
+
+.a-how-it-works {
+    color: #49a193;
+}
+
+.a-how-it-works:hover {
+    color: #3c867a;
+    text-decoration: none;
+}
+
+.a-link-white {
+    color: rgb(206, 206, 206);
+}
+
+.a-link-white:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.a-link-white-active:hover {
+    color: var(--bg-color-white);
+    text-decoration: none;
+   
+}
+
+.a-link-white-active {
+    color: var(--bg-color-white);
+    font-weight: 500;
+}
+
+
+#logotype {
+    height: 4.5rem;
+    width: 4.5rem;   
+}
+
+
 #logotype-footer {
-    height: 5rem;
-    width: 5rem;
-    opacity: 20%;
+    height: 4.5rem;
+    width: 4.5rem;
+    opacity: 40%;
 }
 
 .page-footer {
     background-color: #161616;
 }
 
-.a-grey {
-    color: #807d7d;
-}
-
 .footer-copyright {
-    color: rgb(63, 63, 63);
+    color: rgb(109, 109, 109);
+    margin-bottom: 0;
 }
 
 #navbar.scrolled {
     background-color: rgb(255, 255, 255) !important;
     transition: background-color 200ms linear;
+}
+
+/* NAVBAR */
+
+#navbar {
+    height: 10vh;
+}
+
+#navbar-mobile {
+    background-color: white;
+}
+
+#works-link {
+    border: 1px solid var(--main-bg-color);
+    color: var(--main-bg-color);
+    border-radius: 0.2rem;
+    font-size: 0.9rem !important;
+}
+
+#works-link:hover {
+    border: 1px solid var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+
+
+
+@media only screen and (max-width: 992px) {
+    .navbar-desktop-active {
+        display: none;
+    }
+}
+
+
+/* Subnav */ 
+
+/*
+#help-link-col {
+    height: 5rem;
+}
+*/
+
+#help-link {
+    width: 100%;
+}
+.subnav-content {
+    display: none;
+    position: absolute;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 15px solid rgb(255, 255, 255);
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+
+#about-us-container {
+    min-height: 4vh;
+    background-color: #09433A;
+}
+
+.inline {
+    display: inline-block;
+    color: white;
+}
+
+#test-link {
+    position: relative;
+    margin-left: -3.8rem;
+}
+
+#contact-sublink {
+    position: relative;
+    margin-left: -0.4rem;
+    
+}
+
+.subnav {
+    background-color: #09433A;
+}
+
+/* Layout hand in req */
+
+#hand-in-req-container {
+    min-height: 100vh;
+    
+}
+
+.bg-grey {
+    background-color: #F9F9F9;
+}
+
+.text-white {
+    color: white;
+}
+
+.h3-handin {
+    font-size: 1.2rem;
+}
+
+.p-handin {
+
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.selected-step {
+    background-color: #A5C9C5;
+    color: white !important;
+}
+
+.not-selected-step {
+    background-color: #EAEBED;
+}
+
+.rounded-left {
+    border-radius: 2rem 0rem 0rem 2rem !important;
+}
+
+.rounded-right {
+    border-radius: 0rem 2rem 2rem 0rem !important;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.grey-bg {
+    background-color: #F9F9F9;
+}
+
+
+/* FAQ subnav */
+
+.active-help {
+    background-color: #0B5045;
+}
+
+.border-help {
+    border: 1px solid #0D6052;
+}
+
+.height-help {
+    height: 15rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .height-help {
+        height: 10rem;
+    }
+
+    #heading-help {
+        margin-top: 5rem;
+    }
+}
+
+/* FAQ new subnav image */
+
+.white-toggle {
+    width: 87.5%;
+    background-color: white;
+    color: var(--main-bg-color);
+}
+
+
+.transparent-toggle {
+    width: 87.5%;
+    border: 1px solid #ffffff49;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 768px) {
+    .white-toggle {
+        width: 100%;
+    }
+
+    .transparent-toggle {
+        width: 100%;
+    }
+
+   
+}
+
+
+
+/* About us CSS */
+
+#story-header-img {
+    height: 60vh;
+    background: url('../pictures/pexels-bongkarn-thanyakij-3787752.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.half-white-bg {
+    background: linear-gradient(to left, #F9F9F9 50%, #0000ff00 50%);
 }
 
 

@@ -1,0 +1,37 @@
+
+#about-us-container2 {
+    min-height: 92vh;
+}
+
+#img-hand-in {
+    background: url('../pictures/pexels-pixabay-279618\ -\ Copy.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.btn-white {
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    color: #09433A;
+    font-weight: 500;
+    border-style: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+#about-us-container3 {
+    min-height: 55vh;
+    background-color: #09433A;   
+}
+
+#price-reducing {
+    background: url('../pictures/pricereducing.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+

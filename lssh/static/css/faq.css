@@ -1,0 +1,43 @@
+
+
+#container-fill {
+    min-height: 80vh;
+    padding-bottom: 5rem;
+}
+
+.card-header {
+    background-color: white;
+    border-radius: 0;
+}
+
+.card-body {
+    background-color: rgb(247, 247, 247);
+    border-radius: 0;
+}
+
+#faq-angledown {
+    font-size: 2rem;
+    padding-right: 1rem;
+}
+
+#faq-question-heading {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: start;
+    color: black;
+    border-style: none;
+    box-shadow: none!important;
+    text-decoration: none; 
+}
+
+#faq-question-heading:focus {
+    border-style: none;
+    box-shadow: none!important;
+    text-decoration: none; 
+}
+
+#faq-question-heading:active {
+    border-style: none;
+    box-shadow: none!important;
+    text-decoration: none; 
+}
