@@ -1,11 +1,18 @@
 function contactForm() {
-    alert("contact");
+  
+
+ 
+    data = {
+        "name": $("#input-contact-name").val(),
+        "email": $("#input-contact-email").val(),
+        "message": $("#input-contact-message").val()
+    }
 
     $.ajax({
-        url: '/contact/form',
+        url: '/contactform',
         type: 'POST',
         contentType: "application/json",
-        data: JSON.stringify(email),
+        data: JSON.stringify(data),
         success: function (res) { 
     
             alert("Contacted us")

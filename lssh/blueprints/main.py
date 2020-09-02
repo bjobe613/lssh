@@ -58,6 +58,24 @@ def find_us():
 def contact():
     return render_template('contact.html')
 
+@main.route("/contactform", methods = ['POST'])
+def contactform():
+
+    data = request.get_json()
+
+    name = data["name"]
+    email = data["email"]
+    message = data["message"]
+    
+
+  
+    msg = Message("Contact form - New message", sender="lithemobler@gmail.com", recipients=["lithemobler@gmail.com"])
+    msg.body = "You have a new form reply from " + email + " : " + message
+    mail.send(msg)
+
+    print("hej")
+    return ""
+
 @main.route("/help/faq")
 def faq():
     return render_template('faq.html')
