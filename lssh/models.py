@@ -91,7 +91,7 @@ class Product(db.Model):
             color=self.color,
             condition=self.condition.name,
             status=self.status,
-            payment_method=self.payment_method.name
+            paymentMethod=self.payment_method.name
         )
 
     def addPicture(self, picture):
