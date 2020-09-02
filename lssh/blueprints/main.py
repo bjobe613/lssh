@@ -15,10 +15,6 @@ def startup():
     prodCount = Product.query.filter(Product.articleNumber).count()
     news = News.query.all()
 
-    msg = Message("Hello", sender="thedudes@gmail.com", recipients=["alebo256@student.liu.se"])
-    msg.body = "testar mail"
-    mail.send(msg)
-
     return render_template('index.html', productCount = prodCount, newsarticles = news)
     
 #@main.route("/home")
@@ -39,6 +35,11 @@ def subscribe():
                 sub = Newsletter(email = email)
                 db.session.add(sub)
                 db.session.commit()
+
+                msg = Message("LiU Student Second Newsletter", sender="lithemobler@gmail.com", recipients=[email])
+                msg.body = "Welcome to our subscription list!"
+                mail.send(msg)
+
                 return Response(status= 201)
         return Response(status=406)
 

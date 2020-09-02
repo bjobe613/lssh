@@ -21,18 +21,18 @@
             <div id="col-behind" class="col-12 col-md-4">
                 <h1 class="shift-text pb-3 ">Send us a message!</h1>
 
-                <form>
+                <form onsubmit='contactForm()'>
                     <div class="form-group pb-2">
-                      <input type="email" class="form-control" id="input-contact" placeholder="Write name here...">
+                      <input type="text" class="form-control" id="input-contact" placeholder="Write name here..." required>
                     </div>
 
                     <div class="form-group pb-2">
-                        <input type="email" class="form-control" id="input-contact" placeholder="Write email here...">
+                        <input type="email" class="form-control" id="input-contact" placeholder="Write email here..." required>
                     </div>
                     
                     
                     <div class="form-group pb-2">
-                      <textarea class="form-control" id="input-contact" placeholder="What is on your mind?" rows="9"></textarea>
+                      <textarea class="form-control" id="input-contact" placeholder="What is on your mind?" rows="9"></textarea required>
                     </div>
 
                     <button class="green-btn float-right" type="submit">SUBMIT</button>
@@ -50,4 +50,6 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/contact.js') }}"></script>
 {% endblock help_content %}
