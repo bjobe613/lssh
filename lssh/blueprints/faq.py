@@ -29,7 +29,7 @@ def add_question():
 @faq.route("/question/<int:questionid>", methods=["PUT", "DELETE"])
 def edit_question(questionid):
     q = Question.query.get_or_404(questionid)
-
+    print(request.form)
     if request.method == "PUT":
         if request.form.get("questionTitle"):
             q.questionTitle = request.form.get("questionTitle")
@@ -37,8 +37,9 @@ def edit_question(questionid):
         if request.form.get("questionAnswer"):
             q.questionAnswer = request.form.get("questionAnswer")
         
-        if request.form.get("categoryID"):
-            category = Categoryfaq.query.get(request.form.get("categoryID"))
+        if request.form.get("questionCategory"):
+            category = Categoryfaq.query.get(request.form.get("questionCategory"))
+            print(category)
             if category:
                 q.categoryfaq = category
         
