@@ -1,0 +1,30 @@
+body {
+    background:transparent !important;
+}
+
+#image-header {
+    height: 60vh;
+
+    object-fit: cover;
+
+    display:block;
+    width: 100%;
+}
+
+#top-gradient {
+    position: absolute;
+    height: 20vh;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+    width: 100%;
+}
+
+.col-shift-white {
+    min-height: 80vh;
+    margin-top: -5rem;
+}
+
+#share-wrapper {
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
