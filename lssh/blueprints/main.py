@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Product, Newsletter, Question, Categoryfaq
+from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
 
 import re
 
@@ -11,7 +11,9 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 def startup():
 
     prodCount = Product.query.filter(Product.articleNumber).count()
-    return render_template('index.html', productCount = prodCount)
+    news = News.query.all()
+
+    return render_template('index.html', productCount = prodCount, newsarticles = news)
     
 #@main.route("/home")
 #def home():
@@ -64,6 +66,21 @@ def transport():
 @main.route("/hand_in")
 def hand_in():
     return render_template('hand_in.html')
+
+
+@main.route("/news")
+def news():
+    news = News.query.all()
+    return render_template('news.html', newsarticles = news)
+
+@main.route("/news/<int:x>", methods=['GET'])
+def news_single(x):
+
+    news_article = News.query.filter(News.id == x).first()
+
+
+    return render_template('news_single_view.html', single_article = news_article, article=news_article.get_article_as_html_user())
+
 
 @main.route("/hand_in/hand_in_request", methods = ['GET', 'POST'])
 def hand_in_request():

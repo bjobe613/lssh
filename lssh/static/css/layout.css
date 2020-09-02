@@ -3,6 +3,7 @@ html {
    
 }
 
+
 /* Global variables */
 :root {
     --main-bg-color: #09433A;
@@ -51,7 +52,19 @@ h6 {
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-   
+}
+
+.p-white {
+    color: white;
+}
+
+
+.height-before-nav {
+    height: 6rem;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
 }
 
 /* Styling for buttons */
@@ -204,6 +217,7 @@ p {
 
 #navbar {
     height: 10vh;
+    background-color:transparent !important;
 }
 
 #navbar-mobile {
@@ -385,6 +399,48 @@ p {
     }
 
    
+}
+
+
+/* Social media icons */ 
+
+.fa-facebook {
+    background: #000000;
+    color: white;
+    padding-right: 0.3rem;
+    padding-left: 0.4rem;
+    padding-top: 0.3rem;
+}
+
+.fa-facebook:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.fa-instagram {
+    font-size: 1.5rem !important;
+    color: black;
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.fa-instagram:hover {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.fa-linkedin {
+    background: #000000;
+    color: white;
+    margin-left: 1rem;
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+}
+
+.fa-linkedin:hover {
+    text-decoration: none;
+    color: white;
 }
 
 
