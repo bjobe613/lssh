@@ -183,6 +183,18 @@ class News(db.Model): #has to be reworked into files, not a model.
     text = db.Column(db.JSON, nullable = False)
     titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
 
+    def get_img_url(self):
+
+        url = ""
+
+        if self.titlePicture:
+            print("Hade bild")
+            url= Newspicture.query.get(self.titlePicture).path
+        else:
+            print("Hade inte bild")
+     
+        return url
+
     def escape_html(self):
         self.title = html.escape(self.title)
         self.ingress = html.escape(self.ingress)
@@ -217,9 +229,15 @@ class News(db.Model): #has to be reworked into files, not a model.
         else:
             print("Hade inte bild")
         article_html += "<h1>" + self.title + "</h1>\n"
-        article_html += "<p class='ingress'>" + self.ingress + "</h1>\n"
+        article_html += "<p class='ingress'>" + self.ingress + "</p>\n"
         article_html += quill_parser.render(self.text["ops"])
 
+        print(article_html)
+        return article_html
+
+    def get_article_as_html_user(self):
+        article_html = ""
+        article_html += quill_parser.render(self.text["ops"])
         return article_html
 
     def serialize(self):

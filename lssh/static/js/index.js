@@ -1,5 +1,3 @@
-var serverUrl = 'http://localhost:5000'
-
 
 $("#works-buyer-button").click(function () {
   $("#works-seller-button").toggleClass("works-button-activated");
@@ -40,7 +38,7 @@ function subscribeNewsLetter(email) {
 
 
   $.ajax({
-    url: serverUrl + '/subscribe',
+    url: '/subscribe',
     type: 'POST',
     contentType: "application/json",
     data: JSON.stringify(email),

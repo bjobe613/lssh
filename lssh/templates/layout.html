@@ -47,23 +47,23 @@
 <body>
     <header>
 
-        <div id="navbar" class="container-fluid navbar-desktop-active">
-            <div class="row align-items-center h-100">
+      
 
-                <div class="col-md-1 offset-1">
+        <div id="navbar" class="container-fluid navbar-desktop-active bg-transparent position-absolute">
+            <div class="row bg-transparent align-items-center h-100">
+
+                <div class="col-md-1 bg-transparent offset-1">
                     <a class="navbar-brand" href="{{ url_for('main.startup') }}">
                         <img src="{{ url_for('static', filename = '/pictures/Logga_klart_svarta_linjer (1).png') }}"
                             id="logotype" alt="Logotype">
                     </a>
                 </div>
+            
+                    <div class="col-md-1 col-2 offset-md-3 text-center">
+                        <a class="a-link" href="{{ url_for('main.news') }}">NEWS</a>
+                    </div> 
 
-                <!-- When news is done uncomment this 
-
-                    <div class="col-md-1 col-2 text-center">
-                        <a class="a-link" href="">NEWS</a>
-                    </div> -->
-
-                <div class="col-md-1 col-2 offset-md-4 text-center">
+                <div class="col-md-1 col-2  text-center">
                     <a class="a-link" href="{{ url_for('products.catalog') }}">SHOP</a>
                 </div>
 
@@ -80,10 +80,14 @@
                 </div>
 
                 <div id="help-link-col" class="col-md-1 col-2 text-center">
-                    <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
+                    <a id="help-link" class="a-link" href="{{ url_for('main.contact') }}">HELP</a>
                 </div>
 
             </div>
+        </div>
+
+        <div class="height-before-nav">
+            <br>
         </div>
 
 
