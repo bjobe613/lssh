@@ -255,8 +255,9 @@ def fillTestDB():
     nl1 = Newsletter(email = 'tyuvb456@student.liu.se')
 
 
+    '''
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])'''
     db.session.commit()
 
     print("Filled the database")
