@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, Response
 from lssh.models import db, Newsletter, Product, News
+from flask_mail import Message
+from lssh import mail
 
 import re
 
@@ -12,6 +14,10 @@ def startup():
 
     prodCount = Product.query.filter(Product.articleNumber).count()
     news = News.query.all()
+
+    msg = Message("Hello", sender="thedudes@gmail.com", recipients=["alebo256@student.liu.se"])
+    msg.body = "testar mail"
+    mail.send(msg)
 
     return render_template('index.html', productCount = prodCount, newsarticles = news)
     
