@@ -1,3 +1,5 @@
+
+
 /* 
     Regular CSS rules
     -----------------------
@@ -135,44 +137,7 @@ user-select: none; /* Standard */
     padding-top: 25vh;
 }
 
-.fa-facebook {
-    background: #000000;
-    color: white;
-    padding-right: 0.3rem;
-    padding-left: 0.4rem;
-    padding-top: 0.3rem;
-}
 
-.fa-facebook:hover {
-    text-decoration: none;
-    color: white;
-}
-
-.fa-instagram {
-    font-size: 1.5rem;
-    color: black;
-    margin-left: 1rem;
-    font-weight: 500;
-}
-
-.fa-instagram:hover {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-
-.fa-linkedin {
-    background: #000000;
-    color: white;
-    margin-left: 1rem;
-    padding-right: 0.3rem;
-    padding-left: 0.3rem;
-    padding-top: 0.3rem;
-}
-
-.fa-linkedin:hover {
-    text-decoration: none;
-    color: white;
-}
 
 /* 
     Desktop Media Queries
@@ -239,6 +204,14 @@ user-select: none; /* Standard */
     background-size: cover;
     height: auto;
     width: 100%;
+}
+
+#image-news {
+    object-fit: cover;
+    height: 70vh;
+    display:block;
+    width: 100%;
+    
 }
 
 #p-category-news {

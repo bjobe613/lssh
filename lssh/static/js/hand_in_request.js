@@ -1,4 +1,4 @@
-var serverUrl = 'http://localhost:5000'
+
 
 function hideForm() {
 
@@ -9,7 +9,7 @@ function hideForm() {
 
 
     $.ajax({
-        url: serverUrl + '/hand_in/hand_in_request',
+        url: '/hand_in/hand_in_request',
         type: 'POST',
         contentType: "application/json",
         data: JSON.stringify(data),
