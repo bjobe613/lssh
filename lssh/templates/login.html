@@ -7,16 +7,16 @@
 {% block content %}
     <!--Where the html should be written-->
     
-    <form method="POST" class="form-signin">
+    <!--<form method="POST" class="form-signin">-->
 
+    
+    <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>   
+    <div><input id="login-form-username"></div> 
+    <div><input id="login-form-password"></div> 
+    <div><button id="login-form-button" onclick="login()"></div>   
         
-        <legend class = "h3 mb-3 font-weight-normal">Logga in</legend>   
-        <div><input id="login-form-username"></div> 
-        <div><input id="login-form-password"></div> 
-        <div><button id="login-form-button" onclicl="login()"></div>   
         
-        
-    </form>
+    <!--</form> -->
     
     <script type="text/javascript" src="{{ url_for('static', filename='js/admin_handler.js') }}"></script>
 

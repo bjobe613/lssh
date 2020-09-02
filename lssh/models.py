@@ -66,6 +66,7 @@ class Seller(db.Model): # will be ralated to furniture
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
     products = db.relationship('Product', backref = 'sellerOfProduct')
+    # add: bachelor (program t.ex. I, Y, M etc.)
 
 class Blacklist(db.Model):
     #listID = db.Column(db.Integer, primary_key = True)
@@ -166,6 +167,3 @@ def test():
     pic.pictureName = str(pic.pictureID) + ".jpg"
     db.session.commit()
 '''
-
-resetDB()
-fillTestDB()
