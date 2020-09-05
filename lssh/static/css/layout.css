@@ -349,6 +349,10 @@ p {
     background-color: #F9F9F9;
 }
 
+.green-bg {
+    background-color: var(--main-bg-color);
+}
+
 
 /* FAQ subnav */
 
