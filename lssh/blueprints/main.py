@@ -76,9 +76,6 @@ def contactform():
     print("hej")
     return ""
 
-@main.route("/help/faq")
-def faq():
-    return render_template('faq.html')
 @main.route("/help/faq/<int:x>", methods = ['GET'])
 def faq(x):
     x_minus_1 = x - 1
