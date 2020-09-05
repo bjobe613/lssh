@@ -1,0 +1,37 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_faq = True %}
+
+{% block more_head %}
+{% endblock more_head %}
+
+{% block content %}
+<div class="container">
+  <h1>Editing question: {{question.questionTitle }}</h1>
+  <form id="edit-faq-question-form">
+    <div class="form-group">
+      <label for="questionCategory">Category</label>
+      <select class="form-control" id="questionCategory" value="{{ question.categoryID }}" name="questionCategory">
+        {% for category in categories %}
+        <option value="{{category.id}}" {% if category.id == question.categoryID %} selected="selected" {% endif %}>
+          {{category.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="questionTitle">Question</label>
+      <input id="questionTitle" class="form-control" name="questionTitle" value="{{ question.questionTitle }}">
+    </div>
+    <div class="form-group">
+      <label for="questionAnswer">Answer</label>
+      <textarea id="questionAnswer" class="form-control" name="questionAnswer"
+        rows="5">{{ question.questionAnswer }}</textarea>
+    </div>
+    <button type="save" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary" href="{{ url_for('admin.admin_faq') }}">Cancel</a>
+  </form>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/edit_faq_question.js') }}"></script>
+{% endblock scripts %}

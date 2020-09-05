@@ -14,7 +14,7 @@ app.config['MAIL_PASSWORD'] = 'LITHEmobler2020'
 mail = Mail(app)
 
 # Imports blueprints from blueprint package
-from lssh.blueprints import products, users, main, news, admin
+from lssh.blueprints import products, users, main, news, admin, faq
 
 
 # Regisers the blueprints, adding all defined routes
@@ -22,4 +22,6 @@ app.register_blueprint(products.products)
 app.register_blueprint(users.users)
 app.register_blueprint(main.main)
 app.register_blueprint(news.news)
+app.register_blueprint(faq.faq)
+
 app.register_blueprint(admin.admin)

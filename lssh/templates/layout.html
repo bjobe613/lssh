@@ -80,7 +80,7 @@
                 </div>
 
                 <div id="help-link-col" class="col-md-1 col-2 text-center">
-                    <a id="help-link" class="a-link" href="{{ url_for('main.contact') }}">HELP</a>
+                    <a id="help-link" class="a-link" href="{{ url_for('main.faq', x=1) }}">HELP</a>
                 </div>
 
             </div>
@@ -118,7 +118,7 @@
                             <a id="about-link" class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
                         </li>
                         <li class="nav-item layout-mobile-center pr-3">
-                            <a id="help-link" class="nav-link" href="{{ url_for('main.faq') }}">HELP</a>
+                            <a id="help-link" class="nav-link" href="">HELP</a>
                         </li>
 
                     </ul>
@@ -145,7 +145,7 @@
 
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4 class="footer-heading">HELP</h4>
-                    <a class="a-link" href="{{ url_for('main.faq') }}">FAQ </a>
+                    <a class="a-link" href="">FAQ </a>
                     <br>
                     <a class="a-link" href="{{ url_for('main.contact') }}"> Contact </a>
                 </div>
