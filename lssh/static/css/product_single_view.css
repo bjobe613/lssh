@@ -50,10 +50,10 @@
   margin-top: 30px;
 }
 
-/* 
+/*
     Regular CSS rules
     -----------------------
-    Section 3 - "How it works" 
+    Section 3 - "How it works"
 */
 
 .works-button {
@@ -152,6 +152,7 @@
   margin-bottom: 200px;
 }
 
+
 @media all and (max-width: 768px) {
 
   .desktop {
@@ -169,10 +170,11 @@
   }
 
   .product-status {
-    color: lightgreen;
+    color: lightgreen; /*Change to var*/
     float: right;
     margin-top: -40px;
-    margin-right: 20px
+    margin-right: 20px; 
+    display: none; /*Remove from class belov*/
   }
 }
 
@@ -184,7 +186,8 @@
   }
 
   .product-status {
-    color: lightgreen;
+    color: lightgreen; /*Change to var*/
+    display: none; /*Remove from class above*/
   }
 
   /*.swiper-container {
