@@ -305,10 +305,16 @@ def fillTestDB():
     questions = [q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11]
 
 
+<<<<<<< HEAD
+    
+    db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
+                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
+=======
     db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
                         prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])
     db.session.add_all(qCat)
     db.session.add_all(questions)
+>>>>>>> origin
     db.session.commit()
 
     print("Filled the database")
