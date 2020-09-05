@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Newsletter, Product, News
+from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
+from flask_mail import Message
+from lssh import mail
 
 import re
 
@@ -33,6 +35,11 @@ def subscribe():
                 sub = Newsletter(email = email)
                 db.session.add(sub)
                 db.session.commit()
+
+                msg = Message("LiU Student Second Newsletter", sender="lithemobler@gmail.com", recipients=[email])
+                msg.body = "Welcome to our subscription list!"
+                mail.send(msg)
+
                 return Response(status= 201)
         return Response(status=406)
 
@@ -51,9 +58,34 @@ def find_us():
 def contact():
     return render_template('contact.html')
 
+@main.route("/contactform", methods = ['POST'])
+def contactform():
+
+    data = request.get_json()
+
+    name = data["name"]
+    email = data["email"]
+    message = data["message"]
+    
+
+  
+    msg = Message("Contact form - New message", sender="lithemobler@gmail.com", recipients=["lithemobler@gmail.com"])
+    msg.body = "You have a new form reply from " + email + " : " + message
+    mail.send(msg)
+
+    print("hej")
+    return ""
+
 @main.route("/help/faq")
 def faq():
     return render_template('faq.html')
+@main.route("/help/faq/<int:x>", methods = ['GET'])
+def faq(x):
+    x_minus_1 = x - 1
+    categories = Categoryfaq.query.filter(Categoryfaq.id).all()
+    questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
+ 
+    return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
 @main.route("/transport")
 def transport():

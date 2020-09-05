@@ -1,0 +1,27 @@
+.chosen-category {
+    background-color: darkgreen;
+    border-radius: 1rem;
+    padding:0.5rem;
+    color:white
+}
+
+.chosen-category:hover {
+    color:white;
+}
+
+.category-list {
+    padding: 1rem;
+}
+
+.right {
+    position: absolute;
+    right: 1rem;
+}
+
+.container {
+    padding-top: 1rem;
+}
+
+.buttons {
+    padding-top: 1rem;
+}

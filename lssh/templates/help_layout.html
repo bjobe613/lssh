@@ -24,7 +24,7 @@
             <div class="row mt-4 pb-4 pt-2">
      
                 <div class="col-md-1 offset-9 text-center">
-                    <a id="faq-link" class="a-link-white" href="{{ url_for('main.faq') }}"> FAQ</a>
+                    <a id="faq-link" class="a-link-white" href="{{ url_for('main.faq', x=1) }}"> FAQ</a>
                 </div>
                 <div class="col-md-1 col-sm-6 text-center">
                     <a id="contact-link" class="a-link-white" href="{{ url_for('main.contact') }}"> Contact </a>
@@ -44,7 +44,7 @@
                     
                     <h6>Use the buttons below to use our FAQ or contact us!</h6>
                     <br>
-                    <a id="faq-btn" href="{{ url_for('main.faq') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
+                    <a id="faq-btn" href="" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
                         <div class="col">FAQ</div>
                     </a>
 
