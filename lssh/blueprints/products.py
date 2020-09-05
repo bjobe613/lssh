@@ -32,7 +32,7 @@ def products_content():
 @products.route("/product/<int:x>", methods=['GET'])
 def product(x):
     prod = Product.query.filter(Product.articleNumber == x).first()
-    return render_template("product_single_view.html", product = prod)
+    return render_template("product_single_view.html", product = prod, categoryName = prod.category.name, conditionName = prod.condition.name, paymentMethodName=prod.payment_method.name)
 
 @products.route("/add/", methods=['POST'])
 def add_product():
