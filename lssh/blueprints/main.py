@@ -58,7 +58,6 @@ def find_us():
 def contact():
     return render_template('contact.html')
 
-<<<<<<< HEAD
 @main.route("/contactform", methods = ['POST'])
 def contactform():
 
@@ -80,7 +79,6 @@ def contactform():
 @main.route("/help/faq")
 def faq():
     return render_template('faq.html')
-=======
 @main.route("/help/faq/<int:x>", methods = ['GET'])
 def faq(x):
     x_minus_1 = x - 1
@@ -88,7 +86,6 @@ def faq(x):
     questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
  
     return render_template('faq.html', faqquestions = questions, faqcategories = categories)
->>>>>>> origin
 
 @main.route("/transport")
 def transport():
