@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from lssh.models import db, Product, News
+from lssh.models import db, Product, News, Question, Categoryfaq
 import json
 
 
@@ -82,9 +82,32 @@ def admin_news():
     all_news=News.query.all()
     return render_template('admin/news.html', all_news=all_news)
 
-@ admin.route("/faq/")
-def admin_faq():
-    return render_template('admin/faq.html')
+@ admin.route("/faq/", defaults={'categoryid': None})
+@ admin.route("/faq/<int:categoryid>")
+def admin_faq(categoryid):
+    faqcategories = Categoryfaq.query.all()
+
+    if not categoryid:
+        categoryid = Categoryfaq.query.order_by(Categoryfaq.id).first().id
+    
+    chosenCategory=Categoryfaq.query.get_or_404(categoryid)
+    faqquestions = Question.query.filter(Question.categoryID == categoryid).all()
+    return render_template('admin/faq.html', chosenCategory=chosenCategory, faqquestions=faqquestions, faqcategories=faqcategories)
+
+@ admin.route("faq/edit/<int:questionid>")
+def admin_faq_edit(questionid):
+    categories = Categoryfaq.query.all()
+    question = Question.query.get_or_404(questionid)
+    return render_template('admin/edit_faq_question.html', categories=categories, question=question)
+
+@ admin.route("faq/add")
+def faq_add_question():
+    categories = Categoryfaq.query.all()
+    return render_template('admin/add_faq_question.html', categories=categories)
+
+@ admin.route("faq/add-category")
+def faq_add_category():
+    return render_template('admin/add_faq_category.html')
 
 @ admin.route("/login/")
 def admin_login():

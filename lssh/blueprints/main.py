@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, Response
-from lssh.models import db, Newsletter, Product, News
+from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
 
 import re
 
@@ -51,9 +51,13 @@ def find_us():
 def contact():
     return render_template('contact.html')
 
-@main.route("/help/faq")
-def faq():
-    return render_template('faq.html')
+@main.route("/help/faq/<int:x>", methods = ['GET'])
+def faq(x):
+    x_minus_1 = x - 1
+    categories = Categoryfaq.query.filter(Categoryfaq.id).all()
+    questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
+ 
+    return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
 @main.route("/transport")
 def transport():
