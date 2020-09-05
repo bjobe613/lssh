@@ -16,7 +16,69 @@ let activeCategories = [];
 
 let possibleCategories = ['category', 'color', 'condition', 'paymentMethod'];
 
-function listFilters(typeOfCategory) {
+function listFilters() {
+  $.ajax({
+    url: "/products/categories",
+    type: "GET",
+    success: function(categories) {
+      for(cat of categories){
+        possibleFilters.push(cat['name']);
+        possibleConn[cat] = 'category';
+      }
+    },
+    error:function() {
+      console.log("Error while GET categories information")
+    }
+  });
+
+  $.ajax({
+    url: "/products/conditions",
+    type: "GET",
+    success: function(conditions) {
+      for(con of conditions){
+        possibleFilters.push(con['name']);
+        possibleConn[con] = 'condition';
+      }
+    },
+    error:function() {
+      console.log("Error while GET categories information")
+    }
+  });
+
+  $.ajax({
+    url: "/products/paymentMethods",
+    type: "GET",
+    success: function(paymentMethods) {
+      for(pay of paymentMethods){
+        possibleFilters.push(pay['name']);
+        possibleConn[pay] = 'paymentMethods';
+      }
+    },
+    error:function() {
+      console.log("Error while GET categories information")
+    }
+  });
+
+  console.log(typeof possibleFilters);
+  console.log(typeof ['asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd'])
+
+  for (typeOfCategory of possibleCategories){
+    console.log("ONCE");
+    //console.log(possibleFilters)
+    //console.log([{"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}, {"asdf": "123", "123": "asdf"}])
+    //for (filter of possibleFilters){
+    for(filter of possibleFilters){
+      console.log("TWICE");
+      attrID = replaceSpaces(filter);
+      
+      if(possibleConn[filter] == typeOfCategory) {
+        $('#collapse-'+typeOfCategory).append('<label class="filter-categories-label">'+
+        filter+'<input class="filter-checkbox" type="checkbox" onchange="updateFilter('+'&apos;'+filter+'&apos;'+')" id="'+replaceSpaces(typeOfCategory)+'-'+attrID+'"></label>');        
+      }
+    }
+  }
+  
+/*
   $.ajax({
     url: "/products/products_content",
     type: "GET",
@@ -41,7 +103,7 @@ function listFilters(typeOfCategory) {
       console.log("Error while GET filter information")
     }
 
-  });
+  });*/
 };
 
 /* function to replace spaces with '-' be usable in html.*/
@@ -65,7 +127,6 @@ function updateFilter(filter) {
 }
 
 function updateVisualActivatedFilters() {
-  
   for(cat of possibleCategories) {
     if(activeCategories.includes(cat)) {
       document.getElementById('line-'+cat).style = 'background-color:lightgreen;'
@@ -76,6 +137,7 @@ function updateVisualActivatedFilters() {
 }
 
 function calculateActiveCategories() {
+  
   activeCategories = [];
   for (var key in checkedConn) {
     if(!activeCategories.includes(checkedConn[key]) && checkedConn[key]) {
@@ -120,7 +182,5 @@ function updateVisualCatalog() {
 //  console.log(filterID);
 //})
 
-listFilters('category');
-listFilters('color');
-listFilters('condition');
-listFilters('paymentMethod');
+listFilters();
+

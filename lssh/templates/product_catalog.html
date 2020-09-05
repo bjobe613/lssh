@@ -21,6 +21,12 @@
             </div>
             <div class="collapse filter-options-wrapper" id="collapse-category">
                 <!--List filter options-->
+              <!--{% for lbl in categories %}
+              <label class="filter-categories-label">
+                {{ lbl.name }}
+                <input class="filter-checkbox" type="checkbox" onchange="updateFilter('{{ lbl.name }}')" id="category-{{lbl.id}}">
+              </label>
+              {% endfor %}-->
             </div>
           </div>
         </div>

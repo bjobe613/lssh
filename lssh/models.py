@@ -36,16 +36,34 @@ class Category(db.Model):
     name = db.Column(db.String, nullable = False)
     products = db.relationship('Product', back_populates='category')
 
+    def serialize(self):
+        return dict(
+            id=self.id,
+            name=self.name
+        )
+
 class Condition(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     products = db.relationship('Product', back_populates='condition')
+
+    def serialize(self):
+        return dict(
+            id=self.id,
+            name=self.name
+        )
 
 class PaymentMethod(db.Model):
     __tablename__ = 'paymentmethod'
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     products = db.relationship('Product', back_populates='payment_method')
+
+    def serialize(self):
+        return dict(
+            id=self.id,
+            name=self.name
+        )
 
 class Product(db.Model):
     articleNumber = db.Column(db.Integer, primary_key = True)

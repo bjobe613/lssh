@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, make_response, jsonify
 import os
 
 # The database is accessed in this manner from blueprints
-from lssh.models import db, Product, ProductPictures  #, other objects defined in models
+from lssh.models import db, Product, ProductPictures, Category, Condition, PaymentMethod  #, other objects defined in models
 products = Blueprint('products', __name__, url_prefix = '/products')
 
 # Routes should be added here
@@ -16,16 +16,30 @@ products = Blueprint('products', __name__, url_prefix = '/products')
 @products.route("/catalog", methods=['GET', 'POST'])
 def catalog():
     prod = Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()
-    return render_template('product_catalog.html', products = prod)
+    return render_template('product_catalog.html', products = prod, categories=Category.query.all(), conditions=Condition.query.all(), paymentMethods=PaymentMethod.query.all())
 
 @products.route("/products_content", methods=['GET', 'POST'])
 def products_content():
 
     prodList = [p.serialize() for p in Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()]
-    #for i in Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all():
-    #    prodList.insert(i.serialize())
-    #print(prodList)
     return jsonify(prodList)
+
+
+@products.route("/categories", methods=['GET'])
+def categories():
+    catList=[c.serialize() for c in Category.query.all()]
+    return jsonify(catList)
+    
+@products.route("/conditions", methods=['GET'])
+def conditions():
+    catList=[c.serialize() for c in Condition.query.all()]
+    return jsonify(catList)
+
+@products.route("/paymentMethods", methods=['GET'])
+def paymentMethods():
+    catList=[c.serialize() for c in PaymentMethod.query.all()]
+    return jsonify(catList)
+
 
 
 
