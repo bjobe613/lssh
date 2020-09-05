@@ -22,9 +22,9 @@
                 <div class="form-group col">
                     <label for="add-product-condition">Condition</label>
                     <select class="form-control" id="add-product-condition" name="condition">
-                        <option value="1">Good</option>
-                        <option value="2">Okay</option>
-                        <option value="3">Bad</option>
+                        {% for condition in conditions %}
+                        <option value="{{condition.id}}">{{condition.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -41,16 +41,16 @@
               <label for="add-product-category">Category</label>
               <select class="form-control" id="add-product-category" name="category">
                 {% for category in categories %}
-                <option>{{ category.name|e }}</option>
+                <option value="{{ category.id }}">{{ category.name|e }}</option>
                 {% endfor %}
               </select>
             </div>
             <div class="form-group">
                 <label for="add-product-payment">Payment method</label>
                 <select class="form-control" id="add-product-payment" name="paymentMethod">
-                  <option>Swish</option>
-                  <option>Revolut</option>
-                  <option>Swish & Revolut</option>
+                  {% for paymentMethod in paymentMethods %}
+                  <option value="{{paymentMethod.id}}">{{paymentMethod.name}}</option>
+                  {% endfor %}
                 </select>
               </div>
             <div class="form-group">
