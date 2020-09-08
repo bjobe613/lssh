@@ -11,6 +11,24 @@ html {
   }
 
 
+a {
+    color: rgb(78, 78, 78);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+}
+
+.a-underline {
+    text-decoration: underline;
+}
+
+.a-underline:hover {
+    text-decoration: underline;
+    color: rgb(78, 78, 78);
+}
+
 
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -20,9 +38,8 @@ h1 {
 
 h2 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500 !important;
-    color: rgb(255, 255, 255);
-    font-size: 2.5rem !important;
+    font-weight: 300 !important;
+    color: rgb(125, 125, 125);
 }
 
 h3 {
@@ -30,6 +47,9 @@ h3 {
     font-weight: 500 !important;
     color: rgb(0, 0, 0);
 }
+
+
+/* Check the h4, h5 and h6 classes so they are not colored */
 
 h4 {
     font-weight: 300 !important;
@@ -158,12 +178,12 @@ p {
 
 
 .a-how-it-works {
-    color: #49a193;
+    color: #49a193 !important;
 }
 
 .a-how-it-works:hover {
-    color: #3c867a;
-    text-decoration: none;
+    color: #3c867a !important;
+    text-decoration: none !important;
 }
 
 .a-link-white {
