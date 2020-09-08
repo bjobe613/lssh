@@ -11,6 +11,10 @@ html {
   }
 
 
+.container-max-width {
+    max-width: 1400px;
+}
+
 
 h1 {
     font-family: 'Roboto', sans-serif;

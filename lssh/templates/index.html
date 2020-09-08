@@ -11,57 +11,27 @@
 {% block content %}
 <!--Where the html should be written-->
 
-<!-- OLD INDEX CONTAINER FIRST 
-
-<div class="container-fluid shifted-index">
-
-
-  <div class="container-fluid index-container mt-5">
-
-    <div class="row space">
-
-    </div>
-
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-4 text-md-left text-center">
-        <h1 id="slogan-text">
-          Secondhand
-        </h1>
-        <h1 id="slogan-text-bold">
-          by students
-        </h1>
-        <h1 id="slogan-text">
-          for students.
-        </h1>
-      </div>
-      <div class="col-sm-7 space2"> </div>
-    </div>
-
-    <div class="row row-slogan pb-5">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-4 text-md-left text-center">
-        <form action="{{ url_for('products.catalog') }}">
-          <button class="btn btn-success btn-green" type="submit">EXPLORE OUR SHOP</button>
-        </form>
-        
-      </div>
-
-      <div class="col-sm-7"></div>
-    </div>
-
-    <div class="row row-socialmedia">
-
-      <div class="col-sm-5 ml-4 text-md-left text-center">
-        <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
-        <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
-        <a href="#" class="fa fa-linkedin"></a>
-      </div>
-      <div class="col-sm-7"></div>
+<!--First & slogan container-->
+<div class="container-fluid index-container">
+  <div class="row h-100 align-items-center text-lg-left text-center">
+    <div class="col-lg-10  col-12 offset-lg-1">
+      <h1 id="slogan-text">
+        Secondhand
+      </h1>
+      <h1 id="slogan-text-bold">
+        by students
+      </h1>
+      <h1 id="slogan-text">
+        for students.
+      </h1>
+      <form action="{{ url_for('products.catalog') }}">
+        <button class="green-btn pl-5 pr-5 mt-5" type="submit">EXPLORE OUR SHOP</button>
+      </form>
     </div>
   </div>
-</div> -->
+</div>
 
+<!-- Newer container first view
 <div class="container-fluid">
 
   <div class="row row-middle">
@@ -100,7 +70,26 @@
     </div>
   </div>
 </div>
+-->
 
+<!-- About us container-->
+<div id="about-index-container" class="container-fluid container-max-width">
+  <div class="row">
+    <div class="col-4">
+      <h2>
+        About us
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae atque enim earum 
+        rem illo aperiam soluta ad pariatur explicabo architecto, sint placeat eligendi 
+        nihil possimus recusandae, temporibus fugit omnis veniam.
+      </p>
+    </div>
+    <div class="col-8">
+
+    </div>
+  </div>
+</div>
 
 <div class="container-fluid news-container">
 
@@ -124,7 +113,7 @@
     <div class="col-10 offset-1">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 
-       
+
         {% for News in newsarticles %}
 
         <script>
@@ -135,11 +124,12 @@
         {% if loop.index == 1 %}
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+              class="img-fluid" alt="Responsive image">
             <div class="carousel-caption">
               <h2>{{ News.title }}</h2>
 
-               <form action="news/{{ News.id }}">
+              <form action="news/{{ News.id }}">
                 <button class="white-btn w-50" type="submit">READ MORE</button>
               </form>
 
@@ -147,16 +137,17 @@
           </div>
 
           {% else %}
-        
+
           <div class="carousel-item">
-            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+            <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+              class="img-fluid" alt="Responsive image">
             <div class="carousel-caption">
               <h2>{{ News.title }}</h2>
 
               <form action="news/{{ News.id }}">
                 <button class="white-btn w-50" type="submit">READ MORE</button>
               </form>
-              
+
 
             </div>
           </div>
@@ -362,7 +353,8 @@
             </div>
             <div class="row">
               <div class="col-sm d-flex justify-content-center text-center">
-                <p class="p-white p-text">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut.</p>
+                <p class="p-white p-text">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut.
+                </p>
               </div>
             </div>
 
@@ -453,10 +445,12 @@
       <p>Sign up to our subscription list to get updates on upcoming events, campaigns and more!</p>
 
       <div class="input-group mb-3">
-        <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text" id="input-border-bottom" class="form-control" aria-label="Recipient's username"
+          aria-describedby="basic-addon2">
 
         <div class="input-group-append">
-          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary" type="button"><i class="material-icons">email</i></button>
+          <button onclick="subscribeButton()" id="input-border-button" class="btn btn-outline-secondary"
+            type="button"><i class="material-icons">email</i></button>
         </div>
       </div>
 

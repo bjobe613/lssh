@@ -1,5 +1,3 @@
-
-
 /* 
     Regular CSS rules
     -----------------------
@@ -13,41 +11,6 @@
 
 .p-head {
     font-size: 2.2rem;
-}
-
-.btn-green {
-    width: 80%;
-    background-color: var(--main-bg-color);
-    border-style: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-}
-
-.btn-green:active {
-    background-color: #09433a8f;
-    border-style: none;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.btn-green:focus {
-    background-color: #09433a8f;
-    border-style: none;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.btn-white {
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-style: none;
-    padding: 0.8rem;
-    font-size: 1rem;
-}
-
-.btn-green:hover {
-    background-color: #09433ac2;
 }
 
 /* 
@@ -68,9 +31,7 @@
     height: 80vh;
 }
 
-
 .col-middle {
-    
     background: url('../pictures/liana-mikah-8tJxjQWTyNA-unsplash.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -90,54 +51,45 @@
     padding-top: 5vh;
 }
 
-.shifted-index {
-    background-color: #E6E7E9;  
-    display: inline-flex;
-    margin: 0px;
-    padding: 0;
- 
-}
-
 .index-container {
-    
-    background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    background: url('../pictures/indexfront.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 90vh;
-    
-    
-    
+    height: 100vh;
 }
 
 #slogan-text {
     font-size: 3.2rem;
     color: rgb(115, 115, 115);
-
-    -webkit-user-select: none; /* Safari */        
--moz-user-select: none; /* Firefox */
--ms-user-select: none; /* IE10+/Edge */
-user-select: none; /* Standard */
-
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 #slogan-text-bold {
     font-size: 3.2rem;
     font-weight: 500 !important;
     color: #09433A;
-
-    -webkit-user-select: none; /* Safari */        
--moz-user-select: none; /* Firefox */
--ms-user-select: none; /* IE10+/Edge */
-user-select: none; /* Standard */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 .row-socialmedia {
     padding-top: 25vh;
 }
-
-
 
 /* 
     Desktop Media Queries
@@ -159,17 +111,13 @@ user-select: none; /* Standard */
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-     
     }
-
     #slogan-text {
         font-size: 2.5rem;
     }
-
     #slogan-text-bold {
         font-size: 2.5rem;
     }
-   
 }
 
 .white-hr {
@@ -178,11 +126,23 @@ user-select: none; /* Standard */
     height: 1px;
     background-color: white;
 }
+
 .white-hr-thin {
     border: none;
     height: 1px;
     background-color: rgba(255, 255, 255, 0.267);
 }
+
+/* 
+     Section 2 - "About us" 
+    -----------------------
+*/
+
+#about-index-container {
+    min-height: 100vh;
+}
+
+
 
 
 
@@ -191,7 +151,6 @@ user-select: none; /* Standard */
     -----------------------
     Section 2 - "News" 
 */
-
 
 .news-container {
     min-height: 50vh;
@@ -209,9 +168,8 @@ user-select: none; /* Standard */
 #image-news {
     object-fit: cover;
     height: 70vh;
-    display:block;
+    display: block;
     width: 100%;
-    
 }
 
 #p-category-news {
@@ -220,10 +178,10 @@ user-select: none; /* Standard */
 
 #latest-products-img1 {
     background: url('../pictures/chair_product.png') no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     height: 20rem;
     width: 10rem;
     background-color: rgb(247, 247, 247);
@@ -238,13 +196,11 @@ user-select: none; /* Standard */
 .works-button {
     cursor: pointer;
     color: rgb(155, 155, 155) !important;
-   
 }
 
 .works-container {
     min-height: 100vh;
 }
-
 
 .row-space {
     height: 10vh;
@@ -277,7 +233,6 @@ user-select: none; /* Standard */
     background-image: url(../pictures/icons8-three-seater-sofa-100.png);
 }
 
-
 .logo4 {
     height: 100px;
     width: 100px;
@@ -295,8 +250,6 @@ user-select: none; /* Standard */
     width: 100px;
     background-image: url(../pictures/icons8-transaction-approved-100.png);
 }
-
-
 
 .space-green {
     height: 5rem;
@@ -504,11 +457,9 @@ user-select: none; /* Standard */
     box-shadow: none !important;
     border-radius: 0;
     font-size: 1rem;
-    
 }
 
 #input-border-button {
-    
     padding-top: 0;
     padding-bottom: 0;
     border-right: 0;
