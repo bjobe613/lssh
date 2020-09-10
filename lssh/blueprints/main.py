@@ -14,8 +14,9 @@ def startup():
 
     prodCount = Product.query.filter(Product.articleNumber).count()
     news = News.query.all()
+    products_sorted = Product.query.order_by(Product.articleNumber).limit(6)
 
-    return render_template('index.html', productCount = prodCount, newsarticles = news)
+    return render_template('index.html', productCount = prodCount, newsarticles = news, productlist = products_sorted)
     
 #@main.route("/home")
 #def home():

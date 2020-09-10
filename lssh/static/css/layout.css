@@ -1,4 +1,4 @@
-html {
+html, body {
     overflow-x: hidden; 
    
 }
@@ -12,7 +12,26 @@ html {
 
 
 .container-max-width {
-    max-width: 1400px;
+    max-width: 1200px;
+
+}
+
+a {
+    color: rgb(78, 78, 78);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+}
+
+.a-underline {
+    text-decoration: underline;
+}
+
+.a-underline:hover {
+    text-decoration: underline;
+    color: rgb(78, 78, 78);
 }
 
 
@@ -24,9 +43,8 @@ h1 {
 
 h2 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500 !important;
-    color: rgb(255, 255, 255);
-    font-size: 2.5rem !important;
+    font-weight: 300 !important;
+    color: rgb(125, 125, 125);
 }
 
 h3 {
@@ -34,6 +52,9 @@ h3 {
     font-weight: 500 !important;
     color: rgb(0, 0, 0);
 }
+
+
+/* Check the h4, h5 and h6 classes so they are not colored */
 
 h4 {
     font-weight: 300 !important;
@@ -56,10 +77,6 @@ h6 {
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-}
-
-.p-white {
-    color: white;
 }
 
 
@@ -120,6 +137,10 @@ p {
     outline:none;
 }
 
+.wider-btn {
+    padding-left: 20%;
+    padding-right:  20%;
+}
 
 
 
@@ -162,12 +183,12 @@ p {
 
 
 .a-how-it-works {
-    color: #49a193;
+    color: #49a193 !important;
 }
 
 .a-how-it-works:hover {
-    color: #3c867a;
-    text-decoration: none;
+    color: #3c867a !important;
+    text-decoration: none !important;
 }
 
 .a-link-white {
@@ -351,6 +372,10 @@ p {
 
 .grey-bg {
     background-color: #F9F9F9;
+}
+
+.black-bg {
+    background-color: black;
 }
 
 .green-bg {
