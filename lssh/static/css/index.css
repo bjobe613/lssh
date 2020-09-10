@@ -142,6 +142,12 @@ Section - "About us"
     background: linear-gradient(90deg, transparent 50%, var(--main-bg-color) 50%);
 }
 
+@media only screen and (max-width: 992px) {
+    #about-index-container {
+        height: 100vh;
+    }
+}
+
 
 /************************
 Section - "News" 
