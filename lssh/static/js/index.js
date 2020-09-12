@@ -32,12 +32,28 @@ var swiper = new Swiper('.swiper-container', {
 });
 
 
+/********************** 
+News swiper
+**********************/
+
+//Slideshow//
+/*
+var swiper = new Swiper('.swiper-news', {
+  slidesPerView: 1,
+  loop: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+ 
+});*/
+
+
+
 
 /********************** 
 Subscribe form
 **********************/
-
-
 
 
 $("#works-buyer-button").click(function () {

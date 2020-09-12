@@ -1,6 +1,7 @@
 html, body {
     overflow-x: hidden; 
-   
+    scroll-behavior: smooth;
+  
 }
 
 
@@ -77,12 +78,14 @@ h6 {
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+    
 }
 
 
 .height-before-nav {
     height: 6rem;
 }
+
 
 .bg-transparent {
     background-color: transparent !important;
@@ -91,7 +94,7 @@ p {
 /* Styling for buttons */
 .green-btn {
     background-color: var(--main-bg-color);
-    border: none;
+    border: 1px solid var(--main-bg-color);
     color: white;
     padding: 0.9rem;
     padding-left: 2.5rem;
@@ -112,6 +115,40 @@ p {
 .green-btn:focus {
     outline:none;
 }
+
+.green-transparent-btn {
+    background-color: transparent;
+    border: 1px solid var(--main-bg-color);
+    color: var(--main-bg-color);
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+    transition: 0.3s;
+}
+
+.green-transparent-btn:hover {
+    background-color: var(--main-bg-color);
+    color: var(--bg-color-white);
+    outline:none;
+}
+
+.green-transparent-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.green-transparent-btn:focus {
+    outline:none;
+}
+
+
+
 
 .white-btn {
     background-color: var(--bg-color-white);

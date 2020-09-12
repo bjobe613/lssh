@@ -58,7 +58,7 @@ Section - "Slogan"
 }
 
 #slogan-text {
-    font-size: 3.2rem;
+    font-size: 4rem;
     color: rgb(115, 115, 115);
     -webkit-user-select: none;
     /* Safari */
@@ -71,7 +71,7 @@ Section - "Slogan"
 }
 
 #slogan-text-bold {
-    font-size: 3.2rem;
+    font-size: 4rem;
     font-weight: 500 !important;
     color: #09433A;
     -webkit-user-select: none;
@@ -88,13 +88,14 @@ Section - "Slogan"
     padding-top: 25vh;
 }
 
+
 /************************
 Section - "Slogan"
 
 Mobile Media queries 
 ************************/
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 988px) {
     .space {
         padding-top: 25vh;
         display: block;
@@ -114,6 +115,15 @@ Mobile Media queries
     }
     #slogan-text-bold {
         font-size: 2.5rem;
+    }
+
+    .mobile-width {
+        width: 60%;
+    }
+
+    .mobile-width-p {
+        padding-left: 20%;
+        padding-right: 20%;
     }
 }
 
@@ -181,12 +191,6 @@ Section - "How it works"
     min-height: 70vh;
 }
 
-.col-border {
-    border-right: 1px solid rgb(182, 182, 182);
-    height: 1rem;
-    margin-top: 0.2rem;
-}
-
 .nav-link {
     color: rgb(158, 158, 158);
 }
@@ -204,24 +208,16 @@ Section - "How it works"
 }
 
 /************************
-Section - "Goal"
-************************/
-
-.goal-container {
-    min-height: 100vh;
-}
-
-#goal-hr {
-    border: 1px solid rgb(199, 199, 199);
-    width: 15%;
-}
-
-/************************
 Section - "Purpose"
 ************************/
 
 #purpose-container {
     height: 70vh;
+}
+
+#goal-hr {
+    border: 1px solid rgb(199, 199, 199);
+    width: 15%;
 }
 
 
