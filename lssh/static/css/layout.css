@@ -3,6 +3,13 @@ html {
    
 }
 
+/* This already exists on index branch */
+.container-max-width {
+    max-width: 1200px;
+
+}
+
+
 
 /* Global variables */
 :root {

@@ -9,20 +9,84 @@
 {% block content %}
 <!-- Where the html should be written -->
 
-<div id="news-container" class="container-fluid">
+<div class="container-fluid mb-5 pb-5">
+    <div class="row pt-3">
+        <div class="col margin-0">
+    
+            <div class="parallelogram-outer">
+                <div class="parallelogram">
+                    <h2 class="text-white skew-normal pl-4 pt-3 pb-3">News & updates</h2>
+                </div>
+            </div>
+            <hr class="mt-0">
+        </div>
+    </div>
+    
+</div>
+
+
+<div id="news-container" class="container-fluid container-max-width">
+
+    
 
     <!-- Row with title of page and links to social media -->
-    <div id="title-row" class="row mb-5">
-        <div class="col-8 offset-2 pt-5">
-            <h1 class="pb-3">News & updates</h1>
-            <a href="https://www.facebook.com/liustudentsecondhand/" target="_blank" class="fa fa-facebook"></a>
-            <a href="https://www.instagram.com/liustudentsecondhand/" target="_blank" class="fa fa-instagram"></a>
+
+    {% for News in newsarticles %}
+
+
+    {% if not loop.index is divisibleby 2 %}
+    <div class="row pb-5 mb-4 pl-5 pr-5">
+        <div class="col-md-8 col-12 pl-0 darkgrey-bg">
+            
+            <a href="news/{{ News.id }}">
+                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+                    class="img-fluid" alt="Responsive image">
+            </a>
+            
+
+        </div>
+        <div class="col-md-4 col-12 darkgrey-bg">
+            <br><br><br><br>
+            <h3 class="pt-3">{{ News.title }}</h3>
+            <p class="pt-3">{{ News.ingress }}</p>
+            <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
         </div>
     </div>
 
-    <!-- Row with all news divs that are generated with jinja -->
+    {% elif loop.index is divisibleby 2 %}
+
+    <div class="row pb-5 mb-4 pl-5 pr-5">
+        <div class="col-4 darkgrey-bg">
+            <h3 class="pt-3">{{ News.title }}</h3>
+            <p class="pt-3">{{ News.ingress }}</p>
+            <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
+  
+            
+
+        </div>
+        <div class="col-8 pl-0">
+
+            <a href="news/{{ News.id }}">
+                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+                    class="img-fluid" alt="Responsive image">
+            </a>
+            
+
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% endfor %}
+
+
+
+
+
+
+    <!-- Row with all news divs that are generated with jinja 
     <div id="news-row" class="row">
-        <div class="col-lg-8 offset-lg-2 col-10 offset-1">
+        <div class="col">
 
             <div class="row h-100 pb-5 mb-5">
 
@@ -35,7 +99,7 @@
                             class="img-fluid" alt="Responsive image">
                     </a>
                     <div id="text-img-news" class="row">
-                        <div class="offset-2 col-10 bg-white pb-3">
+                        <div class="offset-2 col-10 grey-bg pb-3">
                             <h3 class="pt-3">{{ News.title }}</h3>
                             <p class="pt-3">{{ News.ingress }}</p>
                             <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
@@ -69,7 +133,7 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </div>-->
 
 </div>
 {% endblock content %}
