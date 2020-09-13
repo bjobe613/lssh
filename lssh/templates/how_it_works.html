@@ -1,0 +1,90 @@
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/how_it_works.css') }}">
+
+<div class="green-bg mt-5">
+  <div class="container-fluid works-container container-max-width">
+    <div class="row pt-5">
+      <div class="col text-center">
+        <h1 class="text-white pt-5 pb-2">How it works</h1>
+
+
+        <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+              aria-controls="pills-home" aria-selected="true">BUYER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+              aria-controls="pills-profile" aria-selected="false">SELLER</a>
+          </li>
+        </ul>
+
+        <hr class="white-hr-thin mt-5">
+      </div>
+    </div>
+
+    <!-- Tab with buyer row-->
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="row pt-5 pb-5 text-center">
+
+          <div class="col-md-4 col-12 text-center pb-3">
+            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/mail_icon.png') }}" alt="Mail icon">
+            <p class="text-white p-heading">SEND A REQUEST</p>
+            <p class="text-white pl-3 pr-3"> <a target="_blank" class="a-how-it-works"
+                href="{{ url_for('main.hand_in') }}">Make
+                a hand in request</a> with details about the items you want to sell or donate</p>
+          </div>
+
+          <div class="col-md-4 col-12 text-center pb-3">
+            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/icons8-handshake-heart.png') }}"
+              alt="Handshake icon">
+            <p class="text-white p-heading">AGREE TO A PRICE</p>
+            <p class="text-white pl-3 pr-3">We will consider your suggested price and decide if it is reasonable.</p>
+          </div>
+
+          <div class="col-md-4 col-12 pb-3">
+            <img class="img-fluid"
+              src="{{ url_for('static', filename = '/pictures/icons8-three-seater-sofa-100.png') }}"
+              alt="Furniture icon">
+            <p class="text-white p-heading">LEAVE FURNITURE AT OUR SHOP</p>
+            <p class="text-white pl-3 pr-3">You can hand your items in during our opening hours!</p>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Tab with seller row-->
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row pt-5 pb-5 text-center">
+          <div class="col-md-4 col-12 text-center pb-3">
+            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/icons8-furniture-100.png') }}" alt="Mail icon">
+            <p class="text-white p-heading">FIND AN ITEM YOU LIKE</p>
+            <p class="text-white pl-3 pr-3"><a class="a-how-it-works" target="_blank"
+                href="{{ url_for('products.catalog') }}">Explore our shop</a> and find the perfect furnitures just
+              for you!
+            </p>
+          </div>
+
+          <div class="col-md-4 col-12 text-center pb-3">
+            <img class="img-fluid" src="{{ url_for('static', filename = '/pictures/icons8-yard-sale-100.png') }}"
+              alt="Handshake icon">
+            <p class="text-white p-heading">VISIT OUR SHOP</p>
+            <p class="text-white pl-3 pr-3">Browse all our furnitures in person or purchase an item you found on our
+              website</p>
+          </div>
+
+          <div class="col-md-4 col-12 text-center pb-3">
+            <img class="img-fluid"
+              src="{{ url_for('static', filename = '/pictures/icons8-transaction-approved-100.png') }}"
+              alt="Furniture icon">
+            <p class="text-white p-heading">PAY FOR YOUR ITEM/S</p>
+            <p class="text-white pl-3 pr-3">Depending if it is sold by a student or LSSh, pay by card, Swish or Revolut.
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

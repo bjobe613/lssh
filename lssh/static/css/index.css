@@ -13,7 +13,7 @@ General
 
 
 /************************
-Section - "Slogan" 
+Section - "Slogan"
 ************************/
 
 .row-top {
@@ -92,7 +92,7 @@ Section - "Slogan"
 /************************
 Section - "Slogan"
 
-Mobile Media queries 
+Mobile Media queries
 ************************/
 
 @media only screen and (max-width: 988px) {
@@ -141,7 +141,7 @@ Mobile Media queries
 }
 
 /************************
-Section - "About us" 
+Section - "About us"
 ************************/
 
 #about-index-container {
@@ -160,7 +160,7 @@ Section - "About us"
 
 
 /************************
-Section - "News" 
+Section - "News"
 ************************/
 
 .news-container {
@@ -181,30 +181,6 @@ Section - "News"
     height: 70vh;
     display: block;
     width: 100%;
-}
-
-/************************
-Section - "How it works" 
-************************/
-
-.works-container {
-    min-height: 70vh;
-}
-
-.nav-link {
-    color: rgb(158, 158, 158);
-}
-
-.nav-link:hover {
-    color: rgb(158, 158, 158);
-}
-
-.active.nav-link{
-    background-color: rgb(255, 255, 255) !important;
-    color: var(--main-bg-color) !important;
-    border-radius: 10rem;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
 }
 
 /************************
