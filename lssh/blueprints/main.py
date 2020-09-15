@@ -15,6 +15,7 @@ def startup():
     prodCount = Product.query.filter(Product.articleNumber).count()
     news = News.query.all()
 
+
     return render_template('index.html', productCount = prodCount, newsarticles = news)
     
 #@main.route("/home")
@@ -95,7 +96,7 @@ def hand_in():
 
 @main.route("/news")
 def news():
-    news = News.query.all()
+    news = News.query.filter(News.published).all()
     return render_template('news.html', newsarticles = news)
 
 @main.route("/news/<int:x>", methods=['GET'])
