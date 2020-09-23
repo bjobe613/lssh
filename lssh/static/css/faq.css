@@ -1,17 +1,40 @@
 
 
+
+#top-container {
+    min-height: 60vh;
+    padding-bottom: 3rem;
+   
+}
+
+#faq-heading {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+
+
+#image-header {
+
+    object-fit: cover;
+    height: 60vh;
+    display:block;
+    width: 100%;
+}
+
+
 #container-fill {
     min-height: 80vh;
     padding-bottom: 5rem;
 }
 
 .card-header {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 0;
 }
 
 .card-body {
-    background-color: rgb(247, 247, 247);
+    background-color: rgb(252, 252, 252);
     border-radius: 0;
 }
 

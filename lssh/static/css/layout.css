@@ -29,6 +29,13 @@ a:hover {
     color: rgb(78, 78, 78);
 }
 
+/* This already exists on index branch */
+.container-max-width {
+    max-width: 1200px;
+
+}
+
+
 
 h1 {
     font-family: 'Roboto', sans-serif;
