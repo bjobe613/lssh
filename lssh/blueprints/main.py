@@ -80,7 +80,10 @@ def contactform():
 def faq(x):
     x_minus_1 = x - 1
     categories = Categoryfaq.query.filter(Categoryfaq.id).all()
-    questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
+    questions = Question.query.all()
+
+    questions2 = Question.query.filter(Question.categoryID).all()
+    print(questions2)
  
     return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
