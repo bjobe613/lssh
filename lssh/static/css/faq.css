@@ -1,10 +1,6 @@
-
-
-
 #top-container {
     min-height: 60vh;
     padding-bottom: 3rem;
-   
 }
 
 #faq-heading {
@@ -12,16 +8,12 @@
     font-size: 3rem;
 }
 
-
-
 #image-header {
-
     object-fit: cover;
     height: 60vh;
-    display:block;
+    display: block;
     width: 100%;
 }
-
 
 #container-fill {
     min-height: 80vh;
@@ -30,12 +22,12 @@
 
 .card-header {
     background-color: rgb(255, 255, 255);
-    border-radius: 0;
+    
 }
 
 .card-body {
     background-color: rgb(252, 252, 252);
-    border-radius: 0;
+    
 }
 
 #faq-angledown {
@@ -48,25 +40,25 @@
     width: 100%;
     text-align: start;
     color: black;
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+   
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .faq-question-heading:hover {
-    box-shadow: none!important;
+    box-shadow: none;
     text-decoration: none;
     color: black;
 }
 
 .faq-question-heading:focus {
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+   
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .faq-question-heading:active {
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+
+    box-shadow: none;
+    text-decoration: none;
 }

@@ -11,13 +11,13 @@
 
 <div id="top-container" class="container-fluid mt-3 grey-bg">
     <div class="row align-items-center h-100">
-        <div class="col-md-5 offset-md-1 col-12 mt-md-5 pl-0 pl-md-3 pr-0 pr-md-3">
+        <div class="col-lg-5 offset-lg-1 col-12 mt-lg-5 pl-0 pl-lg-3 pr-0 pr-lg-3">
             <img id="image-header"
                 src="{{ url_for('static', filename = '/pictures/pexels-catherine-augustin-3049121.jpg') }}"
                 class="img-fluid image" alt="Responsive image">
         </div>
-        <div class="col-md-5 col-12 pl-5">
-            <p><b>HELP</b></p>
+        <div class="col-lg-5 col-12 mt-3">
+            <p class="mb-2"><b>HELP</b></p>
             <h3 id="faq-heading" class="pb-3">FAQ</h3>
             <p>
                 Below you can find the answer to our most common asked questions.
@@ -26,16 +26,15 @@
             </p>
         </div>
     </div>
-</div>
 
-<div id="container-fill" class="container-fluid grey-bg">
-
-    <div class="row">
-        <div class="col-10 offset-1">
+    <div class="row pt-3">
+        <div class="col-lg-10 offset-lg-1 col-12">
             <hr>
         </div>
     </div>
+</div>
 
+<div id="container-fill" class="container-fluid grey-bg">
 
     <!-- 
     What: Tabs
@@ -45,7 +44,7 @@
     -->
 
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-lg-8 offset-lg-2 col-12">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             {% for Category in faqcategories %}
 
@@ -75,7 +74,7 @@
     -->
     
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-lg-8 offset-lg-2 col-12">
         <div class="tab-content" id="pills-tabContent">
             {% for Category in faqcategories %}
                 {% if loop.index == 1 %}

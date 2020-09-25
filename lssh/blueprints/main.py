@@ -76,15 +76,10 @@ def contactform():
     print("hej")
     return ""
 
-@main.route("/help/faq/<int:x>", methods = ['GET'])
-def faq(x):
-    x_minus_1 = x - 1
+@main.route("/help/faq", methods = ['GET'])
+def faq():
     categories = Categoryfaq.query.filter(Categoryfaq.id).all()
-    questions = Question.query.all()
-
-    questions2 = Question.query.filter(Question.categoryID).all()
-    print(questions2)
- 
+    questions = Question.query.all() 
     return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
 @main.route("/transport")
