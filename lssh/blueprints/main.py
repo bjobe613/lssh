@@ -63,14 +63,10 @@ def contactform():
 
     data = request.get_json()
 
-    name = data["name"]
-    email = data["email"]
-    message = data["message"]
-    
-
-  
     msg = Message("Contact form - New message", sender="lithemobler@gmail.com", recipients=["lithemobler@gmail.com"])
-    msg.body = "You have a new form reply from " + email + " : " + message
+
+    msg.html = render_template('contact_mail_template.html', name = data["name"], email = data["email"], message = data["message"])
+  
     mail.send(msg)
 
     print("hej")

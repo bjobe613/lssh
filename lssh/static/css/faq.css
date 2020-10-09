@@ -26,7 +26,7 @@
 }
 
 .card-body {
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(238, 238, 238);
     
 }
 
@@ -61,4 +61,12 @@
 
     box-shadow: none;
     text-decoration: none;
+}
+
+.active.nav-link{
+    background-color: var(--main-bg-color) !important;
+    
+    border-radius: 10rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }

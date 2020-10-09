@@ -9,7 +9,7 @@
 {% block help_content %}
 
 
-<div id="top-container" class="container-fluid mt-3 grey-bg">
+<div id="top-container" class="container-fluid mt-3 grey-bg">   
     <div class="row align-items-center h-100">
         <div class="col-lg-5 offset-lg-1 col-12 mt-lg-5 pl-0 pl-lg-3 pr-0 pr-lg-3">
             <img id="image-header"
@@ -21,7 +21,7 @@
             <h3 id="faq-heading" class="pb-3">FAQ</h3>
             <p>
                 Below you can find the answer to our most common asked questions.
-                The questions are divided by category which you can easily switch between with the toggle
+                The questions are divided by category which you can easily switch between with the toggle buttons
                 above!
             </p>
         </div>
@@ -32,26 +32,27 @@
             <hr>
         </div>
     </div>
+
 </div>
 
 <div id="container-fill" class="container-fluid grey-bg">
-
+    <div class="container-fluid container-max-width">
     <!-- 
-    What: Tabs
+    Tabs
 
     Creates the category tabs by looping through all categories and 
     choosing the first category as active from start
     -->
 
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="col-12">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             {% for Category in faqcategories %}
 
             {% if loop.index == 1 %}
             <li class="nav-item">
                 <a class="nav-link active" id="pills-{{Category.id}}-tab" data-toggle="pill"
-                    href="#pills-{{Category.id}}" role="tab" aria-controls="pills-home"
+                    href="#pills-{{Category.id}}" role="tab" aria-controls="pills-{{Category.id}}"
                     aria-selected="true">{{Category.name}}</a>
             </li>
             {% else %}
@@ -66,7 +67,7 @@
     </div>
 
     <!-- 
-    What: Tab content to tabs
+    Tab content to tabs
 
     Creates the content inside the tabs, loops through each category and for each
     category checks all questions with the same category id and puts it in the 
@@ -74,12 +75,12 @@
     -->
     
     <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="col-12">
         <div class="tab-content" id="pills-tabContent">
             {% for Category in faqcategories %}
                 {% if loop.index == 1 %}
                 <div class="tab-pane show active" id="pills-{{Category.id}}" role="tabpanel" aria-labelledby="pills-{{Category.id}}-tab">
-                    <div class="pt-4" id="accordion">
+                    <div class="pt-4" id="accordion{{ Category.id }}">
                     {% for Question in faqquestions%}
                         {% if Question.categoryID == Category.id %}
                             <div class="card mb-2">
@@ -94,7 +95,7 @@
                                     </h5>
                                 </div>
         
-                                <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion">
+                                <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion{{ Category.id }}">
                                     <div class="card-body">
                                         {{ Question.questionAnswer }}
                                     </div>
@@ -106,7 +107,7 @@
                 </div>
                 {% else %}
                 <div class="tab-pane" id="pills-{{Category.id}}" role="tabpanel" aria-labelledby="pills-{{Category.id}}-tab">
-                    <div class="pt-4" id="accordion">
+                    <div class="pt-4" id="accordion{{ Category.id }}">
                         {% for Question in faqquestions%}
                             {% if Question.categoryID == Category.id %}
                                 <div class="card mb-2">
@@ -121,7 +122,7 @@
                                         </h5>
                                     </div>
             
-                                    <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion">
+                                    <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion{{ Category.id }}">
                                         <div class="card-body">
                                             {{ Question.questionAnswer }}
                                         </div>
@@ -136,6 +137,8 @@
         </div> 
         </div>       
     </div>
+
+</div>
    
 </div>
 
