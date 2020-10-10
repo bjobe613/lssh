@@ -1,0 +1,36 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_faq = True %}
+
+{% block more_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/buying_process.css') }}">
+{% endblock more_head %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <form onsubmit='addItem();return false'>
+
+                <label for="exampleInputEmail1">Search</label>
+                <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
+            
+                <button class="green-btn float-right" type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="content" class="container-fluid">
+   
+</div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/buying_process.js') }}"></script>
+{% endblock scripts %}

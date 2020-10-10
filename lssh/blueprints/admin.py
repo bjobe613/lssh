@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition
 import json
 
@@ -10,6 +10,49 @@ admin = Blueprint('admin', __name__, url_prefix='/admin')
 def admin_home():
     return render_template('admin/home.html')
 
+
+@admin.route("/buyingprocess/", methods=['GET', 'POST'])
+def buying_process():
+
+
+
+    if request.method == 'POST':
+        data = request.get_json()
+
+        print(data['product_id'])
+
+        product = Product.query.filter(Product.articleNumber == data['product_id']).first()
+        
+        print(product.articleNumber)
+
+        productJson = {
+            'articleNumber' : product.articleNumber,
+            'name' : product.name,
+            'price' : product.price
+        }
+
+        return jsonify(productJson)
+
+    elif request.method == 'GET':
+
+        return render_template('admin/buy_process.html')
+    
+@admin.route("/buyingprocess/data", methods=['POST'])
+def buying_process_data():
+
+    data = request.get_json()
+    print(data['product_id'])
+    product = Product.query.filter(Product.articleNumber == data['product_id']).first() 
+    print(product.articleNumber)
+
+    productJson = {
+        'articleNumber' : product.articleNumber,
+        'name' : product.name,
+        'price' : product.price
+    }
+
+    return jsonify(productJson)
+  
 
 @admin.route("/products/")
 def admin_products():
