@@ -33,7 +33,7 @@ Section - "Slogan"
 
 
 
-      <form class="d-lg-inline pr-2" action="{{ url_for('main.about_us') }}">
+      <form class="d-lg-inline" action="{{ url_for('main.about_us') }}">
         <button class="green-transparent-btn pl-5 pr-5 mt-3 mobile-width" type="submit">READ MORE</button>
       </form>
 
@@ -77,8 +77,8 @@ Section - "About us"
 Section - "Latest items"
 ------------------------------>
 
-<div class="container-fluid container-max-width mt-5">
-  <div class="row">
+<div class="container-fluid container-max-width mt-lg-0 mt-5">
+  <div class="row pt-5">
     <div class="col-6">
       <p>LATEST ITEMS</p>
     </div>
@@ -112,6 +112,9 @@ Section - "Latest items"
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-button-black"></div>
+      <div class="swiper-button-prev swiper-button-black"></div>
 
     </div>
   </div>

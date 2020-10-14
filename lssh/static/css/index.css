@@ -95,7 +95,7 @@ Section - "Slogan"
 Mobile Media queries
 ************************/
 
-@media only screen and (max-width: 988px) {
+@media only screen and (max-width: 992px) {
     .space {
         padding-top: 25vh;
         display: block;
@@ -127,6 +127,18 @@ Mobile Media queries
     }
 }
 
+
+@media only screen and (max-width: 1200px) {
+    .index-container {
+        background: url('../pictures/indexfrontmobile.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+}
+
 .white-hr {
     width: 40%;
     border: none;
@@ -154,7 +166,7 @@ Section - "About us"
 
 @media only screen and (max-width: 992px) {
     #about-index-container {
-        height: 100vh;
+        height: 110vh;
     }
 }
 
