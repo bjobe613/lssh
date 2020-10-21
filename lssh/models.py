@@ -67,10 +67,12 @@ class Product(db.Model):
     width = db.Column( db.Integer, nullable = True)
     depth = db.Column(db.Integer, nullable = True)
     status = db.Column(db.String, default = "Available")
+    sold = db.Column(db.Boolean, default = False)
     comment = db.Column(db.Text)
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
     reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
+    buyer = db.Column(db.Integer, db.ForeignKey('buyer.buyerID'))
 
     def getSinglePictureName(self):
         piclist = self.pictures
@@ -141,6 +143,13 @@ class Seller(db.Model): # will be ralated to furniture
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
     products = db.relationship('Product', backref = 'sellerOfProduct')
+
+class Buyer(db.Model):
+    buyerID = db.Column(db.Integer, primary_key = True)
+    liuID = db.Column(db.String(8), nullable = False, unique = True)
+    products = db.relationship('Product', backref = 'buyerOfProduct')
+    
+
 
 class Blacklist(db.Model):
     #listID = db.Column(db.Integer, primary_key = True)

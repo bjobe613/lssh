@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition
+from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, Seller, ProductPictures
 import json
 
 
@@ -45,18 +45,42 @@ def buying_process_data():
     product = Product.query.filter(Product.articleNumber == data['product_id']).first() 
     print(product.articleNumber)
 
+    productPictures = ProductPictures.query.filter(ProductPictures.productID == data['product_id']).first()
+
+    print(productPictures.pictureName)
+
     productJson = {
         'articleNumber' : product.articleNumber,
         'name' : product.name,
-        'price' : product.price
+        'price' : product.price,
+        'seller' : product.seller,
+        'picture' : productPictures.pictureName
     }
 
     return jsonify(productJson)
+
+@admin.route("/buyingprocess/customer", methods=['POST'])
+def buying_process_customer():
+
+    data = request.get_json()
+
+    print(data['liu_id'])
+
+    seller = Seller.query.filter(Seller.liuID == data['liu_id']).first() 
+
+    print(seller)
+    
+    sellerJson = {  
+        'liuID' : seller.liuID,
+        'phone' : seller.phone
+    }
+
+    return jsonify(sellerJson)
   
 
 @admin.route("/products/")
 def admin_products():
-    products = Product.query.all()
+    products = Product.query.filter(Product.sold == 0).all()
     categories = Category.query.all()
     return render_template('admin/products.html', categories=categories, products=products)
 
@@ -75,7 +99,7 @@ def admin_products_category(category_str):
     categories = Category.query.all()
 
     if category:
-        products = Product.query.filter_by(category=category)
+        products = Product.query.filter_by(category=category).filter(Product.sold == 0)
         return render_template('admin/products.html', categories=categories, products=products, optional_table_header="Filtered by category: {0}".format(category_str))
     else:
         return render_template('admin/products.html', categories=categories, products=[], optional_table_header="There is no category named: {0} in the database".format(category_str))

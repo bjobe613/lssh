@@ -1,4 +1,8 @@
 .product-row {
-    height: 5rem;
+    height: 7.5rem;
     border-bottom: 5px solid rgb(167, 165, 165);
+}
+
+.picture-height {
+    height: 7.5rem;
 }

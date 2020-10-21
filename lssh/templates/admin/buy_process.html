@@ -1,5 +1,5 @@
 {% extends "admin/layout.html" %}
-{% set navbar_active_faq = True %}
+{% set navbar_active_buyingprocess = True %}
 
 {% block more_head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/buying_process.css') }}">
@@ -8,15 +8,64 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
+
+
     <div class="row">
-        <div class="col-8">
-            <form onsubmit='addItem();return false'>
+        <div class="offset-2 col-8">
+            <h1>Step 1 - Information about buyer</h1>
+            <form onsubmit="return false">
 
                 <label for="exampleInputEmail1">Search</label>
+                <input type="text" class="form-control" id="input-liuid" placeholder="Insert LiU ID..">
+            
+                <button id="buyer-search" class="green-btn float-right" type="submit">SUBMIT</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div id="seller-information" class="col text-center">
+            No customer added
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col offset-2">  
+            <h1>Step 2 - Add items and payment</h1>
+        </div>
+    </div>
+
+    <div class="row pt-5">
+
+
+        <div class="col-2 offset-2">
+            <p>Number of items</p>
+            <div id="total-items">
+                <p>0</p>
+            </div>
+
+        </div>
+        <div class="col-2">
+            <p>Total payment left</p>
+            <div id="total-payment">
+                <p>0</p>
+            </div>
+
+        </div>
+
+        <div class="col-4">
+
+
+            <form onsubmit="return false">
+
                 <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
             
-                <button class="green-btn float-right" type="submit">SUBMIT</button>
+                <button id="submit-item" class="green-btn float-right" type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
@@ -24,7 +73,7 @@
 
 
 <div id="content" class="container-fluid">
-   
+
 </div>
 
 
