@@ -51,7 +51,7 @@ def subscribe():
 def about_us():
     return render_template('about_us.html')
 
-@main.route("/help/find_us")
+@main.route("/about/find_us")
 def find_us():
     return render_template('find_us.html')
 
