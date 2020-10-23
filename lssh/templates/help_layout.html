@@ -11,34 +11,16 @@
  
         <!--Where the html should be written-->
 
-        <!-- OLD SUBNAV
-
-        <div id="about-us-container" class="container-fluid">
+        <div id="subnav-container" class="container-fluid pt-4 pb-4">
             <div class="row">
-                <div class="col-10"></div>
-                <div class="col-1 text-center">
-                    <div class="arrow-down"></div>
+                <div class="col text-right">
+                    <a id="faq-link" href="{{ url_for('main.faq') }}" class="a-link-white d-inline pr-4">FAQ</a>
+                    <a id="contact-link" href="{{ url_for('main.contact') }}" class="a-link-white d-inline pr-4">Contact</a>
                 </div>
             </div>
-    
-            
-            <div class="row mt-4 pb-4 pt-2">
-     
-                <div class="col-md-1 offset-9 text-center">
-                    <a id="faq-link" class="a-link-white" href="{{ url_for('main.faq', x=1) }}"> FAQ</a>
-                </div>
-                <div class="col-md-1 col-sm-6 text-center">
-                    <a id="contact-link" class="a-link-white" href="{{ url_for('main.contact') }}"> Contact </a>
-                </div>
-                <div class="col-md-1 col-sm-6 text-center">
-                   
-                </div>
-            </div>
-            
-          
-        </div>-->
+        </div>
 
-    
+
 
 
       

@@ -4,3 +4,11 @@
     background-color: #ffffff;
 }
 
+#about-us-container2 {
+    z-index: 2;
+    background-color: #09433A; 
+}
+
+.scroll-margin {
+    scroll-margin-top: 4em;
+}

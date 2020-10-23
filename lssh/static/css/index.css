@@ -95,6 +95,8 @@ Section - "Slogan"
 Mobile Media queries
 ************************/
 
+
+
 @media only screen and (max-width: 992px) {
     .space {
         padding-top: 25vh;

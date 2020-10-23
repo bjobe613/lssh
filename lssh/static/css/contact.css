@@ -18,6 +18,11 @@
     width: 100%;
 }
 
+#top-container {
+    min-height: 60vh;
+    padding-bottom: 3rem;
+}
+
 #faq-heading {
     font-weight: 700;
     font-size: 3rem;
