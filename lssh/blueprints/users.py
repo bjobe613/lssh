@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, jsonify, request, redirect, url_for, make_response
-from flask_jwt_extended import (jwt_required, create_access_token, get_jwt_identity, set_access_cookies,
-                                unset_jwt_cookies, get_jwt_claims, verify_jwt_in_request, verify_jwt_in_request_optional)
+from flask_jwt_extended import (jwt_required, create_access_token, get_jwt_identity,
+                                set_access_cookies, unset_jwt_cookies, get_jwt_claims,
+                                verify_jwt_in_request, jwt_optional)
 from lssh.models import db, Admin
 from lssh.blueprints.forms import AdminRegisterForm
 from lssh import flask_bcrypt, flask_jwt
@@ -29,11 +30,12 @@ def user_identity_lookup(admin):
 
 
 @users.route("/login", methods = ['GET', 'POST'])
+@jwt_optional
 def adminLogin():
     
     if request.method == 'POST':
         content = request.get_json()        
-        username = content["username"] #prevent an sql-injection?
+        username = content["username"] # MUST prevent an sql-injection!!!
         password = content['password']
         user = Admin.query.filter(Admin.name == username).first()
         if not user:
@@ -41,15 +43,16 @@ def adminLogin():
         else:
             if flask_bcrypt.check_password_hash(user.passwordHash, password):     
                 access_token = create_access_token(identity=user)
-                #refresh_token = create_refresh_token(identity=username)
                 resp = make_response(redirect(url_for('users.protected_first_level')))
                 set_access_cookies(resp, access_token)
-                #set_refresh_cookies(resp, refresh_token)
                 return resp 
             else:
                 return 'wrong password', 404
-    else:            
+    elif request.method == 'GET':
+        if get_jwt_identity() != None:
+            return redirect(url_for('users.adminRegister'))        
         return render_template('login.html')
+       
 
 @users.route("/register", methods = ['GET', 'POST'])
 def adminRegister():
