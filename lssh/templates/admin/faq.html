@@ -1,0 +1,138 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_faq = True %}
+
+{% block more_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/faq.css') }}">
+
+{% endblock more_head %}
+
+{% block content %}
+<div class="container">
+    <ul class="category-list">
+        {% for category in faqcategories%}
+        <li class="d-inline">
+            <a class="a-link mb-4 mr-4 {% if category.id==chosenCategory.id %}chosen-category{% endif %}"
+                href="/admin/faq/{{ category.id }}">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <div class="questions">
+        {% if faqquestions %}
+        <div id="accordion">
+            {% for Question in faqquestions%}
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link faq-question-heading" data-toggle="collapse"
+                            data-target="#collapse{{ Question.id }}" aria-expanded="true"
+                            aria-controls="collapse{{ Question.id }}">
+                            <i id="faq-angledown" class="fa fa-angle-down"></i>{{ Question.questionTitle }}
+
+                        </button>
+                        <div class="right d-inline">
+                            <a href="{{ url_for('admin.admin_faq_edit', questionid=Question.id)}}"
+                                class="btn btn-warning">Edit</a>
+                            <button class="btn btn-danger" onClick="deleteQuestion({{ Question.id }})">Delete</button>
+                        </div>
+                    </h5>
+                </div>
+
+                <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}"
+                    data-parent="#accordion">
+                    <div class="card-body">
+                        {{ Question.questionAnswer }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No questions in this category</p>
+        {% endif %}
+    </div>
+
+    <div class="buttons">
+        <a href="{{ url_for('admin.faq_add_question') }}" class="btn btn-success">Add question</a>
+        <button data-toggle="modal" data-target="#add-category-modal" class="btn btn-secondary">Add category</button>
+        <button data-toggle="modal" data-target="#edit-category-modal" class="btn btn-secondary">Change chosen category
+            name</button>
+        <button data-toggle="modal" data-target="#remove-category-modal" class="btn btn-danger">Remove chosen
+            category</button>
+    </div>
+</div>
+<div class="modal" id="add-category-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="add-category-form">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="categoryName">New category</label>
+                        <input id="categoryName" name="categoryName">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Add category</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="edit-category-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="edit-category-form">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>Editing name for category: {{ chosenCategory.name }}</p>
+                        <input id="categoryName" name="categoryName" value="{{ chosenCategory.name }}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="remove-category-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Remove category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>By removing the category all questions that are related to it will also be deleted.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onClick="deleteCategory({{chosenCategory.id}})">Remove
+                    category</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src=" {{url_for('static', filename='js/admin/faq.js') }}"></script>
+{% endblock scripts %}

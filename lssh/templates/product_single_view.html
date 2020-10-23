@@ -9,8 +9,9 @@
 
 {% block content %}
     <!--Where the html should be written-->
-    <p id="navigation-history">
-        <a href="/products/catalog">Shop</a> / <a href="#">{{product.category}}</a> / <a href="/products/product/{{product.articleNumber}}">{{product.name}}</a>
+    <p id="navigation-history" class="col-10 offset-1">
+        <!--<a href="/products/catalog">Shop</a> / <a href="#">{{categoryName}}</a> / <a href="/products/product/{{product.articleNumber}}">{{product.name}}</a>-->
+        Shop / {{categoryName}} / {{product.name}}
     </p>
     <div id="product-wrapper">
       <!--MOBILE VERSION-->
@@ -27,66 +28,75 @@
           Status
         </p>
       </div>
+      <div class="row">
       <!--Swiper slidewhow-->
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          {% for x in product.pictures %}
-            <div class="swiper-slide">
-              <img class="img-fluid" src="{{url_for('static', filename='pictures/' + x.pictureName)}}">
-            </div>
-          {% endfor %}
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next swiper-button-black"></div>
-        <div class="swiper-button-prev swiper-button-black"></div>
-      </div>
-      <div id="product-info-wrapper">
-        <!--DESKTOP-->
-        <div class="desktop">
-          <h1>
-            {{product.name}}
-          </h1>
-          <div class="spacing-line">
+        <div class="swiper-container col-10 col-lg-5 offset-1">
+          <div class="swiper-wrapper">
+            {% for x in product.pictures %}
+              <div class="swiper-slide">
+                <img class="img-fluid" src="{{url_for('static', filename='pictures/' + x.pictureName)}}">
+              </div>
+            {% endfor %}
           </div>
-          <p class="product-status">
-            Status
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+          <!-- Add Arrows -->
+          <div class="swiper-button-next swiper-button-black"></div>
+          <div class="swiper-button-prev swiper-button-black"></div>
+        </div>
+        <div id="product-info-wrapper" class="col-10 offset-1 col-lg-5 offset-lg-0">
+          <!--DESKTOP-->
+          <div class="desktop">
+            <h1 id="h1-title">
+              {{product.name}}
+            </h1>
+            <div class="spacing-line">
+            </div>
+            <p class="product-status">
+              Status
+            </p>
+            <p>
+              <b>Price:</b> {{product.price}} SEK
+            </p>
+          </div>
+          <p>
+            <b>Color:</b> {{product.color}}
           </p>
           <p>
-            <b>Price:</b> {{product.price}} SEK
+            <b>Condition:</b> {{conditionName}}
           </p>
-
+          <p>
+            <b>Payment method:</b> {{paymentMethodName}}
+          </p>
+          <p>
+            <b>Added:</b> {{product.pubDate}}
+          </p>
+          <p>
+            <b>Measurements:</b> H: {{product.height}} cm, W: {{product.width}} cm, D: {{product.depth}} cm
+          </p>
         </div>
-        <p>
-          <b>Color:</b> {{product.color}}
-        </p>
-        <p>
-          <b>Condition:</b> {{product.condition}}
-        </p>
-        <p>
-          <b>Payment method:</b> {{product.paymentMethod}}
-        </p>
-        <p>
-          <b>Added:</b> {{product.pubDate}}
-        </p>
-        <p>
-          <b>Measurements:</b> H: {{product.height}}, W: {{product.width}}, D: {{product.depth}}
-        </p>
-
-        <input type="button" value="Reserve">
       </div>
     </div>
-    <div id="uncertain-container">
+    <!---------------------------
+    Section - "How it works"
+    ------------------------------>
+
+    {% include 'how_it_works.html' %}
+
+    <!---------------------------
+    Section - "Is something uncertain?"
+    ------------------------------>
+
+    <div id="uncertain-container" class="col-10 offset-1">
       <h2>
         Is something uncertain?
       </h2>
       <div class="spacing-line">
       </div>
       <p>
-        Please send us an email at
-        <a><b>
-          email@email.com
+        Please contact us
+        <a class="a-underline" href="{{ url_for('main.contact') }}"><b>
+          here
         </b></a>
       </p>
     </div>

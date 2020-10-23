@@ -1,0 +1,47 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_news = True %}
+
+{% block more_head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/news.css') }}">
+{% endblock more_head %}
+
+{% block content %}
+<h1>News</h1>
+<a class="btn btn-primary" href="{{ url_for('admin.admin_add_news') }}">Add news</a>
+<div class="card-holder">
+    {% for news in all_news %}
+    <div class="lssh-card">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title lssh-card-title">{{ news.title }}</h5>
+                <p class="card-text lssh-card-ingress">{{ news.ingress }}</p>
+
+                {% if news.published %}
+                <div class="alert alert-success" role="alert">
+                    Published
+                </div>
+                {% else %}
+                <div class="alert alert-secondary" role="alert">
+                    Draft
+                </div>
+                {% endif %}
+                <div class="btn-group">
+                    <a href="{{ url_for('admin.admin_view_news', id = news.id) }}" class="btn btn-secondary">View</a>
+                    <a href="{{ url_for('admin.admin_edit_news', id = news.id) }}" class="btn btn-info">Edit</a>
+                    {% if news.published %}
+                    <button class="btn btn-warning" onClick="setPublishedNews({{ news.id}}, false)">Retract</button>
+                    {% else %}
+                    <button class="btn btn-success" onClick="setPublishedNews({{ news.id}}, true)">Publish</button>
+                    {% endif %}
+                    <button class="btn btn-danger {% if news.published %}disabled{% endif %}" {% if not news.published %}onClick="deleteNews({{ news.id }})"{% endif %}><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/news.js') }}"></script>
+{% endblock scripts%}

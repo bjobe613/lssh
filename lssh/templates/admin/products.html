@@ -1,0 +1,91 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_products = True %}
+
+{% block more_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/products.css') }}">
+{% endblock more_head %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="adm-prod-sidebar">
+                    <h1>Products</h1>
+                    <h2>Search</h2>
+                    <form>
+                        <div class="form-group row" style="max-width: 100%;">
+                            <div class="col">
+                                <input class="form-control" id="admin-product-search-field" type="text" placeholder="Item id">
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary" id="admin-product-search-button" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>Categories</h2>
+                    <ul>
+                    {% for category in categories %}
+                        <li><a href="{{ url_for('admin.admin_products_category', category_str=category.name) }}">{{ category.name|e }}</a></li>
+                    {% endfor %}
+                    </ul>
+                    <a class="btn btn-success" href="{{ url_for('admin.admin_add_product') }}">Add product</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                {% if optional_table_header %}
+                <div class="row">
+                    <h1 class="col-auto">{{optional_table_header}}</h1>
+                    <a class="col-auto" href="{{ url_for('admin.admin_products') }}"><h1><i class="fa fa-times" aria-hidden="true"></i></h1></a>
+                </div>
+                {% endif %}
+                <div class="row border-bottom adm-prod-table-head">
+                    <div class="col-2 adm-prod-tablecell adm-prod-imgcol"><h2><i class="fa fa-picture-o" aria-hidden="true"></i></h2></div>
+                    <div class="col-2 adm-prod-tablecell"><h2>Name</h2></div>
+                    <div class="col-2 adm-prod-tablecell"><h2>#</h2></div>
+                    <div class="col-2 adm-prod-tablecell"><h2>Category</h2></div>
+                    <div class="col-2 adm-prod-tablecell"></div>
+                    <div class="col-2 adm-prod-tablecell"></div>
+                </div>
+                <div class="product-view">
+
+                {% for product in products %}
+                    <div class="row adm-prod-row">
+                        <div class="col-md-2 col-4 adm-prod-tablecell adm-prod-imgcol"><img class="img-fluid" src="{{ url_for('static', filename='pictures/' + product.getSinglePictureName()) }}"></div>
+                        <div class="col-md-6 col-8">
+                            <div class="row">
+                                <div class="col-md-4 adm-prod-tablecell">
+                                    <p><span class="adm-prod-text">Name: </span>{{ product.name }}</p>
+                                </div>
+                                <div class="col-md-4 adm-prod-tablecell">
+                                    <p><span class="adm-prod-text">Id: </span>{{ product.articleNumber }}</p>
+                                </div>
+                                <div class="col-md-4 adm-prod-tablecell">
+                                    <p><span class="adm-prod-text">Category: </span>{{ product.category.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 d-md-none"></div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-credit-card"></i></button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-pencil"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                            
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/products.js') }}"></script>
+{% endblock scripts %}

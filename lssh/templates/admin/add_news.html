@@ -1,0 +1,6 @@
+{% extends "admin/news_writer.html" %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_news.js') }}"></script>
+{% endblock scripts %}

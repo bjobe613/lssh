@@ -1,12 +1,6 @@
-/* 
-    Regular CSS rules
-    -----------------------
-    General
-*/
-
-.p-white {
-    color: white;
-}
+/************************
+General
+************************/
 
 .p-heading {
     font-weight: 500;
@@ -17,42 +11,34 @@
     font-size: 2.2rem;
 }
 
-.btn-green {
-    width: 70%;
-    background-color: #09433A;
-    border-style: none;
-    padding: 0.5rem;
-    font-size: 1rem;
+
+/************************
+Section - "Slogan"
+************************/
+
+.row-top {
+    height: 10vh;
 }
 
-.btn-green:active {
-    background-color: #09433A;
-    border-style: none;
+.row-middle-news {
+    height: 60vh;
 }
 
-.btn-green:focus {
-    background-color: rgb(19, 80, 64);
-    border-style: none;
+.row-middle {
+    height: 80vh;
 }
 
-.btn-white {
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-style: none;
-    padding: 0.8rem;
-    font-size: 1rem;
+.col-middle {
+    background: url('../pictures/liana-mikah-8tJxjQWTyNA-unsplash.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.btn-green:hover {
-    background-color: rgb(31, 110, 89);
+.row-bottom {
+    height: 10vh;
 }
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 1 - "Slogan" 
-*/
 
 .space {
     padding-top: 15vh;
@@ -62,86 +48,54 @@
     padding-top: 5vh;
 }
 
-.shifted-index {
-    background-color: #E6E7E9;  
-    display: inline-flex;
-    margin: 0px;
-    padding: 0;
- 
-}
-
 .index-container {
-    margin-top: 5rem;
-    background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    background: url('../pictures/indexfront.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 90vh;
-    
+    height: 100vh;
 }
 
 #slogan-text {
-    font-size: 3.2rem;
+    font-size: 4rem;
     color: rgb(115, 115, 115);
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 #slogan-text-bold {
-    font-size: 3.2rem;
+    font-size: 4rem;
     font-weight: 500 !important;
     color: #09433A;
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 .row-socialmedia {
     padding-top: 25vh;
 }
 
-.fa-facebook {
-    background: #000000;
-    color: white;
-    padding-right: 0.3rem;
-    padding-left: 0.4rem;
-    padding-top: 0.3rem;
-}
 
-.fa-facebook:hover {
-    text-decoration: none;
-    color: white;
-}
+/************************
+Section - "Slogan"
 
-.fa-instagram {
-    font-size: 1.5rem;
-    color: black;
-    margin-left: 1rem;
-    font-weight: 500;
-}
+Mobile Media queries
+************************/
 
-.fa-instagram:hover {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-}
-
-.fa-linkedin {
-    background: #000000;
-    color: white;
-    margin-left: 1rem;
-    padding-right: 0.3rem;
-    padding-left: 0.3rem;
-    padding-top: 0.3rem;
-}
-
-.fa-linkedin:hover {
-    text-decoration: none;
-    color: white;
-}
-
-/* 
-    Desktop Media Queries
-    -----------------------
-    Section 1 - "Slogan"
-*/
-
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 992px) {
     .space {
         padding-top: 25vh;
         display: block;
@@ -150,45 +104,76 @@
         padding-top: 5vh;
     }
     .index-container {
-        background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+        background: url('../pictures/indexfrontmobile.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        height: 100vh;
     }
-    .arrow-down {
-        border-top: 20px solid rgb(146, 143, 143);
+    #slogan-text {
+        font-size: 2.5rem;
     }
-    .white-hr {
-        width: 40%;
-        border: none;
-        height: 1px;
-        background-color: white;
+    #slogan-text-bold {
+        font-size: 2.5rem;
     }
-    .white-hr-thin {
-        border: none;
-        height: 1px;
-        background-color: rgba(255, 255, 255, 0.267);
+
+    .mobile-width {
+        width: 60%;
+    }
+
+    .mobile-width-p {
+        padding-left: 20%;
+        padding-right: 20%;
     }
 }
 
-.arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid rgb(199, 200, 201);
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
+
+@media only screen and (max-width: 1200px) {
+    .index-container {
+        background: url('../pictures/indexfrontmobile.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
 }
 
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 2 - "News" 
-*/
+.white-hr {
+    width: 40%;
+    border: none;
+    height: 1px;
+    background-color: white;
+}
+
+.white-hr-thin {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.267);
+}
+
+/************************
+Section - "About us"
+************************/
+
+#about-index-container {
+    height: 80vh;
+}
+
+.half-background-green {
+    background: linear-gradient(90deg, transparent 50%, var(--main-bg-color) 50%);
+}
+
+@media only screen and (max-width: 992px) {
+    #about-index-container {
+        height: 110vh;
+    }
+}
+
+
+/************************
+Section - "News"
+************************/
 
 .news-container {
     min-height: 50vh;
@@ -203,88 +188,19 @@
     width: 100%;
 }
 
-#p-category-news {
-    margin-bottom: 0px;
+#image-news {
+    object-fit: cover;
+    height: 70vh;
+    display: block;
+    width: 100%;
 }
 
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 3 - "How it works" 
-*/
+/************************
+Section - "Purpose"
+************************/
 
-.works-button {
-    cursor: pointer;
-}
-
-.works-container {
-    min-height: 100vh;
-}
-
-.works-heading {
-    padding-top: 2.2rem;
-}
-
-.row-space {
-    height: 10vh;
-}
-
-.green-bg {
-    background-color: #09433A;
-}
-
-.works-icons {
-    background-color: #09433A;
-    padding-bottom: 3rem;
-}
-
-.logo1 {
-    background-image: url(../pictures/mail_icon.png);
-    height: 100px;
-    width: 100px;
-}
-
-.space-green {
-    height: 5rem;
-    background-color: #09433A;
-}
-
-.p-text {
-    width: 70%;
-}
-
-.col-border {
-    border-right: 1px solid rgb(182, 182, 182);
-    height: 1rem;
-    margin-top: 0.2rem;
-}
-
-#works-buyer {
-    display: none;
-}
-
-.works-button-activated {
-    color: white !important;
-    font-weight: 500 !important;
-}
-
-.fluid-no-margin {
-    padding: 0;
-    margin: 0;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 4 - "Goal" 
-*/
-
-.goal-container {
-    min-height: 100vh;
-}
-
-#h1-goal {
-    font-size: 2.3rem !important;
+#purpose-container {
+    height: 70vh;
 }
 
 #goal-hr {
@@ -292,106 +208,14 @@
     width: 15%;
 }
 
-.img-1 {
-    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
-.img-2 {
-    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+/************************
+Section - "Subscribe"
+************************/
 
-.space-goal {
-    padding-top: 10vh;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 5 - "About, fun facts" 
-*/
-
-#green-hr {
-    border-top: 0.2rem solid #84E48C;
-    width: 4rem;
-    margin: 0px;
-    margin-bottom: 0.75rem;
-}
-
-#h1-number {
-    color: #84E48C;
-    font-weight: 500 !important;
-    font-weight: 700;
-}
-
-#learn-more-p {
-    margin-bottom: 0.2rem;
-}
-
-.about-container {
-    min-height: 40vh;
-}
-
-.about-row {
-    min-height: 60vh;
-    background-color: rgb(249, 249, 249);
-}
-
-.half-row {
-    height: 30vh
-}
-
-.picture-chair {
-    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 6 - "Purpose" 
-*/
-
-#purpose-space {
-    min-height: 30vh;
-}
-
-#purpose-container {
-    min-height: 80vh;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 7 - "Collaboration" 
-*/
-
-#collaboration-container {
-    min-height: 20vh;
+#subscribe-space {
     padding-top: 20vh;
-    background-color: rgb(249, 249, 249);
 }
-
-#navitas-logo {
-    height: 6rem;
-    width: auto;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 8 - "Subscribe" 
-*/
 
 #subscribe-container {
     background-color: rgb(249, 249, 249);
@@ -404,15 +228,6 @@
 
 #subscribe {
     width: 100%;
-}
-
-.btn-green-2 {
-    background-color: rgb(19, 80, 64);
-    border-style: none;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-size: 1rem;
-    margin-left: 1rem;
 }
 
 .sign-up-btn {
@@ -440,7 +255,23 @@
     font-size: 1rem;
 }
 
+#input-border-button {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-radius: 0;
+    color: black;
+    border-color: rgb(214, 214, 214);
+}
+
+#input-border-button:hover {
+    background-color: white;
+    color: grey;
+}
+
 #input-border-bottom:focus {
-    border-color: rgba(19, 80, 64, 0.438);
+    border-color: rgb(214, 214, 214);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
 }

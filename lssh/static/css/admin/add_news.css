@@ -1,0 +1,15 @@
+#editor {
+    height: 500px;
+}
+
+#picture-holder {
+    width:100%;
+    background-color: lightblue;
+    border: 1px blue dotted;
+    text-align: center;
+    padding: 2rem;
+}
+
+#news-form-container {
+    padding-top: 1rem;
+}

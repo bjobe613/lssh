@@ -10,3 +10,5 @@ Flask-wtf ==0.14.3
 wtforms[email]
 flask-bcrypt
 flask-jwt-extended
+quill-delta[html]
+Flask-Mail

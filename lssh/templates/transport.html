@@ -2,11 +2,81 @@
 
 {% block more_head %}
     <!--Additional head-->
+    <title>LSSh | Our options for transport</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/transport.css') }}">
 {% endblock more_head %}
 
 {% block content %}
     <!--Where the html should be written-->
-    <p>
-        transport
-    </p>
+    <div id="about-us-container" class="container-fluid">
+        <div class="row">
+            <div class="col-1 offset-8 text-center">
+                <div class="arrow-down d-sm-block d-none"></div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="about-us-container3" class="container-fluid">
+        <div class="row pt-5">
+
+           
+            <div class="col-xl-3 col-8 offset-2 pb-3">
+                <h4>OUR OPTIONS FOR</h4>
+                <h1 class="text-white">Transport</h1>
+                <br>
+                <h5 class="text-white">We know it is hard to transport furniture, so we have som solutions!</h5>
+                <h6>We offer free rental of a bike & bike cart and a tricycle which you can use to transport furniture to and from the shop!</h6>
+                <br>
+                <br><br><br>
+            
+                
+            </div>
+
+            <div class="col-1 h-100"></div>
+            <div id="img-hand-in" class="col-sm-4 col-12"></div>
+            
+        </div>
+    </div>
+
+    <div id="transport-container" class="container-fluid">
+        <div class="row pt-5 mt-5">
+            <div class="col-8 offset-2">
+                <h3>HOW IT WORKS</h3>
+                <p class="pt-3">The transportation bikes can be used during our opening hours but can not be reserved in advance, it is first come first served.
+                     To borrow the bike you need to give us some contact information and leave an ID-card with us that you get back when you return the bike.
+                      <b>Note!</b> The bike needs to be returned before the opening hour is over so make sure not to come right before closing. The cargo bike/bike cart can be 
+                      borrowed for a maximum of 2 hours. When picking up the cargo bike/bike cart, we will agree upon at what time the bike should be returned to us.</p>
+
+                      <p>In case of damage, the student has to either make sure that the bike is repaired or pay the cost of reparation. In case of loss, the student is required to pay a fee of 1000 SEK.</p>
+
+                <h3 class="pt-5">OUR BIKES</h3>
+                <p class="pt-3">Our goal is to offer environmentally friendly transportation to our users. Therefore we have a cargo tricycle and a bicycle cart that you can borrow 
+                    for transporting smaller items such as a chair, bedside table, shelf or other household goods. This service is <b>free</b>.</p>
+            </div>
+        </div>
+
+        <div class="row pt-5 pb-5">
+            <div class="col-8 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="{{ url_for('static', filename = '/pictures/bike1.png') }}" class="img-fluid image" alt="Responsive image">
+                    </div>
+                    <div class="col-6">
+                        <img src="{{ url_for('static', filename = '/pictures/bike2.png') }}" class="img-fluid image" alt="Responsive image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-5 mb-5">
+            <div class="col-8 offset-2">
+                <h3>TRANSPORT DAYS</h3>
+                <p class="pt-3">You can not bring everything on a bike so a few times each semester we arrange transportation days. 
+                    Then we pick up and deliver furniture to your door for a small fee. Currently we do not have a transportation day scheduled,
+                     so keep an eye on our <a class="a-how-it-works" target="_blank" href="https://www.facebook.com/liustudentsecondhand/">facebook page</a> to not miss our next one!</p>
+            </div>
+        </div>
+        
+    </div>
 {% endblock content %}

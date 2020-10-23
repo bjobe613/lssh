@@ -1,0 +1,90 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_products = True %}
+
+{% block more_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_product.css') }}">
+{% endblock more_head %}
+
+{% block content %}
+    <div class="container">
+        
+        <form id="add-product-form">
+            <h1>Add product</h1>
+            <div class="form-group">
+              <label for="add-product-title">Title</label>
+              <input type="text" class="form-control" id="add-product-title" name="name" placeholder="Title">
+            </div>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="add-product-price">Price</label>
+                    <input type="Number" class="form-control" id="add-product-price" name="price" placeholder="100">
+                </div>
+                <div class="form-group col">
+                    <label for="add-product-condition">Condition</label>
+                    <select class="form-control" id="add-product-condition" name="condition">
+                        {% for condition in conditions %}
+                        <option value="{{condition.id}}">{{condition.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="border picture-area">
+                <label for="add-product-picture-picker">Add pictures: </label>
+                <input type="file" class="form-control-file" id="add-product-picture-picker" multiple="true" accept="image/png, image/jpeg">
+                
+                <label for="add-product-picture-viewer">Chosen pictures</label>
+                <div class="card-deck add-product-card-holder" id="add-product-picture-viewer">
+                
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="add-product-category">Category</label>
+              <select class="form-control" id="add-product-category" name="category">
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name|e }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="add-product-payment">Payment method</label>
+                <select class="form-control" id="add-product-payment" name="paymentMethod">
+                  {% for paymentMethod in paymentMethods %}
+                  <option value="{{paymentMethod.id}}">{{paymentMethod.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            <div class="form-group">
+              <label for="add-product-description">Description</label>
+              <textarea class="form-control" id="add-product-description" name="description" rows="5"></textarea>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-success add-product-button">Submit</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-light add-product-button">Preview</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+
+{% block templates %}
+    <template id="empty-files-card">
+        <div class="card add-product-card">
+            <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
+            <div class="card-body">
+                <h5>No pictures chosen</h5>
+            </div>
+            <div class="card-footer add-product-card-footer">
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-left"></i></button>
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-times"></i></button>
+                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </template>
+{% endblock templates %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_product.js') }}"></script>
+{% endblock scripts %}
