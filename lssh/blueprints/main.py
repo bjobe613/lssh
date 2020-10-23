@@ -7,7 +7,7 @@ import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
 '''this is the regular expression used to khnow if what is sent is an email:'''
-emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+emailregex = '^\w+[./_]?\w+@\w+[.](\w+[.])?\w{2,3}$'
 
 @main.route("/")
 def startup():
@@ -36,10 +36,9 @@ def subscribe():
 
     if request.method == 'POST':
 
-      
         email = request.get_json()
-     
-        if (re.search(emailregex, email)):
+        
+        if (re.match(emailregex, email)):
             exist = Newsletter.query.filter(Newsletter.email == email).first()
             if not exist:
                 sub = Newsletter(email = email)
@@ -51,6 +50,7 @@ def subscribe():
                 mail.send(msg)
 
                 return Response(status= 201)
+
         return Response(status=406)
 
     
