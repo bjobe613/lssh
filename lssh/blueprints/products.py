@@ -32,25 +32,27 @@ def products_content():
 @products.route("/product/<int:x>", methods=['GET'])
 def product(x):
     prod = Product.query.filter(Product.articleNumber == x).first()
-    return render_template('product_single_view.html', product = prod)
+    return render_template("product_single_view.html", product = prod, categoryName = prod.category.name, conditionName = prod.condition.name, paymentMethodName=prod.payment_method.name)
 
 @products.route("/add/", methods=['POST'])
 def add_product():
-    if(request.form.get("name") and 
-       request.form.get("price") and 
-       request.form.get("condition") and 
-       request.form.get("category") and 
-       request.form.get("paymentMethod")):
+    fields = ["name", "price", "condition", "paymentMethod", "description"]
+    for field in fields:
+        if not request.form.get(field):
+            return {"msg": "missing {0} from form".format(field)}, 400
+    try:
         prod = Product(name = request.form.get("name"),
                        price = int(request.form.get("price")),
-                       condition = int(request.form.get("condition")),
-                       paymentMethod = request.form.get("paymentMethod"))
+                       category_id = int(request.form.get("category")),
+                       condition_id = int(request.form.get("condition")),
+                       payment_method_id = int(request.form.get("paymentMethod")),
+                       comment = request.form.get("description"))
         db.session.add(prod)
         db.session.commit()
+    except:
+        return jsonify({"msg": "An exception was raised. Could be because the specified condition, paymentmethod or category does not exist in the databse"}), 400
 
-        for file in request.files.getlist("file"):
-            prod.addPicture(file)
+    for file in request.files.getlist("file"):
+        prod.addPicture(file)
 
-        return {"msg": "ok"}, 200
-    else:
-        return {'msg': 'ej ok'}, 400
+    return prod.serialize(), 200

@@ -27,7 +27,7 @@
                     <h2>Categories</h2>
                     <ul>
                     {% for category in categories %}
-                        <li><a href="{{ url_for('admin.admin_products_category', category=category.name|e) }}">{{ category.name|e }}</a></li>
+                        <li><a href="{{ url_for('admin.admin_products_category', category_str=category.name) }}">{{ category.name|e }}</a></li>
                     {% endfor %}
                     </ul>
                     <a class="btn btn-success" href="{{ url_for('admin.admin_add_product') }}">Add product</a>
@@ -62,7 +62,7 @@
                                     <p><span class="adm-prod-text">Id: </span>{{ product.articleNumber }}</p>
                                 </div>
                                 <div class="col-md-4 adm-prod-tablecell">
-                                    <p><span class="adm-prod-text">Category: </span>{{ product.category }}</p>
+                                    <p><span class="adm-prod-text">Category: </span>{{ product.category.name }}</p>
                                 </div>
                             </div>
                         </div>

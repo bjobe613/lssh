@@ -1,83 +1,75 @@
 {% extends "layout.html" %}
 
 {% block more_head %}
-    <!--Additional head-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/news.css') }}">
-    <title>LSSh | See all our latest news</title>
+<!--Additional head-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/news.css') }}">
+<title>LSSh | See all our latest news</title>
 {% endblock more_head %}
 
 {% block content %}
-    <!--Where the html should be written-->
-    <div id="news-container" class="container-fluid">
-        <div id="title-row" class="row mb-5">
-            <div class="col-8 offset-2 pt-5">
-                <h1 class="pb-3">News & updates</h1>
-                
-                <a href="https://www.facebook.com/liustudentsecondhand/" class="fa fa-facebook"></a>
-                <a href="https://www.instagram.com/liustudentsecondhand/" class="fa fa-instagram"></a>
-                <a href="#" class="fa fa-linkedin"></a>
+<!-- Where the html should be written -->
 
-            </div>
+<div id="news-container" class="container-fluid">
+
+    <!-- Row with title of page and links to social media -->
+    <div id="title-row" class="row mb-5">
+        <div class="col-8 offset-2 pt-5">
+            <h1 class="pb-3">News & updates</h1>
+            <a href="https://www.facebook.com/liustudentsecondhand/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/liustudentsecondhand/" target="_blank" class="fa fa-instagram"></a>
         </div>
+    </div>
 
+    <!-- Row with all news divs that are generated with jinja -->
+    <div id="news-row" class="row">
+        <div class="col-lg-8 offset-lg-2 col-10 offset-1">
 
-       
-        
-            <div id="news-row" class="row">
-                <div class="col-lg-8 offset-lg-2 col-10 offset-1">
+            <div class="row h-100 pb-5 mb-5">
 
-                    <div class="row h-100 pb-5 mb-5">
+                {% for News in newsarticles %}
 
-                    {% for News in newsarticles %}
+                {% if not loop.index is divisibleby 2 %}
+                <div class="col-12 col-lg-5 pb-lg-0 pb-5">
+                    <a href="news/{{ News.id }}">
+                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+                            class="img-fluid" alt="Responsive image">
+                    </a>
+                    <div id="text-img-news" class="row">
+                        <div class="offset-2 col-10 bg-white pb-3">
+                            <h2 class="pt-3">{{ News.title }}</h2>
+                            <p class="pt-3">{{ News.ingress }}</p>
+                            <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
 
-                        {% if not loop.index is divisibleby 2 %}
-                        <div class="col-12 col-lg-5 pb-lg-0 pb-5">
-                            <a href="news/{{ News.id }}">
-                                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
-                            </a>
-                            <div id="text-img-news" class="row">
-                                <div class="offset-2 col-10 bg-white pb-3">
-                                    <h3 class="pt-3">{{ News.title }}</h3>
-                                    <p class="pt-3">{{ News.ingress }}</p>
-                                    <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
-                                
-                                </div>
-                            </div>
-                           
                         </div>
+                    </div>
 
-                       
-
-                        {% elif loop.index is divisibleby 2 %}
+                </div>
 
 
-                        <div class="col-lg-5 col-12 offset-lg-2 pt-lg-5 mt-lg-5 pb-5 pb-lg-0">
-                            <a href="news/{{ News.id }}">
-                                <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
-                            </a>
-                            <div id="text-img-news" class="row">
-                                <div class="offset-2 col-10 bg-white pb-3">
-                                    <h3 class="pt-3">{{ News.title }}</h3>
-                                    <p class="pt-3">{{ News.ingress }}</p>
-                                    <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
-                                
-                                </div>
-                            </div>
+
+                {% elif loop.index is divisibleby 2 %}
+
+
+                <div class="col-lg-5 col-12 offset-lg-2 pt-lg-5 mt-lg-5 pb-5 pb-lg-0">
+                    <a href="news/{{ News.id }}">
+                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}"
+                            class="img-fluid" alt="Responsive image">
+                    </a>
+                    <div id="text-img-news" class="row">
+                        <div class="offset-2 col-10 bg-white pb-3">
+                            <h2 class="pt-3">{{ News.title }}</h2>
+                            <p class="pt-3">{{ News.ingress }}</p>
+                            <a class="a-link" href="news/{{ News.id }}">READ MORE <i class="fa">&#xf105;</i></a>
+
                         </div>
-
-                        {% endif %}
-                    {% endfor %}
                     </div>
                 </div>
+
+                {% endif %}
+                {% endfor %}
             </div>
-           
-       
-     
-
-        
- 
-
-
-
+        </div>
     </div>
+
+</div>
 {% endblock content %}

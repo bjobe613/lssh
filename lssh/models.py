@@ -25,21 +25,49 @@ class Car(db.Model):
         return "<Car {}: {} {}>".format(self.id, self.make, self.model)
 """
 
+#######################################################################
+# The following three classes are helper classes to store data for 
+# Product. These are here to prevent deletion and update anomalies and
+# to simplify displaying of for example all categories, all conditions
+# and all available payment methods
+#######################################################################
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
+    products = db.relationship('Product', back_populates='category')
+
+class Condition(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
+    products = db.relationship('Product', back_populates='condition')
+
+class PaymentMethod(db.Model):
+    __tablename__ = 'paymentmethod'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
+    products = db.relationship('Product', back_populates='payment_method')
+
 class Product(db.Model):
     articleNumber = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     price = db.Column(db.Integer, nullable = False)
     pubDate = db.Column(db.DateTime,server_default = func.now())
-    category = db.Column(db.Integer, nullable = False, default = 0)
-    subcategory = db.Column(db.Integer, nullable = True, default = 0)
     color = db.Column(db.String, default = "None")
-    condition = db.Column(db.Integer, nullable = False)
+
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable = False)
+    category = db.relationship('Category', back_populates='products')
+
+    condition_id = db.Column(db.Integer, db.ForeignKey('condition.id'), nullable=False)
+    condition = db.relationship('Condition', back_populates='products')
+
+    payment_method_id = db.Column(db.Integer, db.ForeignKey('paymentmethod.id'), nullable=False)
+    payment_method = db.relationship('PaymentMethod', back_populates='products')
+
     height = db.Column(db.Integer, nullable = True)
     width = db.Column( db.Integer, nullable = True)
     depth = db.Column(db.Integer, nullable = True)
     status = db.Column(db.String, default = "Available")
     comment = db.Column(db.Text)
-    paymentMethod = db.Column(db.String, nullable = False)
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
     reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
@@ -54,9 +82,17 @@ class Product(db.Model):
 
     #This serialize is urrently fitted for filter
     def serialize(self):
-        return dict(articleNumber=self.articleNumber, name=self.name, price=self.price, pubDate=self.pubDate,
-        category=self.category, subcategory=self.subcategory, color=self.color, condition=self.condition,
-        status=self.status, paymentMethod=self.paymentMethod)
+        return dict(
+            articleNumber=self.articleNumber, 
+            name=self.name, 
+            price=self.price, 
+            pubDate=self.pubDate,
+            category=self.category.name,
+            color=self.color,
+            condition=self.condition.name,
+            status=self.status,
+            paymentMethod=self.payment_method.name
+        )
 
     def addPicture(self, picture):
         pic = ProductPictures(productID = self.articleNumber)
@@ -68,6 +104,20 @@ class Product(db.Model):
         fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
         picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
         pic.renameReference(fileName)
+    
+    def addPictureFromHardDive(self, path):
+        pic = ProductPictures(productID = self.articleNumber)
+
+        fileEnding = path.rsplit('.')[len(path.rsplit('.')) - 1]
+        fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
+        with open(path, 'rb') as f:
+            data = f.read()
+            with open(os.path.join('static', 'pictures', fileName), 'wb') as wf:
+                wf.write(data)
+
+        pic.renameReference(fileName)
+        db.session.add(pic)
+        db.session.commit()
 
 class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
@@ -113,6 +163,16 @@ class Newspicture(db.Model):
         picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
         self.path = fileName
         db.session.commit()
+    
+    def savePictureFromHardDrive(self, path):
+        fileEnding = path.rsplit('.')[len(path.rsplit('.')) - 1]
+        fileName = 'news-' + str(self.pictureID) + '.' + fileEnding
+        with open(path, 'rb') as f:
+            data = f.read()
+            with open(os.path.join('static', 'pictures', fileName), 'wb') as wf:
+                wf.write(data)
+        self.path = fileName
+        db.session.commit()
 
 class News(db.Model): #has to be reworked into files, not a model.
     id = db.Column(db.Integer, primary_key = True)
@@ -152,6 +212,14 @@ class News(db.Model): #has to be reworked into files, not a model.
         
         self.titlePicture = titlePicture.pictureID
         titlePicture.savePicture(picture)
+
+    def addPictureFromHardDive(self, path):
+        titlePicture = Newspicture()
+        db.session.add(titlePicture)
+        db.session.commit()
+        
+        self.titlePicture = titlePicture.pictureID
+        titlePicture.savePictureFromHardDrive(path)
 
     def get_article_as_html(self):
         article_html = ""
@@ -197,12 +265,39 @@ class OpeningHours(db.Model):
     openingTime = db.Column(db.Time, nullable = False)
     closingTime = db.Column(db.Time, nullable = False)
 
-class FAQ(db.Model):
-    faqID = db.Column(db.Integer, primary_key = True)
-    show = db.Column(db.Boolean, default = False) #or should it be true??
-    headline = db.Column(db.String, nullable = False)
-    question = db.Column(db.Text, nullable = False)
-    answer = db.Column(db.Text, nullable = False)
+class Categoryfaq(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
+    questions = db.relationship("Question", back_populates="categoryfaq")
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name
+        }
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    questionTitle = db.Column(db.Text, nullable = False)
+    questionAnswer = db.Column(db.Text, nullable = False)
+    categoryID = db.Column(db.Integer, db.ForeignKey('categoryfaq.id'))
+    categoryfaq = db.relationship("Categoryfaq", backref="question")
+
+    def serialize(self):
+        return {
+            "id" : self.id,
+            "questionTitle" : self.questionTitle,
+            "questionAnswer" : self.questionAnswer,
+            "categoryID" : self.categoryID,
+        }
+
+
+#class FAQQuestion(db.Model):
+#    faqID = db.Column(db.Integer, primary_key = True)
+#    show = db.Column(db.Boolean, default = False) #or should it be true??
+#    headline = db.Column(db.String, nullable = False)
+#    question = db.Column(db.Text, nullable = False)
+#    answer = db.Column(db.Text, nullable = False)
 
 class HandInRequest(db.Model):
     requestID = db.Column(db.Integer, primary_key = True)
@@ -219,58 +314,4 @@ class HandInRequest(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False)
     requestID = db.Column(db.Integer, db.ForeignKey('handinrequest.requestID'))
-'''
-
-
-def resetDB():
-    db.drop_all()
-    db.create_all()
-    print("Reset database successfully")
-
-def fillTestDB():
-
-    prod1 = Product(name = 'Stol', price = 500, condition = 3, paymentMethod = "Swish")
-    prod2 = Product(name = 'Bord', price = 800, category = 2, condition = 1, height = 150, width = 60, depth = 40, paymentMethod = "Cash")
-    prod3 = Product(name = 'Soffa', price = 1200, category = 3, condition = 3, height = 70, width = 200, depth = 60, paymentMethod = "Swish eller Revolut")
-
-    prod1pic1 = ProductPictures(productIDPicture = prod1)
-    prod1pic2 = ProductPictures(productIDPicture = prod1)
-    prod2pic1 = ProductPictures(productIDPicture = prod2)
-
-    prod1res1 = ProductReservation(liuID = "asdfg123", productIDReservation = prod1)
-    prod2res1 = ProductReservation(liuID = 'asdfg123', productIDReservation = prod2)
-    prod3res1 = ProductReservation(liuID = 'jkler678', productIDReservation = prod3)
-    prod3res2 = ProductReservation(liuID = 'qwert456', productIDReservation = prod3)
-
-    news1 = News(title = "En nyhet", ingress = "En liten ingress som beskriver innehållet i artikeln väl", text = {"ops" : [{"insert" : "Detta är <div> brödtexten"}]})   
-
-    seller1 = Seller(liuID = 'LSSH')
-    seller1.products.append(prod1)
-    seller1.products.append(prod2)
-    seller2 = Seller(liuID = 'qwert123')
-    seller2.products.append(prod3)
-
-    bl1 = Blacklist(liuID = 'uiojk890')
-
-    nl1 = Newsletter(email = 'tyuvb456@student.liu.se')
-
-
-    '''
-    db.session.add_all([prod1, prod2, prod3, prod1pic1, prod1pic2, prod2pic1, prod1res1, prod2res1,
-                        prod3res1, prod3res2, seller1, seller2, bl1, nl1, news1])'''
-    db.session.commit()
-
-    print("Filled the database")
-
-
-resetDB()
-fillTestDB()
-
-
-
-'''
-def test():
-    pic = FurniturePictures.query.filter_by(pictureID = 1).first()
-    pic.pictureName = str(pic.pictureID) + ".jpg"
-    db.session.commit()
 '''
