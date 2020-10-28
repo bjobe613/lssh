@@ -30,7 +30,6 @@ def user_identity_lookup(admin):
 
 
 @users.route("/login", methods = ['GET', 'POST'])
-@jwt_optional
 def adminLogin():
     
     if request.method == 'POST':
@@ -50,7 +49,7 @@ def adminLogin():
                 return 'wrong password', 404
     elif request.method == 'GET':
         if get_jwt_identity() != None:
-            return redirect(url_for('users.adminRegister'))        
+            return redirect(url_for('users.adminRegister'))   #this shit doesn't work     
         return render_template('login.html')
        
 
@@ -64,6 +63,7 @@ def adminRegister():
             newAdmin = Admin(name = form.userName.data, passwordHash = hashedPassword, authorization = form.authorizationLevel.data)
             db.session.add(newAdmin)
             db.session.commit()
+            print('added admin')
         else:
             print('user already exist')
                 
