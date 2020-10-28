@@ -72,7 +72,7 @@ class Product(db.Model):
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
     reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
     seller = db.Column(db.Integer, db.ForeignKey('seller.sellerID'))
-    buyer = db.Column(db.Integer, db.ForeignKey('buyer.buyerID'))
+    buyer = db.Column(db.Integer, db.ForeignKey('buyer.liuID'))
 
     def getSinglePictureName(self):
         piclist = self.pictures
@@ -145,9 +145,13 @@ class Seller(db.Model): # will be ralated to furniture
     products = db.relationship('Product', backref = 'sellerOfProduct')
 
 class Buyer(db.Model):
-    buyerID = db.Column(db.Integer, primary_key = True)
-    liuID = db.Column(db.String(8), nullable = False, unique = True)
+    liuID = db.Column(db.String(8), nullable = False, unique = True, primary_key = True, autoincrement=False)
+    email = db.Column(db.String, nullable = False, unique = True)
+    name = db.Column(db.String)
+    program = db.Column(db.String)
+    international = db.Column(db.Boolean)
     products = db.relationship('Product', backref = 'buyerOfProduct')
+
     
 
 

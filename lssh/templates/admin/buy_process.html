@@ -8,11 +8,11 @@
 
 {% block content %}
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 container-max-width">
 
 
     <div class="row">
-        <div class="offset-2 col-8">
+        <div class="col">
             <h1>Step 1 - Information about buyer</h1>
             <form onsubmit="return false">
 
@@ -26,16 +26,16 @@
     </div>
 
     <div class="row mb-5">
-        <div id="seller-information" class="col text-center">
-            No customer added
+        <div id="buyer-information" class="col text-center">
+            <p>No customer added</p>
         </div>
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid container-max-width">
 
     <div class="row">
-        <div class="col offset-2">  
+        <div class="col">  
             <h1>Step 2 - Add items and payment</h1>
         </div>
     </div>
@@ -43,14 +43,14 @@
     <div class="row pt-5">
 
 
-        <div class="col-2 offset-2">
+        <div class="col-3">
             <p>Number of items</p>
             <div id="total-items">
                 <p>0</p>
             </div>
 
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <p>Total payment left</p>
             <div id="total-payment">
                 <p>0</p>
@@ -58,9 +58,7 @@
 
         </div>
 
-        <div class="col-4">
-
-
+        <div class="col-6">
             <form onsubmit="return false">
 
                 <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
@@ -72,7 +70,7 @@
 </div>
 
 
-<div id="content" class="container-fluid">
+<div id="content" class="container-fluid container-max-width">
 
 </div>
 

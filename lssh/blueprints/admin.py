@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, Seller, ProductPictures
+from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, Buyer, ProductPictures
 import json
 
 
@@ -66,16 +66,19 @@ def buying_process_customer():
 
     print(data['liu_id'])
 
-    seller = Seller.query.filter(Seller.liuID == data['liu_id']).first() 
+    buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first() 
 
-    print(seller)
     
-    sellerJson = {  
-        'liuID' : seller.liuID,
-        'phone' : seller.phone
+    
+    buyerJson = {  
+        'liuID' : buyer.liuID,
+        'email' : buyer.email,
+        'name' : buyer.name,
+        'program' : buyer.program,
+        'international' : buyer.international
     }
 
-    return jsonify(sellerJson)
+    return jsonify(buyerJson)
   
 
 @admin.route("/products/")
