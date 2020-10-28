@@ -31,8 +31,7 @@
                 <div class="card pr-md-4 border-0">
 
                     <a href="news/{{ x.id }}">
-                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + x.get_img_url()) }}"
-                            class="card-img-top" alt="Responsive image">
+                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + x.get_img_url()) }}" class="card-img-top" alt="Responsive image">
                     </a>
 
                     <div class="card-body bg-white">
@@ -46,8 +45,7 @@
                 {% if loop.index == 2 %}
                 <div class="card pl-md-4 border-0 mt-md-5">
                     <a href="news/{{ x.id }}">
-                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + x.get_img_url()) }}"
-                            class="card-img-top" alt="Responsive image">
+                        <img id="image-news" src="{{ url_for('static', filename = '/pictures/' + x.get_img_url()) }}" class="card-img-top" alt="Responsive image">
                     </a>
                     <div class="card-body bg-white">
                         <h5 class="card-title">{{ x.title }}</h5>

@@ -4,13 +4,13 @@
 
 #image-news {
     object-fit: cover;
-    height: 25rem !important; /* Old was 20 rem */
+    height: 25rem !important;
+    /* Old was 20 rem */
     display: block;
     width: 100%;
 }
 
 /* Bootstrap cards */
-
 
 .card {
     background-color: transparent;
@@ -21,14 +21,19 @@
     padding-left: 3rem;
     padding-top: 1.5rem;
     padding-bottom: 2.5rem;
-
 }
 
+.card-columns {
+    column-count: 2;
+}
 
-
-@media (min-width: 768px) {
-    .card-columns {
-        column-count: 2;
+@media (max-width: 992px) {
+    #image-news {
+        object-fit: cover;
+        height: 20rem !important;
+        
+        display: block;
+        width: 100%;
     }
 }
 
@@ -36,15 +41,8 @@
     .card-columns {
         column-count: 1;
     }
-
     .card {
         margin-top: 3rem;
     }
-
    
-    
 }
-
-
-
-

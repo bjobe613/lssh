@@ -1,10 +1,6 @@
-
-
-/* 
-    Regular CSS rules
-    -----------------------
-    General
-*/
+/************************
+General
+************************/
 
 .p-heading {
     font-weight: 500;
@@ -15,46 +11,10 @@
     font-size: 2.2rem;
 }
 
-.btn-green {
-    width: 80%;
-    background-color: var(--main-bg-color);
-    border-style: none;
-    padding: 0.5rem;
-    font-size: 1rem;
-}
 
-.btn-green:active {
-    background-color: #09433a8f;
-    border-style: none;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.btn-green:focus {
-    background-color: #09433a8f;
-    border-style: none;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.btn-white {
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-style: none;
-    padding: 0.8rem;
-    font-size: 1rem;
-}
-
-.btn-green:hover {
-    background-color: #09433ac2;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 1 - "Slogan" 
-*/
+/************************
+Section - "Slogan"
+************************/
 
 .row-top {
     height: 10vh;
@@ -68,9 +28,7 @@
     height: 80vh;
 }
 
-
 .col-middle {
-    
     background: url('../pictures/liana-mikah-8tJxjQWTyNA-unsplash.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -90,47 +48,40 @@
     padding-top: 5vh;
 }
 
-.shifted-index {
-    background-color: #E6E7E9;  
-    display: inline-flex;
-    margin: 0px;
-    padding: 0;
- 
-}
-
 .index-container {
-    
-    background: url('../pictures/pexels-content-pixie-2736497.jpg') no-repeat center center;
+    background: url('../pictures/indexfront.jpg') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 90vh;
-    
-    
-    
+    height: 100vh;
 }
 
 #slogan-text {
-    font-size: 3.2rem;
+    font-size: 4rem;
     color: rgb(115, 115, 115);
-
-    -webkit-user-select: none; /* Safari */        
--moz-user-select: none; /* Firefox */
--ms-user-select: none; /* IE10+/Edge */
-user-select: none; /* Standard */
-
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 #slogan-text-bold {
-    font-size: 3.2rem;
+    font-size: 4rem;
     font-weight: 500 !important;
     color: #09433A;
-
-    -webkit-user-select: none; /* Safari */        
--moz-user-select: none; /* Firefox */
--ms-user-select: none; /* IE10+/Edge */
-user-select: none; /* Standard */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
 
 .row-socialmedia {
@@ -138,12 +89,11 @@ user-select: none; /* Standard */
 }
 
 
+/************************
+Section - "Slogan"
 
-/* 
-    Desktop Media Queries
-    -----------------------
-    Section 1 - "Slogan"
-*/
+Mobile Media queries
+************************/
 
 @media only screen and (max-width: 992px) {
     .space {
@@ -153,23 +103,40 @@ user-select: none; /* Standard */
     .row-slogan {
         padding-top: 5vh;
     }
-    .col-middle {
-        background: url('../pictures/mobileindex.jpg') no-repeat center center;
+    .index-container {
+        background: url('../pictures/indexfrontmobile.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-     
     }
-
     #slogan-text {
         font-size: 2.5rem;
     }
-
     #slogan-text-bold {
         font-size: 2.5rem;
     }
-   
+
+    .mobile-width {
+        width: 60%;
+    }
+
+    .mobile-width-p {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .index-container {
+        background: url('../pictures/indexfrontmobile.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
 }
 
 .white-hr {
@@ -178,20 +145,35 @@ user-select: none; /* Standard */
     height: 1px;
     background-color: white;
 }
+
 .white-hr-thin {
     border: none;
     height: 1px;
     background-color: rgba(255, 255, 255, 0.267);
 }
 
+/************************
+Section - "About us"
+************************/
+
+#about-index-container {
+    height: 80vh;
+}
+
+.half-background-green {
+    background: linear-gradient(90deg, transparent 50%, var(--main-bg-color) 50%);
+}
+
+@media only screen and (max-width: 992px) {
+    #about-index-container {
+        height: 110vh;
+    }
+}
 
 
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 2 - "News" 
-*/
-
+/************************
+Section - "News"
+************************/
 
 .news-container {
     min-height: 50vh;
@@ -209,136 +191,16 @@ user-select: none; /* Standard */
 #image-news {
     object-fit: cover;
     height: 70vh;
-    display:block;
+    display: block;
     width: 100%;
-    
 }
 
-#p-category-news {
-    margin-bottom: 0px;
-}
+/************************
+Section - "Purpose"
+************************/
 
-#latest-products-img1 {
-    background: url('../pictures/chair_product.png') no-repeat center center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    height: 20rem;
-    width: 10rem;
-    background-color: rgb(247, 247, 247);
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 3 - "How it works" 
-*/
-
-.works-button {
-    cursor: pointer;
-    color: rgb(155, 155, 155) !important;
-   
-}
-
-.works-container {
-    min-height: 100vh;
-}
-
-
-.row-space {
-    height: 10vh;
-}
-
-.green-bg {
-    background-color: var(--main-bg-color);
-}
-
-.works-icons {
-    background-color: var(--main-bg-color);
-    padding-bottom: 3rem;
-}
-
-.logo1 {
-    background-image: url(../pictures/mail_icon.png);
-    height: 100px;
-    width: 100px;
-}
-
-.logo2 {
-    height: 100px;
-    width: 100px;
-    background-image: url(../pictures/icons8-handshake-heart-100\ \(2\).png);
-}
-
-.logo3 {
-    height: 100px;
-    width: 100px;
-    background-image: url(../pictures/icons8-three-seater-sofa-100.png);
-}
-
-
-.logo4 {
-    height: 100px;
-    width: 100px;
-    background-image: url(../pictures/icons8-furniture-100.png);
-}
-
-.logo5 {
-    height: 100px;
-    width: 100px;
-    background-image: url(../pictures/icons8-yard-sale-100.png);
-}
-
-.logo6 {
-    height: 100px;
-    width: 100px;
-    background-image: url(../pictures/icons8-transaction-approved-100.png);
-}
-
-
-
-.space-green {
-    height: 5rem;
-    background-color: var(--main-bg-color);
-}
-
-.p-text {
-    width: 70%;
-}
-
-.col-border {
-    border-right: 1px solid rgb(182, 182, 182);
-    height: 1rem;
-    margin-top: 0.2rem;
-}
-
-#works-buyer {
-    display: none;
-}
-
-.works-button-activated {
-    color: white !important;
-    font-weight: 500 !important;
-}
-
-.fluid-no-margin {
-    padding: 0;
-    margin: 0;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 4 - "Goal" 
-*/
-
-.goal-container {
-    min-height: 100vh;
-}
-
-#h1-goal {
-    font-size: 2.3rem !important;
+#purpose-container {
+    height: 70vh;
 }
 
 #goal-hr {
@@ -346,114 +208,10 @@ user-select: none; /* Standard */
     width: 15%;
 }
 
-.img-1 {
-    background: url('../pictures/potted-plant-and-white-vase-with-green-twig-placed-on-marble-4207790.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
-.img-2 {
-    background: url('../pictures/stylish-oriental-details-of-minimalistic-room-4207786.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.space-goal {
-    padding-top: 10vh;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 5 - "About, fun facts" 
-*/
-
-#green-hr {
-    border-top: 0.2rem solid #84E48C;
-    width: 4rem;
-    margin: 0px;
-    margin-bottom: 0.75rem;
-}
-
-#h1-number {
-    color: #84E48C;
-    font-weight: 500 !important;
-    font-weight: 700;
-}
-
-#learn-more-p {
-    margin-bottom: 0.2rem;
-}
-
-.about-container {
-    min-height: 40vh;
-}
-
-.about-row {
-    min-height: 60vh;
-    background-color: rgb(249, 249, 249);
-}
-
-.half-row {
-    height: 30vh
-}
-
-.picture-chair {
-    background: url('../pictures/beige-and-black-chair-in-front-of-white-desk-509922.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.picture-vase {
-    background: url('../pictures/pexels-bongkarn-thanyakij-3787752.jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 6 - "Purpose" 
-*/
-
-#purpose-space {
-    min-height: 30vh;
-}
-
-#purpose-container {
-    min-height: 80vh;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 7 - "Collaboration" 
-*/
-
-#collaboration-container {
-    min-height: 20vh;
-    padding-top: 20vh;
-    background-color: rgb(249, 249, 249);
-}
-
-#navitas-logo {
-    height: 6rem;
-    width: auto;
-}
-
-/* 
-    Regular CSS rules
-    -----------------------
-    Section 8 - "Subscribe" 
-*/
+/************************
+Section - "Subscribe"
+************************/
 
 #subscribe-space {
     padding-top: 20vh;
@@ -470,15 +228,6 @@ user-select: none; /* Standard */
 
 #subscribe {
     width: 100%;
-}
-
-.btn-green-2 {
-    background-color: rgb(19, 80, 64);
-    border-style: none;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    font-size: 1rem;
-    margin-left: 1rem;
 }
 
 .sign-up-btn {
@@ -504,11 +253,9 @@ user-select: none; /* Standard */
     box-shadow: none !important;
     border-radius: 0;
     font-size: 1rem;
-    
 }
 
 #input-border-button {
-    
     padding-top: 0;
     padding-bottom: 0;
     border-right: 0;

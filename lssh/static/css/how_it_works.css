@@ -1,0 +1,23 @@
+/************************
+Section - "How it works"
+************************/
+
+.works-container {
+    min-height: 70vh;
+}
+
+.nav-link {
+    color: rgb(158, 158, 158);
+}
+
+.nav-link:hover {
+    color: rgb(158, 158, 158);
+}
+
+.active.nav-link{
+    background-color: rgb(255, 255, 255) !important;
+    color: var(--main-bg-color) !important;
+    border-radius: 10rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
