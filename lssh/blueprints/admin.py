@@ -59,6 +59,19 @@ def buying_process_data():
 
     return jsonify(productJson)
 
+@admin.route("/buyingprocess/remove_product", methods=['POST'])
+def buying_process_remove_product():
+    data = request.get_json()
+
+    print(data)
+
+    product = Product.query.filter(Product.articleNumber == data['product_id']).delete()
+    db.session.commit()
+
+    return "Success"
+    
+
+
 @admin.route("/buyingprocess/customer", methods=['POST'])
 def buying_process_customer():
 
@@ -66,7 +79,8 @@ def buying_process_customer():
 
     print(data['liu_id'])
 
-    buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first() 
+    buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first()
+
 
     
     

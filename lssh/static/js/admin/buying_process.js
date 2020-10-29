@@ -184,6 +184,10 @@ function updateCart() {
                 + '<div class="col-2">'
                 + '<p class="mb-0">' + sellerSortedList[k].products[i].price + '</p>'
                 + '</div>'
+                + '<div class="col-2">'
+                + '<br><button class="btn btn-danger" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="removeProduct(this.id)">Remove</button><br>'
+                + '</div>'
+
                 + '</div>';
 
             totalPrice = totalPrice + sellerSortedList[k].products[i].price;
@@ -204,38 +208,60 @@ function updateCart() {
 }
 
 function clickButton(buttonId) {
+    removeSeller(buttonId);
+}
 
+function removeProduct(buttonArticleNumber) {
+    removeProductListItem(buttonArticleNumber);
+    sortItemsBySeller();
+    updateCart();
+
+}
+
+function removeSeller(buttonId) {
     for (i = 0; i < sellerSortedList.length; i++) {
-
-
 
         if (sellerSortedList[i].sellerId == buttonId) {
 
-
-
-
             for (k = 0; k < sellerSortedList[i].products.length; k++) {
                 console.log('removed article ' + sellerSortedList[i].products[k].articleNumber);
+                
+                // Removes each item from database
+
+                data = {
+                    "product_id": sellerSortedList[i].products[k].articleNumber,
+                }
+
+                $.ajax({
+                    url: '/admin/buyingprocess/remove_product',
+                    type: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (res) {
+            
+                        
+            
+            
+                    },
+                    error: function (error) {
+            
+                    }
+                });
 
 
-                /* Remove item from database here? */
+
+
 
                 removeProductListItem(sellerSortedList[i].products[k].articleNumber);
-
             }
 
             sellerSortedList.splice(i, 1);
-
             break;
         }
 
-
     }
 
-
     updateCart();
-
-
 
 }
 
