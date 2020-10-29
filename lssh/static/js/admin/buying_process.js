@@ -49,13 +49,21 @@ function addItem() {
 function updateTotalPayment() {
     var totalSum = 0;
     for (i = 0; i < productList.length; i++) {
-        totalSum = totalSum + productList[i].price;
+        totalSum = totalSum + productList[i].price * productList[i].boughtQuantity;
     }
     $("#total-payment").html('<p>' + totalSum + '</p>');
 }
 
 function updateTotalItems() {
-    $("#total-items").html('<p>' + productList.length + '</p>');
+
+    var totalItems = 0;
+
+    for (i = 0; i < productList.length; i++) {
+        totalItems = totalItems + productList[i].boughtQuantity;
+    }
+
+
+    $("#total-items").html('<p>' + totalItems + '</p>');
 }
 
 
@@ -154,6 +162,9 @@ function updateCart() {
             + '<div class="col-2">'
             + '<b><p class="mb-0">Price (SEK)</p></b>'
             + '</div>'
+            + '<div class="col-3 text-center">'
+            + '<b><p class="mb-0">Quantity</p></b>'
+            + '</div>'
             + '</div>';
 
         if (sellerSortedList[k].sellerId == 1) {
@@ -167,8 +178,22 @@ function updateCart() {
 
         var totalPrice = 0;
 
+
+
+
         for (i = 0; i < sellerSortedList[k].products.length; i++) {
 
+            var htmlQuantity;
+
+            if (sellerSortedList[k].products[i].quantity > 1) {
+                htmlQuantity = '<button class="btn btn-secondary d-inline" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="decreaseQuantity(this.id)">-</button>'
+                    + '<p class="mb-0 d-inline pl-4 pr-4">' + sellerSortedList[k].products[i].boughtQuantity + '</p>'
+                    + '<button class="btn btn-secondary d-inline" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="increaseQuantity(this.id)">+</button>'
+
+
+            } else {
+                htmlQuantity = '<p class="mb-0 d-inline pl-4 pr-4">' + sellerSortedList[k].products[i].quantity + '</p>';
+            }
 
             /* HTML for the regular table rows */
             var html = '<div class="row product-row align-items-center">'
@@ -184,13 +209,16 @@ function updateCart() {
                 + '<div class="col-2">'
                 + '<p class="mb-0">' + sellerSortedList[k].products[i].price + '</p>'
                 + '</div>'
-                + '<div class="col-2">'
-                + '<br><button class="btn btn-danger" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="removeProduct(this.id)">Remove</button><br>'
+
+
+                + '<div class="col-3 text-center">' + htmlQuantity + '</div>'
+                + '<div class="col-1">'
+                + '<button class="btn btn-danger" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="removeProduct(this.id)">Remove</button><br>'
                 + '</div>'
 
                 + '</div>';
 
-            totalPrice = totalPrice + sellerSortedList[k].products[i].price;
+            totalPrice = totalPrice + sellerSortedList[k].products[i].price * sellerSortedList[k].products[i].boughtQuantity;
 
             $("#content").append(html);
 
@@ -206,6 +234,46 @@ function updateCart() {
 
 
 }
+
+function increaseQuantity(productArticleNumber) {
+
+    for (x = 0; x < productList.length; x++) {
+
+        if (productList[x].articleNumber == productArticleNumber) {
+
+            if (productList[x].boughtQuantity < productList[x].quantity) {
+                productList[x].boughtQuantity = productList[x].boughtQuantity + 1;
+                break;
+            } else {
+                alert("Can't add more items")
+            }
+        }
+    }
+
+    sortItemsBySeller();
+    updateCart();
+}
+
+function decreaseQuantity(productArticleNumber) {
+
+    for (x = 0; x < productList.length; x++) {
+
+        if (productList[x].articleNumber == productArticleNumber) {
+
+            if (productList[x].boughtQuantity > 1) {
+                productList[x].boughtQuantity = productList[x].boughtQuantity - 1;
+                break;
+            } else {
+                alert("Can't add more items")
+            }
+        }
+    }
+
+    sortItemsBySeller();
+    updateCart();
+}
+
+
 
 function clickButton(buttonId) {
     removeSeller(buttonId);
@@ -225,11 +293,12 @@ function removeSeller(buttonId) {
 
             for (k = 0; k < sellerSortedList[i].products.length; k++) {
                 console.log('removed article ' + sellerSortedList[i].products[k].articleNumber);
-                
+
                 // Removes each item from database
 
                 data = {
                     "product_id": sellerSortedList[i].products[k].articleNumber,
+                    "quantityToBuy": sellerSortedList[i].products[k].boughtQuantity,
                 }
 
                 $.ajax({
@@ -238,13 +307,13 @@ function removeSeller(buttonId) {
                     contentType: "application/json",
                     data: JSON.stringify(data),
                     success: function (res) {
-            
-                        
-            
-            
+
+
+
+
                     },
                     error: function (error) {
-            
+
                     }
                 });
 

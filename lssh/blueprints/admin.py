@@ -42,7 +42,7 @@ def buying_process_data():
 
     data = request.get_json()
     print(data['product_id'])
-    product = Product.query.filter(Product.articleNumber == data['product_id']).first() 
+    product = Product.query.filter(Product.articleNumber == data['product_id'], Product.quantity != 0).first() 
     print(product.articleNumber)
 
     productPictures = ProductPictures.query.filter(ProductPictures.productID == data['product_id']).first()
@@ -54,7 +54,9 @@ def buying_process_data():
         'name' : product.name,
         'price' : product.price,
         'seller' : product.seller,
-        'picture' : productPictures.pictureName
+        'picture' : productPictures.pictureName,
+        'quantity' : product.quantity,
+        'boughtQuantity' : 1
     }
 
     return jsonify(productJson)
@@ -65,7 +67,25 @@ def buying_process_remove_product():
 
     print(data)
 
-    product = Product.query.filter(Product.articleNumber == data['product_id']).delete()
+   
+
+    product = Product.query.filter(Product.articleNumber == data['product_id']).first()
+
+     # Need some form of control if this would be incorrect
+    product.quantity = product.quantity - data['quantityToBuy']
+    
+    db.session.commit()
+
+    return "Success"
+
+@admin.route("/buyingprocess/add_buyer", methods=['POST'])
+def buying_process_add_buyer():
+    data = request.get_json()
+
+    print(data)
+
+    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
+    db.session.add(newBuyer)
     db.session.commit()
 
     return "Success"
@@ -97,9 +117,16 @@ def buying_process_customer():
 
 @admin.route("/products/")
 def admin_products():
-    products = Product.query.filter(Product.sold == 0).all()
+    products = Product.query.filter(Product.quantity != 0).all()
     categories = Category.query.all()
     return render_template('admin/products.html', categories=categories, products=products)
+
+
+@admin.route("/products/archive")
+def admin_products_archive():
+    products = Product.query.filter(Product.quantity == 0).all()
+    categories = Category.query.all()
+    return render_template('admin/products.html', categories=categories, products=products, optional_table_header="Archive")
 
 
 @admin.route("/products/search/<int:articleNumber>/")
@@ -116,7 +143,7 @@ def admin_products_category(category_str):
     categories = Category.query.all()
 
     if category:
-        products = Product.query.filter_by(category=category).filter(Product.sold == 0)
+        products = Product.query.filter_by(category=category).filter(Product.quantity != 0)
         return render_template('admin/products.html', categories=categories, products=products, optional_table_header="Filtered by category: {0}".format(category_str))
     else:
         return render_template('admin/products.html', categories=categories, products=[], optional_table_header="There is no category named: {0} in the database".format(category_str))

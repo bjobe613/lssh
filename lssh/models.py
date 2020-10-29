@@ -71,7 +71,7 @@ class Product(db.Model):
     comment = db.Column(db.Text)
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
     reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
-    seller = db.Column(db.Integer, db.ForeignKey('seller.buyerID'))
+    seller = db.Column(db.String, db.ForeignKey('seller.sellerID'))
     buyer = db.Column(db.Integer, db.ForeignKey('buyer.liuID'))
 
     def getSinglePictureName(self):
@@ -137,7 +137,7 @@ class ProductReservation(db.Model):
     productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
 
 class Seller(db.Model): # will be ralated to furniture
-    buyerID = db.Column(db.Integer, db.ForeignKey('buyer.liuID'), primary_key = True)
+    sellerID = db.Column(db.String, primary_key = True)
     phone = db.Column(db.String(15), nullable = True)
     #other info for payment???
     #maybe should have the payment method here? and use LSSh as seller if there is no one else?
@@ -151,7 +151,7 @@ class Buyer(db.Model):
     international = db.Column(db.Boolean)
     products = db.relationship('Product', backref = 'buyerOfProduct')
 
-    seller = db.relationship('Seller', backref = 'sellerInheritance')
+    
 
     
 
