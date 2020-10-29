@@ -1,94 +1,144 @@
 {% extends "help_layout.html" %}
 
 {% block more_head %}
-    <!--Additional head-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/faq.css') }}">
-    <title>LSSh | Frequently Asked Questions (FAQ)</title>
+<!--Additional head-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/faq.css') }}">
+<title>LSSh | Frequently Asked Questions (FAQ)</title>
 {% endblock more_head %}
 
 {% block help_content %}
 
-    <div id="container-fill" class="container-fluid pt-3">
 
-        <!-- OLD Categories
-        <div class="row pt-4">
-            <div class="col-2"></div>
-
-            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
-                <a class="a-link a-active" href="">General information</a>
-            </div>
-            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
-                <a class="a-link" href="">Opening hours</a>
-            </div>
-            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
-                <a class="a-link" href="">Price & Payment</a>
-            </div>
-            <div class="col-xl-2 col-sm-12 text-xl-left text-center pb-2">
-                <a class="a-link" href="">Transportation</a>
-            </div>
-            
-            <div class="col-2"></div>
-        </div> -->
-
-
-        <div class="row">
-            <div class="col-md-2 col-sm-12"></div>
-
-            <div class="col-md-8 col-sm-12 pt-5">
-
-                <ul>
-                    {% for Category in faqcategories%}
-
-                    <li class="d-inline">
-                        <a class="a-link mb-4 mr-4" id="faq-a-{{ loop.index }}" href="/help/faq/{{ loop.index }}">{{ Category.name }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-
-                <div id="accordion">
-                    {% for Question in faqquestions%}
-                    <div class="card">
-                        <div class="card-header" id="heading{{ Question.id }}">
-                          <h5 class="mb-0">
-                            <button class="btn btn-link faq-question-heading" data-toggle="collapse" data-target="#collapse{{ Question.id }}" aria-expanded="true" aria-controls="collapse{{ Question.id }}">
-                            <i id="faq-angledown" class="fa fa-angle-down"></i>{{ Question.questionTitle }}  
-                                  
-                            </button>
-                          </h5>
-                        </div>
-                    
-                        <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion">
-                          <div class="card-body">
-                            {{ Question.questionAnswer }}
-                          </div>
-                        </div>
-                      </div>
-
-
-
-                    {% endfor %}
-
-                    
-
-                    
-                  </div>
-
-
-
-            </div>
-
-
-
-            <!--
-            
-            <div id="accordion-col" class="col-md-8 col-sm-12 pt-5">
-                
-            </div> -->
-
-            <div class="col-md-2 col-sm-12"></div>
-               
+<div id="top-container" class="container-fluid">   
+    <div class="row align-items-center h-100">
+        <div class="col-lg-5 offset-lg-1 col-12 mt-lg-5 pl-0 pl-lg-3 pr-0 pr-lg-3">
+            <img id="image-header"
+                src="{{ url_for('static', filename = '/pictures/pexels-catherine-augustin-3049121.jpg') }}"
+                class="img-fluid image" alt="Responsive image">
+        </div>
+        <div class="col-lg-5 col-12 mt-3">
+            <p class="mb-2"><b>HELP</b></p>
+            <h3 id="faq-heading" class="pb-3">FAQ</h3>
+            <p>
+                Below you can find the answer to our most common asked questions.
+            </p>
         </div>
     </div>
 
+    <div class="row pt-3">
+        <div class="col-lg-10 offset-lg-1 col-12">
+            <hr>
+        </div>
+    </div>
+
+</div>
+
+<div id="container-fill" class="container-fluid">
+    <div class="container-fluid container-max-width">
+    <!-- 
+    Tabs
+
+    Creates the category tabs by looping through all categories and 
+    choosing the first category as active from start
+    -->
+
+    <div class="row">
+        <div class="col-12">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            {% for Category in faqcategories %}
+
+            {% if loop.index == 1 %}
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-{{Category.id}}-tab" data-toggle="pill"
+                    href="#pills-{{Category.id}}" role="tab" aria-controls="pills-{{Category.id}}"
+                    aria-selected="true">{{Category.name}}</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" id="pills-{{Category.id}}-tab" data-toggle="pill" href="#pills-{{Category.id}}" role="tab"
+                    aria-controls="pills-{{Category.id}}" aria-selected="false">{{Category.name}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+
+    <!-- 
+    Tab content to tabs
+
+    Creates the content inside the tabs, loops through each category and for each
+    category checks all questions with the same category id and puts it in the 
+    tab.
+    -->
+    
+    <div class="row">
+        <div class="col-12">
+        <div class="tab-content" id="pills-tabContent">
+            {% for Category in faqcategories %}
+                {% if loop.index == 1 %}
+                <div class="tab-pane show active" id="pills-{{Category.id}}" role="tabpanel" aria-labelledby="pills-{{Category.id}}-tab">
+                    <div class="pt-4" id="accordion{{ Category.id }}">
+                    {% for Question in faqquestions%}
+                        {% if Question.categoryID == Category.id %}
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading{{ Question.id }}">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link faq-question-heading" data-toggle="collapse"
+                                            data-target="#collapse{{ Question.id }}" aria-expanded="true"
+                                            aria-controls="collapse{{ Question.id }}">
+                                            <i id="faq-angledown" class="fa fa-angle-down"></i>{{ Question.questionTitle }}
+        
+                                        </button>
+                                    </h5>
+                                </div>
+        
+                                <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion{{ Category.id }}">
+                                    <div class="card-body">
+                                        {{ Question.questionAnswer }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="tab-pane" id="pills-{{Category.id}}" role="tabpanel" aria-labelledby="pills-{{Category.id}}-tab">
+                    <div class="pt-4" id="accordion{{ Category.id }}">
+                        {% for Question in faqquestions%}
+                            {% if Question.categoryID == Category.id %}
+                                <div class="card mb-2">
+                                    <div class="card-header" id="heading{{ Question.id }}">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link faq-question-heading" data-toggle="collapse"
+                                                data-target="#collapse{{ Question.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ Question.id }}">
+                                                <i id="faq-angledown" class="fa fa-angle-down"></i>{{ Question.questionTitle }}
+            
+                                            </button>
+                                        </h5>
+                                    </div>
+            
+                                    <div id="collapse{{ Question.id }}" class="collapse" aria-labelledby="heading{{ Question.id }}" data-parent="#accordion{{ Category.id }}">
+                                        <div class="card-body">
+                                            {{ Question.questionAnswer }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div> 
+        </div>       
+    </div>
+
+</div>
+   
+</div>
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/faq.js') }}"></script>
-{% endblock help_content %}
+    {% endblock help_content %}
