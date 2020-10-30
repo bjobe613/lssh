@@ -51,6 +51,7 @@
     <header>
 
       
+        <!-- OLD BOOTSTRAP NAV OWN
         <div id="navbar" class="container-fluid navbar-desktop-active bg-transparent fixed-top">
 
       
@@ -90,11 +91,11 @@
                 </div>
 
                 <div id="help-link-col" class="col-md-1 col-2 text-center">
-                    <a id="help-link" class="a-link" href="{{ url_for('main.faq', x=1) }}">HELP</a>
+                    <a id="help-link" class="a-link" href="{{ url_for('main.faq') }}">HELP</a>
                 </div>
 
             </div>
-        </div>
+        </div>-->
 
         <!--
         <div class="height-before-nav">
@@ -102,7 +103,10 @@
         </div>
 -->
 
-        <nav id="navbar-mobile" class="navbar navbar-expand-lg navbar-light fixed-top d-lg-none">
+
+
+        
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top ml-0 mr-0 pl-0 pr-0">
             <div class="container-fluid">
 
                 <a class="navbar-brand" href="{{ url_for('main.startup') }}">
@@ -117,25 +121,49 @@
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
+                    <ul class="navbar-nav text-center">
+                        <li class="nav-item layout-mobile-center pr-4">
+                            <a class="nav-link" href="">FOR BUYERS</a>
+                        </li>
+                        <li class="nav-item layout-mobile-center">
+                            <a class="nav-link" href="{{ url_for('main.hand_in') }}">FOR SELLERS</a>
+                        </li>
+                    </ul>
+
+
+
                     <ul class="navbar-nav ml-auto text-center">
-                        <li class="nav-item layout-mobile-center pr-3">
+                        <li class="nav-item layout-mobile-center pr-4">
                             <a class="nav-link" href="{{ url_for('main.startup') }}">HOME</a>
                         </li>
-                        <li class="nav-item layout-mobile-center pr-3">
+                        <li class="nav-item layout-mobile-center pr-4">
                             <a class="nav-link" href="{{ url_for('products.catalog') }}">SHOP</a>
                         </li>
 
-                        <li class="nav-item layout-mobile-center pr-3">
-                            <a id="about-link" class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
+                        <li class="nav-item layout-mobile-center pr-4">
+                            <a class="nav-link" href="{{ url_for('main.news') }}">NEWS</a>
                         </li>
-                        <li class="nav-item layout-mobile-center pr-3">
-                            <a id="help-link" class="nav-link" href="">HELP</a>
+
+                        <li class="nav-item layout-mobile-center pr-4">
+                            <a class="nav-link" href="{{ url_for('main.transport') }}">TRANSPORT</a>
                         </li>
+
+                        <li class="nav-item layout-mobile-center pr-4">
+                            <a class="nav-link" href="{{ url_for('main.about_us') }}">ABOUT</a>
+                        </li>
+
+                        <li class="nav-item layout-mobile-center pr-4">
+                            <a class="nav-link" href="{{ url_for('main.faq') }}">HELP</a>
+                        </li>
+                        
+                     
 
                     </ul>
 
                 </div>
         </nav>
+
+
 
 
     </header>
@@ -156,7 +184,7 @@
 
                 <div class="col-md-2 col-sm-12 text-md-left text-center pb-3">
                     <h4 class="footer-heading">HELP</h4>
-                    <a class="a-link" href="{{ url_for('main.faq', x=1) }}">FAQ </a>
+                    <a class="a-link" href="{{ url_for('main.faq') }}">FAQ </a>
                     <br>
                     <a class="a-link" href="{{ url_for('main.contact') }}"> Contact </a>
                 </div>

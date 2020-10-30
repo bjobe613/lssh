@@ -5,6 +5,7 @@ html, body {
 
 
 /* Global variables */
+
 :root {
     --main-bg-color: #09433A;
     --bg-color-white: #ffffff;
@@ -34,6 +35,7 @@ a:hover {
     color: rgb(78, 78, 78);
 }
 
+/* Headings */ 
 
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -91,6 +93,7 @@ p {
 }
 
 /* Styling for buttons */
+
 .green-btn {
     background-color: var(--main-bg-color);
     border: 1px solid var(--main-bg-color);
@@ -228,7 +231,7 @@ p {
 }
 
 .a-link-white {
-    color: rgb(206, 206, 206);
+    color: rgb(190, 190, 190);
 }
 
 .a-link-white:hover {
@@ -237,13 +240,13 @@ p {
 }
 
 .a-link-white-active:hover {
-    color: var(--bg-color-white);
+    color: rgb(255, 255, 255);
     text-decoration: none;
    
 }
 
 .a-link-white-active {
-    color: var(--bg-color-white);
+    color: rgb(255, 255, 255);
     font-weight: 500;
 }
 
@@ -276,14 +279,15 @@ p {
 
 /* NAVBAR */
 
-#navbar {
-    height: 10vh;
-    background-color:transparent !important;
+@media(max-width: 992px) {
+    .navbar {
+        background-color: white;
+    }
+
 }
 
-#navbar-mobile {
-    background-color: white;
-}
+
+
 
 #works-link {
     border: 1px solid var(--main-bg-color);
@@ -300,14 +304,6 @@ p {
 
 
 
-
-@media only screen and (max-width: 992px) {
-    .navbar-desktop-active {
-        display: none;
-    }
-}
-
-
 /* Subnav */ 
 
 /*
@@ -315,6 +311,11 @@ p {
     height: 5rem;
 }
 */
+
+#subnav-container {
+    z-index: 2;
+    background-color: #09433A; 
+}
 
 #help-link {
     width: 100%;
@@ -335,10 +336,7 @@ p {
     left: 50%;
 }
 
-#about-us-container {
-    min-height: 4vh;
-    background-color: #09433A;
-}
+
 
 .inline {
     display: inline-block;

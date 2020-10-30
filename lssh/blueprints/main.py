@@ -3,6 +3,7 @@ from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
 from flask_mail import Message
 from lssh import mail
 
+
 import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
@@ -52,7 +53,7 @@ def subscribe():
 def about_us():
     return render_template('about_us.html')
 
-@main.route("/help/find_us")
+@main.route("/about/find_us")
 def find_us():
     return render_template('find_us.html')
 
@@ -65,25 +66,19 @@ def contactform():
 
     data = request.get_json()
 
-    name = data["name"]
-    email = data["email"]
-    message = data["message"]
-    
-
-  
     msg = Message("Contact form - New message", sender="lithemobler@gmail.com", recipients=["lithemobler@gmail.com"])
-    msg.body = "You have a new form reply from " + email + " : " + message
+
+    msg.html = render_template('contact_mail_template.html', name = data["name"], email = data["email"], message = data["message"])
+  
     mail.send(msg)
 
     print("hej")
     return ""
 
-@main.route("/help/faq/<int:x>", methods = ['GET'])
-def faq(x):
-    x_minus_1 = x - 1
+@main.route("/help/faq", methods = ['GET'])
+def faq():
     categories = Categoryfaq.query.filter(Categoryfaq.id).all()
-    questions = Question.query.filter(Question.categoryID == categories[x_minus_1].id).all()
- 
+    questions = Question.query.all() 
     return render_template('faq.html', faqquestions = questions, faqcategories = categories)
 
 @main.route("/transport")
@@ -97,7 +92,7 @@ def hand_in():
 
 @main.route("/news")
 def news():
-    news = News.query.filter(News.published).all()
+    news = News.query.filter(News.published).order_by(News.date.desc()).all()
     return render_template('news.html', newsarticles = news)
 
 @main.route("/news/<int:x>", methods=['GET'])
