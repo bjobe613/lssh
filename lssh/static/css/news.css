@@ -1,36 +1,48 @@
 #news-container {
     min-height: 100vh;
-    background-color: #f9f9f9;
-}
-
-#title-row {
-    min-height: 20vh;
-    background-color: var(--bg-color-white);
-}
-
-#news-row {
-    min-height: 60vh;
-}
-
-#text-img-news {
-    margin-top: -4rem;
-
 }
 
 #image-news {
     object-fit: cover;
-    height: 20rem;
-    display:block;
+    height: 25rem !important;
+    /* Old was 20 rem */
+    display: block;
     width: 100%;
-    
 }
 
-.image-news-right {
-    
-    background: url('../pictures/two-vases-on-table-842950\ \(1\).jpg') no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 20rem;
+/* Bootstrap cards */
+
+.card {
+    background-color: transparent;
+}
+
+.card-body {
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.card-columns {
+    column-count: 2;
+}
+
+@media (max-width: 992px) {
+    #image-news {
+        object-fit: cover;
+        height: 20rem !important;
+        
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-columns {
+        column-count: 1;
+    }
+    .card {
+        margin-top: 3rem;
+    }
+   
 }
