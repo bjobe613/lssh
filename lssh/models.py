@@ -150,6 +150,9 @@ class Buyer(db.Model):
     program = db.Column(db.String)
     international = db.Column(db.Boolean)
     products = db.relationship('Product', backref = 'buyerOfProduct')
+    seller = db.Column(db.Boolean, default = False)
+    phone = db.Column(db.String)
+    payment_method = db.Column(db.String)
 
     
 

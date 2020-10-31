@@ -1,11 +1,15 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#modal-add-buyer">
+<button type="button" class="btn btn-primary float-right d-inline ml-3" data-toggle="modal" data-target="#modal-add-buyer">
     Add new buyer
+</button>
+
+<button type="button" class="btn btn-light float-right d-inline" data-toggle="modal" data-target="#modal-add-seller">
+    Add new seller
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="modal-add-buyer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Fill in the following information</h5>
@@ -24,8 +28,6 @@
                     </div>
                     
                 </div>
-
-                
 
                 <form id="add-buyer-form">
                     <div class="form-row">
@@ -61,6 +63,8 @@
                           </div>
                     </div>
 
+                    
+
 
                 
                 </form>
@@ -68,8 +72,96 @@
             </div>
 
             <div class="modal-footer">
+              
                 <button type="button" class="btn btn-secondary" onclick="addBuyer()">Add new buyer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Seller -->
+<div class="modal fade" id="modal-add-seller" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fill in the following information (Seller)</h5>
                 
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-light float-right" onclick="clearForm()">Clear information</button>
+                    </div>
+                    
+                </div>
+
+                <form id="add-seller-form">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputID">LIU ID</label>
+                            <input type="text" class="form-control" id="input-liuid-seller" placeholder="LIU ID">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputName">Name</label>
+                            <input type="text" class="form-control" id="input-name-seller" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" class="form-control" id="input-email-seller" placeholder="Email">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputProgram">Program</label>
+                            <input type="text" class="form-control" id="input-program-seller" placeholder="Program">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="checkbox-international-seller">
+                              <label class="form-check-label" for="gridCheck">
+                                Are you an international student?
+                              </label>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPhone">Phone</label>
+                            <input type="text" class="form-control" id="input-phone-seller" placeholder="Phone number">
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            <label for="inputProgram">Payment Method</label>
+                            <input type="text" class="form-control" id="input-payment-seller" placeholder="Payment">
+                        </div>
+                    </div>
+
+                    
+
+
+                
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+              
+                <button type="button" class="btn btn-secondary" onclick="addSeller()">Add new seller</button>
             </div>
 
         </div>

@@ -16,33 +16,55 @@
         </div>
     </div>
 
+
+    <div class="row pb-2">
+        <div class="col">
+            <h3>Step 1 - Fill in information about buyer</h3>
+            
+            <p> If the buyer is already a customer, search with either <b>LiU ID</b> or <b>email</b>. If the buyer is not a customer,
+                add a new buyer with the <b>blue button</b> to the top right.
+            </p>
+            
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
-            <h1>Step 1 - Information about buyer</h1>
-            <form onsubmit="return false">
-
-                <label for="exampleInputEmail1">Search</label>
-                <input type="text" class="form-control" id="input-liuid" placeholder="Insert LiU ID..">
             
-                <button id="buyer-search" class="green-btn float-right" type="submit">SUBMIT</button>
+            <form onsubmit="return false">
+                <div class="input-group">
+                    
+                    <input type="text" class="form-control" id="input-liuid" placeholder="Insert LiU ID..">
+                    <input type="text" class="form-control" id="input-email-buyer" placeholder="Insert email..">
+                    <div class="input-group-append">
+                        <button id="buyer-search" class="btn btn-secondary" type="submit">SUBMIT</button>
+                    </div>
+                </div>
+            
+                
             </form>
 
         </div>
 
+
     </div>
 
-    <div class="row mb-5">
+    <div class="row mb-5 mt-3">
         <div id="buyer-information" class="col text-center">
             <p>No customer added</p>
         </div>
     </div>
 </div>
 
-<div class="container-fluid container-max-width">
+<div id="buying-process-step-2" class="container-fluid container-max-width d-none">
 
-    <div class="row">
+    <div class="row pt-5">
         <div class="col">  
-            <h1>Step 2 - Add items and payment</h1>
+            <h3>Step 2 - Add items and confirm payment for items</h3>
+            <p>Add all article numbers for the items the buyer want to purchase in the <b>input field with the green button</b>. When 
+                done, confirm payments for each seller.
+            </p>
+            
         </div>
     </div>
 
@@ -66,19 +88,27 @@
 
         <div class="col-6">
             <form onsubmit="return false">
+ 
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
+                    <div class="input-group-append">
+                        <button id="submit-item" class="btn btn-success" type="submit">Add item</button>
+                    </div>
+                </div>
 
-                <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
-            
-                <button id="submit-item" class="green-btn float-right" type="submit">SUBMIT</button>
             </form>
         </div>
     </div>
+
+
+    <div id="content" class="container-fluid container-max-width pb-5">
+
+    </div>
+
 </div>
 
 
-<div id="content" class="container-fluid container-max-width">
 
-</div>
 
 
 {% endblock content %}

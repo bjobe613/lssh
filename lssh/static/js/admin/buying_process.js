@@ -16,6 +16,12 @@ document.getElementById("buyer-search").addEventListener("click", function () {
 });
 
 
+// Warning when user refreshes the page
+window.onbeforeunload = function() {
+    return "";
+};
+
+
 // Function that adds item if it exists in the data base
 function addItem() {
     data = {
@@ -70,7 +76,9 @@ function updateTotalItems() {
 function searchExistingCustomer() {
     data = {
         "liu_id": $("#input-liuid").val(),
+        "email": $("#input-email-buyer").val()
     }
+
     $.ajax({
         url: '/admin/buyingprocess/customer',
         type: 'POST',
@@ -78,8 +86,12 @@ function searchExistingCustomer() {
         data: JSON.stringify(data),
         success: function (res) {
 
+            $("#input-liuid").val('');
+            $("#input-email-buyer").val('');
             buyer = res;
             addBuyerHtml(res);
+
+            $("#buying-process-step-2").removeClass('d-none');
 
 
         },
@@ -121,7 +133,7 @@ function addBuyerHtml(res) {
 
 
     $("#buyer-information").html(htmlTableBuyer);
-    $("#input-liuid").val('');
+
 
 
 }
@@ -129,6 +141,13 @@ function addBuyerHtml(res) {
 function removeBuyer() {
     buyer = ""; // Is this a valid way to clear variables?
     $("#buyer-information").html('<p>No customer added</p>');
+
+    productList = [];
+    sellerSortedList = [];
+    updateCart();
+    $("#buying-process-step-2").addClass('d-none');
+    
+
 }
 
 
@@ -189,6 +208,7 @@ function updateCart() {
                 htmlQuantity = '<button class="btn btn-secondary d-inline" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="decreaseQuantity(this.id)">-</button>'
                     + '<p class="mb-0 d-inline pl-4 pr-4">' + sellerSortedList[k].products[i].boughtQuantity + '</p>'
                     + '<button class="btn btn-secondary d-inline" id="' + sellerSortedList[k].products[i].articleNumber + '" onClick="increaseQuantity(this.id)">+</button>'
+                    + '<br><p class="pt-1"> (Max: ' + sellerSortedList[k].products[i].quantity + ')</p>'
 
 
             } else {
@@ -226,7 +246,7 @@ function updateCart() {
 
 
         $("#content").append('<p class="float-right">Total price: ' + totalPrice + '</p>');
-        $("#content").append('<br><button class="float-right" id="' + sellerSortedList[k].sellerId + '" onClick="clickButton(this.id)">Payment done</button><br>');
+        $("#content").append('<br><button class="float-right" id="' + sellerSortedList[k].sellerId + '" onClick="clickButton(this.id)">Confirm payment</button><br>');
 
 
     }
@@ -264,7 +284,7 @@ function decreaseQuantity(productArticleNumber) {
                 productList[x].boughtQuantity = productList[x].boughtQuantity - 1;
                 break;
             } else {
-                alert("Can't add more items")
+                alert("Can't remove more items")
             }
         }
     }
@@ -276,10 +296,29 @@ function decreaseQuantity(productArticleNumber) {
 
 
 function clickButton(buttonId) {
-    removeSeller(buttonId);
+
+
+    
+
+
+    if (confirm("Are these items payed for?")) {
+
+        if (buyer) {
+            removeSeller(buttonId);
+        } else {
+            alert("Error! Fill in buyer information first")
+        }
+        
+    } else {
+
+    }
+
+
+    
 }
 
 function removeProduct(buttonArticleNumber) {
+
     removeProductListItem(buttonArticleNumber);
     sortItemsBySeller();
     updateCart();
@@ -299,6 +338,7 @@ function removeSeller(buttonId) {
                 data = {
                     "product_id": sellerSortedList[i].products[k].articleNumber,
                     "quantityToBuy": sellerSortedList[i].products[k].boughtQuantity,
+                    "sellerId": sellerSortedList[i].sellerId
                 }
 
                 $.ajax({

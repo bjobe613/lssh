@@ -11,6 +11,41 @@ def admin_home():
     return render_template('admin/home.html')
 
 
+@admin.route("/add_maintain_customers", methods=['GET'])
+def add_maintain_customers():
+
+    buyers = Buyer.query.order_by(Buyer.name).all()
+
+    return render_template('admin/add_maintain_customers.html', buyers = buyers)
+
+@admin.route("/add_maintain_customers/<string:liuID>/")
+def add_maintain_customers_single(liuID):
+
+    buyers = Buyer.query.filter_by(liuID = liuID)
+
+    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with LiU ID")
+
+@admin.route("/add_maintain_customers/email/<string:email>/")
+def add_maintain_customers_single_email(email):
+
+    buyers = Buyer.query.filter_by(email = email)
+
+
+
+    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with email")
+
+
+@admin.route("/add_maintain_customers/delete", methods=['GET', 'POST'])
+def add_maintain_customers_delete():
+
+
+    # Will there be foreign key problems with this?
+    data = request.get_json()
+    Buyer.query.filter_by(liuID = data['liuID']).delete()
+    db.session.commit()
+
+    return ""
+
 @admin.route("/buyingprocess/", methods=['GET', 'POST'])
 def buying_process():
 
@@ -67,12 +102,14 @@ def buying_process_remove_product():
 
     print(data)
 
-   
+    
 
     product = Product.query.filter(Product.articleNumber == data['product_id']).first()
 
      # Need some form of control if this would be incorrect
     product.quantity = product.quantity - data['quantityToBuy']
+
+    #If successful, shall send email to seller about the item sold
     
     db.session.commit()
 
@@ -82,9 +119,21 @@ def buying_process_remove_product():
 def buying_process_add_buyer():
     data = request.get_json()
 
+    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
+    db.session.add(newBuyer)
+    db.session.commit()
+
+    return "Success"
+
+@admin.route("/buyingprocess/add_seller", methods=['POST'])
+def buying_process_add_seller():
+    data = request.get_json()
+
     print(data)
 
-    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
+    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'], phone = data['phone'], seller = True, payment_method = data['payment'])
+    
+    
     db.session.add(newBuyer)
     db.session.commit()
 
@@ -97,22 +146,32 @@ def buying_process_customer():
 
     data = request.get_json()
 
-    print(data['liu_id'])
+    if (data['liu_id'] != ""):
+        buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first()
+       
 
-    buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first()
-
-
-    
-    
-    buyerJson = {  
+        buyerJson = {  
         'liuID' : buyer.liuID,
         'email' : buyer.email,
         'name' : buyer.name,
         'program' : buyer.program,
         'international' : buyer.international
-    }
+        }
+        return jsonify(buyerJson)
 
-    return jsonify(buyerJson)
+    elif (data['email'] != ""):
+        buyer = Buyer.query.filter(Buyer.email == data['email']).first()
+      
+        buyerJson = {  
+        'liuID' : buyer.liuID,
+        'email' : buyer.email,
+        'name' : buyer.name,
+        'program' : buyer.program,
+        'international' : buyer.international
+        }
+        return jsonify(buyerJson)
+    else:
+        return "", 400
   
 
 @admin.route("/products/")
