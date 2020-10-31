@@ -199,6 +199,14 @@ def admin_add_product():
 
     return render_template('admin/add_product.html', categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
+@admin.route("/products/edit/<int:id>")
+def edit_product(id):
+    product =  Product.query.get_or_404(id)
+    categories = Category.query.all()
+    paymentMethods = PaymentMethod.query.all()
+    conditions = Condition.query.all()
+
+    return render_template('admin/edit_product.html', product=product, categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
 @admin.route("/news/edit/<int:id>")
 def admin_edit_news(id):
@@ -217,7 +225,7 @@ def admin_add_news():
 
 @ admin.route("/news/")
 def admin_news():
-    all_news=News.query.all()
+    all_news=News.query.order_by(News.date.desc()).all()
     return render_template('admin/news.html', all_news=all_news)
 
 @ admin.route("/faq/", defaults={'categoryid': None})

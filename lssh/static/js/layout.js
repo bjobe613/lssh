@@ -11,9 +11,16 @@ if (window.history.replaceState) {
 
 if (window.location.href.indexOf("about") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
+  
+  
+} 
+
+if (window.location.href.indexOf("about_us") > -1) {
+
     $("#about-us-link").addClass("a-link-white-active");
   
 } 
+
 
 
 if (window.location.href.indexOf("find_us") > -1) {

@@ -116,9 +116,11 @@ class Product(db.Model):
         fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
         picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
         pic.renameReference(fileName)
-    
+
     def addPictureFromHardDive(self, path):
         pic = ProductPictures(productID = self.articleNumber)
+        db.session.add(pic)
+        db.session.commit()
 
         fileEnding = path.rsplit('.')[len(path.rsplit('.')) - 1]
         fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
@@ -131,6 +133,11 @@ class Product(db.Model):
         db.session.add(pic)
         db.session.commit()
 
+    def deletePictures(self):
+        for picture in self.pictures:
+            picture.deleteOnHarddrive()
+            db.session.delete(picture)
+
 class ProductPictures(db.Model):
     __tablename__ = 'ProductPictures'
     pictureID = db.Column(db.Integer, primary_key = True)
@@ -140,6 +147,13 @@ class ProductPictures(db.Model):
     def renameReference(self, fileName):
         self.pictureName = fileName
         db.session.commit()
+    
+    def deleteOnHarddrive(self):
+        if self.pictureName != "default.jpg":
+            try:
+                os.remove(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', self.pictureName))
+            except FileNotFoundError:
+                None
 
 class PaymentMethod(db.Model):
     __tablename__ = 'PaymentMethod'
@@ -203,11 +217,7 @@ class News(db.Model): #has to be reworked into files, not a model.
         url = ""
 
         if self.titlePicture:
-            print("Hade bild")
-            url= Newspicture.query.get(self.titlePicture).path
-        else:
-            print("Hade inte bild")
-     
+            url= Newspicture.query.get(self.titlePicture).path     
         return url
 
     def escape_html(self):
@@ -239,15 +249,11 @@ class News(db.Model): #has to be reworked into files, not a model.
     def get_article_as_html(self):
         article_html = ""
         if self.titlePicture:
-            print("Hade bild")
             article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
-        else:
-            print("Hade inte bild")
         article_html += "<h1>" + self.title + "</h1>\n"
         article_html += "<p class='ingress'>" + self.ingress + "</p>\n"
         article_html += quill_parser.render(self.text["ops"])
 
-        print(article_html)
         return article_html
 
     def get_article_as_html_user(self):
