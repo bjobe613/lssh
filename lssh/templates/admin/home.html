@@ -1,9 +1,18 @@
 {% extends "admin/layout.html" %}
 {% set navbar_active_home = True %}
 {% block more_head %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin/home.css') }}">
 {% endblock more_head %}
 
 {% block content %}
-    <p>Home</p>
+    <div class="container">
+        <h1>Home</h1>
+        <div class="btn-container">
+            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_products') }}">Products</a></div>
+            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_add_product') }}">Add a product</a></div>
+            <div class="button-holder"><a class="btn btn-primary home-btn" href="#">Sell products</a></div>
+            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_news') }}">News</a></div>
+            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_faq') }}">FAQ</a></div>
+        </div>
+    </div>
 {% endblock content %}

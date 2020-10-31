@@ -1,0 +1,20 @@
+.home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: larger;
+}
+
+.button-holder {
+    padding: 1rem;
+    width: 33%;
+    height: 10rem;
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
