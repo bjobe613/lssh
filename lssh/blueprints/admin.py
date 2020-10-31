@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, User, ProductPictures
+from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, User, ProductPictures, Admin
 import json
 from lssh.blueprints.security import *
 
@@ -272,3 +272,18 @@ def faq_add_category():
 @ admin.route("/login/")
 def admin_login():
     return render_template('admin/login.html')
+
+@admin.route("/register", methods = ['GET', 'POST'])
+def adminRegister():
+    form = AdminRegisterForm()
+    if form.validate_on_submit(): #you must check the password, and the auth.level so that it doesnt collide with functions
+        exist = Admin.query.filter(Admin.name == form.userName.data).first()
+        if not exist:
+            hashedPassword = flask_bcrypt.generate_password_hash(form.password.data).decode('utf-8') 
+            newAdmin = Admin(name = form.userName.data, passwordHash = hashedPassword, authorization = form.authorizationLevel.data)
+            db.session.add(newAdmin)
+            db.session.commit()
+        else:
+            print('user already exist')
+                
+    return render_template('register.html', adminRegisterForm = form)
