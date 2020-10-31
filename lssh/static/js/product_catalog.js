@@ -128,10 +128,7 @@ $(document).ready(function () {
     }
   });
 });
-/*
-$(document).on('click',function(){
-  $('.collapse').collapse('hide');
-  })*/
+
 
 listFilters('category');
 listFilters('color');
