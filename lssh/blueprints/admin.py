@@ -63,7 +63,7 @@ def admin_add_news():
 
 @ admin.route("/news/")
 def admin_news():
-    all_news=News.query.all()
+    all_news=News.query.order_by(News.date.desc()).all()
     return render_template('admin/news.html', all_news=all_news)
 
 @ admin.route("/faq/", defaults={'categoryid': None})

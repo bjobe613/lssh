@@ -10,9 +10,7 @@
 {% block content %}
 <!--Where the html should be written-->
 
-<!-- 
-Section - "Slogan"
--->
+<!-- Section - "Slogan" -->
 
 <div class="container-fluid index-container">
   <div class="row h-100 align-items-center text-lg-left text-center">
@@ -46,9 +44,7 @@ Section - "Slogan"
 
 </div>
 
-<!-- 
-Section - "About us"
--->
+<!-- Section - "About us" -->
 
 <div id="about-index-container" class="container-fluid container-max-width">
   <div class="row h-100 mt-4 align-items-center">
@@ -73,11 +69,12 @@ Section - "About us"
   </div>
 </div>
 
-<!-- 
-Section - "Latest items"
-
-6 latest products generated with jinja
--->
+<!------------------------------------ 
+- Section - "Latest items"
+-
+- Description: 6 latest products generated 
+- with jinja
+-------------------------------------->
 
 <div class="container-fluid container-max-width mt-lg-0 mt-5">
   <div class="row pt-5">
@@ -104,8 +101,7 @@ Section - "Latest items"
         <div class="swiper-slide">
           <a href="products/product/{{Product.articleNumber}}">
             <div class="swiper-slide">
-              <img class="img-fluid"
-                src="{{url_for('static', filename='pictures/' + Product.pictures[0].pictureName)}}">
+              <img class="img-fluid" src="{{url_for('static', filename='pictures/' + Product.pictures[0].pictureName)}}">
             </div>
           </a>
         </div>
@@ -123,18 +119,17 @@ Section - "Latest items"
 
 </div>
 
-<!-- 
-Section - "How it works"
-
-how_it_works.html is genereted here with jinja
--->
+<!----------------------------------
+- Section - "How it works"
+-
+- Description: how_it_works.html is 
+- genereted here with jinja
+----------------------------------->
 
 {% include 'how_it_works.html' %}
 
 
-<!-- 
-Section - "Purpose"
--->
+<!-- Section - "Purpose" -->
 
 <div id="purpose-container" class="container-fluid container-max-width">
   <div class="row h-100 align-items-center text-center">
@@ -175,7 +170,6 @@ Section - "Purpose"
     </div>
   </div>
 </div> -->
-
 
 
 <!-- 
@@ -253,6 +247,7 @@ Section - "News"
       </div>
     </div>
   </div>
+  
 </div>
 
 <!-- 

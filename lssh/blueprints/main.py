@@ -3,6 +3,7 @@ from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
 from flask_mail import Message
 from lssh import mail
 
+
 import re
 
 main = Blueprint('main', __name__, url_prefix = '/')
@@ -13,7 +14,8 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 def startup():
 
     prodCount = Product.query.filter(Product.articleNumber).count()
-    news = News.query.all()
+
+    news = News.query.filter(News.published).limit(6)
     products_sorted = Product.query.order_by(Product.articleNumber).limit(6)
 
     return render_template('index.html', productCount = prodCount, newsarticles = news, productlist = products_sorted)
@@ -90,7 +92,7 @@ def hand_in():
 
 @main.route("/news")
 def news():
-    news = News.query.all()
+    news = News.query.filter(News.published).order_by(News.date.desc()).all()
     return render_template('news.html', newsarticles = news)
 
 @main.route("/news/<int:x>", methods=['GET'])
