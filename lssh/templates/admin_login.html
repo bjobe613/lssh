@@ -19,19 +19,19 @@
             <h3>Welcome back,</h3>
             <p class="pb-3">Sign in to continue</p>
 
-            <form>
+            
                 <div class="form-group pb-2">
-                  <input type="text" class="form-control" id="input-contact" placeholder="Username...">
+                  <input type="text" class="form-control" id="login-form-username" placeholder="Username...">
                 </div>
 
                 <div class="form-group pb-2">
-                    <input type="password" class="form-control" id="input-contact" placeholder="Password...">
+                    <input type="password" class="form-control" id="login-form-password" placeholder="Password...">
                 </div>
 
-                <button class="green-btn float-right mt-4" type="submit">SIGN IN</button>
-              </form>
+                <button class="green-btn float-right mt-4" type="submit" id="login-form-button" onclick="login()">SIGN IN</button>
+              
           </div>
         </div>
     </div>
-
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin_handler.js') }}"></script>
 {% endblock content %}

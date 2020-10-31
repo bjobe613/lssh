@@ -7,9 +7,7 @@ from lssh.blueprints.forms import AdminRegisterForm
 from lssh import flask_bcrypt, flask_jwt
 from functools import wraps
 
-users = Blueprint('users', __name__, url_prefix = '/users')
-
-def admin_level2_required(fn):
+def high_level_admin_required(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         verify_jwt_in_request()
@@ -29,7 +27,7 @@ def user_identity_lookup(admin):
     return admin.name
 
 
-@users.route("/login", methods = ['GET', 'POST'])
+'''@users.route("/login", methods = ['GET', 'POST'])
 def adminLogin():
     
     if request.method == 'POST':
@@ -85,7 +83,8 @@ def protected_first_level():
     
 
 @users.route("/protected2", methods = ['GET'])
-@admin_level2_required
+@high_level_admin_required
 def protected_second_level():
     return render_template('protected2.html')
+    '''
     

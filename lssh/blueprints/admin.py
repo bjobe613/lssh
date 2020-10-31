@@ -1,17 +1,20 @@
 from flask import Blueprint, render_template
 from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition
 import json
+from lssh.blueprints.security import *
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 
 @admin.route("/")
+@jwt_required
 def admin_home():
     return render_template('admin/home.html')
 
 
 @admin.route("/products/")
+@jwt_required
 def admin_products():
     products = Product.query.all()
     categories = Category.query.all()
@@ -19,6 +22,7 @@ def admin_products():
 
 
 @admin.route("/products/search/<int:articleNumber>/")
+@jwt_required
 def admin_products_search(articleNumber):
     products = Product.query.filter_by(articleNumber=articleNumber)
     categories = Category.query.all()
@@ -27,6 +31,7 @@ def admin_products_search(articleNumber):
 
 
 @admin.route("/products/category/<string:category_str>/")
+@jwt_required
 def admin_products_category(category_str):
     category = Category.query.filter_by(name=category_str).first()
     categories = Category.query.all()
@@ -38,6 +43,7 @@ def admin_products_category(category_str):
         return render_template('admin/products.html', categories=categories, products=[], optional_table_header="There is no category named: {0} in the database".format(category_str))
 
 @admin.route("/products/add")
+@jwt_required
 def admin_add_product():
     categories = Category.query.all()
     paymentMethods = PaymentMethod.query.all()
@@ -47,27 +53,32 @@ def admin_add_product():
 
 
 @admin.route("/news/edit/<int:id>")
+@high_level_admin_required
 def admin_edit_news(id):
     news = News.query.get_or_404(id)
     return render_template('admin/edit_news.html', news_id=id)
 
 
 @admin.route("/news/view/<int:id>")
+@high_level_admin_required
 def admin_view_news(id):
     news = News.query.get_or_404(id)
     return render_template('admin/view_news.html', article=news.get_article_as_html(), news_id=id)
 
 @ admin.route("/news/add")
+@high_level_admin_required
 def admin_add_news():
     return render_template('admin/add_news.html')
 
 @ admin.route("/news/")
+@high_level_admin_required
 def admin_news():
     all_news=News.query.all()
     return render_template('admin/news.html', all_news=all_news)
 
 @ admin.route("/faq/", defaults={'categoryid': None})
 @ admin.route("/faq/<int:categoryid>")
+@high_level_admin_required
 def admin_faq(categoryid):
     faqcategories = Categoryfaq.query.all()
 
@@ -79,17 +90,20 @@ def admin_faq(categoryid):
     return render_template('admin/faq.html', chosenCategory=chosenCategory, faqquestions=faqquestions, faqcategories=faqcategories)
 
 @ admin.route("faq/edit/<int:questionid>")
+@high_level_admin_required
 def admin_faq_edit(questionid):
     categories = Categoryfaq.query.all()
     question = Question.query.get_or_404(questionid)
     return render_template('admin/edit_faq_question.html', categories=categories, question=question)
 
 @ admin.route("faq/add")
+@high_level_admin_required
 def faq_add_question():
     categories = Categoryfaq.query.all()
     return render_template('admin/add_faq_question.html', categories=categories)
 
 @ admin.route("faq/add-category")
+@high_level_admin_required
 def faq_add_category():
     return render_template('admin/add_faq_category.html')
 

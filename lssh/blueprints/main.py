@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, jsonify, Response
 from lssh.models import db, Product, Newsletter, News, Question, Categoryfaq
 from flask_mail import Message
 from lssh import mail
+from lssh.blueprints.security import *
 
 import re
 
@@ -134,7 +135,34 @@ def hand_in_request():
     elif request.method == 'GET':
         return render_template('hand_in_request.html')
 
-@main.route("/admin_login")
+@main.route("/admin_login", methods = ['GET', 'POST'])
 def admin_login():
-    return render_template('admin_login.html')
+    
+    if request.method == 'POST':
+        content = request.get_json()        
+        username = content["username"] # MUST prevent an sql-injection!!!
+        password = content['password']
+        user = Admin.query.filter(Admin.name == username).first()
+        if not user:
+            return 'No user', 404
+        else:
+            if flask_bcrypt.check_password_hash(user.passwordHash, password):     
+                access_token = create_access_token(identity=user)
+                resp = make_response('cookie')
+                set_access_cookies(resp, access_token)
+                return resp
+            else:
+                return 'wrong password', 404
+    elif request.method == 'GET':
+        if get_jwt_identity() != None:
+            print('redirect to register') #return redirect(url_for('users.adminRegister'))   # this doesn't work     
+        return render_template('admin_login.html')
+
+@main.route("/admin_logout", methods = ['GET'])
+@jwt_required
+def admin_logout():
+    resp = jsonify({'logout': True})
+    resp = make_response(redirect(url_for('main.admin_login')))
+    unset_jwt_cookies(resp)
+    return resp, 200 
 
