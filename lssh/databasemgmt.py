@@ -83,12 +83,12 @@ def addProducts():
     paym_r = PaymentMethod.query.filter_by(name = "Revolut").first()
     paym_sr = PaymentMethod.query.filter_by(name = "Swish or Revolut").first()
 
-    product0 = Product(name = "White sofa", price = 200, color = "Grey", category = cat_sofas, condition = cond_good, payment_method = paym_sr, height = 80, width = 40, depth = 40)
+    product0 = Product(name = "White sofa", price = 200, color = "Grey", category = cat_sofas, condition = cond_good, height = 80, width = 40, depth = 40)
     
-    product1 = Product(name = "Lamp", price = 20, color = "Black", category = cat_electronics, condition = cond_okay, payment_method = paym_s, height = 80, width = 200, depth = 80)
-    product2 = Product(name = "Chair", price = 300, color = "White", category = cat_chairs, condition = cond_bad, payment_method = paym_r, height = 100, width = 50, depth = 50)
-    product3 = Product(name = "Very nice chair", price = 1000, color = "White", category = cat_chairs, condition = cond_good, payment_method = paym_sr, height = 50, width = 40, depth = 10)
-    product4 = Product(name = "Tv bench", price = 400, color = "Black", category = cat_tables, condition = cond_good, payment_method = paym_sr, height = 90, width = 230, depth = 60)
+    product1 = Product(name = "Lamp", price = 20, color = "Black", category = cat_electronics, condition = cond_okay, height = 80, width = 200, depth = 80)
+    product2 = Product(name = "Chair", price = 300, color = "White", category = cat_chairs, condition = cond_bad, height = 100, width = 50, depth = 50)
+    product3 = Product(name = "Very nice chair", price = 1000, color = "White", category = cat_chairs, condition = cond_good, height = 50, width = 40, depth = 10)
+    product4 = Product(name = "Tv bench", price = 400, color = "Black", category = cat_tables, condition = cond_good, height = 90, width = 230, depth = 60)
     
     db.session.add_all([
         product0,
