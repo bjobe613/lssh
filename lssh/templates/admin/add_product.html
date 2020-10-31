@@ -3,6 +3,8 @@
 
 {% block more_head %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/add_product.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/picture_selector.css') }}">
+
 {% endblock more_head %}
 
 {% block content %}
@@ -22,9 +24,9 @@
                 <div class="form-group col">
                     <label for="add-product-condition">Condition</label>
                     <select class="form-control" id="add-product-condition" name="condition">
-                        <option value="1">Good</option>
-                        <option value="2">Okay</option>
-                        <option value="3">Bad</option>
+                        {% for condition in conditions %}
+                        <option value="{{condition.id}}">{{condition.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -32,25 +34,25 @@
                 <label for="add-product-picture-picker">Add pictures: </label>
                 <input type="file" class="form-control-file" id="add-product-picture-picker" multiple="true" accept="image/png, image/jpeg">
                 
-                <label for="add-product-picture-viewer">Chosen pictures</label>
-                <div class="card-deck add-product-card-holder" id="add-product-picture-viewer">
-                
+                <label for="picture-selector">Chosen pictures</label>
+                <div id="picture-selector">
+
                 </div>
             </div>
             <div class="form-group">
               <label for="add-product-category">Category</label>
               <select class="form-control" id="add-product-category" name="category">
                 {% for category in categories %}
-                <option>{{ category.name|e }}</option>
+                <option value="{{ category.id }}">{{ category.name|e }}</option>
                 {% endfor %}
               </select>
             </div>
             <div class="form-group">
                 <label for="add-product-payment">Payment method</label>
                 <select class="form-control" id="add-product-payment" name="paymentMethod">
-                  <option>Swish</option>
-                  <option>Revolut</option>
-                  <option>Swish & Revolut</option>
+                  {% for paymentMethod in paymentMethods %}
+                  <option value="{{paymentMethod.id}}">{{paymentMethod.name}}</option>
+                  {% endfor %}
                 </select>
               </div>
             <div class="form-group">
@@ -69,22 +71,8 @@
     </div>
 {% endblock content %}
 
-{% block templates %}
-    <template id="empty-files-card">
-        <div class="card add-product-card">
-            <img class="card-img-top add-product-card-img" src="{{ url_for('static', filename='placeholder.png') }}">
-            <div class="card-body">
-                <h5>No pictures chosen</h5>
-            </div>
-            <div class="card-footer add-product-card-footer">
-                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-left"></i></button>
-                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-times"></i></button>
-                <button class="btn btn-light add-product-card-button" disabled><i class="fa fa-arrow-right"></i></button>
-            </div>
-        </div>
-    </template>
-{% endblock templates %}
-
 {% block scripts %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_product.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/picture_selector.js') }}"></script>
+
 {% endblock scripts %}

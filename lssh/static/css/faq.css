@@ -1,4 +1,19 @@
+#top-container {
+    min-height: 60vh;
+    padding-bottom: 3rem;
+}
 
+#faq-heading {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+#image-header {
+    object-fit: cover;
+    height: 60vh;
+    display: block;
+    width: 100%;
+}
 
 #container-fill {
     min-height: 80vh;
@@ -6,13 +21,13 @@
 }
 
 .card-header {
-    background-color: white;
-    border-radius: 0;
+    background-color: rgb(245, 245, 245);
+    
 }
 
 .card-body {
-    background-color: rgb(247, 247, 247);
-    border-radius: 0;
+    background-color: rgb(255, 255, 255);
+    
 }
 
 #faq-angledown {
@@ -20,24 +35,38 @@
     padding-right: 1rem;
 }
 
-#faq-question-heading {
+.faq-question-heading {
     font-size: 1.5rem;
     width: 100%;
     text-align: start;
     color: black;
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+   
+    box-shadow: none;
+    text-decoration: none;
 }
 
-#faq-question-heading:focus {
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+.faq-question-heading:hover {
+    box-shadow: none;
+    text-decoration: none;
+    color: black;
 }
 
-#faq-question-heading:active {
-    border-style: none;
-    box-shadow: none!important;
-    text-decoration: none; 
+.faq-question-heading:focus {
+   
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.faq-question-heading:active {
+
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.active.nav-link{
+    background-color: var(--main-bg-color) !important;
+    
+    border-radius: 10rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }

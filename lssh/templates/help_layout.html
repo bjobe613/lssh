@@ -11,63 +11,16 @@
  
         <!--Where the html should be written-->
 
-      
-        <div id="about-us-container" class="container-fluid">
+        <div id="subnav-container" class="container-fluid pt-4 pb-4">
             <div class="row">
-                <div class="col-10"></div>
-                <div class="col-1 text-center">
-                    <div class="arrow-down"></div>
+                <div class="col text-right">
+                    <a id="faq-link" href="{{ url_for('main.faq') }}" class="a-link-white d-inline pr-4">FAQ</a>
+                    <a id="contact-link" href="{{ url_for('main.contact') }}" class="a-link-white d-inline pr-4">Contact</a>
                 </div>
             </div>
-    
-            
-            <div class="row mt-4 pb-4 pt-2">
-     
-                <div class="col-md-1 offset-9 text-center">
-                    <a id="faq-link" class="a-link-white" href="{{ url_for('main.faq') }}"> FAQ</a>
-                </div>
-                <div class="col-md-1 col-sm-6 text-center">
-                    <a id="contact-link" class="a-link-white" href="{{ url_for('main.contact') }}"> Contact </a>
-                </div>
-                <div class="col-md-1 col-sm-6 text-center">
-                   
-                </div>
-            </div>
-            
-            <!--
-            <div id="heading-help" class="row pt-5 pb-5">
-                <div class="col-2"></div>
-                <div class="col-12 col-md-3 text-md-left text-center">
-                    <h4 >QUESTIONS?</h4>
-                    <h2>We're here to help</h2>
-                    <br>
-                    
-                    <h6>Use the buttons below to use our FAQ or contact us!</h6>
-                    <br>
-                    <a id="faq-btn" href="{{ url_for('main.faq') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
-                        <div class="col">FAQ</div>
-                    </a>
-
-                    <a id="contact-btn" href="{{ url_for('main.contact') }}" class="row a-link-white transparent-toggle align-items-center text-center ml-1 pt-2 pb-2 mb-3">
-                        <div class="col">Contact us</div>
-                    </a>
-
-                 
-                   
-                   
-                </div>
-
-                <div class="col-1"></div>
-
-                <div class="col-4 d-none d-md-block">
-                    <img id="contact-img" class="img-fluid" src="{{ url_for('static', filename = '/pictures/Project group frame.png') }}" alt="Furniture">
-                </div>
-                <div class="col-2"></div>
-            </div>-->
-
         </div>
 
-    
+
 
 
       

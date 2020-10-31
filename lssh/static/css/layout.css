@@ -1,16 +1,41 @@
-html {
+html, body {
     overflow-x: hidden; 
-   
+  
 }
 
 
 /* Global variables */
+
 :root {
     --main-bg-color: #09433A;
     --bg-color-white: #ffffff;
   }
 
 
+.container-max-width {
+    max-width: 1200px;
+
+}
+
+a {
+    color: rgb(78, 78, 78);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(78, 78, 78);
+}
+
+.a-underline {
+    text-decoration: underline;
+}
+
+.a-underline:hover {
+    text-decoration: underline;
+    color: rgb(78, 78, 78);
+}
+
+/* Headings */ 
 
 h1 {
     font-family: 'Roboto', sans-serif;
@@ -20,9 +45,8 @@ h1 {
 
 h2 {
     font-family: 'Roboto', sans-serif;
-    font-weight: 500 !important;
-    color: rgb(255, 255, 255);
-    font-size: 2.5rem !important;
+    font-weight: 300 !important;
+    color: rgb(125, 125, 125);
 }
 
 h3 {
@@ -30,6 +54,9 @@ h3 {
     font-weight: 500 !important;
     color: rgb(0, 0, 0);
 }
+
+
+/* Check the h4, h5 and h6 classes so they are not colored */
 
 h4 {
     font-weight: 300 !important;
@@ -52,10 +79,7 @@ h6 {
 p {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-}
-
-.p-white {
-    color: white;
+    
 }
 
 
@@ -63,14 +87,16 @@ p {
     height: 6rem;
 }
 
+
 .bg-transparent {
     background-color: transparent !important;
 }
 
 /* Styling for buttons */
+
 .green-btn {
     background-color: var(--main-bg-color);
-    border: none;
+    border: 1px solid var(--main-bg-color);
     color: white;
     padding: 0.9rem;
     padding-left: 2.5rem;
@@ -91,6 +117,40 @@ p {
 .green-btn:focus {
     outline:none;
 }
+
+.green-transparent-btn {
+    background-color: transparent;
+    border: 1px solid var(--main-bg-color);
+    color: var(--main-bg-color);
+    padding: 0.9rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;  
+    cursor: pointer;
+    border-radius: 0.1rem;
+    transition: 0.3s;
+}
+
+.green-transparent-btn:hover {
+    background-color: var(--main-bg-color);
+    color: var(--bg-color-white);
+    outline:none;
+}
+
+.green-transparent-btn:active {
+    outline:none;
+    opacity: 0.9;
+}
+
+.green-transparent-btn:focus {
+    outline:none;
+}
+
+
+
 
 .white-btn {
     background-color: var(--bg-color-white);
@@ -116,6 +176,10 @@ p {
     outline:none;
 }
 
+.wider-btn {
+    padding-left: 20%;
+    padding-right:  20%;
+}
 
 
 
@@ -146,24 +210,28 @@ p {
     background-color: var(--main-bg-color);
     padding-right: 0.8rem;
     padding-left: 0.8rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     border-radius: 25px;
+    color: white;
+}
+
+.a-active:hover {
     color: white;
 }
 
 
 .a-how-it-works {
-    color: #49a193;
+    color: #49a193 !important;
 }
 
 .a-how-it-works:hover {
-    color: #3c867a;
-    text-decoration: none;
+    color: #3c867a !important;
+    text-decoration: none !important;
 }
 
 .a-link-white {
-    color: rgb(206, 206, 206);
+    color: rgb(190, 190, 190);
 }
 
 .a-link-white:hover {
@@ -172,13 +240,13 @@ p {
 }
 
 .a-link-white-active:hover {
-    color: var(--bg-color-white);
+    color: rgb(255, 255, 255);
     text-decoration: none;
    
 }
 
 .a-link-white-active {
-    color: var(--bg-color-white);
+    color: rgb(255, 255, 255);
     font-weight: 500;
 }
 
@@ -211,14 +279,15 @@ p {
 
 /* NAVBAR */
 
-#navbar {
-    height: 10vh;
-    background-color:transparent !important;
+@media(max-width: 992px) {
+    .navbar {
+        background-color: white;
+    }
+
 }
 
-#navbar-mobile {
-    background-color: white;
-}
+
+
 
 #works-link {
     border: 1px solid var(--main-bg-color);
@@ -235,14 +304,6 @@ p {
 
 
 
-
-@media only screen and (max-width: 992px) {
-    .navbar-desktop-active {
-        display: none;
-    }
-}
-
-
 /* Subnav */ 
 
 /*
@@ -250,6 +311,11 @@ p {
     height: 5rem;
 }
 */
+
+#subnav-container {
+    z-index: 2;
+    background-color: #09433A; 
+}
 
 #help-link {
     width: 100%;
@@ -270,10 +336,7 @@ p {
     left: 50%;
 }
 
-#about-us-container {
-    min-height: 4vh;
-    background-color: #09433A;
-}
+
 
 .inline {
     display: inline-block;
@@ -343,6 +406,14 @@ p {
 
 .grey-bg {
     background-color: #F9F9F9;
+}
+
+.black-bg {
+    background-color: black;
+}
+
+.green-bg {
+    background-color: var(--main-bg-color);
 }
 
 

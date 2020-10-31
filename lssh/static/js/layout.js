@@ -11,14 +11,30 @@ if (window.history.replaceState) {
 
 if (window.location.href.indexOf("about") > -1) {
     $( "#navbar" ).removeClass( "fixed-top" );
+  
+  
+} 
+
+if (window.location.href.indexOf("about_us") > -1) {
+
     $("#about-us-link").addClass("a-link-white-active");
   
 } 
 
 
+
 if (window.location.href.indexOf("find_us") > -1) {
     $("#find-link").addClass("a-link-white-active");
+}
+
+if (window.location.href.indexOf("transport") > -1) {
+    $( "#navbar" ).removeClass( "fixed-top" );
+}
+
+if (window.location.href.indexOf("news") > -1) {
+    $( "#navbar" ).removeClass( "fixed-top" );
 } 
+
 
 
 if (window.location.href.indexOf("admin_login") > -1) {

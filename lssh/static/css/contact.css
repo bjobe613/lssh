@@ -1,21 +1,5 @@
 #container-fill {
-    min-height: 80vh;
-}
-
-@media only screen and (min-width: 768px) {
-    #col-behind {
-        margin-left: -3rem;
-        z-index: 1;
-    }
-    #col-front {
-        z-index: 2;
-    }
-    .shift-text {
-        margin-left: 3rem;
-    }
-    #input-contact {
-        padding-left: 3rem;
-    }
+    min-height: 100vh;
 }
 
 #contact-img-phone {
@@ -24,5 +8,28 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    border-radius: 0.3rem;
+    
+}
+
+#image-header {
+    object-fit: cover;
+    height: 60vh;
+    display: block;
+    width: 100%;
+}
+
+#top-container {
+    min-height: 60vh;
+    padding-bottom: 3rem;
+}
+
+#faq-heading {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 786px) {
+    #submit-button {
+        width: 100%;
+    }
 }
