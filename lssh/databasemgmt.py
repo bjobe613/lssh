@@ -25,9 +25,6 @@ def fillTestDB():
     addConditions()
     addPaymentMethods()
     addProducts()
-        addProducts()
-    addProducts()
-    addProducts()
 
     addNews()
     addFaqCategoryQuestions()
