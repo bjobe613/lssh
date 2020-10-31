@@ -1,0 +1,83 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_products = True %}
+
+{% block more_head %}
+{% endblock more_head %}
+
+{% block content %}
+<div class="container">
+    <form id="edit-product-form">
+        <h1>Edit product</h1>
+        <div class="form-group">
+          <label for="edit-product-title">Title</label>
+          <input type="text" class="form-control" id="edit-product-title" name="name" value="{{product.name}}">
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label for="edit-product-price">Price</label>
+                <input type="Number" class="form-control" id="edit-product-price" name="price" value="{{product.price}}">
+            </div>
+            <div class="form-group col">
+                <label for="edit-product-condition">Condition</label>
+                <select class="form-control" id="edit-product-condition" name="condition_id">
+                    {% for condition in conditions %}
+                    <option value="{{condition.id}}"
+                    {% if product.condition.id==condition.id %}
+                        selected
+                    {% endif %}
+                    >{{condition.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <!--
+        <div class="border picture-area">
+            <label for="add-product-picture-picker">Add pictures: </label>
+            <input type="file" class="form-control-file" id="add-product-picture-picker" multiple="true" accept="image/png, image/jpeg">
+            
+            <label for="add-product-picture-viewer">Chosen pictures</label>
+            <div class="card-deck add-product-card-holder" id="add-product-picture-viewer">
+            
+            </div>
+        </div>
+        -->
+        <div class="form-group">
+          <label for="edit-product-category">Category</label>
+          <select class="form-control" id="edit-product-category" name="category_id">
+            {% for category in categories %}
+            <option value="{{ category.id }}"
+            {% if product.category.id==category.id %}
+                selected
+            {% endif %}
+            >{{ category.name|e }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="edit-product-payment">Payment method</label>
+            <select class="form-control" id="edit-product-payment" name="payment_method_id">
+              {% for paymentMethod in paymentMethods %}
+              <option value="{{paymentMethod.id}}">{{paymentMethod.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <div class="form-group">
+          <label for="edit-product-description">Description</label>
+          <textarea class="form-control" id="edit-product-comment" name="comment" rows="5">{{product.comment}}</textarea>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-success edit-product-button">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block templates %}
+    
+{% endblock templates %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/edit_product.js') }}"></script>
+{% endblock scripts %}

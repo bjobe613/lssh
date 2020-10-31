@@ -1,0 +1,50 @@
+ <!--Swiper slidewhow-->
+
+ 
+{% block more_head %}
+<!--Additional head-->
+
+<link rel="stylesheet" href="{{ url_for('static', filename='swiper/swiper-bundle.css') }}">
+
+{% endblock more_head %}
+
+
+
+ <style>
+     /* This was for comp news swiper */
+    .centered {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+  }
+ </style>
+
+ <div class="swiper-container">
+    <div class="swiper-wrapper">
+  
+        {% for News in latestNews %}
+        <div class="swiper-slide">
+            <img id="image-news-top" src="{{ url_for('static', filename = '/pictures/' + News.get_img_url()) }}" class="img-fluid" alt="Responsive image">
+            <div class="centered text-center">
+            
+                <h3 class="text-white pb-2">{{ News.title }}</h3>
+                <form action="news/{{ News.id }}">
+                    <button class="white-btn" type="submit">READ MORE</button>
+                </form>
+
+            </div>
+        </div>
+        {% endfor %}
+   
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+
+
+  <script src="{{ url_for('static', filename='swiper/swiper-bundle.js') }}" type="text/javascript"></script>
+  
+  <script type="text/javascript" src="{{ url_for('static', filename='js/comp_news_swiper.js') }}"></script>
+

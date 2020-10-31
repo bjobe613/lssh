@@ -1,5 +1,5 @@
 $('document').ready(function(){
-    document.getElementById("add-product-form").addEventListener('submit', function(e) {
+    document.getElementById("edit-product-form").addEventListener('submit', function(e) {
         e.preventDefault();
         submitProductForm();
     });
@@ -9,16 +9,20 @@ $('document').ready(function(){
  * Used for submiting the form
  */
 function submitProductForm() {
-    var form = document.getElementById("add-product-form")
+    var form = document.getElementById("edit-product-form")
+    console.log(form)
     var formData = new FormData(form);
-
-    getFiles().forEach((file) => {
+/*
+    fileList.forEach((file) => {
         formData.append('file', file);
     })
+    */
+    req_url = '/products/' + location.href.split("/")[6]
+    console.log(req_url);
     
     $.ajax({
-        url: '/products/add/',
-        type: 'POST',
+        url: req_url,
+        type: 'PUT',
         data: formData,
         dataType: 'json',
         processData: false,

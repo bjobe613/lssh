@@ -1,0 +1,13 @@
+.picture-selector-inner {
+    overflow-x:auto;
+}
+
+.add-product-card {
+    max-width:12rem;
+    min-width:12rem;
+}
+
+.add-product-card-footer {
+    display:flex;
+    justify-content: space-around;
+}

@@ -3,17 +3,19 @@
  * @param {number} id 
  */
 function deleteNews(id) {
-    $.ajax({
-        url: '/news/api/' + id,
-        type: 'DELETE',
-        dataType: 'json',
-        success: function (response) {
-           window.location.reload()
-        },
-        error: function (response) {
-            alert("Couldn't remove article")
-        }
-    })
+    if(window.confirm("Do you really want to delete this news item?")) {
+        $.ajax({
+            url: '/news/api/' + id,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+               window.location.reload()
+            },
+            error: function (response) {
+                alert("Couldn't remove article")
+            }
+        })
+    }
 }
 /**
  * Publishes, respectively unpublishes the article specified by id.

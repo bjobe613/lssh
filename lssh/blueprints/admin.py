@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition
+from flask import Blueprint, render_template, request, jsonify
+from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, User, ProductPictures
 import json
 from lssh.blueprints.security import *
 
@@ -13,12 +13,166 @@ def admin_home():
     return render_template('admin/home.html')
 
 
+@admin.route("/add_maintain_customers", methods=['GET'])
+def add_maintain_customers():
+
+    users = User.query.order_by(User.name).all()
+
+    return render_template('admin/add_maintain_customers.html', users = users)
+
+@admin.route("/add_maintain_customers/<string:liuID>/")
+def add_maintain_customers_single(liuID):
+
+    buyers = User.query.filter_by(liuID = liuID)
+
+    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with LiU ID")
+
+@admin.route("/add_maintain_customers/email/<string:email>/")
+def add_maintain_customers_single_email(email):
+
+    buyers = User.query.filter_by(email = email)
+
+
+    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with email")
+
+
+@admin.route("/add_maintain_customers/delete", methods=['GET', 'POST'])
+def add_maintain_customers_delete():
+
+
+    # Will there be foreign key problems with this?
+    data = request.get_json()
+    User.query.filter_by(liuID = data['liuID']).delete()
+    db.session.commit()
+
+    return ""
+
+@admin.route("/buyingprocess/", methods=['GET', 'POST'])
+def buying_process():
+
+
+
+    if request.method == 'POST':
+        data = request.get_json()
+
+        print(data['product_id'])
+
+        product = Product.query.filter(Product.articleNumber == data['product_id']).first()
+        
+        print(product.articleNumber)
+
+        productJson = {
+            'articleNumber' : product.articleNumber,
+            'name' : product.name,
+            'price' : product.price
+        }
+
+        return jsonify(productJson)
+
+    elif request.method == 'GET':
+
+        return render_template('admin/buy_process.html')
+    
+@admin.route("/buyingprocess/data", methods=['POST'])
+def buying_process_data():
+
+    data = request.get_json()
+
+    product = Product.query.filter(Product.articleNumber == data['product_id'], Product.quantity != 0).first() 
+    productPictures = ProductPictures.query.filter(ProductPictures.productID == data['product_id']).first()
+
+
+    productJson = {
+        'articleNumber' : product.articleNumber,
+        'name' : product.name,
+        'price' : product.price,
+        'seller' : product.sellerID,
+        'picture' : productPictures.pictureName,
+        'quantity' : product.quantity,
+        'boughtQuantity' : 1
+    }
+
+
+    return jsonify(productJson)
+
+@admin.route("/buyingprocess/remove_product", methods=['POST'])
+def buying_process_remove_product():
+    data = request.get_json()
+
+    print(data)
+
+    
+
+    product = Product.query.filter(Product.articleNumber == data['product_id']).first()
+
+     # Need some form of control if this would be incorrect
+    product.quantity = product.quantity - data['quantityToBuy']
+
+    #If successful, shall send email to seller about the item sold
+    
+    db.session.commit()
+
+    return "Success"
+
+@admin.route("/buyingprocess/add_buyer", methods=['POST'])
+def buying_process_add_buyer():
+    data = request.get_json()
+
+    newBuyer = User(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
+    db.session.add(newBuyer)
+    db.session.commit()
+
+    return "Success"
+
+    
+
+
+@admin.route("/buyingprocess/customer", methods=['POST'])
+def buying_process_customer():
+
+    data = request.get_json()
+
+    if (data['liu_id'] != ""):
+        buyer = User.query.filter(User.liuID == data['liu_id']).first()
+       
+
+        buyerJson = {  
+        'liuID' : buyer.liuID,
+        'email' : buyer.email,
+        'name' : buyer.name,
+        'program' : buyer.program,
+        'international' : buyer.international
+        }
+        return jsonify(buyerJson)
+
+    elif (data['email'] != ""):
+        buyer = User.query.filter(User.email == data['email']).first()
+      
+        buyerJson = {  
+        'liuID' : buyer.liuID,
+        'email' : buyer.email,
+        'name' : buyer.name,
+        'program' : buyer.program,
+        'international' : buyer.international
+        }
+        return jsonify(buyerJson)
+    else:
+        return "", 400
+  
+
 @admin.route("/products/")
 @jwt_required
 def admin_products():
-    products = Product.query.all()
+    products = Product.query.filter(Product.quantity != 0).all()
     categories = Category.query.all()
     return render_template('admin/products.html', categories=categories, products=products)
+
+
+@admin.route("/products/archive")
+def admin_products_archive():
+    products = Product.query.filter(Product.quantity == 0).all()
+    categories = Category.query.all()
+    return render_template('admin/products.html', categories=categories, products=products, optional_table_header="Archive")
 
 
 @admin.route("/products/search/<int:articleNumber>/")
@@ -37,7 +191,7 @@ def admin_products_category(category_str):
     categories = Category.query.all()
 
     if category:
-        products = Product.query.filter_by(category=category)
+        products = Product.query.filter_by(category=category).filter(Product.quantity != 0)
         return render_template('admin/products.html', categories=categories, products=products, optional_table_header="Filtered by category: {0}".format(category_str))
     else:
         return render_template('admin/products.html', categories=categories, products=[], optional_table_header="There is no category named: {0} in the database".format(category_str))
@@ -51,6 +205,14 @@ def admin_add_product():
 
     return render_template('admin/add_product.html', categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
+@admin.route("/products/edit/<int:id>")
+def edit_product(id):
+    product =  Product.query.get_or_404(id)
+    categories = Category.query.all()
+    paymentMethods = PaymentMethod.query.all()
+    conditions = Condition.query.all()
+
+    return render_template('admin/edit_product.html', product=product, categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
 @admin.route("/news/edit/<int:id>")
 @high_level_admin_required
@@ -73,7 +235,7 @@ def admin_add_news():
 @ admin.route("/news/")
 @high_level_admin_required
 def admin_news():
-    all_news=News.query.all()
+    all_news=News.query.order_by(News.date.desc()).all()
     return render_template('admin/news.html', all_news=all_news)
 
 @ admin.route("/faq/", defaults={'categoryid': None})

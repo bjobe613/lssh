@@ -28,3 +28,29 @@ body {
     margin-top: 100px;
     text-align: center;
 }
+
+
+
+.parallelogram {
+    width: 300px;
+    min-height: 3rem;
+    transform: skew(-20deg);
+    background: var(--main-bg-color);
+    
+}
+
+.parallelogram-outer {
+    width: 200px;
+    height: 3rem;
+    padding-left: -2rem;
+    background: var(--main-bg-color);
+}
+
+.margin-0 {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.skew-normal {
+    transform: skew(20deg);
+}

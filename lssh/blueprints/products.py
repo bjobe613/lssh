@@ -15,13 +15,14 @@ products = Blueprint('products', __name__, url_prefix = '/products')
 
 @products.route("/catalog", methods=['GET', 'POST'])
 def catalog():
-    prod = Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()
+    prod = Product.query.filter(Product.quantity > 0).all()
+    print(prod)
     return render_template('product_catalog.html', products = prod)
 
 @products.route("/products_content", methods=['GET', 'POST'])
 def products_content():
 
-    prodList = [p.serialize() for p in Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all()]
+    prodList = [p.serialize() for p in Product.query.filter(Product.quantity > 0).all()]
     #for i in Product.query.filter((Product.status == "Available") | (Product.status == "Reserved")).all():
     #    prodList.insert(i.serialize())
     #print(prodList)
@@ -56,3 +57,22 @@ def add_product():
         prod.addPicture(file)
 
     return prod.serialize(), 200
+
+@products.route("/<int:id>", methods=['GET', 'PUT', 'DELETE'])
+def api(id):
+    product = Product.query.get_or_404(id)
+    if request.method == 'GET':
+        return product.serialize()
+    elif request.method == 'PUT':
+        for attr in request.form:
+            if hasattr(product, attr):
+                print(attr)
+                setattr(product, attr, request.form.get(attr))
+
+        db.session.commit()
+        return product.serialize(), 200
+    elif request.method == 'DELETE':
+        product.deletePictures()
+        db.session.delete(product)
+        db.session.commit()
+        return {"msg": "delete successful"}, 200
