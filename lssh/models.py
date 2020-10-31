@@ -188,9 +188,7 @@ class News(db.Model): #has to be reworked into files, not a model.
         url = ""
 
         if self.titlePicture:
-            url= Newspicture.query.get(self.titlePicture).path
-        else:
-     
+            url= Newspicture.query.get(self.titlePicture).path     
         return url
 
     def escape_html(self):
@@ -223,7 +221,6 @@ class News(db.Model): #has to be reworked into files, not a model.
         article_html = ""
         if self.titlePicture:
             article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
-        else:
         article_html += "<h1>" + self.title + "</h1>\n"
         article_html += "<p class='ingress'>" + self.ingress + "</p>\n"
         article_html += quill_parser.render(self.text["ops"])
