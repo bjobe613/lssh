@@ -120,6 +120,19 @@ function updateVisualCatalog() {
 //  console.log(filterID);
 //})
 
+$(document).ready(function () {
+  $(document).click(function (event) {
+    var clickover = $(event.target);
+    if (!(clickover.hasClass("category-collapse-a") || clickover.hasClass("filter-checkbox") || clickover.hasClass("filter-categories-label"))) { //
+      $('.collapse').collapse('hide');
+    }
+  });
+});
+/*
+$(document).on('click',function(){
+  $('.collapse').collapse('hide');
+  })*/
+
 listFilters('category');
 listFilters('color');
 listFilters('condition');
