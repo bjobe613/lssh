@@ -2,20 +2,6 @@
     width: 100%;
 }
 
-.add-product-card-holder {
-    overflow-x:auto;
-}
-
-.add-product-card {
-    max-width:12rem;
-    min-width:12rem;
-}
-
-.add-product-card-footer {
-    display:flex;
-    justify-content: space-around;
-}
-
 .picture-area {
     padding: 1rem;
 }
