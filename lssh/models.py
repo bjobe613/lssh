@@ -26,6 +26,19 @@ class Car(db.Model):
         return "<Car {}: {} {}>".format(self.id, self.make, self.model)
 """
 
+
+
+product_buyer_association_table = Table('product_buyer', db.metadata,
+    db.Column('buyer_id', db.String, db.ForeignKey('User.liuID')),
+    db.Column('product_id', db.Integer, db.ForeignKey('Product.articleNumber'))
+)
+
+seller_payment_association_table = Table('seller_payment', db.metadata,
+    db.Column('seller_id', db.String, db.ForeignKey('User.liuID')),
+    db.Column('paymentmethod_id', db.Integer, db.ForeignKey('PaymentMethod.id'))
+)
+
+
 #######################################################################
 # The following three classes are helper classes to store data for 
 # Product. These are here to prevent deletion and update anomalies and
@@ -67,11 +80,9 @@ class Product(db.Model):
 
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
    
-
     sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
     seller = db.relationship('User', back_populates = 'sellerOfProduct')
-    #buyerID = db.Column(db.Integer, db.ForeignKey('User.liuID'))
-    #buyer = db.relationship('User', back_populates = 'buyerOfProduct')
+    buyer = db.relationship('User',  secondary = product_buyer_association_table, back_populates = 'buyerOfProduct')
 
     def getSinglePictureName(self):
         piclist = self.pictures
@@ -130,11 +141,6 @@ class ProductPictures(db.Model):
         self.pictureName = fileName
         db.session.commit()
 
-seller_payment_association_table = Table('association', metadata,
-    db.Column('user_id', db.String, db.ForeignKey('User.liuID')),
-    db.Column('paymentmethod_id', db.Integer, db.ForeignKey('PaymentMethod.id'))
-)
-
 class PaymentMethod(db.Model):
     __tablename__ = 'PaymentMethod'
     id = db.Column(db.Integer, primary_key = True)
@@ -149,7 +155,7 @@ class User(db.Model):
     international = db.Column(db.Boolean)
     phone = db.Column(db.String(15), nullable = True)
 
-    buyerOfProduct = db.relationship('Product', back_populates = 'buyer')
+    buyerOfProduct = db.relationship('Product', secondary = product_buyer_association_table, back_populates = 'buyer')
     sellerOfProduct = db.relationship('Product', back_populates = 'seller')
     payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table)
 
