@@ -70,7 +70,6 @@ def contactform():
   
     mail.send(msg)
 
-    print("hej")
     return ""
 
 @main.route("/help/faq", methods = ['GET'])

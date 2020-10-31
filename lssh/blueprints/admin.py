@@ -76,13 +76,12 @@ def buying_process():
 def buying_process_data():
 
     data = request.get_json()
-    print(data['product_id'])
+
     product = Product.query.filter(Product.articleNumber == data['product_id'], Product.quantity != 0).first() 
-    print(product.articleNumber)
+
 
     productPictures = ProductPictures.query.filter(ProductPictures.productID == data['product_id']).first()
 
-    print(productPictures.pictureName)
 
     productJson = {
         'articleNumber' : product.articleNumber,

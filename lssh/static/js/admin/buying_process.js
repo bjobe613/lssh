@@ -45,6 +45,8 @@ function addItem() {
         },
         error: function (error) {
 
+            alert("Product does not exist")
+
         }
     });
 }
