@@ -56,3 +56,22 @@ def add_product():
         prod.addPicture(file)
 
     return prod.serialize(), 200
+
+@products.route("/<int:id>", methods=['GET', 'PUT', 'DELETE'])
+def api(id):
+    product = Product.query.get_or_404(id)
+    if request.method == 'GET':
+        return product.serialize()
+    elif request.method == 'PUT':
+        for attr in request.form:
+            if hasattr(product, attr):
+                print(attr)
+                setattr(product, attr, request.form.get(attr))
+
+        db.session.commit()
+        return product.serialize(), 200
+    elif request.method == 'DELETE':
+        product.deletePictures()
+        db.session.delete(product)
+        db.session.commit()
+        return {"msg": "delete successful"}, 200

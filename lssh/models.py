@@ -104,9 +104,11 @@ class Product(db.Model):
         fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
         picture.save(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', fileName))
         pic.renameReference(fileName)
-    
+
     def addPictureFromHardDive(self, path):
         pic = ProductPictures(productID = self.articleNumber)
+        db.session.add(pic)
+        db.session.commit()
 
         fileEnding = path.rsplit('.')[len(path.rsplit('.')) - 1]
         fileName = 'product-' + str(self.articleNumber) + '-' + str(pic.pictureID) + '.' + fileEnding
@@ -119,6 +121,11 @@ class Product(db.Model):
         db.session.add(pic)
         db.session.commit()
 
+    def deletePictures(self):
+        for picture in self.pictures:
+            picture.deleteOnHarddrive()
+            db.session.delete(picture)
+
 class ProductPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
@@ -127,6 +134,13 @@ class ProductPictures(db.Model):
     def renameReference(self, fileName):
         self.pictureName = fileName
         db.session.commit()
+    
+    def deleteOnHarddrive(self):
+        if self.pictureName != "default.jpg":
+            try:
+                os.remove(os.path.join(os.path.curdir, 'lssh', 'static', 'pictures', self.pictureName))
+            except FileNotFoundError:
+                None
 
 class ProductReservation(db.Model):
     reservationID = db.Column(db.Integer, primary_key = True)

@@ -45,6 +45,14 @@ def admin_add_product():
 
     return render_template('admin/add_product.html', categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
+@admin.route("/products/edit/<int:id>")
+def edit_product(id):
+    product =  Product.query.get_or_404(id)
+    categories = Category.query.all()
+    paymentMethods = PaymentMethod.query.all()
+    conditions = Condition.query.all()
+
+    return render_template('admin/edit_product.html', product=product, categories=categories, paymentMethods=paymentMethods, conditions=conditions)
 
 @admin.route("/news/edit/<int:id>")
 def admin_edit_news(id):
