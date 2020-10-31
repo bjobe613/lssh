@@ -66,7 +66,7 @@ class Product(db.Model):
     comment = db.Column(db.Text)
 
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
-    reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
+   
 
     sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
     seller = db.relationship('User', back_populates = 'sellerOfProduct')
@@ -149,8 +149,8 @@ class User(db.Model):
     international = db.Column(db.Boolean)
     phone = db.Column(db.String(15), nullable = True)
 
-    #buyerOfProduct = db.relationship('Product', backref = 'buyerID')
-    sellerOfProduct = db.relationship('Product', backref = 'sellerID')
+    buyerOfProduct = db.relationship('Product', back_populates = 'buyer')
+    sellerOfProduct = db.relationship('Product', back_populates = 'seller')
     payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table)
 
 class Newsletter(db.Model):
