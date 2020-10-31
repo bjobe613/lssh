@@ -103,7 +103,7 @@ class Product(db.Model):
             color=self.color,
             condition=self.condition.name,
             status=self.status,
-            paymentMethod=self.payment_method.name
+            paymentMethod="Old payment" # TEMPORARY SOLUTION
         )
 
     def addPicture(self, picture):
