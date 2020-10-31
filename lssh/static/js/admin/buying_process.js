@@ -38,6 +38,7 @@ function addItem() {
             * Checks and adds to product array if there are not any duplicates of the product. 
             * If there are no duplicates executes updateCart to update html
             ***********************************************************************************/
+
             checkAndAddProduct(res);
 
 

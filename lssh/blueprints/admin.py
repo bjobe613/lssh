@@ -77,8 +77,6 @@ def buying_process_data():
     data = request.get_json()
 
     product = Product.query.filter(Product.articleNumber == data['product_id'], Product.quantity != 0).first() 
-
-
     productPictures = ProductPictures.query.filter(ProductPictures.productID == data['product_id']).first()
 
 
@@ -86,11 +84,12 @@ def buying_process_data():
         'articleNumber' : product.articleNumber,
         'name' : product.name,
         'price' : product.price,
-        'seller' : product.seller,
+        'seller' : product.sellerID,
         'picture' : productPictures.pictureName,
         'quantity' : product.quantity,
         'boughtQuantity' : 1
     }
+
 
     return jsonify(productJson)
 
