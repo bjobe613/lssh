@@ -78,17 +78,17 @@
                 </thead>
                 <tbody>
 
-                {% for Buyer in buyers %}
+                {% for User in users %}
                   <tr>
-                    <th scope="row">{{ Buyer.liuID }}</th>
-                    <td>{{ Buyer.email }}</td>
-                    <td>{{ Buyer.name }}</td>
-                    <td>{{ Buyer.program }}</td>
-                    <td>{{ Buyer.international }}</td>
-                    <td>{{ Buyer.seller }}</td>
-                    <td>{{ Buyer.phone }}</td>
-                    <td>{{ Buyer.payment_method }}</td>
-                    <td><button onclick="deleteCustomer('{{ Buyer.liuID }}')" class="btn btn-danger" href="#">Delete</button></td>
+                    <th scope="row">{{ User.liuID }}</th>
+                    <td>{{ User.email }}</td>
+                    <td>{{ User.name }}</td>
+                    <td>{{ User.program }}</td>
+                    <td>{{ User.international }}</td>
+                    <td>{{ User.seller }}</td>
+                    <td>{{ User.phone }}</td>
+                    <td>{{ User.payment_method }}</td>
+                    <td><button onclick="deleteCustomer('{{ User.liuID }}')" class="btn btn-danger" href="#">Delete</button></td>
                     
                   </tr>
                 {% endfor %}

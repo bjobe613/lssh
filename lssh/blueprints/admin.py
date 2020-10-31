@@ -14,22 +14,21 @@ def admin_home():
 @admin.route("/add_maintain_customers", methods=['GET'])
 def add_maintain_customers():
 
-    buyers = Buyer.query.order_by(Buyer.name).all()
+    users = User.query.order_by(User.name).all()
 
-    return render_template('admin/add_maintain_customers.html', buyers = buyers)
+    return render_template('admin/add_maintain_customers.html', users = users)
 
 @admin.route("/add_maintain_customers/<string:liuID>/")
 def add_maintain_customers_single(liuID):
 
-    buyers = Buyer.query.filter_by(liuID = liuID)
+    buyers = User.query.filter_by(liuID = liuID)
 
     return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with LiU ID")
 
 @admin.route("/add_maintain_customers/email/<string:email>/")
 def add_maintain_customers_single_email(email):
 
-    buyers = Buyer.query.filter_by(email = email)
-
+    buyers = User.query.filter_by(email = email)
 
 
     return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with email")
@@ -41,7 +40,7 @@ def add_maintain_customers_delete():
 
     # Will there be foreign key problems with this?
     data = request.get_json()
-    Buyer.query.filter_by(liuID = data['liuID']).delete()
+    User.query.filter_by(liuID = data['liuID']).delete()
     db.session.commit()
 
     return ""
@@ -118,25 +117,12 @@ def buying_process_remove_product():
 def buying_process_add_buyer():
     data = request.get_json()
 
-    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
+    newBuyer = User(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'])
     db.session.add(newBuyer)
     db.session.commit()
 
     return "Success"
 
-@admin.route("/buyingprocess/add_seller", methods=['POST'])
-def buying_process_add_seller():
-    data = request.get_json()
-
-    print(data)
-
-    newBuyer = Buyer(liuID = data['liuid'], name = data['name'], email = data['email'], program = data['program'], international = data['international'], phone = data['phone'], seller = True, payment_method = data['payment'])
-    
-    
-    db.session.add(newBuyer)
-    db.session.commit()
-
-    return "Success"
     
 
 
@@ -146,7 +132,7 @@ def buying_process_customer():
     data = request.get_json()
 
     if (data['liu_id'] != ""):
-        buyer = Buyer.query.filter(Buyer.liuID == data['liu_id']).first()
+        buyer = User.query.filter(User.liuID == data['liu_id']).first()
        
 
         buyerJson = {  
@@ -159,7 +145,7 @@ def buying_process_customer():
         return jsonify(buyerJson)
 
     elif (data['email'] != ""):
-        buyer = Buyer.query.filter(Buyer.email == data['email']).first()
+        buyer = User.query.filter(User.email == data['email']).first()
       
         buyerJson = {  
         'liuID' : buyer.liuID,
