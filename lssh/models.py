@@ -70,8 +70,8 @@ class Product(db.Model):
 
     sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
     seller = db.relationship('User', back_populates = 'sellerOfProduct')
-    buyerID = db.Column(db.Integer, db.ForeignKey('User.liuID'))
-    buyer = db.relationship('User', back_populates = 'buyerOfProduct')
+    #buyerID = db.Column(db.Integer, db.ForeignKey('User.liuID'))
+    #buyer = db.relationship('User', back_populates = 'buyerOfProduct')
 
     def getSinglePictureName(self):
         piclist = self.pictures
@@ -149,7 +149,7 @@ class User(db.Model):
     international = db.Column(db.Boolean)
     phone = db.Column(db.String(15), nullable = True)
 
-    buyerOfProduct = db.relationship('Product', backref = 'buyerID')
+    #buyerOfProduct = db.relationship('Product', backref = 'buyerID')
     sellerOfProduct = db.relationship('Product', backref = 'sellerID')
     payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table)
 
