@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
+from sqlalchemy import Table, MetaData
 from lssh import app
 from werkzeug.utils import secure_filename
 
@@ -12,7 +13,7 @@ import os
 import html
 
 db = SQLAlchemy(app)
-
+metadata = MetaData()
 
 # Models can be defines here, like this:
 """
@@ -32,36 +33,30 @@ class Car(db.Model):
 # and all available payment methods
 #######################################################################
 class Category(db.Model):
+    __tablename__ = 'Category'
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     products = db.relationship('Product', back_populates='category')
 
 class Condition(db.Model):
+    __tablename__ = 'Condition'
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     products = db.relationship('Product', back_populates='condition')
 
-class PaymentMethod(db.Model):
-    __tablename__ = 'paymentmethod'
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
-    products = db.relationship('Product', back_populates='payment_method')
-
 class Product(db.Model):
+    __tablename__ = 'Product'
     articleNumber = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     price = db.Column(db.Integer, nullable = False)
     pubDate = db.Column(db.DateTime,server_default = func.now())
     color = db.Column(db.String, default = "None")
 
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable = False)
+    category_id = db.Column(db.Integer, db.ForeignKey('Category.id'), nullable = False)
     category = db.relationship('Category', back_populates='products')
 
-    condition_id = db.Column(db.Integer, db.ForeignKey('condition.id'), nullable=False)
+    condition_id = db.Column(db.Integer, db.ForeignKey('Condition.id'), nullable=False)
     condition = db.relationship('Condition', back_populates='products')
-
-    payment_method_id = db.Column(db.Integer, db.ForeignKey('paymentmethod.id'), nullable=False)
-    payment_method = db.relationship('PaymentMethod', back_populates='products')
 
     height = db.Column(db.Integer, nullable = True)
     width = db.Column( db.Integer, nullable = True)
@@ -69,10 +64,14 @@ class Product(db.Model):
     status = db.Column(db.String, default = "Available")
     quantity = db.Column(db.Integer, default = 1)
     comment = db.Column(db.Text)
+
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
     reservations = db.relationship('ProductReservation', backref = 'productIDReservation')
-    seller = db.Column(db.String, db.ForeignKey('seller.sellerID'))
-    buyer = db.Column(db.Integer, db.ForeignKey('buyer.liuID'))
+
+    sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
+    seller = db.relationship('User', back_populates = 'sellerOfProduct')
+    buyerID = db.Column(db.Integer, db.ForeignKey('User.liuID'))
+    buyer = db.relationship('User', back_populates = 'buyerOfProduct')
 
     def getSinglePictureName(self):
         piclist = self.pictures
@@ -122,52 +121,44 @@ class Product(db.Model):
         db.session.commit()
 
 class ProductPictures(db.Model):
+    __tablename__ = 'ProductPictures'
     pictureID = db.Column(db.Integer, primary_key = True)
     pictureName = db.Column(db.String, default = "default.jpg")
-    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
+    productID = db.Column(db.Integer, db.ForeignKey('Product.articleNumber'))
 
     def renameReference(self, fileName):
         self.pictureName = fileName
         db.session.commit()
 
-class ProductReservation(db.Model):
-    reservationID = db.Column(db.Integer, primary_key = True)
-    liuID = db.Column(db.String(8), nullable = False)
-    date = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    productID = db.Column(db.Integer, db.ForeignKey('product.articleNumber'))
+seller_payment_association_table = Table('association', metadata,
+    db.Column('user_id', db.String, db.ForeignKey('User.liuID')),
+    db.Column('paymentmethod_id', db.Integer, db.ForeignKey('PaymentMethod.id'))
+)
 
-class Seller(db.Model): # will be ralated to furniture
-    sellerID = db.Column(db.String, primary_key = True)
-    phone = db.Column(db.String(15), nullable = True)
-    #other info for payment???
-    #maybe should have the payment method here? and use LSSh as seller if there is no one else?
-    products = db.relationship('Product', backref = 'sellerOfProduct')
+class PaymentMethod(db.Model):
+    __tablename__ = 'PaymentMethod'
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String, nullable = False)
 
-class Buyer(db.Model):
+class User(db.Model):
+    __tablename__ = 'User'
     liuID = db.Column(db.String(8), nullable = False, unique = True, primary_key = True, autoincrement=False)
     email = db.Column(db.String, nullable = False, unique = True)
     name = db.Column(db.String)
     program = db.Column(db.String)
     international = db.Column(db.Boolean)
-    products = db.relationship('Product', backref = 'buyerOfProduct')
-    seller = db.Column(db.Boolean, default = False)
-    phone = db.Column(db.String)
-    payment_method = db.Column(db.String)
+    phone = db.Column(db.String(15), nullable = True)
 
-    
-
-    
-
-
-class Blacklist(db.Model):
-    #listID = db.Column(db.Integer, primary_key = True)
-    liuID = db.Column(db.String(8), primary_key = True)
-    numOfOffences = db.Column(db.Integer, default = 1)
+    buyerOfProduct = db.relationship('Product', backref = 'buyerID')
+    sellerOfProduct = db.relationship('Product', backref = 'sellerID')
+    payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table)
 
 class Newsletter(db.Model):
+    __tablename__ = 'Newsletter'
     email = db.Column(db.String, primary_key = True)
 
 class Newspicture(db.Model):
+    __tablename__ = 'Newspicture'
     pictureID = db.Column(db.Integer, primary_key = True)
     path = db.Column(db.String, nullable = False, default = "default.jpg")
     articles = db.relationship('News', backref = 'News.id')
@@ -192,13 +183,14 @@ class Newspicture(db.Model):
         db.session.commit()
 
 class News(db.Model): #has to be reworked into files, not a model.
+    __tablename__ = 'News'
     id = db.Column(db.Integer, primary_key = True)
     published = db.Column(db.Boolean, nullable=False, default = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
     title = db.Column(db.String, nullable = False)
     ingress = db.Column(db.String, nullable = False)
     text = db.Column(db.JSON, nullable = False)
-    titlePicture = db.Column(db.Integer, db.ForeignKey('newspicture.pictureID'))
+    titlePicture = db.Column(db.Integer, db.ForeignKey('Newspicture.pictureID'))
 
     def get_img_url(self):
 
@@ -273,16 +265,19 @@ class News(db.Model): #has to be reworked into files, not a model.
 
 
 class Admin(db.Model):
+    __tablename__ = 'Admin'
     name = db.Column(db.String, primary_key = True)
     passwordHash = db.Column(db.String, nullable = False)
     authorization = db.Column(db.Integer, default = 1)
 
 class OpeningHours(db.Model):
+    __tablename__ = 'OpeningHours'
     day = db.Column(db.String, primary_key = True)
     openingTime = db.Column(db.Time, nullable = False)
     closingTime = db.Column(db.Time, nullable = False)
 
 class Categoryfaq(db.Model):
+    __tablename__ = 'Categoryfaq'
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     questions = db.relationship("Question", back_populates="categoryfaq")
@@ -294,10 +289,11 @@ class Categoryfaq(db.Model):
         }
 
 class Question(db.Model):
+    __tablename__ = 'Question'
     id = db.Column(db.Integer, primary_key = True)
     questionTitle = db.Column(db.Text, nullable = False)
     questionAnswer = db.Column(db.Text, nullable = False)
-    categoryID = db.Column(db.Integer, db.ForeignKey('categoryfaq.id'))
+    categoryID = db.Column(db.Integer, db.ForeignKey('Categoryfaq.id'))
     categoryfaq = db.relationship("Categoryfaq", backref="question")
 
     def serialize(self):
@@ -317,6 +313,7 @@ class Question(db.Model):
 #    answer = db.Column(db.Text, nullable = False)
 
 class HandInRequest(db.Model):
+    __tablename__ = 'HandInRequest'
     requestID = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, nullable = False)
     liuID = db.Column(db.String(8), nullable = False)

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, Buyer, ProductPictures
+from lssh.models import * # db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, Buyer, ProductPictures
 import json
 
 
