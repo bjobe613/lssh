@@ -26,7 +26,6 @@ function saveDocument() {
 }
 
 $(document).ready(function () {
-    //$('#news-header').val("TJABBA")
     $('#save-button').click(function (e) {
         e.preventDefault();
         saveDocument();
@@ -43,11 +42,10 @@ $(document).ready(function () {
             $("#news-header").val(response.title)
             $("#news-ingress").val(response.ingress)
             editor.setContents(response.text)
+            saveDocument()
         },
         error: function (response) {
             alert("Something went wrong, couldn't fetch data");
         }
     })
-
-    saveDocument()
 })

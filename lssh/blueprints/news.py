@@ -27,10 +27,12 @@ def catalog():
             news = News(title=request.form.get("title"),
                         ingress=request.form.get("ingress"),
                         text=article)
+
             news.escape_html()
+
             db.session.add(news)
             db.session.commit()
-            
+
             if 'news-picture' in request.files:
                 file = request.files['news-picture']
                 if file.filename != '':

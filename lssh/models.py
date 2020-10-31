@@ -188,11 +188,7 @@ class News(db.Model): #has to be reworked into files, not a model.
         url = ""
 
         if self.titlePicture:
-            print("Hade bild")
-            url= Newspicture.query.get(self.titlePicture).path
-        else:
-            print("Hade inte bild")
-     
+            url= Newspicture.query.get(self.titlePicture).path     
         return url
 
     def escape_html(self):
@@ -224,15 +220,11 @@ class News(db.Model): #has to be reworked into files, not a model.
     def get_article_as_html(self):
         article_html = ""
         if self.titlePicture:
-            print("Hade bild")
             article_html = "<img class='img-fluid' src='/pictures/" + Newspicture.query.get(self.titlePicture).path + "'>"
-        else:
-            print("Hade inte bild")
         article_html += "<h1>" + self.title + "</h1>\n"
         article_html += "<p class='ingress'>" + self.ingress + "</p>\n"
         article_html += quill_parser.render(self.text["ops"])
 
-        print(article_html)
         return article_html
 
     def get_article_as_html_user(self):
