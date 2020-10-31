@@ -56,3 +56,18 @@ def add_product():
         prod.addPicture(file)
 
     return prod.serialize(), 200
+
+@products.route("/<int:id>", methods=['GET', 'PUT'])
+def api(id):
+    if request.method == 'GET':
+        return Product.query.get_or_404(id).serialize()
+    elif request.method == 'PUT':
+        product = Product.query.get_or_404(id)
+        print(request.form)
+        for attr in request.form:
+            if hasattr(product, attr):
+                print(attr)
+                setattr(product, attr, request.form.get(attr))
+
+        db.session.commit()
+        return product.serialize(), 200

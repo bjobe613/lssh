@@ -25,6 +25,10 @@ def fillTestDB():
     addConditions()
     addPaymentMethods()
     addProducts()
+        addProducts()
+    addProducts()
+    addProducts()
+
     addNews()
     addFaqCategoryQuestions()
     print("Added all items to DB successfully")

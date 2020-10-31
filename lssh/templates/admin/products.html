@@ -73,7 +73,7 @@
                                     <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-credit-card"></i></button>
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-pencil"></i></button>
+                                    <a class="btn btn-primary adm-prod-button" href="{{ url_for('admin.edit_product', id=product.articleNumber) }}"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </div>
                         </div>
