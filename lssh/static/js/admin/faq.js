@@ -1,15 +1,17 @@
 function deleteQuestion(id) {
-    $.ajax({
-        url:'/faq/question/' + id,
-        type: 'DELETE',
-        dataType: 'json',
-        success: function (response) {
-            location.href = "/admin/faq/" + response.categoryID;
-        },
-        error: function (response) {
-            alert("Something went wrong, couldn't delete faq. Error message: " + response.msg);
-        }
-    })
+    if (window.confirm("Do you really want to delete that question?")) {
+        $.ajax({
+            url:'/faq/question/' + id,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function (response) {
+                location.href = "/admin/faq/" + response.categoryID;
+            },
+            error: function (response) {
+                alert("Something went wrong, couldn't delete faq. Error message: " + response.msg);
+            }
+        })
+    }
 }
 
 function deleteCategory(id) {
