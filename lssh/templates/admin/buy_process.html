@@ -1,0 +1,119 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_buyingprocess = True %}
+
+{% block more_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/buying_process.css') }}">
+{% endblock more_head %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-5 container-max-width">
+
+    <div class="row">
+        <div class="col">
+            {% include 'admin/add_buyer_modal.html' %}
+        </div>
+    </div>
+
+
+    <div class="row pb-2">
+        <div class="col">
+            <h3>Step 1 - Fill in information about buyer</h3>
+            
+            <p> If the buyer is already a customer, search with either <b>LiU ID</b> or <b>email</b>. If the buyer is not a customer,
+                add a new buyer with the <b>blue button</b> to the top right.
+            </p>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            
+            <form onsubmit="return false">
+                <div class="input-group">
+                    
+                    <input type="text" class="form-control" id="input-liuid" placeholder="Insert LiU ID..">
+                    <input type="text" class="form-control" id="input-email-buyer" placeholder="Insert email..">
+                    <div class="input-group-append">
+                        <button id="buyer-search" class="btn btn-secondary" type="submit">SUBMIT</button>
+                    </div>
+                </div>
+            
+                
+            </form>
+
+        </div>
+
+
+    </div>
+
+    <div class="row mb-5 mt-3">
+        <div id="buyer-information" class="col text-center">
+            <p>No customer added</p>
+        </div>
+    </div>
+</div>
+
+<div id="buying-process-step-2" class="container-fluid container-max-width d-none">
+
+    <div class="row pt-5">
+        <div class="col">  
+            <h3>Step 2 - Add items and confirm payment for items</h3>
+            <p>Add all article numbers for the items the buyer want to purchase in the <b>input field with the green button</b>. When 
+                done, confirm payments for each seller.
+            </p>
+            
+        </div>
+    </div>
+
+    <div class="row pt-5">
+
+
+        <div class="col-3">
+            <p>Number of items</p>
+            <div id="total-items">
+                <p>0</p>
+            </div>
+
+        </div>
+        <div class="col-3">
+            <p>Total payment left</p>
+            <div id="total-payment">
+                <p>0</p>
+            </div>
+
+        </div>
+
+        <div class="col-6">
+            <form onsubmit="return false">
+ 
+                <div class="input-group">
+                    <input type="text" class="form-control" id="input-product-id" placeholder="Insert product id..">
+                    <div class="input-group-append">
+                        <button id="submit-item" class="btn btn-success" type="submit">Add item</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div id="content" class="container-fluid container-max-width pb-5">
+
+    </div>
+
+</div>
+
+
+
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/buying_process.js') }}"></script>
+{% endblock scripts %}
