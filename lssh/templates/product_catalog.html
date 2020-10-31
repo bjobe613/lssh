@@ -65,7 +65,7 @@
     </div>
     <div id="catalog-wrapper" class="col-12">
       <div class="row row-wrapper">
-        {% for x in products %}
+        {% for x in products | sort(reverse=true, attribute="pubDate") %}
             <div class="col-md-4 col-xl-3 product-card-hs" id="product-card-hs-{{x.articleNumber}}">
               <div class="product-card" id="product-card-{{x.articleNumber}}">
                 <a href="product/{{x.articleNumber}}">
