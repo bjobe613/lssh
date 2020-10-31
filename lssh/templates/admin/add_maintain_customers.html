@@ -1,0 +1,112 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_add_maintain_customers = True %}
+
+{% block more_head %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/buying_process.css') }}">
+{% endblock more_head %}
+
+
+{% block content %}
+
+<div class="container-fluid container-max-width">
+
+
+    <div class="row mt-5 pb-5">
+        <div class="col">
+            {% include 'admin/add_buyer_modal.html' %}
+        </div>
+    </div>
+
+    <div class="row pb-3">
+        <div class="col-6">
+            <form>
+                <div class="input-group">
+                    <input class="form-control" id="liu-id-field" type="text" placeholder="LIU ID">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="liu-id-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+
+        
+            <form>
+                <div class="input-group">
+                    <input class="form-control" id="email-field" type="text" placeholder="Email">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="email-button" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col">
+
+            <h3>
+                All customers
+            </h3>
+
+                {% if optional_search_header %}
+                <div class="row">
+                    <h1 class="col-auto">{{optional_search_header}}</h1>
+                    <a class="col-auto" href="{{ url_for('admin.add_maintain_customers') }}"><h1><i class="fa fa-times" aria-hidden="true"></i></h1></a>
+                </div>
+                {% endif %}
+
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">LiU ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">International</th>
+                    <th scope="col">Seller</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Payment method/s</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for User in users %}
+                  <tr>
+                    <th scope="row">{{ User.liuID }}</th>
+                    <td>{{ User.email }}</td>
+                    <td>{{ User.name }}</td>
+                    <td>{{ User.program }}</td>
+                    <td>{{ User.international }}</td>
+                    <td>{{ User.seller }}</td>
+                    <td>{{ User.phone }}</td>
+                    <td>{{ User.payment_method }}</td>
+                    <td><button onclick="deleteCustomer('{{ User.liuID }}')" class="btn btn-danger" href="#">Delete</button></td>
+                    
+                  </tr>
+                {% endfor %}
+
+       
+                </tbody>
+              </table>
+
+        </div>
+    
+    </div>
+    
+
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/admin/add_maintain_customers.js') }}"></script>
+{% endblock scripts %}

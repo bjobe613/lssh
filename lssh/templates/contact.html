@@ -8,20 +8,26 @@
 
 {% block help_content %}
     <!--Where the html should be written-->
-    <div id="container-fill" class="container-fluid pt-3">
+    <div id="container-fill" class="container-fluid pb-5">
 
 
 
-        <div class="row pt-5">
+        <div class="row align-items-center h-100">
             
-            <div class="col-lg-4 offset-lg-2 col-12 pb-lg-0 pb-3">
-               <img id="contact-img-phone" class="img-fluid" src="{{ url_for('static', filename = '/pictures/pexels-cottonbro-4065906.jpg') }}" alt="Furniture">
+            <div class="col-lg-5 offset-lg-1 col-12 mt-lg-5 pl-0 pl-lg-3 pr-0 pr-lg-3">
               
-            </div>
-            <div class="col-12 col-lg-4">
-                <h1 class="shift-text pb-3 ">Send us a message!</h1>
+              
+               <img id="image-header"
+               src="{{ url_for('static', filename = '/pictures/pexels-cottonbro-4065906.jpg') }}"
+               class="img-fluid image" alt="Responsive image">
 
-                <form onsubmit='contactForm()'>
+            </div>
+            <div id="contact-col" class="col-12 col-lg-5 pt-lg-0 pt-3">
+               
+                <p class="mb-2"><b>HELP</b></p>
+                <h3 id="faq-heading" class="pb-3">Contact</h3>
+
+                <form onsubmit='contactForm();return false'>
                     <div class="form-group pb-2">
                       <input type="text" class="form-control input-contact" id="input-contact-name" placeholder="Write name here..." required>
                     </div>
@@ -35,20 +41,33 @@
                       <textarea class="form-control input-contact" id="input-contact-message" placeholder="What is on your mind?" rows="9"></textarea required>
                     </div>
 
-                    <button class="green-btn float-right" type="submit">SUBMIT</button>
+                    <div class="text-center">
+                        <button id="submit-button" class="green-btn float-md-right" type="submit">SUBMIT</button>
+                    </div>
+                    
                   </form>
+                
+            </div>
+
+            <div id="contact-success" class="col-12 col-lg-5">
 
             </div>
             
         </div>
 
+    
+
+        
         <div class="row pt-4">
-            <div class="col-8 offset-2 pt-4 pb-5 text-center">
+            <div class="col-10 offset-1 pt-4 text-center">
                 <hr>
                 <p class="pt-3"> Or send us an email</p>
                 <h3>lssh@navitas.se</h3>
             </div>
         </div>
+
+
+       
     </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='js/contact.js') }}"></script>
