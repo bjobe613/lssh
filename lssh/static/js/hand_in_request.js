@@ -70,7 +70,7 @@ function hideForm() {
 
         },
         error: function (error) {
-            $("#error-div").html("<b>Oh oh!</b> Email is incorrectly filled in");
+            $("#error-div").html("Email is incorrectly or not filled in");
         }
 
     });
@@ -117,7 +117,7 @@ function checkHandIn() {
         submitHandIn();
         $("#error-div").hide();
     } else {
-        $("#error-div").html("<b>Woops!</b> The hand in request was not filled in correctly");
+        $("#error-div").html("The hand in request was not filled in correctly");
     }
 
 }
