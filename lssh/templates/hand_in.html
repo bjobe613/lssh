@@ -8,42 +8,36 @@
 {% endblock more_head %}
 
 {% block content %}
-      <!--Where the html should be written-->
-      <div id="about-us-container" class="container-fluid">
-        <div class="row">
-            <div class="col-1 offset-7 text-center">
-                <div class="arrow-down d-sm-block d-none"></div>
-            </div>
-            <div class="col-4"></div>
-        </div>
-    </div>
+    
+    <div class="container-fluid pl-0 pr-0 green-bg">
+        <div id="green-container" class="container-fluid container-max-width">
+            <div class="row pt-5 pb-5 align-items-center">
+    
+                <div class="col-md-6 col-12 pb-3 pt-3">
+                    <h4>MAKE A</h4>
+                    <h1 class="text-white">Hand in request</h1>
+                    <br>
+                    <h5 class="text-white">Do you have something you want to sell or donate?</h5>
+                    <h6>Give your furniture a new home by handing them in to LiU Student Secondhand! You can either sell or donate furniture.</h6>
+                    <br>
+                
+                    <form action="{{ url_for('main.hand_in_request') }}">
+                        <button class="white-btn pr-5 pl-5" type="submit">HAND IN NOW</button>
+                    </form>
+                    
+                </div>
+    
+                <div id="img-hand-in" class="col-md-6 order-first order-md-last col-12"></div>
 
-    <div id="about-us-container3" class="container-fluid green-bg">
-        <div class="row pt-5">
-
-            <div class="col-xl-3 col-8 offset-2 pb-3">
-                <h4>MAKE A</h4>
-                <h1 class="text-white">Hand in request</h1>
-                <br>
-                <h5 class="text-white">Do you have something you want to sell or donate?</h5>
-                <h6>Give your furniture a new home by handing them in to LiU Student Secondhand! You can either sell or donate furniture.</h6>
-                <br>
-                <br><br><br>
-                <form action="{{ url_for('main.hand_in_request') }}">
-                    <button class="white-btn w-75" type="submit">HAND IN NOW</button>
-                </form>
                 
             </div>
-
-            <div class="col-1 h-100"></div>
-            <div id="img-hand-in" class="col-sm-4 col-12 green-bg"></div>
-            
         </div>
     </div>
+    
 
-    <div id="about-us-container2" class="container-fluid" >
+    <div id="about-us-container2" class="container-fluid container-max-width pt-5" >
         <div class="row pb-5">
-            <div class="col-8 offset-2 col-sm-8 mt-5 pt-5">
+            <div class="col">
                 
                 <h3>HOW IT WORKS</h3>
                 <br>
@@ -55,11 +49,11 @@
                 </p>
                 
             </div>
-            <div class="col-sm-2"></div>
+          
         </div>
 
         <div class="row pb-5">
-            <div class="col-8 offset-2 col-sm-8">
+            <div class="col">
                 <h3>PRICE REDUCTION</h3>
                 <br>
                 <p>Because of limited space in our shop and to not have items staying for too long, we have a price reducing policy
@@ -79,7 +73,7 @@
         </div>
 
         <div class="row pb-5">
-            <div class="col-8 offset-2">
+            <div class="col">
                 <h3>SELLING OR DONATING</h3>
                 <br>
                 <p>When handing in an item, you have the choice of either selling or donating your item(s) to LiU Student Secondhand. If you choose to donate your item to us, we will sell it and use the profit for our expenditures. If you choose to sell your item, you will be paid directly by the buyer through either Swish or Revolut. LiU Student Secondhand does not charge anything for selling your item, therefore the price that the buyer pays is the same as the seller receives. 
@@ -88,7 +82,7 @@
         </div>
 
         <div class="row pb-5">
-            <div class="col-8 offset-2">
+            <div class="col">
                 <p><b>Things to think about before sending a request:</b></p>
                     <ol>
                         <li>- Is the item something we generally accept? We only accept furniture and things for the home. Some of the things we do not accept are textiles, books, mattresses and bicycles.</li>
@@ -100,7 +94,7 @@
         </div>
 
         <div class="row pb-5">
-            <div class="col-8 offset-2 text-center">
+            <div class="col text-center">
                 <h3>Sounds good?</h3>
                 <form action="{{ url_for('main.hand_in_request') }}">
                     <button class="green-btn" type="submit">MAKE A HAND IN NOW!</button>
