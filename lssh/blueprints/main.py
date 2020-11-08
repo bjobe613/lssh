@@ -13,12 +13,10 @@ emailregex = '^[a-z0-9]+[/._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 @main.route("/")
 def startup():
 
-    prodCount = Product.query.filter(Product.articleNumber).count()
-
     news = News.query.filter(News.published).limit(6)
     products_sorted = Product.query.order_by(Product.articleNumber).limit(6)
 
-    return render_template('index.html', productCount = prodCount, newsarticles = news, productlist = products_sorted)
+    return render_template('index.html', newsarticles = news, productlist = products_sorted)
     
 #@main.route("/home")
 #def home():

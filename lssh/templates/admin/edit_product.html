@@ -5,13 +5,41 @@
 {% endblock more_head %}
 
 {% block content %}
-<div class="container">
-    <form id="edit-product-form">
-        <h1>Edit product</h1>
+<div class="container pt-5">
+
+    <h1>Edit product</h1>
+
+    <form onsubmit="searchValidSeller('{{ product.articleNumber }}');return false">
+
+        <label for="edit-product-user">Edit current seller:</label>
+
+        <div class="input-group">
+            <input id="valid-seller-input" class="form-control" type="text" placeholder="Add valid seller LiU ID">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <form class="pt-5" id="edit-product-form">
+        
+        <div class="form-group">
+            <label for="edit-product-user">Seller LiU ID</label>
+            <input type="text" class="form-control" id="edit-product-seller" name="sellerID" readonly value="{{product.sellerID}}">
+        </div>
+
         <div class="form-group">
           <label for="edit-product-title">Title</label>
           <input type="text" class="form-control" id="edit-product-title" name="name" value="{{product.name}}">
         </div>
+
+        <div class="form-group">
+            <label for="edit-product-quantity">Quantity</label>
+            <input type="Number" class="form-control" id="edit-product-quantity" name="quantity" value="{{product.quantity}}">
+        </div>
+
         <div class="row">
             <div class="form-group col">
                 <label for="edit-product-price">Price</label>
@@ -65,12 +93,18 @@
           <label for="edit-product-description">Description</label>
           <textarea class="form-control" id="edit-product-comment" name="comment" rows="5">{{product.comment}}</textarea>
         </div>
+
+        
+
         <div class="row">
             <div class="col">
                 <button type="submit" class="btn btn-success edit-product-button">Submit</button>
             </div>
         </div>
     </form>
+
+  
+
 </div>
 {% endblock content %}
 

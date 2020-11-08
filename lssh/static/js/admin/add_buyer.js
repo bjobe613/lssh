@@ -23,7 +23,7 @@ function addBuyer() {
         "name": $("#input-name").val(),
         "email": $("#input-email").val(),
         "program": $("#input-program").val(),
-        "international": internatonalBoolean
+        "international": internatonalBoolean,
     }
     $.ajax({
         url: '/admin/buyingprocess/add_buyer',
@@ -35,7 +35,7 @@ function addBuyer() {
             
             $("#add-buyer-form").trigger("reset");
             $('#modal-add-buyer').modal('hide');
-            location.reload();
+       
 
         },
         error: function (error) {

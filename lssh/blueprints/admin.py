@@ -1,14 +1,30 @@
 from flask import Blueprint, render_template, request, jsonify
-from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, User, ProductPictures
+from lssh.models import db, Product, News, Question, Categoryfaq, Category, PaymentMethod, Condition, User, ProductPictures, seller_payment_association_table
 import json
 
 
 admin = Blueprint('admin', __name__, url_prefix='/admin')
 
 
+
+
 @admin.route("/")
 def admin_home():
-    return render_template('admin/home.html')
+
+    productsSold = Product.query.filter(Product.quantity == 0).count()
+    productsAvailable = Product.query.filter(Product.quantity != 0).count()
+    registeredCustomers = User.query.count()
+
+    return render_template('admin/home.html', productsSold = productsSold, productsAvailable = productsAvailable, registeredCustomers = registeredCustomers)
+
+
+@admin.route("/check_valid_seller", methods=['POST'])
+def check_valid_seller():
+
+    data = request.get_json()
+    user = User.query.filter_by(liuID = data['liuID']).filter(User.phone != None).first_or_404()
+
+    return jsonify(user.liuID)
 
 
 @admin.route("/add_maintain_customers", methods=['GET'])
@@ -21,27 +37,78 @@ def add_maintain_customers():
 @admin.route("/add_maintain_customers/<string:liuID>/")
 def add_maintain_customers_single(liuID):
 
-    buyers = User.query.filter_by(liuID = liuID)
+    users = User.query.filter_by(liuID = liuID).first()
+    userArray = [users]
 
-    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with LiU ID")
+    return render_template('admin/add_maintain_customers.html', users = userArray, optional_search_header="Search with LiU ID")
 
-@admin.route("/add_maintain_customers/email/<string:email>/")
-def add_maintain_customers_single_email(email):
+@admin.route("/add_maintain_customers/edit/<string:liuID>/", methods=["GET", "POST"])
+def edit_customers(liuID):
 
-    buyers = User.query.filter_by(email = email)
+    payment_methods = PaymentMethod.query.all()
+    user = User.query.filter_by(liuID = liuID).first()
 
+    if request.method == 'POST':
 
-    return render_template('admin/add_maintain_customers.html', buyers = buyers, optional_search_header="Search with email")
+        # If checked that payment method should be made
+        if request.form.get('change_payment'):
+            
+            new_payment_methods = request.form.getlist('checkbox')
 
+            pay_array = []
+            for x in new_payment_methods:
+                pm = PaymentMethod.query.filter_by(id = x).first()
+                pay_array.append(pm)
+
+            user.payment_method = pay_array
+
+        if request.form.get('international'):
+            user.international = 1
+        else:
+            user.international = 0
+        
+        user.name = request.form.get('name')
+        user.email = request.form.get('email')
+        user.program = request.form.get('program')
+        
+        user.phone = request.form.get('phone')
+        db.session.commit()
+
+        return render_template('admin/edit_customers.html', user = user, payment_methods = payment_methods)
+
+    elif request.method == 'GET':
+
+        
+
+        return render_template('admin/edit_customers.html', user = user, payment_methods = payment_methods)
 
 @admin.route("/add_maintain_customers/delete", methods=['GET', 'POST'])
 def add_maintain_customers_delete():
 
 
-    # Will there be foreign key problems with this?
+    # Deletes the customer and associated payment methods.
+    # Requires that the potential items sold is deleted or edited.
+
     data = request.get_json()
+    user = User.query.filter(User.liuID == data['liuID']).first()
+
+    single_payment_method = PaymentMethod.query.filter(PaymentMethod.id == 1).first()
+
+  
+    user.payment_method.append(single_payment_method)
+
+
+
+    user.payment_method.remove(single_payment_method)
+
+
+
+
+    user.payment_method = []
     User.query.filter_by(liuID = data['liuID']).delete()
     db.session.commit()
+
+   
 
     return ""
 
@@ -103,7 +170,7 @@ def buying_process_remove_product():
 
     product = Product.query.filter(Product.articleNumber == data['product_id']).first()
 
-     # Need some form of control if this would be incorrect
+    # Need some form of control if this would be incorrect
     product.quantity = product.quantity - data['quantityToBuy']
 
     #If successful, shall send email to seller about the item sold

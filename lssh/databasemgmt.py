@@ -60,8 +60,16 @@ def addPaymentMethods():
     db.session.add_all([
         PaymentMethod(name = "Swish"),
         PaymentMethod(name = "Revolut"),
-        PaymentMethod(name = "Swish or Revolut")
+        PaymentMethod(name = "Card")
     ])
+
+    paym_card = PaymentMethod.query.filter_by(name = "Card").first()
+
+    # TEMPORARY, how is this defined?
+    seller = User(liuID="lssh", email="lssh@navitas.se", name="LiU Student Secondhand")
+
+    seller.payment_method = [paym_card]
+    db.session.add(seller)
     db.session.commit()
 
 #######################################################################
@@ -82,14 +90,14 @@ def addProducts():
 
     paym_s = PaymentMethod.query.filter_by(name = "Swish").first()
     paym_r = PaymentMethod.query.filter_by(name = "Revolut").first()
-    paym_sr = PaymentMethod.query.filter_by(name = "Swish or Revolut").first()
+    paym_sr = PaymentMethod.query.filter_by(name = "Card").first()
 
-    product0 = Product(name = "White sofa", price = 200, color = "Grey", category = cat_sofas, condition = cond_good, height = 80, width = 40, depth = 40)
+    product0 = Product(name = "White sofa", price = 200, color = "Grey", category = cat_sofas, condition = cond_good, height = 80, width = 40, depth = 40, sellerID = "lssh")
     
-    product1 = Product(name = "Lamp", price = 20, color = "Black", category = cat_electronics, condition = cond_okay, height = 80, width = 200, depth = 80)
-    product2 = Product(name = "Chair", price = 300, color = "White", category = cat_chairs, condition = cond_bad, height = 100, width = 50, depth = 50)
-    product3 = Product(name = "Very nice chair", price = 1000, color = "White", category = cat_chairs, condition = cond_good, height = 50, width = 40, depth = 10)
-    product4 = Product(name = "Tv bench", price = 400, color = "Black", category = cat_tables, condition = cond_good, height = 90, width = 230, depth = 60)
+    product1 = Product(name = "Lamp", price = 20, color = "Black", category = cat_electronics, condition = cond_okay, height = 80, width = 200, depth = 80, sellerID = "lssh")
+    product2 = Product(name = "Chair", price = 300, color = "White", category = cat_chairs, condition = cond_bad, height = 100, width = 50, depth = 50, sellerID = "lssh")
+    product3 = Product(name = "Very nice chair", price = 1000, color = "White", category = cat_chairs, condition = cond_good, height = 50, width = 40, depth = 10, sellerID = "lssh")
+    product4 = Product(name = "Tv bench", price = 400, color = "Black", category = cat_tables, condition = cond_good, height = 90, width = 230, depth = 60, sellerID = "lssh")
     
     db.session.add_all([
         product0,

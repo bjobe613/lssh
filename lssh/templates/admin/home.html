@@ -5,14 +5,76 @@
 {% endblock more_head %}
 
 {% block content %}
-    <div class="container">
-        <h1>Home</h1>
-        <div class="btn-container">
-            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_products') }}">Products</a></div>
-            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_add_product') }}">Add a product</a></div>
-            <div class="button-holder"><a class="btn btn-primary home-btn" href="#">Sell products</a></div>
-            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_news') }}">News</a></div>
-            <div class="button-holder"><a class="btn btn-primary home-btn" href="{{url_for('admin.admin_faq') }}">FAQ</a></div>
+
+<div class="container-fluid container-max-width pt-5">
+    <div class="row">
+        <div class="col">
+            <h1>Welcome back!</h1>
         </div>
     </div>
+
+    <div class="row pt-5">
+
+        
+        <div class="col-md-4 col-12 pb-3">
+            <div class="card" style="height: 16rem;">
+                <div class="card-body">
+                    <i style='font-size:24px' class='far'>&#xf3d1;</i>
+                    <h5 class="card-title">Number of sold items</h5>
+                    <h1>{{ productsSold }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-12 pb-3">
+            <div class="card" style="height: 16rem;">
+                <div class="card-body">
+                    <i style='font-size:24px' class='fas'>&#xf6c0;</i>
+                    <h5 class="card-title">Number of items available</h5>
+                    <h1>{{ productsAvailable }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-12 pb-3">
+            <div class="card" style="height: 16rem;">
+                <div class="card-body">
+                    <i style='font-size:24px' class='far'>&#xf2b9;</i>
+                    <h5 class="card-title">Number of unique customers</h5>
+                    <h1>{{ registeredCustomers }}</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container-fluid container-max-width">
+
+    <div class="row pt-3 pb-1">
+        <div class="col">
+            <h3>What you can do as an admin</h3>
+            <p>*Lighter grey requires special admin access</p>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <div class="button-holder"><a class="btn btn-dark home-btn" href="{{url_for('admin.admin_products') }}">Add,
+                edit and remove products</a></div>
+
+        <div class="button-holder"><a class="btn btn-dark  home-btn" href="{{url_for('admin.buying_process') }}">Buying
+                process (Working in shop)</a>
+        </div>
+        <div class="button-holder"><a class="btn btn-dark home-btn"
+            href="{{url_for('admin.add_maintain_customers') }}">Add, edit, remove registered customers</a>
+        </div>
+
+        <div class="button-holder"><a class="btn btn-secondary home-btn" href="{{url_for('admin.admin_news') }}">Add, edit
+                and remove news</a></div>
+        <div class="button-holder"><a class="btn btn-secondary home-btn" href="{{url_for('admin.admin_faq') }}">Add, edit
+                and remove FAQ questions</a></div>
+
+    </div>
+</div>
 {% endblock content %}

@@ -16,7 +16,6 @@ mail = Mail(app)
 # Imports blueprints from blueprint package
 from lssh.blueprints import products, users, main, news, admin, faq
 
-
 # Regisers the blueprints, adding all defined routes
 app.register_blueprint(products.products)
 app.register_blueprint(users.users)

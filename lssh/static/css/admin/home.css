@@ -1,3 +1,7 @@
+body {
+    background-color:  #ececec;
+}
+
 .home-btn {
     display: flex;
     justify-content: center;
@@ -5,6 +9,10 @@
     height: 100%;
     width: 100%;
     font-size: larger;
+}
+
+.card-title {
+    padding-top: 5rem
 }
 
 .button-holder {

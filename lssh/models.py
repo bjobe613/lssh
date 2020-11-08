@@ -80,7 +80,7 @@ class Product(db.Model):
 
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
    
-    sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
+    sellerID = db.Column(db.String, db.ForeignKey('User.liuID'), nullable=False)
     seller = db.relationship('User', back_populates = 'sellerOfProduct')
     buyer = db.relationship('User',  secondary = product_buyer_association_table, back_populates = 'buyerOfProduct')
 
@@ -171,7 +171,7 @@ class User(db.Model):
 
     buyerOfProduct = db.relationship('Product', secondary = product_buyer_association_table, back_populates = 'buyer')
     sellerOfProduct = db.relationship('Product', back_populates = 'seller')
-    payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table)
+    payment_method = db.relationship('PaymentMethod', secondary=seller_payment_association_table, backref="payment_methods")
 
 class Newsletter(db.Model):
     __tablename__ = 'Newsletter'

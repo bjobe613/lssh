@@ -32,3 +32,32 @@ function submitProductForm() {
         }
     })
 }
+
+
+function searchValidSeller() {
+
+    data = {
+        "liuID": $("#valid-seller-input").val()
+    }
+    $.ajax({
+        url: '/admin/check_valid_seller',
+        type: 'POST',
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (res) {
+
+     
+            $("#add-product-sellerid").val(res);
+            alert("Successful seller")
+            
+
+        },
+        error: function (error) {
+
+            alert("Invalid seller")
+
+        }
+    });
+    
+
+}

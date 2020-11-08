@@ -22,6 +22,9 @@
   <link rel="stylesheet" type="text/css"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/admin_layout.css') }}">
+
   <title>LSSh admin</title>
   {% block more_head %}
   <!-- Filled with more parts of the head required on other views-->
@@ -92,6 +95,9 @@
   {% endblock %}
 
   {% block scripts %}
+
+    <!-- New font awesome-->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
   {% endblock %}
 

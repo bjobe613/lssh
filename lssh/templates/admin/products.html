@@ -43,39 +43,45 @@
                     <a class="col-auto" href="{{ url_for('admin.admin_products') }}"><h1><i class="fa fa-times" aria-hidden="true"></i></h1></a>
                 </div>
                 {% endif %}
-                <div class="row border-bottom adm-prod-table-head">
+                <!--<div class="row border-bottom adm-prod-table-head">
                     <div class="col-2 adm-prod-tablecell adm-prod-imgcol"><h2><i class="fa fa-picture-o" aria-hidden="true"></i></h2></div>
                     <div class="col-2 adm-prod-tablecell"><h2>Name</h2></div>
                     <div class="col-2 adm-prod-tablecell"><h2>#</h2></div>
                     <div class="col-2 adm-prod-tablecell"><h2>Category</h2></div>
                     <div class="col-2 adm-prod-tablecell"></div>
                     <div class="col-2 adm-prod-tablecell"></div>
-                </div>
+                </div> -->
+
                 <div class="product-view">
 
                 {% for product in products %}
                     <div class="row adm-prod-row">
                         <div class="col-md-2 col-4 adm-prod-tablecell adm-prod-imgcol"><img class="img-fluid" src="{{ url_for('static', filename='pictures/' + product.getSinglePictureName()) }}"></div>
                         <div class="col-md-6 col-8">
+
                             <div class="row">
-                                <div class="col-md-4 adm-prod-tablecell">
-                                    <p><span class="adm-prod-text">Name: </span>{{ product.name }}</p>
-                                </div>
-                                <div class="col-md-4 adm-prod-tablecell">
-                                    <p><span class="adm-prod-text">Id: </span>{{ product.articleNumber }}</p>
-                                </div>
-                                <div class="col-md-4 adm-prod-tablecell">
-                                    <p><span class="adm-prod-text">Category: </span>{{ product.category.name }}</p>
+                                <div class="col">
+                                    <p><span class="adm-prod-text"><b>Item ID: </b> </span>{{ product.articleNumber }}</p>
+                                    <p><span class="adm-prod-text"><b>Name: </b> </span>{{ product.name }}</p>
+                                    <p><span class="adm-prod-text"><b>Quantity: </b> </span>{{ product.quantity }}</p>
+                                    <p><span class="adm-prod-text"><b>Category: </b> </span>{{ product.category.name }}</p>
+                                    <p><span class="adm-prod-text"><b>Seller: </b> </span>{{ product.seller.liuID }}</p>
+
+                                    {% for PaymentMethod in product.seller.payment_method %}
+                                        <button type="submit" class="btn btn-primary d-inline" disabled>{{ PaymentMethod.name }}</button>
+                                    {% endfor %}
+
+                                   
                                 </div>
                             </div>
+
+                        
                         </div>
                         <div class="w-100 d-md-none"></div>
                         <div class="col-md-4">
                             <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-primary adm-prod-button" href="#"><i class="fa fa-credit-card"></i></button>
-                                </div>
-                                <div class="col">
+                               
+                                <div class="col offset-6">
                                     <a class="btn btn-primary adm-prod-button" href="{{ url_for('admin.edit_product', id=product.articleNumber) }}"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </div>

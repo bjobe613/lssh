@@ -37,16 +37,16 @@ def product(x):
 
 @products.route("/add/", methods=['POST'])
 def add_product():
-    fields = ["name", "price", "condition", "paymentMethod", "description"]
+    fields = ["name", "price", "sellerID", "condition", "description"]
     for field in fields:
         if not request.form.get(field):
             return {"msg": "missing {0} from form".format(field)}, 400
     try:
         prod = Product(name = request.form.get("name"),
                        price = int(request.form.get("price")),
+                       sellerID = request.form.get("sellerID"),
                        category_id = int(request.form.get("category")),
                        condition_id = int(request.form.get("condition")),
-                       payment_method_id = int(request.form.get("paymentMethod")),
                        comment = request.form.get("description"))
         db.session.add(prod)
         db.session.commit()

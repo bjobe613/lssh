@@ -1,0 +1,126 @@
+{% extends "admin/layout.html" %}
+{% set navbar_active_add_maintain_customers = True %}
+
+{% block more_head %}
+
+{% endblock more_head %}
+
+
+{% block content %}
+
+<div class="container-fluid container-max-width">
+    <div class="row pt-5">
+        <div class="col">
+
+            <h3>Edit customer information</h3>
+
+      
+            
+            <form id="add-news-form" method="POST">
+
+                <div class='form-group'>
+                    <label for="inputID">LIU ID</label>
+                    <input type="text" disabled name="liuid" class="form-control" id="inputID" aria-describedby="liuid"
+                        placeholder="Enter LIU ID" value="{{ user.liuID}}">
+                </div>
+
+                <div class='form-group'>
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                        placeholder="Enter email" value="{{ user.email }}">
+                </div>
+
+                <div class='form-group'>
+                    <label for="inputName">Name</label>
+                    <input type="text" name="name" class="form-control" id="inputName" aria-describedby="name"
+                        placeholder="Enter name" value="{{ user.name }}">
+                </div>
+
+                <div class='form-group'>
+                    <label for="inputProgram">Program</label>
+                    <input type="text" name="program" class="form-control" id="inputProgram" aria-describedby="program"
+                        placeholder="Enter program" value="{{ user.program }}">
+                </div>
+
+                {% if user.international %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" checked name="international" type="checkbox" value="True">
+                    <label class="form-check-label" for="inlineCheckbox1">International</label>
+                </div>
+                {% else %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="international" type="checkbox" value="True">
+                    <label class="form-check-label" for="inlineCheckbox1">International</label>
+                </div>
+                {% endif %}
+
+                <h3 class="pt-4"> Add/edit Seller information:</h3>
+
+                <div class='form-group pt-3'>
+                    <label for="inputPhone">Phone</label>
+                    <input type="text" name="phone" class="form-control" id="inputPhone" aria-describedby="phone"
+                        placeholder="Enter phone" value="{{ user.phone }}">
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <p>Current payment methods:</p>
+                        {% for PaymentMethod in user.payment_method %}
+                        <button type="submit" class="btn btn-primary" disabled>{{ PaymentMethod.name }}</button>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+
+                <div class="form-check form-check-inline pt-3">
+                    <input class="form-check-input" name="change_payment" type="checkbox" id="change_payment_check">
+                    <label class="form-check-label" for="inlineCheckbox1">Click here to edit the current payment methods</label>
+                </div>
+
+                <div id="change_payment_div" class="row d-none">
+                    <div class="col">
+                        <br>
+                        <p>Select the new payment methods here:</p>
+                        {% for PaymentMethod in payment_methods %}
+        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="checkbox" type="checkbox" id="inlineCheckbox1"
+                                value="{{ PaymentMethod.id }}">
+                            <label class="form-check-label" for="inlineCheckbox1">{{ PaymentMethod.name }}</label>
+                        </div>
+        
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+             
+
+
+                <div class="row pt-3">
+                    <button type="submit" class="btn btn-secondary">Submit</button>
+                </div>
+
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/admin/edit_customers.js') }}"></script>
+
+{% endblock scripts %}
