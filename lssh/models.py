@@ -29,12 +29,12 @@ class Car(db.Model):
 
 
 product_buyer_association_table = Table('product_buyer', db.metadata,
-    db.Column('buyer_id', db.String, db.ForeignKey('User.liuID')),
+    db.Column('buyer_id', db.String(16), db.ForeignKey('User.liuID')),
     db.Column('product_id', db.Integer, db.ForeignKey('Product.articleNumber'))
 )
 
 seller_payment_association_table = Table('seller_payment', db.metadata,
-    db.Column('seller_id', db.String, db.ForeignKey('User.liuID')),
+    db.Column('seller_id', db.String(16), db.ForeignKey('User.liuID')),
     db.Column('paymentmethod_id', db.Integer, db.ForeignKey('PaymentMethod.id'))
 )
 
@@ -48,22 +48,22 @@ seller_payment_association_table = Table('seller_payment', db.metadata,
 class Category(db.Model):
     __tablename__ = 'Category'
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
     products = db.relationship('Product', back_populates='category')
 
 class Condition(db.Model):
     __tablename__ = 'Condition'
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
     products = db.relationship('Product', back_populates='condition')
 
 class Product(db.Model):
     __tablename__ = 'Product'
     articleNumber = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
     price = db.Column(db.Integer, nullable = False)
     pubDate = db.Column(db.DateTime,server_default = func.now())
-    color = db.Column(db.String, default = "None")
+    color = db.Column(db.String(16), default = "None")
 
     category_id = db.Column(db.Integer, db.ForeignKey('Category.id'), nullable = False)
     category = db.relationship('Category', back_populates='products')
@@ -74,13 +74,13 @@ class Product(db.Model):
     height = db.Column(db.Integer, nullable = True)
     width = db.Column( db.Integer, nullable = True)
     depth = db.Column(db.Integer, nullable = True)
-    status = db.Column(db.String, default = "Available")
+    status = db.Column(db.String(16), default = "Available")
     quantity = db.Column(db.Integer, default = 1)
     comment = db.Column(db.Text)
 
     pictures = db.relationship('ProductPictures', backref = 'productIDPicture')
    
-    sellerID = db.Column(db.String, db.ForeignKey('User.liuID'))
+    sellerID = db.Column(db.String(16), db.ForeignKey('User.liuID'))
     seller = db.relationship('User', back_populates = 'sellerOfProduct')
     buyer = db.relationship('User',  secondary = product_buyer_association_table, back_populates = 'buyerOfProduct')
 
@@ -141,7 +141,7 @@ class Product(db.Model):
 class ProductPictures(db.Model):
     __tablename__ = 'ProductPictures'
     pictureID = db.Column(db.Integer, primary_key = True)
-    pictureName = db.Column(db.String, default = "default.jpg")
+    pictureName = db.Column(db.String(16), default = "default.jpg")
     productID = db.Column(db.Integer, db.ForeignKey('Product.articleNumber'))
 
     def renameReference(self, fileName):
@@ -158,14 +158,14 @@ class ProductPictures(db.Model):
 class PaymentMethod(db.Model):
     __tablename__ = 'PaymentMethod'
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
 
 class User(db.Model):
     __tablename__ = 'User'
     liuID = db.Column(db.String(8), nullable = False, unique = True, primary_key = True, autoincrement=False)
-    email = db.Column(db.String, nullable = False, unique = True)
-    name = db.Column(db.String)
-    program = db.Column(db.String)
+    email = db.Column(db.String(16), nullable = False, unique = True)
+    name = db.Column(db.String(16))
+    program = db.Column(db.String(16))
     international = db.Column(db.Boolean)
     phone = db.Column(db.String(15), nullable = True)
 
@@ -175,12 +175,12 @@ class User(db.Model):
 
 class Newsletter(db.Model):
     __tablename__ = 'Newsletter'
-    email = db.Column(db.String, primary_key = True)
+    email = db.Column(db.String(16), primary_key = True)
 
 class Newspicture(db.Model):
     __tablename__ = 'Newspicture'
     pictureID = db.Column(db.Integer, primary_key = True)
-    path = db.Column(db.String, nullable = False, default = "default.jpg")
+    path = db.Column(db.String(16), nullable = False, default = "default.jpg")
     articles = db.relationship('News', backref = 'News.id')
 
 
@@ -207,8 +207,8 @@ class News(db.Model): #has to be reworked into files, not a model.
     id = db.Column(db.Integer, primary_key = True)
     published = db.Column(db.Boolean, nullable=False, default = False)
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    title = db.Column(db.String, nullable = False)
-    ingress = db.Column(db.String, nullable = False)
+    title = db.Column(db.String(16), nullable = False)
+    ingress = db.Column(db.String(16), nullable = False)
     text = db.Column(db.JSON, nullable = False)
     titlePicture = db.Column(db.Integer, db.ForeignKey('Newspicture.pictureID'))
 
@@ -278,20 +278,20 @@ class News(db.Model): #has to be reworked into files, not a model.
 
 class Admin(db.Model):
     __tablename__ = 'Admin'
-    name = db.Column(db.String, primary_key = True)
-    passwordHash = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), primary_key = True)
+    passwordHash = db.Column(db.String(16), nullable = False)
     authorization = db.Column(db.Integer, default = 1)
 
 class OpeningHours(db.Model):
     __tablename__ = 'OpeningHours'
-    day = db.Column(db.String, primary_key = True)
+    day = db.Column(db.String(16), primary_key = True)
     openingTime = db.Column(db.Time, nullable = False)
     closingTime = db.Column(db.Time, nullable = False)
 
 class Categoryfaq(db.Model):
     __tablename__ = 'Categoryfaq'
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
     questions = db.relationship("Question", back_populates="categoryfaq")
 
     def serialize(self):
@@ -327,14 +327,14 @@ class Question(db.Model):
 class HandInRequest(db.Model):
     __tablename__ = 'HandInRequest'
     requestID = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String, nullable = False)
+    name = db.Column(db.String(16), nullable = False)
     liuID = db.Column(db.String(8), nullable = False)
     generalInfo = db.Column(db.Text, nullable = True)
     condition = db.Column(db.Integer, nullable = False)
-    picturePath = db.Column(db.String, nullable = True)
+    picturePath = db.Column(db.String(16), nullable = True)
     donate = db.Column(db.Boolean, default = False)
     price = db.Column(db.Integer, nullable = True) #should we make this a relation?
-    category = db.Column(db.String, nullable = True)#should this be here??
+    category = db.Column(db.String(16), nullable = True)#should this be here??
 
 '''class HIRequestPictures(db.Model):
     pictureID = db.Column(db.Integer, primary_key = True)
