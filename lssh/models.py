@@ -209,7 +209,7 @@ class News(db.Model): #has to be reworked into files, not a model.
     date = db.Column(db.DateTime(timezone = True), server_default = func.now())
     title = db.Column(db.String(16), nullable = False)
     ingress = db.Column(db.String(16), nullable = False)
-    text = db.Column(db.JSON, nullable = False)
+    text = db.Column(db.String(16), nullable = False)
     titlePicture = db.Column(db.Integer, db.ForeignKey('Newspicture.pictureID'))
 
     def get_img_url(self):
